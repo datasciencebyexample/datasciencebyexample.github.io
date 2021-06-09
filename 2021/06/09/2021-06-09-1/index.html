@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="boost exact phrase search results ranking in elasticsearch, DataScience Tribe">
+    <meta name="keywords" content="word tokenization and sentence tokenization in python using NLTK package, DataScience Tribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>boost exact phrase search results ranking in elasticsearch | DataScience Tribe</title>
+    <title>word tokenization and sentence tokenization in python using NLTK package | DataScience Tribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">boost exact phrase search results ranking in elasticsearch</h1>
+                    <h1 class="description center-align post-title">word tokenization and sentence tokenization in python using NLTK package</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/elasticsearch/">
-                                <span class="chip bg-color">elasticsearch</span>
+                            <a href="/tags/tokenization/">
+                                <span class="chip bg-color">tokenization</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/NLTK/">
+                                <span class="chip bg-color">NLTK</span>
                             </a>
                         
                     </div>
@@ -362,8 +362,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/search/" class="post-category">
-                                search
+                            <a href="/categories/data-science/" class="post-category">
+                                data science
                             </a>
                         
                     </div>
@@ -375,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-05
+                    2021-06-09
                 </div>
                 
 
@@ -396,22 +396,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Elasticsearch use the DSL format to create query.</p>
-<p>One easy search is to use multi_match by passing the query key word, and give the fields to search for.</p>
-<p>Here is an example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line">es = Elasticsearch()</span><br><span class="line">indexname = &#x27;myindex&#x27;</span><br><span class="line"></span><br><span class="line">keyword = &#x27;test&#x27;</span><br><span class="line">   dsl=&#123;</span><br><span class="line">       &quot;query&quot;: &#123;</span><br><span class="line">           &quot;multi_match&quot; : &#123;</span><br><span class="line">                   &quot;query&quot;:  keyword,</span><br><span class="line">                   &quot;fields&quot;: [ &quot;content&quot;]</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   dsize=10</span><br><span class="line">   result_r = es.search(index=indexname, body=dsl,size=dsize)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h1 id="What-is-Tokenization"><a href="#What-is-Tokenization" class="headerlink" title="What is Tokenization?"></a>What is Tokenization?</h1><p>Tokenization is the process by which a large quantity of text is divided into smaller parts called tokens.<br>These tokens are very useful for finding patterns and are considered as a base step for stemming and lemmatization.<br>Tokenization also helps to substitute sensitive data elements with non-sensitive data elements.</p>
+<p>Natural language processing is used for building applications such as Text classification, intelligent chatbot, sentimental analysis, language translation, etc.<br>It becomes vital to understand the pattern in the text to achieve the above-stated purpose.</p>
+<h1 id="Tokenization-of-words"><a href="#Tokenization-of-words" class="headerlink" title="Tokenization of words"></a>Tokenization of words</h1><p>We use the method word_tokenize() to split a sentence into words.<br>The output of word tokenization can be converted to Data Frame for better text understanding in machine learning applications.<br>It can also be provided as input for further text cleaning steps such as punctuation removal, numeric character removal or stemming.</p>
+<p>Code example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.tokenize import word_tokenize</span><br><span class="line">text = &quot;God is Great! I won a lottery.&quot;</span><br><span class="line">print(word_tokenize(text))</span><br><span class="line"></span><br><span class="line">Output: [&#x27;God&#x27;, &#x27;is&#x27;, &#x27;Great&#x27;, &#x27;!&#x27;, &#x27;I&#x27;, &#x27;won&#x27;, &#x27;a&#x27;, &#x27;lottery&#x27;, &#x27;.&#x27;]</span><br></pre></td></tr></table></figure>
 
-<p>The problem with the above query is that:if your query keyword is a phrase, you might find many results that have the exact match are ranked lower.</p>
-<p>To solve this problem, you might want to try this new dsl format:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">dsl=&#123;</span><br><span class="line">   </span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">       &quot;bool&quot;: &#123;</span><br><span class="line">         &quot;must&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ]</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ],</span><br><span class="line">         &quot;should&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;type&quot;: &quot;phrase&quot;,</span><br><span class="line">               &quot;boost&quot;: 10</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">               &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;operator&quot;: &quot;and&quot;,</span><br><span class="line">               &quot;boost&quot;: 4</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">           </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>From the above example, one can see the punctuationa are also included. Sometimes we want to exclude that.<br>To achieve this purpose, there are two ways:</p>
+<h2 id="USE-nltk-RegexpTokenizer-TO-REMOVE-ALL-PUNCTUATION-MARKS"><a href="#USE-nltk-RegexpTokenizer-TO-REMOVE-ALL-PUNCTUATION-MARKS" class="headerlink" title="USE nltk.RegexpTokenizer() TO REMOVE ALL PUNCTUATION MARKS"></a>USE nltk.RegexpTokenizer() TO REMOVE ALL PUNCTUATION MARKS</h2><p>Call nltk.RegexpTokenizer(pattern) with pattern as r”\w+” to create a tokenzier that uses pattern to split a string.<br>Call RegexpTokenizer.tokenize(text) with RegexpTokenizer as the previous result and text as a string representing a sentence to return text as a list of words with punctuation’s removed.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sentence  = &quot;Think and wonder, wonder and think.&quot;</span><br><span class="line"></span><br><span class="line">tokenizer = nltk.RegexpTokenizer(r&quot;\w+&quot;)</span><br><span class="line">new_words = tokenizer.tokenize(sentence)</span><br><span class="line"></span><br><span class="line">print(new_words)</span><br><span class="line">OUTPUT</span><br><span class="line">[&#x27;Think&#x27;, &#x27;and&#x27;, &#x27;wonder&#x27;, &#x27;wonder&#x27;, &#x27;and&#x27;, &#x27;think&#x27;]</span><br></pre></td></tr></table></figure>
 
-<p>one thing to explain in the above the query, is the ‘operator’; According to the official elasticsearch webpage:</p>
-<p>operator and minimum_should_match<br>The best_fields and most_fields types are field-centric — they generate a match query per field. This means that the operator and minimum_should_match parameters are applied to each field individually, which is probably not what you want.</p>
-<p>Take this query for example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot; : &#123;</span><br><span class="line">      &quot;query&quot;:      &quot;Will Smith&quot;,</span><br><span class="line">      &quot;type&quot;:       &quot;best_fields&quot;,</span><br><span class="line">      &quot;fields&quot;:     [ &quot;first_name&quot;, &quot;last_name&quot; ],</span><br><span class="line">      &quot;operator&quot;:   &quot;and&quot; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This query is executed as:</p>
-<p>  (+first_name:will +first_name:smith)<br>| (+last_name:will  +last_name:smith)</p>
-<p>In other words, all terms must be present in a single field for a document to match.</p>
+
+<h2 id="USE-nltk-word-tokenize-AND-LIST-COMPREHENSION-TO-REMOVE-ALL-PUNCTUATION-MARKS"><a href="#USE-nltk-word-tokenize-AND-LIST-COMPREHENSION-TO-REMOVE-ALL-PUNCTUATION-MARKS" class="headerlink" title="USE nltk.word_tokenize() AND LIST COMPREHENSION TO REMOVE ALL PUNCTUATION MARKS"></a>USE nltk.word_tokenize() AND LIST COMPREHENSION TO REMOVE ALL PUNCTUATION MARKS</h2><p>Call nltk.word_tokenize(text) with text as a string representing a sentence to return text as a list of words. Use the syntax [word for word in words if condition] with words as the previous result and condition as word.isalnum() to create a list containing each word in words that only contain alphanumeric characters.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sentence  = &quot;Think and wonder, wonder and think.&quot;</span><br><span class="line"></span><br><span class="line">words = nltk.word_tokenize(sentence)</span><br><span class="line">new_words= [word for word in words if word.isalnum()]</span><br><span class="line"></span><br><span class="line">print(new_words)</span><br><span class="line">OUTPUT</span><br><span class="line">[&#x27;Think&#x27;, &#x27;and&#x27;, &#x27;wonder&#x27;, &#x27;wonder&#x27;, &#x27;and&#x27;, &#x27;think&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Tokenization-of-Sentences"><a href="#Tokenization-of-Sentences" class="headerlink" title="Tokenization of Sentences"></a>Tokenization of Sentences</h1><p>Sometimes you need to get sentences out of the texts at first.</p>
+<p>Code example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from nltk.tokenize import sent_tokenize</span><br><span class="line">text = &quot;God is Great! I won a lottery.&quot;</span><br><span class="line">print(sent_tokenize(text))</span><br><span class="line"></span><br><span class="line">Output: [&#x27;God is Great!&#x27;, &#x27;I won a lottery &#x27;]</span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -438,7 +440,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/">https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/06/09/2021-06-09-1/">https://datasciencebyexample.github.io/2021/06/09/2021-06-09-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -476,12 +478,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/elasticsearch/">
-                                    <span class="chip bg-color">elasticsearch</span>
+                                <a href="/tags/tokenization/">
+                                    <span class="chip bg-color">tokenization</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/NLTK/">
+                                    <span class="chip bg-color">NLTK</span>
                                 </a>
                             
                         </div>
@@ -527,9 +529,64 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2021/06/09/2021-06-09-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="word tokenization and sentence tokenization in python using NLTK package">
+                        
+                        <span class="card-title">word tokenization and sentence tokenization in python using NLTK package</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tokenization/">
+                        <span class="chip bg-color">tokenization</span>
+                    </a>
+                    
+                    <a href="/tags/NLTK/">
+                        <span class="chip bg-color">NLTK</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/06/08/2021-06-08-1/">
                     <div class="card-image">
@@ -547,9 +604,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -571,63 +628,6 @@
                     
                     <a href="/tags/dataframe/">
                         <span class="chip bg-color">dataframe</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
-                        
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
                     </a>
                     
                 </div>
