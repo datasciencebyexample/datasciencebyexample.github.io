@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="boost exact phrase search results ranking in elasticsearch, DataScienceTribe">
+    <meta name="keywords" content="time series feature engineering using tsfresh, training vs test, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>boost exact phrase search results ranking in elasticsearch | DataScienceTribe</title>
+    <title>time series feature engineering using tsfresh, training vs test | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">boost exact phrase search results ranking in elasticsearch</h1>
+                    <h1 class="description center-align post-title">time series feature engineering using tsfresh, training vs test</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,24 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/preprocessing/">
+                                <span class="chip bg-color">preprocessing</span>
                             </a>
                         
-                            <a href="/tags/elasticsearch/">
-                                <span class="chip bg-color">elasticsearch</span>
+                            <a href="/tags/pipeline/">
+                                <span class="chip bg-color">pipeline</span>
+                            </a>
+                        
+                            <a href="/tags/tsfresh/">
+                                <span class="chip bg-color">tsfresh</span>
+                            </a>
+                        
+                            <a href="/tags/time-series/">
+                                <span class="chip bg-color">time series</span>
+                            </a>
+                        
+                            <a href="/tags/feature-engineering/">
+                                <span class="chip bg-color">feature engineering</span>
                             </a>
                         
                     </div>
@@ -362,8 +374,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/search/" class="post-category">
-                                search
+                            <a href="/categories/data-science/" class="post-category">
+                                data science
                             </a>
                         
                     </div>
@@ -375,7 +387,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-05
+                    2021-06-10
                 </div>
                 
 
@@ -396,22 +408,67 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Elasticsearch use the DSL format to create query.</p>
-<p>One easy search is to use multi_match by passing the query key word, and give the fields to search for.</p>
-<p>Here is an example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line">es = Elasticsearch()</span><br><span class="line">indexname = &#x27;myindex&#x27;</span><br><span class="line"></span><br><span class="line">keyword = &#x27;test&#x27;</span><br><span class="line">   dsl=&#123;</span><br><span class="line">       &quot;query&quot;: &#123;</span><br><span class="line">           &quot;multi_match&quot; : &#123;</span><br><span class="line">                   &quot;query&quot;:  keyword,</span><br><span class="line">                   &quot;fields&quot;: [ &quot;content&quot;]</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   dsize=10</span><br><span class="line">   result_r = es.search(index=indexname, body=dsl,size=dsize)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>During the test stage, i.e., once the model is on production, for any new data,<br>tsfresh feature generation does not depend the training data. So one can apply the same feature engineering process as the training data<br>without worrying about stroing information from training stage.</p>
+<p>On ther hand, one can also use the following example to leverage scikit learn pipleline style to handel the feature generation<br>for both training and test stages.</p>
+<h1 id="Feature-Selection-in-a-sklearn-pipeline"><a href="#Feature-Selection-in-a-sklearn-pipeline" class="headerlink" title="Feature Selection in a sklearn pipeline"></a>Feature Selection in a sklearn pipeline</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tsfresh.examples <span class="keyword">import</span> load_robot_execution_failures</span><br><span class="line"><span class="keyword">from</span> tsfresh.transformers <span class="keyword">import</span> RelevantFeatureAugmenter</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> impute</span><br></pre></td></tr></table></figure>
 
-<p>The problem with the above query is that:if your query keyword is a phrase, you might find many results that have the exact match are ranked lower.</p>
-<p>To solve this problem, you might want to try this new dsl format:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">dsl=&#123;</span><br><span class="line">   </span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">       &quot;bool&quot;: &#123;</span><br><span class="line">         &quot;must&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ]</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ],</span><br><span class="line">         &quot;should&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;type&quot;: &quot;phrase&quot;,</span><br><span class="line">               &quot;boost&quot;: 10</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">               &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;operator&quot;: &quot;and&quot;,</span><br><span class="line">               &quot;boost&quot;: 4</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">           </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Load-and-Prepare-the-Data"><a href="#Load-and-Prepare-the-Data" class="headerlink" title="Load and Prepare the Data"></a>Load and Prepare the Data</h2><p>Check out the first example notebook to learn more about the data and format.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tsfresh.examples.robot_execution_failures <span class="keyword">import</span> download_robot_execution_failures</span><br><span class="line">download_robot_execution_failures() </span><br><span class="line">df_ts, y = load_robot_execution_failures()</span><br></pre></td></tr></table></figure>
 
-<p>one thing to explain in the above the query, is the ‘operator’; According to the official elasticsearch webpage:</p>
-<p>operator and minimum_should_match<br>The best_fields and most_fields types are field-centric — they generate a match query per field. This means that the operator and minimum_should_match parameters are applied to each field individually, which is probably not what you want.</p>
-<p>Take this query for example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot; : &#123;</span><br><span class="line">      &quot;query&quot;:      &quot;Will Smith&quot;,</span><br><span class="line">      &quot;type&quot;:       &quot;best_fields&quot;,</span><br><span class="line">      &quot;fields&quot;:     [ &quot;first_name&quot;, &quot;last_name&quot; ],</span><br><span class="line">      &quot;operator&quot;:   &quot;and&quot; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This query is executed as:</p>
-<p>  (+first_name:will +first_name:smith)<br>| (+last_name:will  +last_name:smith)</p>
-<p>In other words, all terms must be present in a single field for a document to match.</p>
+<p>We want to use the extracted features to predict for each of the robot executions, if it was a failure or not.<br>Therefore our basic “entity” is a single robot execution given by a distinct <code>id</code>.</p>
+<p>A dataframe with these identifiers as index needs to be prepared for the pipeline.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X = pd.DataFrame(index=y.index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split data into train and test set</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Build-the-pipeline"><a href="#Build-the-pipeline" class="headerlink" title="Build the pipeline"></a>Build the pipeline</h2><p>We build a sklearn pipeline that consists of a feature extraction step (<code>RelevantFeatureAugmenter</code>) with a subsequent <code>RandomForestClassifier</code>.</p>
+<p>The <code>RelevantFeatureAugmenter</code> takes roughly the same arguments as <code>extract_features</code> and <code>select_features</code> do.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ppl = Pipeline([</span><br><span class="line">        (<span class="string">&#x27;augmenter&#x27;</span>, RelevantFeatureAugmenter(column_id=<span class="string">&#x27;id&#x27;</span>, column_sort=<span class="string">&#x27;time&#x27;</span>)),</span><br><span class="line">        (<span class="string">&#x27;classifier&#x27;</span>, RandomForestClassifier())</span><br><span class="line">      ])</span><br></pre></td></tr></table></figure>
+
+<div class="alert alert-warning">
+    
+<p>Here comes the tricky part!</p>
+<p>The input to the pipeline will be our dataframe <code>X</code>, which one row per identifier.<br>It is currently empty.<br>But which time series data should the <code>RelevantFeatureAugmenter</code> to actually extract the features from?</p>
+<p>We need to pass the time series data (stored in <code>df_ts</code>) to the transformer.</p>
+</div>
+
+<p>In this case, df_ts contains the time series of both train and test set, if you have different dataframes for<br>train and test set, you have to call set_params two times<br>(see further below on how to deal with two independent data sets)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts);</span><br></pre></td></tr></table></figure>
+
+<p>We are now ready to fit the pipeline</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ppl.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+
+<p>The augmenter has used the input time series data to extract time series features for each of the identifiers in the <code>X_train</code> and selected only the relevant ones using the passed <code>y_train</code> as target.<br>These features have been added to <code>X_train</code> as new columns.<br>The classifier can now use these features during trainings.</p>
+<h2 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h2><p>During interference, the augmentor does only extract the relevant features it has found out in the training phase and the classifier predicts the target using these features.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<p>So, finally we inspect the performance:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+
+<p>You can also find out, which columns the augmenter has selected</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ppl.named_steps[<span class="string">&quot;augmenter&quot;</span>].feature_selector.relevant_features</span><br></pre></td></tr></table></figure>
+
+<div class="alert alert-info">
+    
+<p>In this example we passed in an empty (except the index) <code>X_train</code> or <code>X_test</code> into the pipeline.<br>However, you can also fill the input with other features you have (e.g. features extracted from the metadata)<br>or even use other pipeline components before.</p>
+</div>
+
+<h2 id="Separating-the-time-series-data-containers"><a href="#Separating-the-time-series-data-containers" class="headerlink" title="Separating the time series data containers"></a>Separating the time series data containers</h2><p>In the example above we passed in a single <code>df_ts</code> into the <code>RelevantFeatureAugmenter</code>, which was used both for training and predicting.<br>During training, only the data with the <code>id</code>s from <code>X_train</code> where extracted and during prediction the rest.</p>
+<p>However, it is perfectly fine to call <code>set_params</code> twice: once before training and once before prediction.<br>This can be handy if you for example dump the trained pipeline to disk and re-use it only later for prediction.<br>You only need to make sure that the <code>id</code>s of the enteties you use during training/prediction are actually present in the passed time series data.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_ts_train = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_train.index)]</span><br><span class="line">df_ts_test = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_test.index)]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_train);</span><br><span class="line">ppl.fit(X_train, y_train);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(ppl, f)</span><br></pre></td></tr></table></figure>
+
+<p>Later: load the fitted model and do predictions on new, unseen data</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ppk = pickle.load(f)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_test);</span><br><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -438,7 +495,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/">https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/">https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -476,12 +533,24 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/preprocessing/">
+                                    <span class="chip bg-color">preprocessing</span>
                                 </a>
                             
-                                <a href="/tags/elasticsearch/">
-                                    <span class="chip bg-color">elasticsearch</span>
+                                <a href="/tags/pipeline/">
+                                    <span class="chip bg-color">pipeline</span>
+                                </a>
+                            
+                                <a href="/tags/tsfresh/">
+                                    <span class="chip bg-color">tsfresh</span>
+                                </a>
+                            
+                                <a href="/tags/time-series/">
+                                    <span class="chip bg-color">time series</span>
+                                </a>
+                            
+                                <a href="/tags/feature-engineering/">
+                                    <span class="chip bg-color">feature engineering</span>
                                 </a>
                             
                         </div>
@@ -527,17 +596,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/08/2021-06-08-1/">
+                <a href="/2021/06/10/2021-06-10-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="missing value or null value processing in pandas dataframe">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="time series feature engineering using tsfresh, training vs test">
                         
-                        <span class="card-title">missing value or null value processing in pandas dataframe</span>
+                        <span class="card-title">time series feature engineering using tsfresh, training vs test</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -547,9 +617,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -562,15 +632,28 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/preprocessing/">
+                        <span class="chip bg-color">preprocessing</span>
                     </a>
                     
-                    <a href="/tags/dataframe/">
-                        <span class="chip bg-color">dataframe</span>
+                    <a href="/tags/pipeline/">
+                        <span class="chip bg-color">pipeline</span>
+                    </a>
+                    
+                    <a href="/tags/tsfresh/">
+                        <span class="chip bg-color">tsfresh</span>
+                    </a>
+                    
+                    <a href="/tags/time-series/">
+                        <span class="chip bg-color">time series</span>
+                    </a>
+                    
+                    <a href="/tags/feature-engineering/">
+                        <span class="chip bg-color">feature engineering</span>
                     </a>
                     
                 </div>
@@ -584,13 +667,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
+                <a href="/2021/06/09/2021-06-09-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="word tokenization and sentence tokenization in python using NLTK package">
                         
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">word tokenization and sentence tokenization in python using NLTK package</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -601,7 +684,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
                             </span>
                         <span class="publish-author">
                             
@@ -618,16 +701,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/tokenization/">
+                        <span class="chip bg-color">tokenization</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/NLTK/">
+                        <span class="chip bg-color">NLTK</span>
                     </a>
                     
                 </div>
