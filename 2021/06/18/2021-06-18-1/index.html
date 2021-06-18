@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="time series feature engineering using tsfresh, training vs test, DataScienceTribe">
+    <meta name="keywords" content="handles feature order in training and online production stage to avoid inconsistent error, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>time series feature engineering using tsfresh, training vs test | DataScienceTribe</title>
+    <title>handles feature order in training and online production stage to avoid inconsistent error | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">time series feature engineering using tsfresh, training vs test</h1>
+                    <h1 class="description center-align post-title">handles feature order in training and online production stage to avoid inconsistent error</h1>
                 </div>
             </div>
         </div>
@@ -346,24 +346,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
-                            </a>
-                        
                             <a href="/tags/preprocessing/">
                                 <span class="chip bg-color">preprocessing</span>
                             </a>
                         
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/pandas-tip/">
+                                <span class="chip bg-color">pandas tip</span>
                             </a>
                         
-                            <a href="/tags/tsfresh/">
-                                <span class="chip bg-color">tsfresh</span>
-                            </a>
-                        
-                            <a href="/tags/time-series/">
-                                <span class="chip bg-color">time series</span>
+                            <a href="/tags/machine-learning/">
+                                <span class="chip bg-color">machine learning</span>
                             </a>
                         
                     </div>
@@ -387,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-10
+                    2021-06-18
                 </div>
                 
 
@@ -408,67 +400,226 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>During the test stage, i.e., once the model is on production, for any new data,<br>tsfresh feature generation does not depend the training data. So one can apply the same feature engineering process as the training data<br>without worrying about stroing information from training stage.</p>
-<p>On ther hand, one can also use the following example to leverage scikit learn pipleline style to handel the feature generation<br>for both training and test stages.</p>
-<h1 id="Feature-Selection-in-a-sklearn-pipeline"><a href="#Feature-Selection-in-a-sklearn-pipeline" class="headerlink" title="Feature Selection in a sklearn pipeline"></a>Feature Selection in a sklearn pipeline</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tsfresh.examples <span class="keyword">import</span> load_robot_execution_failures</span><br><span class="line"><span class="keyword">from</span> tsfresh.transformers <span class="keyword">import</span> RelevantFeatureAugmenter</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> impute</span><br></pre></td></tr></table></figure>
+                <p>In applying machine learning models in production stage, like lightGBM model or any models.<br>While we all know the order of features shoud be same for both training stage, test stage, and the production stage.</p>
+<p>In practice we might ignore that. In produciton stage, new data might come as a json format, where orders will disappear,<br>it has nothing to do with the original feature order in the model training stage.</p>
+<p>The comming json will be converted to dataframe format, and passed to the model for prediction. We might usually<br>igore the fact that, the new dataframe column order is different from the original training dataframe column order now.<br>And it’s important to make sure they are consistent, and not up to the randome fate.</p>
+<p>There are many ways to achieve this, the following shows how to do it in a pipeline fashion.</p>
+<h2 id="define-piplenow-to-treat-the-effects-systematically"><a href="#define-piplenow-to-treat-the-effects-systematically" class="headerlink" title="define piplenow, to treat the effects systematically"></a>define piplenow, to treat the effects systematically</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LastStepTransformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        self.traincolumns = []</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;initialized&#x27;</span>)</span><br><span class="line"></span><br><span class="line">     <span class="comment"># Return self, nothing else to do here</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        self.traincolumns = X.columns</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line">        <span class="comment"># make sure any new data follows the same order of features used in the training stage</span></span><br><span class="line">        <span class="keyword">return</span> X[self.traincolumns]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># make an data process pipeline, using the above transformer as the last steps here.</span></span><br><span class="line"><span class="comment"># in practice, any preprocessing steps can be put here as well</span></span><br><span class="line"></span><br><span class="line">dataPipeline = Pipeline([</span><br><span class="line"> (<span class="string">&#x27;last_step&#x27;</span>,LastStepTransformer())   </span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="Load-and-Prepare-the-Data"><a href="#Load-and-Prepare-the-Data" class="headerlink" title="Load and Prepare the Data"></a>Load and Prepare the Data</h2><p>Check out the first example notebook to learn more about the data and format.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tsfresh.examples.robot_execution_failures <span class="keyword">import</span> download_robot_execution_failures</span><br><span class="line">download_robot_execution_failures() </span><br><span class="line">df_ts, y = load_robot_execution_failures()</span><br></pre></td></tr></table></figure>
+<pre><code>initialized
+</code></pre>
+<h2 id="show-an-example"><a href="#show-an-example" class="headerlink" title="show an example"></a>show an example</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data_train =[[<span class="number">1.1</span>,<span class="number">2.2</span>],[<span class="number">2.1</span>,<span class="number">3.2</span>]]</span><br><span class="line">data_test =[[<span class="number">3.1</span>,<span class="number">5.2</span>],[<span class="number">1.1</span>,<span class="number">2.2</span>]]</span><br><span class="line"></span><br><span class="line">df_train = pd.DataFrame(data=data_train,columns=[<span class="string">&#x27;col1&#x27;</span>,<span class="string">&#x27;col2&#x27;</span>])</span><br><span class="line">df_test = pd.DataFrame(data=data_test,columns=[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col1&#x27;</span>])</span><br><span class="line"></span><br><span class="line">display(df_train)</span><br><span class="line">display(df_test)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>We want to use the extracted features to predict for each of the robot executions, if it was a failure or not.<br>Therefore our basic “entity” is a single robot execution given by a distinct <code>id</code>.</p>
-<p>A dataframe with these identifiers as index needs to be prepared for the pipeline.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X = pd.DataFrame(index=y.index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split data into train and test set</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y)</span><br></pre></td></tr></table></figure>
 
-<h2 id="Build-the-pipeline"><a href="#Build-the-pipeline" class="headerlink" title="Build the pipeline"></a>Build the pipeline</h2><p>We build a sklearn pipeline that consists of a feature extraction step (<code>RelevantFeatureAugmenter</code>) with a subsequent <code>RandomForestClassifier</code>.</p>
-<p>The <code>RelevantFeatureAugmenter</code> takes roughly the same arguments as <code>extract_features</code> and <code>select_features</code> do.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ppl = Pipeline([</span><br><span class="line">        (<span class="string">&#x27;augmenter&#x27;</span>, RelevantFeatureAugmenter(column_id=<span class="string">&#x27;id&#x27;</span>, column_sort=<span class="string">&#x27;time&#x27;</span>)),</span><br><span class="line">        (<span class="string">&#x27;classifier&#x27;</span>, RandomForestClassifier())</span><br><span class="line">      ])</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="alert alert-warning">
-    
-<p>Here comes the tricky part!</p>
-<p>The input to the pipeline will be our dataframe <code>X</code>, which one row per identifier.<br>It is currently empty.<br>But which time series data should the <code>RelevantFeatureAugmenter</code> to actually extract the features from?</p>
-<p>We need to pass the time series data (stored in <code>df_ts</code>) to the transformer.</p>
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.1</td>
+      <td>2.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.1</td>
+      <td>3.2</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
-<p>In this case, df_ts contains the time series of both train and test set, if you have different dataframes for<br>train and test set, you have to call set_params two times<br>(see further below on how to deal with two independent data sets)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts);</span><br></pre></td></tr></table></figure>
 
-<p>We are now ready to fit the pipeline</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ppl.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
 
-<p>The augmenter has used the input time series data to extract time series features for each of the identifiers in the <code>X_train</code> and selected only the relevant ones using the passed <code>y_train</code> as target.<br>These features have been added to <code>X_train</code> as new columns.<br>The classifier can now use these features during trainings.</p>
-<h2 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h2><p>During interference, the augmentor does only extract the relevant features it has found out in the training phase and the classifier predicts the target using these features.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<p>So, finally we inspect the performance:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
 
-<p>You can also find out, which columns the augmenter has selected</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ppl.named_steps[<span class="string">&quot;augmenter&quot;</span>].feature_selector.relevant_features</span><br></pre></td></tr></table></figure>
-
-<div class="alert alert-info">
-    
-<p>In this example we passed in an empty (except the index) <code>X_train</code> or <code>X_test</code> into the pipeline.<br>However, you can also fill the input with other features you have (e.g. features extracted from the metadata)<br>or even use other pipeline components before.</p>
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col2</th>
+      <th>col1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.1</td>
+      <td>2.2</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
-<h2 id="Separating-the-time-series-data-containers"><a href="#Separating-the-time-series-data-containers" class="headerlink" title="Separating the time series data containers"></a>Separating the time series data containers</h2><p>In the example above we passed in a single <code>df_ts</code> into the <code>RelevantFeatureAugmenter</code>, which was used both for training and predicting.<br>During training, only the data with the <code>id</code>s from <code>X_train</code> where extracted and during prediction the rest.</p>
-<p>However, it is perfectly fine to call <code>set_params</code> twice: once before training and once before prediction.<br>This can be handy if you for example dump the trained pipeline to disk and re-use it only later for prediction.<br>You only need to make sure that the <code>id</code>s of the enteties you use during training/prediction are actually present in the passed time series data.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_ts_train = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_train.index)]</span><br><span class="line">df_ts_test = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_test.index)]</span><br></pre></td></tr></table></figure>
+
+<h2 id="now-in-the-training-stage-we-call-fit-transform-of-the-data-pipeline-so-the-pipeline-will-remembers-the-orignal-order"><a href="#now-in-the-training-stage-we-call-fit-transform-of-the-data-pipeline-so-the-pipeline-will-remembers-the-orignal-order" class="headerlink" title="now in the training stage, we call fit_transform() of the data pipeline, so the pipeline will remembers the orignal order"></a>now in the training stage, we call fit_transform() of the data pipeline, so the pipeline will remembers the orignal order</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">dataPipeline.fit_transform(df_train)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_train);</span><br><span class="line">ppl.fit(X_train, y_train);</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(ppl, f)</span><br></pre></td></tr></table></figure>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<p>Later: load the fitted model and do predictions on new, unseen data</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ppk = pickle.load(f)</span><br></pre></td></tr></table></figure>
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.1</td>
+      <td>2.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.1</td>
+      <td>3.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_test);</span><br><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<h2 id="now-in-the-test-stage-we-only-call-transform-of-the-datapipleine-so-any-new-data-will-be-reordered-as-the-training-data"><a href="#now-in-the-test-stage-we-only-call-transform-of-the-datapipleine-so-any-new-data-will-be-reordered-as-the-training-data" class="headerlink" title="now in the test stage, we only call transform() of the datapipleine, so any new data will be reordered as the training data"></a>now in the test stage, we only call transform() of the datapipleine, so any new data will be reordered as the training data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;test data, notice the column order&#x27;</span>)</span><br><span class="line">display(df_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;after transform, ontice the column order now changes&#x27;</span>)</span><br><span class="line">dataPipeline.transform(df_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>test data, notice the column order
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col2</th>
+      <th>col1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.1</td>
+      <td>2.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<pre><code>after transform, ontice the column order now changes
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col1</th>
+      <th>col2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.2</td>
+      <td>3.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.2</td>
+      <td>1.1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 
                 
             </div>
@@ -495,7 +646,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/">https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/06/18/2021-06-18-1/">https://datasciencebyexample.github.io/2021/06/18/2021-06-18-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -533,24 +684,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
-                                </a>
-                            
                                 <a href="/tags/preprocessing/">
                                     <span class="chip bg-color">preprocessing</span>
                                 </a>
                             
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/pandas-tip/">
+                                    <span class="chip bg-color">pandas tip</span>
                                 </a>
                             
-                                <a href="/tags/tsfresh/">
-                                    <span class="chip bg-color">tsfresh</span>
-                                </a>
-                            
-                                <a href="/tags/time-series/">
-                                    <span class="chip bg-color">time series</span>
+                                <a href="/tags/machine-learning/">
+                                    <span class="chip bg-color">machine learning</span>
                                 </a>
                             
                         </div>
@@ -596,17 +739,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/12/2021-06-12-1/">
+                <a href="/2021/06/18/2021-06-18-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="aggregate features from different rows into one row in pandas dataframe">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="handles feature order in training and online production stage to avoid inconsistent error">
                         
-                        <span class="card-title">aggregate features from different rows into one row in pandas dataframe</span>
+                        <span class="card-title">handles feature order in training and online production stage to avoid inconsistent error</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -616,9 +760,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -631,19 +775,20 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
                     
                     <a href="/tags/preprocessing/">
                         <span class="chip bg-color">preprocessing</span>
                     </a>
                     
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
+                    <a href="/tags/pandas-tip/">
+                        <span class="chip bg-color">pandas tip</span>
+                    </a>
+                    
+                    <a href="/tags/machine-learning/">
+                        <span class="chip bg-color">machine learning</span>
                     </a>
                     
                 </div>
@@ -657,13 +802,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/09/2021-06-09-1/">
+                <a href="/2021/06/15/2021-06-15-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="word tokenization and sentence tokenization in python using NLTK package">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="some handy functions to group continous variables and missing value imputation in dataframe">
                         
-                        <span class="card-title">word tokenization and sentence tokenization in python using NLTK package</span>
+                        <span class="card-title">some handy functions to group continous variables and missing value imputation in dataframe</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -674,7 +819,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-15
                             </span>
                         <span class="publish-author">
                             
@@ -691,12 +836,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tokenization/">
-                        <span class="chip bg-color">tokenization</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/NLTK/">
-                        <span class="chip bg-color">NLTK</span>
+                    <a href="/tags/preprocessing/">
+                        <span class="chip bg-color">preprocessing</span>
+                    </a>
+                    
+                    <a href="/tags/pandas-tip/">
+                        <span class="chip bg-color">pandas tip</span>
                     </a>
                     
                 </div>

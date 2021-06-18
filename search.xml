@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>handles feature order in training and online production stage to avoid inconsistent error</title>
+      <link href="2021/06/18/2021-06-18-1/"/>
+      <url>2021/06/18/2021-06-18-1/</url>
+      
+        <content type="html"><![CDATA[<p>In applying machine learning models in production stage, like lightGBM model or any models.<br>While we all know the order of features shoud be same for both training stage, test stage, and the production stage.</p><p>In practice we might ignore that. In produciton stage, new data might come as a json format, where orders will disappear,<br>it has nothing to do with the original feature order in the model training stage.</p><p>The comming json will be converted to dataframe format, and passed to the model for prediction. We might usually<br>igore the fact that, the new dataframe column order is different from the original training dataframe column order now.<br>And it’s important to make sure they are consistent, and not up to the randome fate.</p><p>There are many ways to achieve this, the following shows how to do it in a pipeline fashion.</p><h2 id="define-piplenow-to-treat-the-effects-systematically"><a href="#define-piplenow-to-treat-the-effects-systematically" class="headerlink" title="define piplenow, to treat the effects systematically"></a>define piplenow, to treat the effects systematically</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LastStepTransformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        self.traincolumns = []</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;initialized&#x27;</span>)</span><br><span class="line"></span><br><span class="line">     <span class="comment"># Return self, nothing else to do here</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        self.traincolumns = X.columns</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line">        <span class="comment"># make sure any new data follows the same order of features used in the training stage</span></span><br><span class="line">        <span class="keyword">return</span> X[self.traincolumns]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># make an data process pipeline, using the above transformer as the last steps here.</span></span><br><span class="line"><span class="comment"># in practice, any preprocessing steps can be put here as well</span></span><br><span class="line"></span><br><span class="line">dataPipeline = Pipeline([</span><br><span class="line"> (<span class="string">&#x27;last_step&#x27;</span>,LastStepTransformer())   </span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><pre><code>initialized</code></pre><h2 id="show-an-example"><a href="#show-an-example" class="headerlink" title="show an example"></a>show an example</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data_train =[[<span class="number">1.1</span>,<span class="number">2.2</span>],[<span class="number">2.1</span>,<span class="number">3.2</span>]]</span><br><span class="line">data_test =[[<span class="number">3.1</span>,<span class="number">5.2</span>],[<span class="number">1.1</span>,<span class="number">2.2</span>]]</span><br><span class="line"></span><br><span class="line">df_train = pd.DataFrame(data=data_train,columns=[<span class="string">&#x27;col1&#x27;</span>,<span class="string">&#x27;col2&#x27;</span>])</span><br><span class="line">df_test = pd.DataFrame(data=data_test,columns=[<span class="string">&#x27;col2&#x27;</span>,<span class="string">&#x27;col1&#x27;</span>])</span><br><span class="line"></span><br><span class="line">display(df_train)</span><br><span class="line">display(df_test)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>col1</th>      <th>col2</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>1.1</td>      <td>2.2</td>    </tr>    <tr>      <th>1</th>      <td>2.1</td>      <td>3.2</td>    </tr>  </tbody></table></div><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>col2</th>      <th>col1</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>3.1</td>      <td>5.2</td>    </tr>    <tr>      <th>1</th>      <td>1.1</td>      <td>2.2</td>    </tr>  </tbody></table></div><h2 id="now-in-the-training-stage-we-call-fit-transform-of-the-data-pipeline-so-the-pipeline-will-remembers-the-orignal-order"><a href="#now-in-the-training-stage-we-call-fit-transform-of-the-data-pipeline-so-the-pipeline-will-remembers-the-orignal-order" class="headerlink" title="now in the training stage, we call fit_transform() of the data pipeline, so the pipeline will remembers the orignal order"></a>now in the training stage, we call fit_transform() of the data pipeline, so the pipeline will remembers the orignal order</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">dataPipeline.fit_transform(df_train)</span><br></pre></td></tr></table></figure><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>col1</th>      <th>col2</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>1.1</td>      <td>2.2</td>    </tr>    <tr>      <th>1</th>      <td>2.1</td>      <td>3.2</td>    </tr>  </tbody></table></div><h2 id="now-in-the-test-stage-we-only-call-transform-of-the-datapipleine-so-any-new-data-will-be-reordered-as-the-training-data"><a href="#now-in-the-test-stage-we-only-call-transform-of-the-datapipleine-so-any-new-data-will-be-reordered-as-the-training-data" class="headerlink" title="now in the test stage, we only call transform() of the datapipleine, so any new data will be reordered as the training data"></a>now in the test stage, we only call transform() of the datapipleine, so any new data will be reordered as the training data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;test data, notice the column order&#x27;</span>)</span><br><span class="line">display(df_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;after transform, ontice the column order now changes&#x27;</span>)</span><br><span class="line">dataPipeline.transform(df_test)</span><br></pre></td></tr></table></figure><pre><code>test data, notice the column order</code></pre><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>col2</th>      <th>col1</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>3.1</td>      <td>5.2</td>    </tr>    <tr>      <th>1</th>      <td>1.1</td>      <td>2.2</td>    </tr>  </tbody></table></div><pre><code>after transform, ontice the column order now changes</code></pre><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>col1</th>      <th>col2</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>5.2</td>      <td>3.1</td>    </tr>    <tr>      <th>1</th>      <td>2.2</td>      <td>1.1</td>    </tr>  </tbody></table></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> preprocessing </tag>
+            
+            <tag> pandas tip </tag>
+            
+            <tag> machine learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>some handy functions to group continous variables and missing value imputation in dataframe</title>
       <link href="2021/06/15/2021-06-15-1/"/>
       <url>2021/06/15/2021-06-15-1/</url>
@@ -78,9 +107,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> feature engineering </tag>
             
@@ -107,15 +136,15 @@
       
         <tags>
             
+            <tag> pipeline </tag>
+            
             <tag> preprocessing </tag>
             
-            <tag> pipeline </tag>
+            <tag> feature engineering </tag>
             
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -221,9 +250,9 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
+            
+            <tag> pandas </tag>
             
             <tag> preprocessing </tag>
             
