@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>multi line plot with seaborn</title>
+      <link href="2021/07/01/2021-07-01-1/"/>
+      <url>2021/07/01/2021-07-01-1/</url>
+      
+        <content type="html"><![CDATA[<p>In this example, we show to do multi-plot graph using seaborn.<br>In addtion, some of the ways to change fonts sizes are also shown.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = [</span><br><span class="line">         [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;10&#x27;</span>,<span class="string">&#x27;2021-07-01&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;12&#x27;</span>,<span class="string">&#x27;2021-08-01&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;15&#x27;</span>,<span class="string">&#x27;2021-09-01&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;20&#x27;</span>,<span class="string">&#x27;2021-10-01&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;20&#x27;</span>,<span class="string">&#x27;2021-07-01&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;22&#x27;</span>,<span class="string">&#x27;2021-08-01&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;25&#x27;</span>,<span class="string">&#x27;2021-09-01&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;30&#x27;</span>,<span class="string">&#x27;2021-10-01&#x27;</span>],</span><br><span class="line">        </span><br><span class="line">       ]</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data=data, columns=[<span class="string">&#x27;company&#x27;</span>,<span class="string">&#x27;price&#x27;</span>,<span class="string">&#x27;date&#x27;</span>])</span><br><span class="line">display(df)</span><br><span class="line"></span><br></pre></td></tr></table></figure><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>company</th>      <th>price</th>      <th>date</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>A</td>      <td>10</td>      <td>2021-07-01</td>    </tr>    <tr>      <th>1</th>      <td>A</td>      <td>12</td>      <td>2021-08-01</td>    </tr>    <tr>      <th>2</th>      <td>A</td>      <td>15</td>      <td>2021-09-01</td>    </tr>    <tr>      <th>3</th>      <td>A</td>      <td>20</td>      <td>2021-10-01</td>    </tr>    <tr>      <th>4</th>      <td>B</td>      <td>20</td>      <td>2021-07-01</td>    </tr>    <tr>      <th>5</th>      <td>B</td>      <td>22</td>      <td>2021-08-01</td>    </tr>    <tr>      <th>6</th>      <td>B</td>      <td>25</td>      <td>2021-09-01</td>    </tr>    <tr>      <th>7</th>      <td>B</td>      <td>30</td>      <td>2021-10-01</td>    </tr>  </tbody></table></div><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># global change the font scales of the sns plot for easy set up</span></span><br><span class="line">sns.<span class="built_in">set</span>(font_scale=<span class="number">2</span>) </span><br><span class="line">sns.<span class="built_in">set</span>(style=<span class="string">&#x27;white&#x27;</span>)</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">15</span>,<span class="number">8</span>))</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">temp = df.sort_values(by=<span class="string">&#x27;date&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plot_= sns.lineplot(x=<span class="string">&quot;date&quot;</span>, y=<span class="string">&quot;price&quot;</span>, hue=<span class="string">&quot;company&quot;</span>, data=temp)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># in case too many data points, we can skip some ticks on the x axis</span></span><br><span class="line"><span class="keyword">for</span> ind, label <span class="keyword">in</span> <span class="built_in">enumerate</span>(plot_.get_xticklabels()):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ind % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># every second label is kept</span></span><br><span class="line">        label.set_visible(<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        label.set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># adjust fonrt size of x axis , y axis and title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#plot_.set_title(&#x27;example plot&#x27;)</span></span><br><span class="line">plot_.axes.set_title(<span class="string">&quot;Title&quot;</span>,fontsize=<span class="number">50</span>)</span><br><span class="line">plot_.set_xlabel(<span class="string">&quot;X Label&quot;</span>,fontsize=<span class="number">30</span>)</span><br><span class="line">plot_.set_ylabel(<span class="string">&quot;Y Label&quot;</span>,fontsize=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># adjust lengend font size</span></span><br><span class="line">plot_.legend(fontsize=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">plt.xticks(rotation=<span class="number">45</span>)                                                               </span><br><span class="line">plt.tight_layout()     </span><br><span class="line">plt.grid(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="/content/images/2021-07-01-1.png" alt="png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> visualization </tag>
+            
+            <tag> seaborn tips </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>rare event encoding for categorical feature in machine learning in pandas dataframe</title>
       <link href="2021/06/23/2021-06-23-1/"/>
       <url>2021/06/23/2021-06-23-1/</url>
@@ -20,9 +47,9 @@
       
         <tags>
             
-            <tag> pandas tip </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pandas tip </tag>
             
             <tag> machine learning </tag>
             
@@ -49,9 +76,9 @@
       
         <tags>
             
-            <tag> pandas tip </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pandas tip </tag>
             
             <tag> machine learning </tag>
             
@@ -80,9 +107,9 @@
             
             <tag> python </tag>
             
-            <tag> pandas tip </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pandas tip </tag>
             
         </tags>
       
@@ -109,9 +136,9 @@
             
             <tag> python </tag>
             
-            <tag> pandas tip </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pandas tip </tag>
             
         </tags>
       
@@ -169,11 +196,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -252,9 +279,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -279,9 +306,9 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
+            
+            <tag> pandas </tag>
             
             <tag> preprocessing </tag>
             
