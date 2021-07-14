@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="boost exact phrase search results ranking in elasticsearch, DataScienceTribe">
+    <meta name="keywords" content="robust time string to datetime method using dateutil parser, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>boost exact phrase search results ranking in elasticsearch | DataScienceTribe</title>
+    <title>robust time string to datetime method using dateutil parser | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">boost exact phrase search results ranking in elasticsearch</h1>
+                    <h1 class="description center-align post-title">robust time string to datetime method using dateutil parser</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/preprocessing/">
+                                <span class="chip bg-color">preprocessing</span>
                             </a>
                         
-                            <a href="/tags/elasticsearch/">
-                                <span class="chip bg-color">elasticsearch</span>
+                            <a href="/tags/feature-extraction/">
+                                <span class="chip bg-color">feature extraction</span>
                             </a>
                         
                     </div>
@@ -362,8 +362,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/search/" class="post-category">
-                                search
+                            <a href="/categories/data-science/" class="post-category">
+                                data science
                             </a>
                         
                     </div>
@@ -375,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-05
+                    2021-07-14
                 </div>
                 
 
@@ -396,22 +396,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Elasticsearch use the DSL format to create query.</p>
-<p>One easy search is to use multi_match by passing the query key word, and give the fields to search for.</p>
-<p>Here is an example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line">es = Elasticsearch()</span><br><span class="line">indexname = &#x27;myindex&#x27;</span><br><span class="line"></span><br><span class="line">keyword = &#x27;test&#x27;</span><br><span class="line">   dsl=&#123;</span><br><span class="line">       &quot;query&quot;: &#123;</span><br><span class="line">           &quot;multi_match&quot; : &#123;</span><br><span class="line">                   &quot;query&quot;:  keyword,</span><br><span class="line">                   &quot;fields&quot;: [ &quot;content&quot;]</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   dsize=10</span><br><span class="line">   result_r = es.search(index=indexname, body=dsl,size=dsize)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>Convert time strings into datetime format coudd be very tedious, because we need to make sure the every new data<br>follow the exact format required by the conversion functions, otherwise it will raise error.</p>
+<p>One good way is to user the dateutil.parser package, which is much more flexiable. It can also support some fuzziness.<br>With this package, even some data has slightly different formats than we expect, it will not cause error.</p>
+<h2 id="The-traditional-way-to-convert-time-string-to-datatime-format"><a href="#The-traditional-way-to-convert-time-string-to-datatime-format" class="headerlink" title="The traditional way to convert time string to datatime format"></a>The traditional way to convert time string to datatime format</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># without milliseconds format</span></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12&#x27;</span></span><br><span class="line">result = datetime.datetime.strptime(item, <span class="string">&quot;%Y/%m/%d %H:%M:%S&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with milliseconds format</span></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12.213&#x27;</span></span><br><span class="line">result = datetime.datetime.strptime(item, <span class="string">&quot;%Y/%m/%d %H:%M:%S.%f&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br><span class="line"><span class="comment"># in the above example if there is a new item that doesn&#x27;t follow the milliseconds format, it will raise error</span></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12&#x27;</span></span><br><span class="line">result = datetime.datetime.strptime(item, <span class="string">&quot;%Y/%m/%d %H:%M:%S.%f&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>The problem with the above query is that:if your query keyword is a phrase, you might find many results that have the exact match are ranked lower.</p>
-<p>To solve this problem, you might want to try this new dsl format:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">dsl=&#123;</span><br><span class="line">   </span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">       &quot;bool&quot;: &#123;</span><br><span class="line">         &quot;must&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ]</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ],</span><br><span class="line">         &quot;should&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;type&quot;: &quot;phrase&quot;,</span><br><span class="line">               &quot;boost&quot;: 10</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">               &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;operator&quot;: &quot;and&quot;,</span><br><span class="line">               &quot;boost&quot;: 4</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">           </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<pre><code>2022
+2022
 
-<p>one thing to explain in the above the query, is the ‘operator’; According to the official elasticsearch webpage:</p>
-<p>operator and minimum_should_match<br>The best_fields and most_fields types are field-centric — they generate a match query per field. This means that the operator and minimum_should_match parameters are applied to each field individually, which is probably not what you want.</p>
-<p>Take this query for example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot; : &#123;</span><br><span class="line">      &quot;query&quot;:      &quot;Will Smith&quot;,</span><br><span class="line">      &quot;type&quot;:       &quot;best_fields&quot;,</span><br><span class="line">      &quot;fields&quot;:     [ &quot;first_name&quot;, &quot;last_name&quot; ],</span><br><span class="line">      &quot;operator&quot;:   &quot;and&quot; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This query is executed as:</p>
-<p>  (+first_name:will +first_name:smith)<br>| (+last_name:will  +last_name:smith)</p>
-<p>In other words, all terms must be present in a single field for a document to match.</p>
+
+
+---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-20-a29c39b3ca30&gt; in &lt;module&gt;
+     15 # in the above example if there is a new item that doesn&#39;t follow the milliseconds format, it will raise error
+     16 item = &#39;2022/01/01 10:49:12&#39;
+---&gt; 17 result = datetime.datetime.strptime(item, &quot;%Y/%m/%d %H:%M:%S.%f&quot;)
+     18 
+     19 print(result.year)
+
+
+D:\Anaconda3\lib\_strptime.py in _strptime_datetime(cls, data_string, format)
+    575     &quot;&quot;&quot;Return a class cls instance based on the input string and the
+    576     format string.&quot;&quot;&quot;
+--&gt; 577     tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+    578     tzname, gmtoff = tt[-2:]
+    579     args = tt[:6] + (fraction,)
+
+
+D:\Anaconda3\lib\_strptime.py in _strptime(data_string, format)
+    357     if not found:
+    358         raise ValueError(&quot;time data %r does not match format %r&quot; %
+--&gt; 359                          (data_string, format))
+    360     if len(data_string) != found.end():
+    361         raise ValueError(&quot;unconverted data remains: %s&quot; %
+
+
+ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%Y/%m/%d %H:%M:%S.%f&#39;
+</code></pre>
+<h2 id="use-parser-in-dateutil-package-a-more-stable-way"><a href="#use-parser-in-dateutil-package-a-more-stable-way" class="headerlink" title="use parser in dateutil package, a more stable way"></a>use parser in dateutil package, a more stable way</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dateutil.parser <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># for the same example above, it will not raiser error</span></span><br><span class="line"></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12&#x27;</span></span><br><span class="line">result = parse(item)</span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12.213&#x27;</span></span><br><span class="line">result = parse(item)</span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>2022
+2022
+</code></pre>
 
                 
             </div>
@@ -438,7 +466,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/">https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/07/14/2021-07-14-1/">https://datasciencebyexample.github.io/2021/07/14/2021-07-14-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -476,12 +504,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/preprocessing/">
+                                    <span class="chip bg-color">preprocessing</span>
                                 </a>
                             
-                                <a href="/tags/elasticsearch/">
-                                    <span class="chip bg-color">elasticsearch</span>
+                                <a href="/tags/feature-extraction/">
+                                    <span class="chip bg-color">feature extraction</span>
                                 </a>
                             
                         </div>
@@ -527,17 +555,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/08/2021-06-08-1/">
+                <a href="/2021/07/14/2021-07-14-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="missing value or null value processing in pandas dataframe">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="robust time string to datetime method using dateutil parser">
                         
-                        <span class="card-title">missing value or null value processing in pandas dataframe</span>
+                        <span class="card-title">robust time string to datetime method using dateutil parser</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -547,9 +576,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -562,15 +591,16 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/preprocessing/">
+                        <span class="chip bg-color">preprocessing</span>
                     </a>
                     
-                    <a href="/tags/dataframe/">
-                        <span class="chip bg-color">dataframe</span>
+                    <a href="/tags/feature-extraction/">
+                        <span class="chip bg-color">feature extraction</span>
                     </a>
                     
                 </div>
@@ -584,13 +614,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
+                <a href="/2021/07/06/2021-07-06-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="dataframe histogram visualization with seaborn using countplot">
                         
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">dataframe histogram visualization with seaborn using countplot</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -601,7 +631,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-06
                             </span>
                         <span class="publish-author">
                             
@@ -618,16 +648,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/visualization/">
+                        <span class="chip bg-color">visualization</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/seaborn-tips/">
+                        <span class="chip bg-color">seaborn tips</span>
                     </a>
                     
                 </div>
