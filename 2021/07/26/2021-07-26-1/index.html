@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="robust method to parse time string to datetime using dateutil parser, DataScienceTribe">
+    <meta name="keywords" content="overlay histogram distributions using seaborn or matplotlib, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>robust method to parse time string to datetime using dateutil parser | DataScienceTribe</title>
+    <title>overlay histogram distributions using seaborn or matplotlib | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">robust method to parse time string to datetime using dateutil parser</h1>
+                    <h1 class="description center-align post-title">overlay histogram distributions using seaborn or matplotlib</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
-                            <a href="/tags/feature-extraction/">
-                                <span class="chip bg-color">feature extraction</span>
+                            <a href="/tags/seaborn-tips/">
+                                <span class="chip bg-color">seaborn tips</span>
                             </a>
                         
                     </div>
@@ -375,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-07-14
+                    2021-07-26
                 </div>
                 
 
@@ -396,50 +392,115 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Convert time strings into datetime format coudd be very tedious, because we need to make sure the every new data<br>follow the exact format required by the conversion functions, otherwise it will raise error.</p>
-<p>One good way is to user the dateutil.parser package, which is much more flexiable. It can also support some fuzziness.<br>With this package, even some data has slightly different formats than we expect, it will not cause error.</p>
-<h2 id="The-traditional-way-to-convert-time-string-to-datatime-format"><a href="#The-traditional-way-to-convert-time-string-to-datatime-format" class="headerlink" title="The traditional way to convert time string to datatime format"></a>The traditional way to convert time string to datatime format</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># without milliseconds format</span></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12&#x27;</span></span><br><span class="line">result = datetime.datetime.strptime(item, <span class="string">&quot;%Y/%m/%d %H:%M:%S&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with milliseconds format</span></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12.213&#x27;</span></span><br><span class="line">result = datetime.datetime.strptime(item, <span class="string">&quot;%Y/%m/%d %H:%M:%S.%f&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br><span class="line"><span class="comment"># in the above example if there is a new item that doesn&#x27;t follow the milliseconds format, it will raise error</span></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12&#x27;</span></span><br><span class="line">result = datetime.datetime.strptime(item, <span class="string">&quot;%Y/%m/%d %H:%M:%S.%f&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>In this example, we show two methods to overlay histogram distributions using seaborn and matplotlib separately.</p>
+<h2 id="import-library"><a href="#import-library" class="headerlink" title="import library"></a>import library</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
 
-<pre><code>2022
-2022
+<h2 id="generate-some-data-for-histgram"><a href="#generate-some-data-for-histgram" class="headerlink" title="generate some data for histgram"></a>generate some data for histgram</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list1 = np.random.randint(<span class="number">100</span>,size=<span class="number">1000</span>)</span><br><span class="line">list2 = np.random.randint(<span class="number">200</span>,size=<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># also getthem into a dataframe into one column, but add a second column to label source</span></span><br><span class="line"><span class="built_in">list</span> = np.concatenate([list1,list2])</span><br><span class="line">lables = [<span class="string">&#x27;l1&#x27;</span>]*<span class="built_in">len</span>(list1)+[<span class="string">&#x27;l2&#x27;</span>]*<span class="built_in">len</span>(list2)</span><br><span class="line">d = &#123;<span class="string">&#x27;x&#x27;</span>:<span class="built_in">list</span>,<span class="string">&#x27;label&#x27;</span>:lables&#125;</span><br><span class="line">df = pd.DataFrame(d)</span><br><span class="line">display(df)</span><br></pre></td></tr></table></figure>
 
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
----------------------------------------------------------------------------
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
 
-ValueError                                Traceback (most recent call last)
-
-&lt;ipython-input-20-a29c39b3ca30&gt; in &lt;module&gt;
-     15 # in the above example if there is a new item that doesn&#39;t follow the milliseconds format, it will raise error
-     16 item = &#39;2022/01/01 10:49:12&#39;
----&gt; 17 result = datetime.datetime.strptime(item, &quot;%Y/%m/%d %H:%M:%S.%f&quot;)
-     18 
-     19 print(result.year)
-
-
-D:\Anaconda3\lib\_strptime.py in _strptime_datetime(cls, data_string, format)
-    575     &quot;&quot;&quot;Return a class cls instance based on the input string and the
-    576     format string.&quot;&quot;&quot;
---&gt; 577     tt, fraction, gmtoff_fraction = _strptime(data_string, format)
-    578     tzname, gmtoff = tt[-2:]
-    579     args = tt[:6] + (fraction,)
-
-
-D:\Anaconda3\lib\_strptime.py in _strptime(data_string, format)
-    357     if not found:
-    358         raise ValueError(&quot;time data %r does not match format %r&quot; %
---&gt; 359                          (data_string, format))
-    360     if len(data_string) != found.end():
-    361         raise ValueError(&quot;unconverted data remains: %s&quot; %
-
-
-ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%Y/%m/%d %H:%M:%S.%f&#39;
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
 </code></pre>
-<h2 id="use-parser-in-dateutil-package-a-more-stable-way"><a href="#use-parser-in-dateutil-package-a-more-stable-way" class="headerlink" title="use parser in dateutil package, a more stable way"></a>use parser in dateutil package, a more stable way</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dateutil.parser <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># for the same example above, it will not raiser error</span></span><br><span class="line"></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12&#x27;</span></span><br><span class="line">result = parse(item)</span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">item = <span class="string">&#x27;2022/01/01 10:49:12.213&#x27;</span></span><br><span class="line">result = parse(item)</span><br><span class="line"><span class="built_in">print</span>(result.year)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>49</td>
+      <td>l1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>93</td>
+      <td>l1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>38</td>
+      <td>l1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>96</td>
+      <td>l1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>32</td>
+      <td>l1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1995</th>
+      <td>18</td>
+      <td>l2</td>
+    </tr>
+    <tr>
+      <th>1996</th>
+      <td>102</td>
+      <td>l2</td>
+    </tr>
+    <tr>
+      <th>1997</th>
+      <td>1</td>
+      <td>l2</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>175</td>
+      <td>l2</td>
+    </tr>
+    <tr>
+      <th>1999</th>
+      <td>77</td>
+      <td>l2</td>
+    </tr>
+  </tbody>
+</table>
+<p>2000 rows × 2 columns</p>
+</div>
 
-<pre><code>2022
-2022
+
+<h2 id="method-1-overlay-dataframe-columns-with-different-labels"><a href="#method-1-overlay-dataframe-columns-with-different-labels" class="headerlink" title="method 1, overlay dataframe columns with different labels"></a>method 1, overlay dataframe columns with different labels</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.displot(df, x=<span class="string">&quot;x&quot;</span>, hue=<span class="string">&quot;label&quot;</span>, stat=<span class="string">&quot;density&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x24b5c685988&gt;
 </code></pre>
+<p><img src="/content/images/2021-07-26-1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="method-2-overlay-two-seperate-lists-into-histograms-using-matplotlib"><a href="#method-2-overlay-two-seperate-lists-into-histograms-using-matplotlib" class="headerlink" title="method 2,  overlay two seperate lists into histograms using matplotlib"></a>method 2,  overlay two seperate lists into histograms using matplotlib</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.hist(list1,bins=<span class="number">20</span>, alpha=<span class="number">0.5</span>, label=<span class="string">&quot;data1&quot;</span>)</span><br><span class="line">plt.hist(list2, bins=<span class="number">20</span>, alpha=<span class="number">0.5</span>, label=<span class="string">&quot;data2&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;Data&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Count&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;Multiple Histograms with Matplotlib&quot;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.legend.Legend at 0x24b5face788&gt;
+</code></pre>
+<p><img src="/content/images/2021-07-26-2.png" alt="png"></p>
 
                 
             </div>
@@ -466,7 +527,7 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/07/14/2021-07-14-1/">https://datasciencebyexample.github.io/2021/07/14/2021-07-14-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/07/26/2021-07-26-1/">https://datasciencebyexample.github.io/2021/07/26/2021-07-26-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -504,12 +565,8 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
-                                </a>
-                            
-                                <a href="/tags/feature-extraction/">
-                                    <span class="chip bg-color">feature extraction</span>
+                                <a href="/tags/seaborn-tips/">
+                                    <span class="chip bg-color">seaborn tips</span>
                                 </a>
                             
                         </div>
@@ -555,9 +612,10 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/07/26/2021-07-26-1/">
                     <div class="card-image">
@@ -575,9 +633,9 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -590,6 +648,7 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -608,13 +667,13 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/06/2021-07-06-1/">
+                <a href="/2021/07/14/2021-07-14-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="dataframe histogram visualization with seaborn using countplot">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="robust method to parse time string to datetime using dateutil parser">
                         
-                        <span class="card-title">dataframe histogram visualization with seaborn using countplot</span>
+                        <span class="card-title">robust method to parse time string to datetime using dateutil parser</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -625,7 +684,7 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-14
                             </span>
                         <span class="publish-author">
                             
@@ -642,12 +701,12 @@ ValueError: time data &#39;2022/01/01 10:49:12&#39; does not match format &#39;%
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/visualization/">
-                        <span class="chip bg-color">visualization</span>
+                    <a href="/tags/preprocessing/">
+                        <span class="chip bg-color">preprocessing</span>
                     </a>
                     
-                    <a href="/tags/seaborn-tips/">
-                        <span class="chip bg-color">seaborn tips</span>
+                    <a href="/tags/feature-extraction/">
+                        <span class="chip bg-color">feature extraction</span>
                     </a>
                     
                 </div>

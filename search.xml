@@ -4,7 +4,32 @@
   
     
     <entry>
-      <title>robust time string to datetime method using dateutil parser</title>
+      <title>overlay histogram distributions using seaborn or matplotlib</title>
+      <link href="2021/07/26/2021-07-26-1/"/>
+      <url>2021/07/26/2021-07-26-1/</url>
+      
+        <content type="html"><![CDATA[<p>In this example, we show two methods to overlay histogram distributions using seaborn and matplotlib separately.</p><h2 id="import-library"><a href="#import-library" class="headerlink" title="import library"></a>import library</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure><h2 id="generate-some-data-for-histgram"><a href="#generate-some-data-for-histgram" class="headerlink" title="generate some data for histgram"></a>generate some data for histgram</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list1 = np.random.randint(<span class="number">100</span>,size=<span class="number">1000</span>)</span><br><span class="line">list2 = np.random.randint(<span class="number">200</span>,size=<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># also getthem into a dataframe into one column, but add a second column to label source</span></span><br><span class="line"><span class="built_in">list</span> = np.concatenate([list1,list2])</span><br><span class="line">lables = [<span class="string">&#x27;l1&#x27;</span>]*<span class="built_in">len</span>(list1)+[<span class="string">&#x27;l2&#x27;</span>]*<span class="built_in">len</span>(list2)</span><br><span class="line">d = &#123;<span class="string">&#x27;x&#x27;</span>:<span class="built_in">list</span>,<span class="string">&#x27;label&#x27;</span>:lables&#125;</span><br><span class="line">df = pd.DataFrame(d)</span><br><span class="line">display(df)</span><br></pre></td></tr></table></figure><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>x</th>      <th>label</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>49</td>      <td>l1</td>    </tr>    <tr>      <th>1</th>      <td>93</td>      <td>l1</td>    </tr>    <tr>      <th>2</th>      <td>38</td>      <td>l1</td>    </tr>    <tr>      <th>3</th>      <td>96</td>      <td>l1</td>    </tr>    <tr>      <th>4</th>      <td>32</td>      <td>l1</td>    </tr>    <tr>      <th>...</th>      <td>...</td>      <td>...</td>    </tr>    <tr>      <th>1995</th>      <td>18</td>      <td>l2</td>    </tr>    <tr>      <th>1996</th>      <td>102</td>      <td>l2</td>    </tr>    <tr>      <th>1997</th>      <td>1</td>      <td>l2</td>    </tr>    <tr>      <th>1998</th>      <td>175</td>      <td>l2</td>    </tr>    <tr>      <th>1999</th>      <td>77</td>      <td>l2</td>    </tr>  </tbody></table><p>2000 rows × 2 columns</p></div><h2 id="method-1-overlay-dataframe-columns-with-different-labels"><a href="#method-1-overlay-dataframe-columns-with-different-labels" class="headerlink" title="method 1, overlay dataframe columns with different labels"></a>method 1, overlay dataframe columns with different labels</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.displot(df, x=<span class="string">&quot;x&quot;</span>, hue=<span class="string">&quot;label&quot;</span>, stat=<span class="string">&quot;density&quot;</span>)</span><br></pre></td></tr></table></figure><pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x24b5c685988&gt;</code></pre><p><img src="/content/images/2021-07-26-1.png" alt="png"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><h2 id="method-2-overlay-two-seperate-lists-into-histograms-using-matplotlib"><a href="#method-2-overlay-two-seperate-lists-into-histograms-using-matplotlib" class="headerlink" title="method 2,  overlay two seperate lists into histograms using matplotlib"></a>method 2,  overlay two seperate lists into histograms using matplotlib</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.hist(list1,bins=<span class="number">20</span>, alpha=<span class="number">0.5</span>, label=<span class="string">&quot;data1&quot;</span>)</span><br><span class="line">plt.hist(list2, bins=<span class="number">20</span>, alpha=<span class="number">0.5</span>, label=<span class="string">&quot;data2&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;Data&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Count&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;Multiple Histograms with Matplotlib&quot;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>)</span><br></pre></td></tr></table></figure><pre><code>&lt;matplotlib.legend.Legend at 0x24b5face788&gt;</code></pre><p><img src="/content/images/2021-07-26-2.png" alt="png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> seaborn tips </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>robust method to parse time string to datetime using dateutil parser</title>
       <link href="2021/07/14/2021-07-14-1/"/>
       <url>2021/07/14/2021-07-14-1/</url>
       
@@ -333,9 +358,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
