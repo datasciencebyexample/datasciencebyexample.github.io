@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="aggregate features from different rows into one row in pandas dataframe, DataScienceTribe">
+    <meta name="keywords" content="Add ssh key to access github and simple git commands, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>aggregate features from different rows into one row in pandas dataframe | DataScienceTribe</title>
+    <title>Add ssh key to access github and simple git commands | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">aggregate features from different rows into one row in pandas dataframe</h1>
+                    <h1 class="description center-align post-title">Add ssh key to access github and simple git commands</h1>
                 </div>
             </div>
         </div>
@@ -346,16 +346,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
-                            </a>
-                        
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/git-and-github/">
+                                <span class="chip bg-color">git and github</span>
                             </a>
                         
                     </div>
@@ -379,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-12
+                    2021-08-23
                 </div>
                 
 
@@ -400,161 +392,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>In many use cases, different features of the same event are stored in a table by multiple rows.<br>multiple columns will indicate each characteristics of one feature, such as name, value, timestamp, etc.</p>
-<p>In machine learning, we need to aggregate them into one row for training, and the following shows how do do it in dataframe easily.</p>
-<h2 id="generate-some-example-dataframe"><a href="#generate-some-example-dataframe" class="headerlink" title="generate some example dataframe"></a>generate some example dataframe</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = [ [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value1&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value2&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name3&#x27;</span>,<span class="string">&#x27;value3&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value4&#x27;</span>],[<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value5&#x27;</span>] </span><br><span class="line">       ]</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data=data)</span><br><span class="line">df.columns =[<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line">display(df)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>name1</td>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>name2</td>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>name3</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2</td>
-      <td>name1</td>
-      <td>value4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2</td>
-      <td>name2</td>
-      <td>value5</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-<h2 id="group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column"><a href="#group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column" class="headerlink" title="group the dataframe by id, then aggregate all the feature values into one column"></a>group the dataframe by id, then aggregate all the feature values into one column</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df2 = df.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">df3 = pd.DataFrame(data=df2[<span class="number">0</span>].values.tolist())</span><br><span class="line">display(df3)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-<h1 id="put-the-above-the-transformation-into-a-scikit-learn-customed-transformer"><a href="#put-the-above-the-transformation-into-a-scikit-learn-customed-transformer" class="headerlink" title="put the above the transformation into a scikit-learn customed transformer"></a>put the above the transformation into a scikit-learn customed transformer</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_Transformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;start&#x27;</span>)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">           </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return self</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Customized transformer</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X2 = X.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">        X3 = pd.DataFrame(data=X2[<span class="number">0</span>].values.tolist())     </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X3</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X1</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"><span class="comment"># get a transformer object</span></span><br><span class="line">my_transformer = my_Transformer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># apply the transform on the original data</span></span><br><span class="line"></span><br><span class="line">df_new = my_transformer.transform(df)</span><br><span class="line">display(df_new)</span><br></pre></td></tr></table></figure>
-
-<pre><code>start
-</code></pre>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+                <p>Here are ways to add ssh key in Github, such that one can connect to github repositories without typing username and passwords.</p>
+<h5 id="For-MAC-Users"><a href="#For-MAC-Users" class="headerlink" title="For MAC Users:"></a>For MAC Users:</h5><p>To create an SSH Key, go to your terminal (or iTerm 2) and enter <code>ssh-keygen</code>. You will be prompted for a file in which to save the key (.ssh/id_rsa). There’s no need to enter anything, just press enter. When prompted for a passphrase, you can enter one or just press enter to ignore creating a passphrase.</p>
+<p>Your SSH key has been saved to ssh/id_rsa.pub, run the command <code>pbcopy &lt; ~/.ssh/id_rsa.pub</code> to copy this to your clipboard.</p>
+<p>Now go to your Github account setting for Key: <a target="_blank" rel="noopener" href="https://github.com/settings/keys">https://github.com/settings/keys</a> and click ‘New SSH key’. Add any title you want, like ‘First SSH Key’, paste in your SSH key, and click the ‘Add SSH key’ button.</p>
+<h5 id="For-PC-Users"><a href="#For-PC-Users" class="headerlink" title="For PC Users:"></a>For PC Users:</h5><p>To create an SSH Key, go to your terminal and enter <code>ssh-keygen</code>. You will be prompted for a file in which to save the key (.ssh/id_rsa). There’s no need to enter anything, just press enter. When prompted for a passphrase, you can enter one or just press enter to ignore creating a passphrase.</p>
+<p>Your SSH key has been saved to ssh/id_rsa.pub, run the command <code>cat ~/.ssh/id_rsa.pub</code> to see your SSH key in the proper format. Copy the whole text string starting with ‘ssh’ to the end.</p>
+<p>Now go to your Github account setting for keys: <a target="_blank" rel="noopener" href="https://github.com/settings/keys">https://github.com/settings/keys</a> and click ‘New SSH key’. Add any title you want, like ‘First SSH Key’. Paste your SSH key to the Key window, and click the ‘Add SSH key’ button.</p>
+<p>There are a lot of complex functionalities of Git, but for 99% of work there are 4 things that you need to be able to do:</p>
+<ol>
+<li><p>Create a branch <code>git checkout -b my-branch-name</code></p>
+</li>
+<li><p>Add files that you want to queue up for saving.</p>
+<ul>
+<li><p>To add all files: <code>git add .</code></p>
+</li>
+<li><p>To add a specific file: <code>git add path-to-file</code></p>
+</li>
+</ul>
+</li>
+<li><p>Save (commit) changes to the files that you added above. <code>git commit -m &quot;message about this commit. Ex: change button color to green.&quot;</code></p>
+</li>
+<li><p>Sync your branch to Github so that you can later make a pull request. <code>git push -u origin my-branch-name</code></p>
+</li>
+</ol>
 
                 
             </div>
@@ -581,7 +442,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/">https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/08/23/2021-08-23-1/">https://datasciencebyexample.github.io/2021/08/23/2021-08-23-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,16 +480,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
-                                </a>
-                            
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
-                                </a>
-                            
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/git-and-github/">
+                                    <span class="chip bg-color">git and github</span>
                                 </a>
                             
                         </div>
@@ -674,17 +527,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/14/2021-06-14-1/">
+                <a href="/2021/08/23/2021-08-23-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Add ssh key to access github and simple git commands">
                         
-                        <span class="card-title">explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe</span>
+                        <span class="card-title">Add ssh key to access github and simple git commands</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -694,9 +548,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -709,19 +563,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                    <a href="/tags/git-and-github/">
+                        <span class="chip bg-color">git and github</span>
                     </a>
                     
                 </div>
@@ -735,13 +582,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/10/2021-06-10-1/">
+                <a href="/2021/07/26/2021-07-26-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="time series feature engineering using tsfresh, training vs test">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="overlay histogram distributions using seaborn or matplotlib">
                         
-                        <span class="card-title">time series feature engineering using tsfresh, training vs test</span>
+                        <span class="card-title">overlay histogram distributions using seaborn or matplotlib</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -752,7 +599,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-26
                             </span>
                         <span class="publish-author">
                             
@@ -769,24 +616,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
-                    </a>
-                    
-                    <a href="/tags/tsfresh/">
-                        <span class="chip bg-color">tsfresh</span>
-                    </a>
-                    
-                    <a href="/tags/time-series/">
-                        <span class="chip bg-color">time series</span>
+                    <a href="/tags/seaborn-tips/">
+                        <span class="chip bg-color">seaborn tips</span>
                     </a>
                     
                 </div>

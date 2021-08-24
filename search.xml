@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Add ssh key to access github and simple git commands</title>
+      <link href="2021/08/23/2021-08-23-1/"/>
+      <url>2021/08/23/2021-08-23-1/</url>
+      
+        <content type="html"><![CDATA[<p>Here are ways to add ssh key in Github, such that one can connect to github repositories without typing username and passwords.</p><h5 id="For-MAC-Users"><a href="#For-MAC-Users" class="headerlink" title="For MAC Users:"></a>For MAC Users:</h5><p>To create an SSH Key, go to your terminal (or iTerm 2) and enter <code>ssh-keygen</code>. You will be prompted for a file in which to save the key (.ssh/id_rsa). There’s no need to enter anything, just press enter. When prompted for a passphrase, you can enter one or just press enter to ignore creating a passphrase.</p><p>Your SSH key has been saved to ssh/id_rsa.pub, run the command <code>pbcopy &lt; ~/.ssh/id_rsa.pub</code> to copy this to your clipboard.</p><p>Now go to your Github account setting for Key: <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> and click ‘New SSH key’. Add any title you want, like ‘First SSH Key’, paste in your SSH key, and click the ‘Add SSH key’ button.</p><h5 id="For-PC-Users"><a href="#For-PC-Users" class="headerlink" title="For PC Users:"></a>For PC Users:</h5><p>To create an SSH Key, go to your terminal and enter <code>ssh-keygen</code>. You will be prompted for a file in which to save the key (.ssh/id_rsa). There’s no need to enter anything, just press enter. When prompted for a passphrase, you can enter one or just press enter to ignore creating a passphrase.</p><p>Your SSH key has been saved to ssh/id_rsa.pub, run the command <code>cat ~/.ssh/id_rsa.pub</code> to see your SSH key in the proper format. Copy the whole text string starting with ‘ssh’ to the end.</p><p>Now go to your Github account setting for keys: <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> and click ‘New SSH key’. Add any title you want, like ‘First SSH Key’. Paste your SSH key to the Key window, and click the ‘Add SSH key’ button.</p><p>There are a lot of complex functionalities of Git, but for 99% of work there are 4 things that you need to be able to do:</p><ol><li><p>Create a branch <code>git checkout -b my-branch-name</code></p></li><li><p>Add files that you want to queue up for saving.</p><ul><li><p>To add all files: <code>git add .</code></p></li><li><p>To add a specific file: <code>git add path-to-file</code></p></li></ul></li><li><p>Save (commit) changes to the files that you added above. <code>git commit -m &quot;message about this commit. Ex: change button color to green.&quot;</code></p></li><li><p>Sync your branch to Github so that you can later make a pull request. <code>git push -u origin my-branch-name</code></p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git and github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>overlay histogram distributions using seaborn or matplotlib</title>
       <link href="2021/07/26/2021-07-26-1/"/>
       <url>2021/07/26/2021-07-26-1/</url>
@@ -275,11 +300,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
