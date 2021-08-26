@@ -1,0 +1,2362 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Data Prep and Visualization Example using matplotlib in Python, DataScienceTribe">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Data Prep and Visualization Example using matplotlib in Python | DataScienceTribe</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">DataScienceTribe</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">DataScienceTribe</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Data Prep and Visualization Example using matplotlib in Python</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/matplotlib-tips/">
+                                <span class="chip bg-color">matplotlib tips</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/data-science/" class="post-category">
+                                data science
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2021-08-25
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Some simple ways to make histogram or line plots using matplotlib.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install the pydataset package. This package gives us data sets to work with very easily</span></span><br><span class="line">! pip install pydataset</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The convention for importing matplotlib with an alias is &quot;plt&quot;. We&#x27;ll also need pandas and numpy</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<h2 id="The-Air-Passengers-Dataset"><a href="#The-Air-Passengers-Dataset" class="headerlink" title="The Air Passengers Dataset"></a>The Air Passengers Dataset</h2><p>This dataset shows the number of passengers flying United States airlines by month from 1949-1960. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pydataset <span class="keyword">import</span> data</span><br><span class="line"></span><br><span class="line">passengers = data(<span class="string">&#x27;AirPassengers&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passengers.head(<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>AirPassengers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1949.000000</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1949.083333</td>
+      <td>118</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1949.166667</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1949.250000</td>
+      <td>129</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1949.333333</td>
+      <td>121</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1949.416667</td>
+      <td>135</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1949.500000</td>
+      <td>148</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1949.583333</td>
+      <td>148</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1949.666667</td>
+      <td>136</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1949.750000</td>
+      <td>119</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1949.833333</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1949.916667</td>
+      <td>118</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-Add-a-‘year’-column-to-passengers-that-reflects-the-current-year"><a href="#1-Add-a-‘year’-column-to-passengers-that-reflects-the-current-year" class="headerlink" title="#1 Add a ‘year’ column to passengers that reflects the current year"></a>#1 Add a ‘year’ column to passengers that reflects the current year</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">passengers[<span class="string">&#x27;Year&#x27;</span>] = passengers[<span class="string">&#x27;time&#x27;</span>].apply(<span class="keyword">lambda</span> x: <span class="built_in">int</span>(x))</span><br><span class="line">passengers</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>AirPassengers</th>
+      <th>year</th>
+      <th>month</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1949.000000</td>
+      <td>112</td>
+      <td>1949</td>
+      <td>1.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1949.083333</td>
+      <td>118</td>
+      <td>1949</td>
+      <td>2.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1949.166667</td>
+      <td>132</td>
+      <td>1949</td>
+      <td>3.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1949.250000</td>
+      <td>129</td>
+      <td>1949</td>
+      <td>4.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1949.333333</td>
+      <td>121</td>
+      <td>1949</td>
+      <td>5.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1949.416667</td>
+      <td>135</td>
+      <td>1949</td>
+      <td>6.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1949.500000</td>
+      <td>148</td>
+      <td>1949</td>
+      <td>7.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1949.583333</td>
+      <td>148</td>
+      <td>1949</td>
+      <td>8.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1949.666667</td>
+      <td>136</td>
+      <td>1949</td>
+      <td>9.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1949.750000</td>
+      <td>119</td>
+      <td>1949</td>
+      <td>10.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1949.833333</td>
+      <td>104</td>
+      <td>1949</td>
+      <td>11.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1949.916667</td>
+      <td>118</td>
+      <td>1949</td>
+      <td>12.0</td>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1950.000000</td>
+      <td>115</td>
+      <td>1950</td>
+      <td>1.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1950.083333</td>
+      <td>126</td>
+      <td>1950</td>
+      <td>2.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1950.166667</td>
+      <td>141</td>
+      <td>1950</td>
+      <td>3.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1950.250000</td>
+      <td>135</td>
+      <td>1950</td>
+      <td>4.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1950.333333</td>
+      <td>125</td>
+      <td>1950</td>
+      <td>5.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1950.416667</td>
+      <td>149</td>
+      <td>1950</td>
+      <td>6.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1950.500000</td>
+      <td>170</td>
+      <td>1950</td>
+      <td>7.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1950.583333</td>
+      <td>170</td>
+      <td>1950</td>
+      <td>8.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1950.666667</td>
+      <td>158</td>
+      <td>1950</td>
+      <td>9.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1950.750000</td>
+      <td>133</td>
+      <td>1950</td>
+      <td>10.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1950.833333</td>
+      <td>114</td>
+      <td>1950</td>
+      <td>11.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1950.916667</td>
+      <td>140</td>
+      <td>1950</td>
+      <td>12.0</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1951.000000</td>
+      <td>145</td>
+      <td>1951</td>
+      <td>1.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>1951.083333</td>
+      <td>150</td>
+      <td>1951</td>
+      <td>2.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1951.166667</td>
+      <td>178</td>
+      <td>1951</td>
+      <td>3.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1951.250000</td>
+      <td>163</td>
+      <td>1951</td>
+      <td>4.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>1951.333333</td>
+      <td>172</td>
+      <td>1951</td>
+      <td>5.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1951.416667</td>
+      <td>178</td>
+      <td>1951</td>
+      <td>6.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1951.500000</td>
+      <td>199</td>
+      <td>1951</td>
+      <td>7.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1951.583333</td>
+      <td>199</td>
+      <td>1951</td>
+      <td>8.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1951.666667</td>
+      <td>184</td>
+      <td>1951</td>
+      <td>9.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>1951.750000</td>
+      <td>162</td>
+      <td>1951</td>
+      <td>10.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>1951.833333</td>
+      <td>146</td>
+      <td>1951</td>
+      <td>11.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1951.916667</td>
+      <td>166</td>
+      <td>1951</td>
+      <td>12.0</td>
+      <td>1951</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1952.000000</td>
+      <td>171</td>
+      <td>1952</td>
+      <td>1.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>1952.083333</td>
+      <td>180</td>
+      <td>1952</td>
+      <td>2.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>1952.166667</td>
+      <td>193</td>
+      <td>1952</td>
+      <td>3.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1952.250000</td>
+      <td>181</td>
+      <td>1952</td>
+      <td>4.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1952.333333</td>
+      <td>183</td>
+      <td>1952</td>
+      <td>5.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1952.416667</td>
+      <td>218</td>
+      <td>1952</td>
+      <td>6.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>1952.500000</td>
+      <td>230</td>
+      <td>1952</td>
+      <td>7.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>1952.583333</td>
+      <td>242</td>
+      <td>1952</td>
+      <td>8.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1952.666667</td>
+      <td>209</td>
+      <td>1952</td>
+      <td>9.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1952.750000</td>
+      <td>191</td>
+      <td>1952</td>
+      <td>10.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>1952.833333</td>
+      <td>172</td>
+      <td>1952</td>
+      <td>11.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>1952.916667</td>
+      <td>194</td>
+      <td>1952</td>
+      <td>12.0</td>
+      <td>1952</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>1953.000000</td>
+      <td>196</td>
+      <td>1953</td>
+      <td>1.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>1953.083333</td>
+      <td>196</td>
+      <td>1953</td>
+      <td>2.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>1953.166667</td>
+      <td>236</td>
+      <td>1953</td>
+      <td>3.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>1953.250000</td>
+      <td>235</td>
+      <td>1953</td>
+      <td>4.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>1953.333333</td>
+      <td>229</td>
+      <td>1953</td>
+      <td>5.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>1953.416667</td>
+      <td>243</td>
+      <td>1953</td>
+      <td>6.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1953.500000</td>
+      <td>264</td>
+      <td>1953</td>
+      <td>7.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>1953.583333</td>
+      <td>272</td>
+      <td>1953</td>
+      <td>8.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>1953.666667</td>
+      <td>237</td>
+      <td>1953</td>
+      <td>9.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>1953.750000</td>
+      <td>211</td>
+      <td>1953</td>
+      <td>10.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>1953.833333</td>
+      <td>180</td>
+      <td>1953</td>
+      <td>11.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1953.916667</td>
+      <td>201</td>
+      <td>1953</td>
+      <td>12.0</td>
+      <td>1953</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>1954.000000</td>
+      <td>204</td>
+      <td>1954</td>
+      <td>1.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>1954.083333</td>
+      <td>188</td>
+      <td>1954</td>
+      <td>2.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1954.166667</td>
+      <td>235</td>
+      <td>1954</td>
+      <td>3.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>1954.250000</td>
+      <td>227</td>
+      <td>1954</td>
+      <td>4.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>1954.333333</td>
+      <td>234</td>
+      <td>1954</td>
+      <td>5.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>1954.416667</td>
+      <td>264</td>
+      <td>1954</td>
+      <td>6.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>1954.500000</td>
+      <td>302</td>
+      <td>1954</td>
+      <td>7.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>1954.583333</td>
+      <td>293</td>
+      <td>1954</td>
+      <td>8.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>1954.666667</td>
+      <td>259</td>
+      <td>1954</td>
+      <td>9.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>1954.750000</td>
+      <td>229</td>
+      <td>1954</td>
+      <td>10.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>1954.833333</td>
+      <td>203</td>
+      <td>1954</td>
+      <td>11.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>1954.916667</td>
+      <td>229</td>
+      <td>1954</td>
+      <td>12.0</td>
+      <td>1954</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>1955.000000</td>
+      <td>242</td>
+      <td>1955</td>
+      <td>1.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>1955.083333</td>
+      <td>233</td>
+      <td>1955</td>
+      <td>2.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1955.166667</td>
+      <td>267</td>
+      <td>1955</td>
+      <td>3.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>1955.250000</td>
+      <td>269</td>
+      <td>1955</td>
+      <td>4.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>1955.333333</td>
+      <td>270</td>
+      <td>1955</td>
+      <td>5.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>1955.416667</td>
+      <td>315</td>
+      <td>1955</td>
+      <td>6.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>1955.500000</td>
+      <td>364</td>
+      <td>1955</td>
+      <td>7.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>1955.583333</td>
+      <td>347</td>
+      <td>1955</td>
+      <td>8.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>1955.666667</td>
+      <td>312</td>
+      <td>1955</td>
+      <td>9.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1955.750000</td>
+      <td>274</td>
+      <td>1955</td>
+      <td>10.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>1955.833333</td>
+      <td>237</td>
+      <td>1955</td>
+      <td>11.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1955.916667</td>
+      <td>278</td>
+      <td>1955</td>
+      <td>12.0</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>1956.000000</td>
+      <td>284</td>
+      <td>1956</td>
+      <td>1.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>1956.083333</td>
+      <td>277</td>
+      <td>1956</td>
+      <td>2.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>1956.166667</td>
+      <td>317</td>
+      <td>1956</td>
+      <td>3.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>1956.250000</td>
+      <td>313</td>
+      <td>1956</td>
+      <td>4.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>1956.333333</td>
+      <td>318</td>
+      <td>1956</td>
+      <td>5.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>1956.416667</td>
+      <td>374</td>
+      <td>1956</td>
+      <td>6.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>1956.500000</td>
+      <td>413</td>
+      <td>1956</td>
+      <td>7.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>1956.583333</td>
+      <td>405</td>
+      <td>1956</td>
+      <td>8.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1956.666667</td>
+      <td>355</td>
+      <td>1956</td>
+      <td>9.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>1956.750000</td>
+      <td>306</td>
+      <td>1956</td>
+      <td>10.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1956.833333</td>
+      <td>271</td>
+      <td>1956</td>
+      <td>11.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>1956.916667</td>
+      <td>306</td>
+      <td>1956</td>
+      <td>12.0</td>
+      <td>1956</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>1957.000000</td>
+      <td>315</td>
+      <td>1957</td>
+      <td>1.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>1957.083333</td>
+      <td>301</td>
+      <td>1957</td>
+      <td>2.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>1957.166667</td>
+      <td>356</td>
+      <td>1957</td>
+      <td>3.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>1957.250000</td>
+      <td>348</td>
+      <td>1957</td>
+      <td>4.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>1957.333333</td>
+      <td>355</td>
+      <td>1957</td>
+      <td>5.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>1957.416667</td>
+      <td>422</td>
+      <td>1957</td>
+      <td>6.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>1957.500000</td>
+      <td>465</td>
+      <td>1957</td>
+      <td>7.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>1957.583333</td>
+      <td>467</td>
+      <td>1957</td>
+      <td>8.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>1957.666667</td>
+      <td>404</td>
+      <td>1957</td>
+      <td>9.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>1957.750000</td>
+      <td>347</td>
+      <td>1957</td>
+      <td>10.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>1957.833333</td>
+      <td>305</td>
+      <td>1957</td>
+      <td>11.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>1957.916667</td>
+      <td>336</td>
+      <td>1957</td>
+      <td>12.0</td>
+      <td>1957</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>1958.000000</td>
+      <td>340</td>
+      <td>1958</td>
+      <td>1.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>1958.083333</td>
+      <td>318</td>
+      <td>1958</td>
+      <td>2.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>1958.166667</td>
+      <td>362</td>
+      <td>1958</td>
+      <td>3.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>1958.250000</td>
+      <td>348</td>
+      <td>1958</td>
+      <td>4.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1958.333333</td>
+      <td>363</td>
+      <td>1958</td>
+      <td>5.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>1958.416667</td>
+      <td>435</td>
+      <td>1958</td>
+      <td>6.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>1958.500000</td>
+      <td>491</td>
+      <td>1958</td>
+      <td>7.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>1958.583333</td>
+      <td>505</td>
+      <td>1958</td>
+      <td>8.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>1958.666667</td>
+      <td>404</td>
+      <td>1958</td>
+      <td>9.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>1958.750000</td>
+      <td>359</td>
+      <td>1958</td>
+      <td>10.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>1958.833333</td>
+      <td>310</td>
+      <td>1958</td>
+      <td>11.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>1958.916667</td>
+      <td>337</td>
+      <td>1958</td>
+      <td>12.0</td>
+      <td>1958</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>1959.000000</td>
+      <td>360</td>
+      <td>1959</td>
+      <td>1.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>1959.083333</td>
+      <td>342</td>
+      <td>1959</td>
+      <td>2.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>1959.166667</td>
+      <td>406</td>
+      <td>1959</td>
+      <td>3.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>1959.250000</td>
+      <td>396</td>
+      <td>1959</td>
+      <td>4.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>1959.333333</td>
+      <td>420</td>
+      <td>1959</td>
+      <td>5.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>1959.416667</td>
+      <td>472</td>
+      <td>1959</td>
+      <td>6.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>1959.500000</td>
+      <td>548</td>
+      <td>1959</td>
+      <td>7.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>1959.583333</td>
+      <td>559</td>
+      <td>1959</td>
+      <td>8.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>1959.666667</td>
+      <td>463</td>
+      <td>1959</td>
+      <td>9.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>1959.750000</td>
+      <td>407</td>
+      <td>1959</td>
+      <td>10.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>1959.833333</td>
+      <td>362</td>
+      <td>1959</td>
+      <td>11.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>1959.916667</td>
+      <td>405</td>
+      <td>1959</td>
+      <td>12.0</td>
+      <td>1959</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>1960.000000</td>
+      <td>417</td>
+      <td>1960</td>
+      <td>1.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>1960.083333</td>
+      <td>391</td>
+      <td>1960</td>
+      <td>2.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>1960.166667</td>
+      <td>419</td>
+      <td>1960</td>
+      <td>3.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>1960.250000</td>
+      <td>461</td>
+      <td>1960</td>
+      <td>4.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>1960.333333</td>
+      <td>472</td>
+      <td>1960</td>
+      <td>5.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>1960.416667</td>
+      <td>535</td>
+      <td>1960</td>
+      <td>6.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>1960.500000</td>
+      <td>622</td>
+      <td>1960</td>
+      <td>7.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1960.583333</td>
+      <td>606</td>
+      <td>1960</td>
+      <td>8.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>1960.666667</td>
+      <td>508</td>
+      <td>1960</td>
+      <td>9.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>1960.750000</td>
+      <td>461</td>
+      <td>1960</td>
+      <td>10.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>1960.833333</td>
+      <td>390</td>
+      <td>1960</td>
+      <td>11.0</td>
+      <td>1960</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>1960.916667</td>
+      <td>432</td>
+      <td>1960</td>
+      <td>12.0</td>
+      <td>1960</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h2 id="2-Add-a-“month”-column"><a href="#2-Add-a-“month”-column" class="headerlink" title="#2 Add a “month” column"></a>#2 Add a “month” column</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">passengers[<span class="string">&#x27;month&#x27;</span>] = (passengers[<span class="string">&#x27;time&#x27;</span>] -passengers[<span class="string">&#x27;year&#x27;</span>])*<span class="number">12</span>+<span class="number">1</span></span><br><span class="line">passengers[<span class="string">&#x27;Month&#x27;</span>]= (passengers[<span class="string">&#x27;Year&#x27;</span>]-<span class="built_in">min</span>(passengers[<span class="string">&#x27;Year&#x27;</span>]))*<span class="number">12</span>+passengers[<span class="string">&#x27;month&#x27;</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Generate-the-plot-below-of-passengers-vs-time-using-each-monthly-count"><a href="#3-Generate-the-plot-below-of-passengers-vs-time-using-each-monthly-count" class="headerlink" title="#3 Generate the plot below of passengers vs. time using each monthly count"></a>#3 Generate the plot below of passengers vs. time using each monthly count</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">temp=passengers.groupby([<span class="string">&#x27;Month&#x27;</span>])[<span class="string">&#x27;AirPassengers&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.plot(temp[<span class="string">&#x27;Month&#x27;</span>],temp[<span class="string">&#x27;AirPassengers&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&quot;Month&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Hundreds of thousands&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;plot with Matplotlib&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0.5, 1.0, &#39;plot with Matplotlib&#39;)
+</code></pre>
+<p><img src="/content/images/2021-08-25-output_12_1.png" alt="png"></p>
+<h2 id="4-Generate-the-plot-below-of-passengers-vs-time-using-an-annual-count"><a href="#4-Generate-the-plot-below-of-passengers-vs-time-using-an-annual-count" class="headerlink" title="#4 Generate the plot below of passengers vs. time using an annual count"></a>#4 Generate the plot below of passengers vs. time using an annual count</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">temp=passengers.groupby([<span class="string">&#x27;Year&#x27;</span>])[<span class="string">&#x27;AirPassengers&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.plot(temp[<span class="string">&#x27;Year&#x27;</span>],temp[<span class="string">&#x27;AirPassengers&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&quot;Year&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Hundreds of thousands&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;plot with Matplotlib&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0.5, 1.0, &#39;plot with Matplotlib&#39;)
+</code></pre>
+<p><img src="/content/images/2021-08-25-output_14_1.png" alt="png"></p>
+<h2 id="5-Generate-the-barplot-below-of-passengers-by-year"><a href="#5-Generate-the-barplot-below-of-passengers-by-year" class="headerlink" title="#5 Generate the barplot below of passengers by year"></a>#5 Generate the barplot below of passengers by year</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">temp=passengers.groupby([<span class="string">&#x27;Year&#x27;</span>])[<span class="string">&#x27;AirPassengers&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.bar(temp[<span class="string">&#x27;Year&#x27;</span>],temp[<span class="string">&#x27;AirPassengers&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&quot;Year&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Hundreds of thousands&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">plt.ylim([<span class="number">0</span>, <span class="number">6000</span>])</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;plot with Matplotlib&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0.5, 1.0, &#39;plot with Matplotlib&#39;)
+</code></pre>
+<p><img src="/content/images/2021-08-25-output_16_1.png" alt="png"></p>
+<h2 id="6-Generate-the-histogram-below-of-monthly-passengers"><a href="#6-Generate-the-histogram-below-of-monthly-passengers" class="headerlink" title="#6 Generate the histogram below of monthly passengers"></a>#6 Generate the histogram below of monthly passengers</h2><p><strong>Additional requirements:</strong></p>
+<ul>
+<li>Only include 1955 and beyond</li>
+<li>Use a binwidth of 50, a min of 200, and a max of 700</li>
+<li>Set the yticks to start at 0, end at 25 by interval of 5</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">temp=passengers[passengers[<span class="string">&#x27;Year&#x27;</span>]&gt;=<span class="number">1955</span>].groupby([<span class="string">&#x27;Month&#x27;</span>])[<span class="string">&#x27;AirPassengers&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.hist(temp[<span class="string">&#x27;AirPassengers&#x27;</span>],bins=<span class="number">10</span>,<span class="built_in">range</span>=(<span class="number">200</span>,<span class="number">700</span>))</span><br><span class="line">plt.xlabel(<span class="string">&quot;Month&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Hundreds of thousands&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;plot with Matplotlib&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0.5, 1.0, &#39;plot with Matplotlib&#39;)
+</code></pre>
+<p><img src="/content/images/2021-08-25-output_18_1.png" alt="png"></p>
+<h2 id="7-Generate-the-histogram-below-of-monthly-passengers"><a href="#7-Generate-the-histogram-below-of-monthly-passengers" class="headerlink" title="#7 Generate the histogram below of monthly passengers"></a>#7 Generate the histogram below of monthly passengers</h2><p><strong>Additional requirements:</strong></p>
+<ul>
+<li>Generate two groups to compare. Group 1 should be the years 1949-1950. Group 2 should be the years 1959-60.</li>
+<li>Binwidth of 50 from 100 to 700</li>
+<li>yticks from 0 to 24, spaced by 2</li>
+<li>Be sure to include a legend</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">temp1=passengers[ (passengers[<span class="string">&#x27;Year&#x27;</span>]&gt;=<span class="number">1949</span>) &amp; (passengers[<span class="string">&#x27;Year&#x27;</span>]&lt;=<span class="number">1950</span>)].groupby([<span class="string">&#x27;Month&#x27;</span>])[<span class="string">&#x27;AirPassengers&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line">temp2=passengers[ (passengers[<span class="string">&#x27;Year&#x27;</span>]&gt;=<span class="number">1959</span>) &amp; (passengers[<span class="string">&#x27;Year&#x27;</span>]&lt;=<span class="number">1960</span>)].groupby([<span class="string">&#x27;Month&#x27;</span>])[<span class="string">&#x27;AirPassengers&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.hist(temp1[<span class="string">&#x27;AirPassengers&#x27;</span>],bins=<span class="number">12</span>,alpha=<span class="number">0.5</span>,<span class="built_in">range</span>=(<span class="number">100</span>,<span class="number">700</span>),label=<span class="string">&#x27;1949-50&#x27;</span>)</span><br><span class="line">plt.hist(temp2[<span class="string">&#x27;AirPassengers&#x27;</span>],bins=<span class="number">12</span>,alpha=<span class="number">0.5</span>,<span class="built_in">range</span>=(<span class="number">100</span>,<span class="number">700</span>),label=<span class="string">&#x27;1959-60&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Month&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Hundreds of thousands&quot;</span>, size=<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line">plt.yticks(np.arange(<span class="number">0</span>, <span class="number">24</span>, <span class="number">2.0</span>))</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;plot with Matplotlib&quot;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.legend.Legend at 0x2d3705b9d90&gt;
+</code></pre>
+<p><img src="/content/images/2021-08-25-output_20_1.png" alt="png"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">robot learner</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://datasciencebyexample.github.io/2021/08/25/2021-08-25-1/">https://datasciencebyexample.github.io/2021/08/25/2021-08-25-1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">robot learner</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/matplotlib-tips/">
+                                    <span class="chip bg-color">matplotlib tips</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2021/08/25/2021-08-25-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Data Prep and Visualization Example using matplotlib in Python">
+                        
+                        <span class="card-title">Data Prep and Visualization Example using matplotlib in Python</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/matplotlib-tips/">
+                        <span class="chip bg-color">matplotlib tips</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/08/23/2021-08-23-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Add ssh key to access github and simple git commands">
+                        
+                        <span class="card-title">Add ssh key to access github and simple git commands</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git-and-github/">
+                        <span class="chip bg-color">git and github</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">robot learner</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
