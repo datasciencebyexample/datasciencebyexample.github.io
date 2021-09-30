@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Set up Flask app to implement GET and POST API</title>
+      <link href="2021/09/29/2021-09-29-1/"/>
+      <url>2021/09/29/2021-09-29-1/</url>
+      
+        <content type="html"><![CDATA[<p>Flask app is one of the easiest ways to setup APIs on the server side for data engineering and data science purpose.<br>Here we show an simple set up process, an example python file, and how to run it in an development environment.</p><h2 id="packages-to-install"><a href="#packages-to-install" class="headerlink" title="packages to install"></a>packages to install</h2><p>assume we are using python3 environment</p><ol><li>install flask</li></ol><p>sudo apt install python3-flask</p><ol start="2"><li>to allow Cross-Origin Resource Sharing</li></ol><p>pip3 install flask_cors</p><h2 id="A-simple-example-python-file-main-py-to-setup-flask-GET-and-POST-APIS"><a href="#A-simple-example-python-file-main-py-to-setup-flask-GET-and-POST-APIS" class="headerlink" title="A simple example python file (main.py) to setup flask GET and POST APIS"></a>A simple example python file (main.py) to setup flask GET and POST APIS</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request</span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">CORS(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">helloWorld</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, cross-origin-world!&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># GET method</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/get&quot;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getexample</span>():</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># GET data</span></span><br><span class="line">    query = request.args.get(<span class="string">&quot;query&quot;</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(query)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> query</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#post method</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/post&quot;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">postexample</span>():</span></span><br><span class="line">    <span class="comment">##  Get POST input form data</span></span><br><span class="line">    <span class="comment">#data = dict((key, request.form.get(key)) for key in request.form.keys())</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#  Get POST input json data</span></span><br><span class="line">    data = <span class="built_in">dict</span>((key, request.json.get(key)) <span class="keyword">for</span> key <span class="keyword">in</span> request.json.keys())</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;post request with &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(data))</span><br><span class="line"></span><br><span class="line">    output=&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;ok&quot;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> json.dumps(output)</span><br></pre></td></tr></table></figure><h2 id="to-run-the-flask-API-in-the-command-line-to-run-the-following-command"><a href="#to-run-the-flask-API-in-the-command-line-to-run-the-following-command" class="headerlink" title="to run the flask API: in the command line to run the following command"></a>to run the flask API: in the command line to run the following command</h2><p>sudo FLASK_APP=main.py flask run –host=0.0.0.0 –port 3000</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> flask app </tag>
+            
+            <tag> API </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Data Prep and Visualization Example using matplotlib in Python</title>
       <link href="2021/08/25/2021-08-25-1/"/>
       <url>2021/08/25/2021-08-25-1/</url>
