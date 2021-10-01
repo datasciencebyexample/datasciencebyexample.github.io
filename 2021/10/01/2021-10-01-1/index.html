@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Set up Flask app to implement GET and POST API, DataScienceTribe">
+    <meta name="keywords" content="How to serve the Flask app with nginx as the reverse proxy, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Set up Flask app to implement GET and POST API | DataScienceTribe</title>
+    <title>How to serve the Flask app with nginx as the reverse proxy | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Set up Flask app to implement GET and POST API</h1>
+                    <h1 class="description center-align post-title">How to serve the Flask app with nginx as the reverse proxy</h1>
                 </div>
             </div>
         </div>
@@ -350,8 +350,8 @@
                                 <span class="chip bg-color">flask app</span>
                             </a>
                         
-                            <a href="/tags/API/">
-                                <span class="chip bg-color">API</span>
+                            <a href="/tags/nginx/">
+                                <span class="chip bg-color">nginx</span>
                             </a>
                         
                     </div>
@@ -375,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-09-29
+                    2021-10-01
                 </div>
                 
 
@@ -396,19 +396,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Flask app is one of the easiest ways to setup APIs on the server side for data engineering and data science purpose.<br>Here we show an simple set up process, an example python file, and how to run it in an development environment.</p>
-<h2 id="packages-to-install"><a href="#packages-to-install" class="headerlink" title="packages to install"></a>packages to install</h2><p>assume we are using python3 environment</p>
+                <p>We are going to build a simple and smooth process using the following steps:</p>
 <ol>
-<li>install flask</li>
+<li><p> if you don’t have uwsgi installed, try this on ubuntu:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install uwsgi</span><br></pre></td></tr></table></figure></li>
+<li><p>locate your flask project folder, if you don’t know how to create a a flask app, check this link:<br><a target="_blank" rel="noopener" href="https://datasciencebyexample.com/2021/09/29/2021-09-29-1/">flask app creation</a><br><a target="_blank" rel="noopener" href="https://datasciencebyexample.com/2021/09/29/2021-09-29-1/">https://datasciencebyexample.com/2021/09/29/2021-09-29-1/</a></p>
+</li>
+<li><p>create a uswgi init file inside your flask project, for example, you can call it myproject.ini</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">module = main:app</span><br><span class="line"></span><br><span class="line">master = true</span><br><span class="line">processes = 2</span><br><span class="line"></span><br><span class="line">socket = myproject.sock</span><br><span class="line">chmod-socket = 660</span><br><span class="line">vacuum = true</span><br><span class="line"></span><br><span class="line">die-on-term = true</span><br></pre></td></tr></table></figure></li>
+<li><p>Let’s then create the systemd service unit file. Creating a systemd unit file will allow Ubuntu’s init system to automatically start uWSGI and serve the Flask application whenever the server boots.</p>
+</li>
 </ol>
-<p>sudo apt install python3-flask</p>
-<ol start="2">
-<li>to allow Cross-Origin Resource Sharing</li>
+<p>Create a unit file ending in .service within the /etc/systemd/system directory to begin, for example</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo emacs /etc/systemd/system/myproject.service</span><br></pre></td></tr></table></figure>
+<p>inside the file:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=uWSGI instance to serve myproject</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=&lt;your user name&gt;</span><br><span class="line">Group=www-data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">WorkingDirectory=&lt;your flask app directory&gt;</span><br><span class="line"></span><br><span class="line">ExecStart=/usr/local/bin/uwsgi --ini myproject.ini</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Then type these in the command line:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start myproject</span><br><span class="line">sudo systemctl enable myproject</span><br></pre></td></tr></table></figure>
+<p>you can check the service status</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status myproject</span><br></pre></td></tr></table></figure>
+<p>if any changes to the project, just do this to reflect new web app:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service myproject restart</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>install the nginx if you don’t have one<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+At the end of the installation process, Ubuntu (18.04) will start Nginx. The web server should already be up and running.</li>
 </ol>
-<p>pip3 install flask_cors</p>
-<h2 id="A-simple-example-python-file-main-py-to-setup-flask-GET-and-POST-APIS"><a href="#A-simple-example-python-file-main-py-to-setup-flask-GET-and-POST-APIS" class="headerlink" title="A simple example python file (main.py) to setup flask GET and POST APIS"></a>A simple example python file (main.py) to setup flask GET and POST APIS</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,request</span><br><span class="line"><span class="keyword">from</span> flask_cors <span class="keyword">import</span> CORS</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">CORS(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">helloWorld</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, cross-origin-world!&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># GET method</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/get&quot;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getexample</span>():</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># GET data</span></span><br><span class="line">    query = request.args.get(<span class="string">&quot;query&quot;</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(query)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> query</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#post method</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/post&quot;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">postexample</span>():</span></span><br><span class="line">    <span class="comment">##  Get POST input form data</span></span><br><span class="line">    <span class="comment">#data = dict((key, request.form.get(key)) for key in request.form.keys())</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#  Get POST input json data</span></span><br><span class="line">    data = <span class="built_in">dict</span>((key, request.json.get(key)) <span class="keyword">for</span> key <span class="keyword">in</span> request.json.keys())</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;post request with &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(data))</span><br><span class="line"></span><br><span class="line">    output=&#123;<span class="string">&quot;status&quot;</span>:<span class="string">&quot;ok&quot;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> json.dumps(output)</span><br></pre></td></tr></table></figure>
+<p>We can check with the systemd init system to make sure the service is running by typing:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li><p>Begin by creating a new server block configuration file in Nginx’s sites-available directory. Let’s call this myproject to keep in line with the rest of the guide:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo emacs /etc/nginx/sites-available/myproject</span><br></pre></td></tr></table></figure>
+<p>inside the file:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name englishlearningbyexample.com www.englishlearningbyexample.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        include uwsgi_params;</span><br><span class="line">        uwsgi_pass unix:&lt;your flask app dir&gt;/myproject.sock;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>above I was using<br><a target="_blank" rel="noopener" href="http://www.englishlearningbyexample.com/">www.englishlearningbyexample.com</a><br>as the example for server_name, but you should replace with yours.</p>
+</li>
+<li><p>final steps</p>
+</li>
+</ol>
+<p>To enable the Nginx server block configuration you’ve just created, link the file to the sites-enabled directory:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled</span><br></pre></td></tr></table></figure>
+<p>then do </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>now you should see the website running</p>
+<p>If you encounter any errors, trying checking the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo less /var/log/nginx/error.log: checks the Nginx error logs.</span><br><span class="line">sudo less /var/log/nginx/access.log: checks the Nginx access logs.</span><br><span class="line">sudo journalctl -u nginx: checks the Nginx process logs.</span><br><span class="line">sudo journalctl -u myproject: checks your Flask app’s uWSGI logs.</span><br></pre></td></tr></table></figure>
 
-<h2 id="to-run-the-flask-API-in-the-command-line-to-run-the-following-command"><a href="#to-run-the-flask-API-in-the-command-line-to-run-the-following-command" class="headerlink" title="to run the flask API: in the command line to run the following command"></a>to run the flask API: in the command line to run the following command</h2><p>sudo FLASK_APP=main.py flask run –host=0.0.0.0 –port 3000</p>
 
                 
             </div>
@@ -435,7 +467,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/09/29/2021-09-29-1/">https://datasciencebyexample.github.io/2021/09/29/2021-09-29-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/10/01/2021-10-01-1/">https://datasciencebyexample.github.io/2021/10/01/2021-10-01-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -477,8 +509,8 @@
                                     <span class="chip bg-color">flask app</span>
                                 </a>
                             
-                                <a href="/tags/API/">
-                                    <span class="chip bg-color">API</span>
+                                <a href="/tags/nginx/">
+                                    <span class="chip bg-color">nginx</span>
                                 </a>
                             
                         </div>
@@ -524,9 +556,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/10/01/2021-10-01-1/">
                     <div class="card-image">
@@ -544,9 +577,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -559,6 +592,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -581,13 +615,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/25/2021-08-25-1/">
+                <a href="/2021/09/29/2021-09-29-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Data Prep and Visualization Example using matplotlib in Python">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Set up Flask app to implement GET and POST API">
                         
-                        <span class="card-title">Data Prep and Visualization Example using matplotlib in Python</span>
+                        <span class="card-title">Set up Flask app to implement GET and POST API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -598,14 +632,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -615,8 +649,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/matplotlib-tips/">
-                        <span class="chip bg-color">matplotlib tips</span>
+                    <a href="/tags/flask-app/">
+                        <span class="chip bg-color">flask app</span>
+                    </a>
+                    
+                    <a href="/tags/API/">
+                        <span class="chip bg-color">API</span>
                     </a>
                     
                 </div>
