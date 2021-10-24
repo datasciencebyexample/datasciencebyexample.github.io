@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>How to auto run python jobs using crontab</title>
+      <link href="2021/10/24/2021-10-24-1/"/>
+      <url>2021/10/24/2021-10-24-1/</url>
+      
+        <content type="html"><![CDATA[<p>In ubuntu Linux，many times we need to run certain tasks regularly, such as every 10 minutes, at 2 o’clock in the morning every day, etc.<br>The tasks can be varied, but as data scientists, many of our tasks are based on python code. </p><h2 id="A-simple-python-job"><a href="#A-simple-python-job" class="headerlink" title="A simple python job"></a>A simple python job</h2><p>Suppose we have a very simple python text that needs to be run at 2 AM every day. The python text is named test.py, and the code is as follows: </p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=3</span><br><span class="line">b=5</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure><p>we could write a bash script，run.sh to run the above python job：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">python test.py &gt;&gt; log.txt</span><br></pre></td></tr></table></figure><p>we need to make the run.sh to be excecutable:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x run.sh</span><br></pre></td></tr></table></figure><p>We then can run the script，implement the python code，got the answer of a+b and pipeline it to the file log.txt:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./run.sh</span><br></pre></td></tr></table></figure><p>Our job is now to figure out how to run.sh script file automatically。</p><h2 id="Install-crontab"><a href="#Install-crontab" class="headerlink" title="Install crontab"></a>Install crontab</h2><p>If your ubuntu doesn’t have contab</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">install：apt-get install cron</span><br><span class="line">start：service cron start</span><br><span class="line">restart：service cron restart</span><br><span class="line">stop：service cron stop</span><br><span class="line">check status：service cron status</span><br><span class="line">check scheduled jobs：crontab -l</span><br></pre></td></tr></table></figure><h2 id="add-crontab-job"><a href="#add-crontab-job" class="headerlink" title="add crontab job"></a>add crontab job</h2><p>the command is：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure><p>follow the hint and choose the edit environment you like, such as nano or vi.<br>If we want to run the job 2 am every day, the logic is like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0 2 * * * /home/user_name/run.sh</span><br></pre></td></tr></table></figure><p>If we want to run the job every 5 minutes, then rule is this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*/5 * * * * /home/user_name/run.sh</span><br></pre></td></tr></table></figure><p>After save the above work, we have successfully scheduled the jobs.<br>Using the following command,</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure><p>we could confirm all the scheduled jobs including the one we just put in.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> crontab </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to serve the Flask app with nginx as the reverse proxy</title>
       <link href="2021/10/01/2021-10-01-1/"/>
       <url>2021/10/01/2021-10-01-1/</url>
@@ -230,9 +255,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> machine learning </tag>
             
@@ -259,9 +284,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> machine learning </tag>
             
@@ -288,11 +313,11 @@
       
         <tags>
             
-            <tag> python </tag>
+            <tag> pandas tip </tag>
             
             <tag> preprocessing </tag>
             
-            <tag> pandas tip </tag>
+            <tag> python </tag>
             
         </tags>
       
@@ -317,11 +342,11 @@
       
         <tags>
             
-            <tag> python </tag>
+            <tag> pandas tip </tag>
             
             <tag> preprocessing </tag>
             
-            <tag> pandas tip </tag>
+            <tag> python </tag>
             
         </tags>
       
@@ -379,11 +404,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -489,11 +514,11 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pandas </tag>
             
             <tag> preprocessing </tag>
+            
+            <tag> python </tag>
             
         </tags>
       

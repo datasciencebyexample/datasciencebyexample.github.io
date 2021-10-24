@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="boost exact phrase search results ranking in elasticsearch, DataScienceTribe">
+    <meta name="keywords" content="How to auto run python jobs using crontab, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>boost exact phrase search results ranking in elasticsearch | DataScienceTribe</title>
+    <title>How to auto run python jobs using crontab | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">boost exact phrase search results ranking in elasticsearch</h1>
+                    <h1 class="description center-align post-title">How to auto run python jobs using crontab</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/elasticsearch/">
-                                <span class="chip bg-color">elasticsearch</span>
+                            <a href="/tags/crontab/">
+                                <span class="chip bg-color">crontab</span>
                             </a>
                         
                     </div>
@@ -362,8 +358,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/search/" class="post-category">
-                                search
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -375,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-05
+                    2021-10-24
                 </div>
                 
 
@@ -396,22 +392,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Elasticsearch use the DSL format to create query.</p>
-<p>One easy search is to use multi_match by passing the query key word, and give the fields to search for.</p>
-<p>Here is an example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line">es = Elasticsearch()</span><br><span class="line">indexname = &#x27;myindex&#x27;</span><br><span class="line"></span><br><span class="line">keyword = &#x27;test&#x27;</span><br><span class="line">   dsl=&#123;</span><br><span class="line">       &quot;query&quot;: &#123;</span><br><span class="line">           &quot;multi_match&quot; : &#123;</span><br><span class="line">                   &quot;query&quot;:  keyword,</span><br><span class="line">                   &quot;fields&quot;: [ &quot;content&quot;]</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   dsize=10</span><br><span class="line">   result_r = es.search(index=indexname, body=dsl,size=dsize)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>In ubuntu Linux，many times we need to run certain tasks regularly, such as every 10 minutes, at 2 o’clock in the morning every day, etc.<br>The tasks can be varied, but as data scientists, many of our tasks are based on python code. </p>
+<h2 id="A-simple-python-job"><a href="#A-simple-python-job" class="headerlink" title="A simple python job"></a>A simple python job</h2><p>Suppose we have a very simple python text that needs to be run at 2 AM every day. The python text is named test.py, and the code is as follows: </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=3</span><br><span class="line">b=5</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
+<p>we could write a bash script，run.sh to run the above python job：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">python test.py &gt;&gt; log.txt</span><br></pre></td></tr></table></figure>
+<p>we need to make the run.sh to be excecutable:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x run.sh</span><br></pre></td></tr></table></figure>
+<p>We then can run the script，implement the python code，got the answer of a+b and pipeline it to the file log.txt:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./run.sh</span><br></pre></td></tr></table></figure>
+<p>Our job is now to figure out how to run.sh script file automatically。</p>
+<h2 id="Install-crontab"><a href="#Install-crontab" class="headerlink" title="Install crontab"></a>Install crontab</h2><p>If your ubuntu doesn’t have contab</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">install：apt-get install cron</span><br><span class="line">start：service cron start</span><br><span class="line">restart：service cron restart</span><br><span class="line">stop：service cron stop</span><br><span class="line">check status：service cron status</span><br><span class="line">check scheduled jobs：crontab -l</span><br></pre></td></tr></table></figure>
 
-<p>The problem with the above query is that:if your query keyword is a phrase, you might find many results that have the exact match are ranked lower.</p>
-<p>To solve this problem, you might want to try this new dsl format:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dsl=&#123;</span><br><span class="line">   </span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">       &quot;bool&quot;: &#123;</span><br><span class="line">         &quot;must&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ]</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ],</span><br><span class="line">         &quot;should&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;type&quot;: &quot;phrase&quot;,</span><br><span class="line">               &quot;boost&quot;: 10</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">               &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;operator&quot;: &quot;and&quot;,</span><br><span class="line">               &quot;boost&quot;: 4</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">           </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>one thing to explain in the above the query, is the ‘operator’; According to the official elasticsearch webpage:</p>
-<p>operator and minimum_should_match<br>The best_fields and most_fields types are field-centric — they generate a match query per field. This means that the operator and minimum_should_match parameters are applied to each field individually, which is probably not what you want.</p>
-<p>Take this query for example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot; : &#123;</span><br><span class="line">      &quot;query&quot;:      &quot;Will Smith&quot;,</span><br><span class="line">      &quot;type&quot;:       &quot;best_fields&quot;,</span><br><span class="line">      &quot;fields&quot;:     [ &quot;first_name&quot;, &quot;last_name&quot; ],</span><br><span class="line">      &quot;operator&quot;:   &quot;and&quot; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This query is executed as:</p>
-<p>  (+first_name:will +first_name:smith)<br>| (+last_name:will  +last_name:smith)</p>
-<p>In other words, all terms must be present in a single field for a document to match.</p>
+<h2 id="add-crontab-job"><a href="#add-crontab-job" class="headerlink" title="add crontab job"></a>add crontab job</h2><p>the command is：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+<p>follow the hint and choose the edit environment you like, such as nano or vi.<br>If we want to run the job 2 am every day, the logic is like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0 2 * * * /home/user_name/run.sh</span><br></pre></td></tr></table></figure>
+<p>If we want to run the job every 5 minutes, then rule is this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*/5 * * * * /home/user_name/run.sh</span><br></pre></td></tr></table></figure>
+<p>After save the above work, we have successfully scheduled the jobs.<br>Using the following command,</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
+<p>we could confirm all the scheduled jobs including the one we just put in.</p>
 
                 
             </div>
@@ -438,7 +440,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/">https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/10/24/2021-10-24-1/">https://datasciencebyexample.github.io/2021/10/24/2021-10-24-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -476,12 +478,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/elasticsearch/">
-                                    <span class="chip bg-color">elasticsearch</span>
+                                <a href="/tags/crontab/">
+                                    <span class="chip bg-color">crontab</span>
                                 </a>
                             
                         </div>
@@ -527,17 +525,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/08/2021-06-08-1/">
+                <a href="/2021/10/24/2021-10-24-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="missing value or null value processing in pandas dataframe">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="How to auto run python jobs using crontab">
                         
-                        <span class="card-title">missing value or null value processing in pandas dataframe</span>
+                        <span class="card-title">How to auto run python jobs using crontab</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -547,30 +546,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
-                    
-                    <a href="/tags/dataframe/">
-                        <span class="chip bg-color">dataframe</span>
+                    <a href="/tags/crontab/">
+                        <span class="chip bg-color">crontab</span>
                     </a>
                     
                 </div>
@@ -584,13 +580,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
+                <a href="/2021/10/01/2021-10-01-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="How to serve the Flask app with nginx as the reverse proxy">
                         
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">How to serve the Flask app with nginx as the reverse proxy</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -601,14 +597,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -618,16 +614,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/flask-app/">
+                        <span class="chip bg-color">flask app</span>
                     </a>
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
                     </a>
                     
                 </div>
