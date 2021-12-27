@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="aggregate features from different rows into one row in pandas dataframe, DataScienceTribe">
+    <meta name="keywords" content="Multi-class classification using simple deep learning structure in Pytorch with iris dataset, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>aggregate features from different rows into one row in pandas dataframe | DataScienceTribe</title>
+    <title>Multi-class classification using simple deep learning structure in Pytorch with iris dataset | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">aggregate features from different rows into one row in pandas dataframe</h1>
+                    <h1 class="description center-align post-title">Multi-class classification using simple deep learning structure in Pytorch with iris dataset</h1>
                 </div>
             </div>
         </div>
@@ -346,16 +346,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/multi-class/">
+                                <span class="chip bg-color">multi-class</span>
                             </a>
                         
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
+                            <a href="/tags/classification/">
+                                <span class="chip bg-color">classification</span>
                             </a>
                         
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/pytorch/">
+                                <span class="chip bg-color">pytorch</span>
                             </a>
                         
                     </div>
@@ -366,8 +366,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/machine-learning/" class="post-category">
+                                machine learning
                             </a>
                         
                     </div>
@@ -379,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-12
+                    2021-12-26
                 </div>
                 
 
@@ -400,9 +400,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>In many use cases, different features of the same event are stored in a table by multiple rows.<br>multiple columns will indicate each characteristics of one feature, such as name, value, timestamp, etc.</p>
-<p>In machine learning, we need to aggregate them into one row for training, and the following shows how do do it in dataframe easily.</p>
-<h2 id="generate-some-example-dataframe"><a href="#generate-some-example-dataframe" class="headerlink" title="generate some example dataframe"></a>generate some example dataframe</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = [ [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value1&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value2&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name3&#x27;</span>,<span class="string">&#x27;value3&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value4&#x27;</span>],[<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value5&#x27;</span>] </span><br><span class="line">       ]</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data=data)</span><br><span class="line">df.columns =[<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line">display(df)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>As one can see from the following example, it is very easy to apply deep learning structure in Pytorch<br>to perform multi-class classificatoin task. The valuation performance of this iris dataset is almost perfect.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment">#import matplotlib.pyplot as plt </span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">torch.manual_seed(<span class="number">1121</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;torch._C.Generator at 0x19734b24a70&gt;
+</code></pre>
+<h2 id="load-iris-dataset-for-training-and-valuation"><a href="#load-iris-dataset-for-training-and-valuation" class="headerlink" title="load iris dataset for training and valuation"></a>load iris dataset for training and valuation</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">Y = iris.target</span><br><span class="line">X=pd.DataFrame(X)</span><br><span class="line">Y=pd.DataFrame(Y)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">display(X)</span><br><span class="line">display(Y)</span><br></pre></td></tr></table></figure>
 
 
 <div>
@@ -424,137 +436,313 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>id</th>
-      <th>name</th>
-      <th>value</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>name1</td>
-      <td>value1</td>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
-      <td>name2</td>
-      <td>value2</td>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1</td>
-      <td>name3</td>
-      <td>value3</td>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2</td>
-      <td>name1</td>
-      <td>value4</td>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
     </tr>
     <tr>
       <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 4 columns</p>
+</div>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
       <td>2</td>
-      <td>name2</td>
-      <td>value5</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
+<p>150 rows × 1 columns</p>
 </div>
 
 
-<h2 id="group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column"><a href="#group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column" class="headerlink" title="group the dataframe by id, then aggregate all the feature values into one column"></a>group the dataframe by id, then aggregate all the feature values into one column</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df2 = df.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">df3 = pd.DataFrame(data=df2[<span class="number">0</span>].values.tolist())</span><br><span class="line">display(df3)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h2 id="train-and-valuation-dataset-split"><a href="#train-and-valuation-dataset-split" class="headerlink" title="train and valuation dataset split"></a>train and valuation dataset split</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X=X.values</span><br><span class="line">Y=Y.values</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">x, x_val, y, y_val = train_test_split(X, Y, test_size=<span class="number">0.33</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x.shape, y.shape, x_val.shape, y_val.shape</span><br></pre></td></tr></table></figure>
 
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
 
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
+
+
+<pre><code>((100, 4), (100, 1), (50, 4), (50, 1))
 </code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<h3 id="notice-that-y-needs-to-be-one-dimension-indicating-the-class-type-not-encoded-vectors"><a href="#notice-that-y-needs-to-be-one-dimension-indicating-the-class-type-not-encoded-vectors" class="headerlink" title="notice that: y needs to be one dimension indicating the class type, not encoded vectors"></a>notice that: y needs to be one dimension indicating the class type, not encoded vectors</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x_train = x.reshape(-<span class="number">1</span>, x.shape[<span class="number">1</span>]).astype(<span class="string">&#x27;float32&#x27;</span>)</span><br><span class="line">y_train = y.reshape(-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">x_val = x_val.reshape(-<span class="number">1</span>, x_val.shape[<span class="number">1</span>]).astype(<span class="string">&#x27;float32&#x27;</span>)</span><br><span class="line">y_val = y_val.reshape(-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<h1 id="put-the-above-the-transformation-into-a-scikit-learn-customed-transformer"><a href="#put-the-above-the-transformation-into-a-scikit-learn-customed-transformer" class="headerlink" title="put the above the transformation into a scikit-learn customed transformer"></a>put the above the transformation into a scikit-learn customed transformer</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_Transformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;start&#x27;</span>)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">           </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return self</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Customized transformer</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X2 = X.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">        X3 = pd.DataFrame(data=X2[<span class="number">0</span>].values.tolist())     </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X3</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X1</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"><span class="comment"># get a transformer object</span></span><br><span class="line">my_transformer = my_Transformer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># apply the transform on the original data</span></span><br><span class="line"></span><br><span class="line">df_new = my_transformer.transform(df)</span><br><span class="line">display(df_new)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
-<pre><code>start
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="put-data-into-dataloader-so-we-could-train-by-batches-easily"><a href="#put-data-into-dataloader-so-we-could-train-by-batches-easily" class="headerlink" title="put data into dataloader, so we could train by batches easily"></a>put data into dataloader, so we could train by batches easily</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset, DataLoader</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Data</span>(<span class="params">Dataset</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.x=torch.from_numpy(x_train)</span><br><span class="line">        self.y=torch.from_numpy(y_train).long()</span><br><span class="line">        self.<span class="built_in">len</span>=self.x.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self,index</span>):</span>      </span><br><span class="line">        <span class="keyword">return</span> self.x[index], self.y[index]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.<span class="built_in">len</span></span><br><span class="line">data_set=Data()</span><br><span class="line"></span><br><span class="line"><span class="comment"># define batch sizes here </span></span><br><span class="line">batch_size = <span class="number">16</span></span><br><span class="line">trainloader=DataLoader(dataset=data_set,batch_size=batch_size)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="build-softmax-classifier"><a href="#build-softmax-classifier" class="headerlink" title="build softmax classifier"></a>build softmax classifier</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># D_in, dimension of input layer</span></span><br><span class="line"><span class="comment"># H , dimension of hidden layer</span></span><br><span class="line"><span class="comment"># D_out, dimension of output layer</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,D_in,H,D_out</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Net,self).__init__()</span><br><span class="line">        self.linear1=nn.Linear(D_in,H)</span><br><span class="line">        self.linear2=nn.Linear(H,D_out)</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self,x</span>):</span></span><br><span class="line">        x=torch.sigmoid(self.linear1(x))  </span><br><span class="line">        x=self.linear2(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">input_dim=<span class="number">4</span>     <span class="comment"># how many features are in the dataset or how many input nodes in the input layer</span></span><br><span class="line">hidden_dim = <span class="number">20</span> <span class="comment"># hidden layer size</span></span><br><span class="line">output_dim=<span class="number">3</span>    <span class="comment"># number of classes</span></span><br><span class="line"><span class="built_in">print</span>(input_dim,hidden_dim,output_dim)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Instantiate model</span></span><br><span class="line">model=Net(input_dim,hidden_dim,output_dim)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;W:&#x27;</span>,<span class="built_in">list</span>(model.parameters())[<span class="number">0</span>].size())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;b&#x27;</span>,<span class="built_in">list</span>(model.parameters())[<span class="number">1</span>].size())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># loss function</span></span><br><span class="line">criterion=nn.CrossEntropyLoss()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>4 20 3
+W: torch.Size([20, 4])
+b torch.Size([20])
 </code></pre>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<h2 id="define-the-optimizer"><a href="#define-the-optimizer" class="headerlink" title="define the optimizer"></a>define the optimizer</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">learning_rate=<span class="number">0.05</span></span><br><span class="line">optimizer=torch.optim.SGD(model.parameters(), lr=learning_rate)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
 
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n_epochs=<span class="number">1000</span></span><br><span class="line">loss_list=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">#n_epochs</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(n_epochs):</span><br><span class="line">    <span class="keyword">if</span> epoch %<span class="number">100</span>==<span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(epoch)</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> trainloader:</span><br><span class="line">      </span><br><span class="line">        </span><br><span class="line">        <span class="comment">#clear gradient </span></span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        <span class="comment">#make a prediction </span></span><br><span class="line">        z=model(x)</span><br><span class="line">        <span class="comment">#print(z)</span></span><br><span class="line">        <span class="comment"># calculate loss, da Cross Entropy benutzt wird muss ich in den loss Klassen vorhersagen, </span></span><br><span class="line">        <span class="comment"># also Wahrscheinlichkeit pro Klasse. Das mach torch.max(y,1)[1])</span></span><br><span class="line">        loss=criterion(z,y)</span><br><span class="line">        <span class="comment"># calculate gradients of parameters </span></span><br><span class="line">        loss.backward()</span><br><span class="line">        <span class="comment"># update parameters </span></span><br><span class="line">        optimizer.step()</span><br><span class="line">        </span><br><span class="line">        loss_list.append(loss.data)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">#print(&#x27;epoch &#123;&#125;, loss &#123;&#125;&#x27;.format(epoch, loss.item()))</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0
+100
+200
+300
+400
+500
+600
+700
+800
+900
 </code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<h2 id="check-performance-using-the-valuation-data"><a href="#check-performance-using-the-valuation-data" class="headerlink" title="check performance using the valuation data"></a>check performance using the valuation data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># predict the class and give probablity for each class label</span></span><br><span class="line">x_val = torch.from_numpy(x_val)</span><br><span class="line">z=model(x_val)</span><br><span class="line">display(z)</span><br></pre></td></tr></table></figure>
 
+
+<pre><code>tensor([[-3.1493e+00,  3.6905e+00, -5.0090e-01],
+        [ 8.6639e+00,  2.5913e+00, -1.1538e+01],
+        [-7.7513e+00,  4.1365e-01,  7.2997e+00],
+        [-3.1786e+00,  3.3443e+00, -1.6125e-01],
+        [-3.0974e+00,  3.8265e+00, -6.9203e-01],
+        [ 8.4413e+00,  2.6384e+00, -1.1355e+01],
+        [-1.4718e-02,  4.3311e+00, -4.3462e+00],
+        [-5.4910e+00,  1.5831e+00,  3.8781e+00],
+        [-4.7908e+00,  2.2980e+00,  2.5141e+00],
+        [-1.2132e+00,  4.3453e+00, -3.1134e+00],
+        [-5.0060e+00,  1.9947e+00,  2.9958e+00],
+        [ 8.1200e+00,  2.7792e+00, -1.1151e+01],
+        [ 8.8828e+00,  2.5214e+00, -1.1683e+01],
+        [ 8.0960e+00,  2.7942e+00, -1.1141e+01],
+        [ 8.8283e+00,  2.5107e+00, -1.1654e+01],
+        [-2.5941e+00,  3.7417e+00, -1.1520e+00],
+        [-7.0112e+00,  6.8188e-01,  6.2887e+00],
+        [-1.7457e+00,  4.1789e+00, -2.4035e+00],
+        [-3.3078e+00,  3.3204e+00,  6.4886e-03],
+        [-7.0187e+00,  6.5605e-01,  6.3214e+00],
+        [ 7.9682e+00,  2.8094e+00, -1.1046e+01],
+        [-4.8998e+00,  2.0493e+00,  2.8430e+00],
+        [ 8.2123e+00,  2.6980e+00, -1.1198e+01],
+        [-6.9197e+00,  7.3409e-01,  6.1537e+00],
+        [-5.4359e+00,  2.1912e+00,  3.2544e+00],
+        [-6.1038e+00,  1.1452e+00,  4.9261e+00],
+        [-6.9835e+00,  8.1716e-01,  6.1667e+00],
+        [-6.8937e+00,  7.5489e-01,  6.1001e+00],
+        [ 8.0317e+00,  2.7680e+00, -1.1061e+01],
+        [ 7.8392e+00,  2.8607e+00, -1.0952e+01],
+        [ 9.1619e+00,  2.3973e+00, -1.1890e+01],
+        [ 9.2721e+00,  2.3691e+00, -1.1973e+01],
+        [-1.2764e+00,  4.5603e+00, -3.2536e+00],
+        [ 8.2595e+00,  2.7126e+00, -1.1257e+01],
+        [ 8.4267e+00,  2.6317e+00, -1.1359e+01],
+        [-6.1753e+00,  1.1836e+00,  4.9843e+00],
+        [-1.8449e+00,  4.1870e+00, -2.3373e+00],
+        [ 8.5922e+00,  2.6133e+00, -1.1488e+01],
+        [ 8.7905e+00,  2.5362e+00, -1.1630e+01],
+        [ 9.1236e+00,  2.4451e+00, -1.1888e+01],
+        [-6.4186e+00,  9.5598e-01,  5.4381e+00],
+        [-1.9872e+00,  3.8494e+00, -1.8866e+00],
+        [-2.3989e+00,  4.0929e+00, -1.6734e+00],
+        [ 9.1132e+00,  2.4113e+00, -1.1844e+01],
+        [ 8.8116e+00,  2.5441e+00, -1.1646e+01],
+        [-1.2458e+00,  4.3741e+00, -3.0913e+00],
+        [-4.9320e+00,  2.3103e+00,  2.6452e+00],
+        [-5.8854e+00,  1.5035e+00,  4.3829e+00],
+        [-1.6208e+00,  4.4212e+00, -2.7724e+00],
+        [-6.7249e+00,  8.5383e-01,  5.8288e+00]], grad_fn=&lt;AddmmBackward&gt;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># choose the predicted class to be the one with maximum probablity</span></span><br><span class="line">yhat=torch.<span class="built_in">max</span>(z.data,<span class="number">1</span>)</span><br><span class="line">display(yhat)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>torch.return_types.max(
+values=tensor([3.6905, 8.6639, 7.2997, 3.3443, 3.8265, 8.4413, 4.3311, 3.8781, 2.5141,
+        4.3453, 2.9958, 8.1200, 8.8828, 8.0960, 8.8283, 3.7417, 6.2887, 4.1789,
+        3.3204, 6.3214, 7.9682, 2.8430, 8.2123, 6.1537, 3.2544, 4.9261, 6.1667,
+        6.1001, 8.0317, 7.8392, 9.1619, 9.2721, 4.5603, 8.2595, 8.4267, 4.9843,
+        4.1870, 8.5922, 8.7905, 9.1236, 5.4381, 3.8494, 4.0929, 9.1132, 8.8116,
+        4.3741, 2.6452, 4.3829, 4.4212, 5.8288]),
+indices=tensor([1, 0, 2, 1, 1, 0, 1, 2, 2, 1, 2, 0, 0, 0, 0, 1, 2, 1, 1, 2, 0, 2, 0, 2,
+        2, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 0, 0, 2, 1, 1, 0, 0, 1, 2, 2,
+        1, 2]))
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># get the indicies</span></span><br><span class="line">y_pred=yhat.indices.detach().numpy()</span><br><span class="line">display(y_pred)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>array([1, 0, 2, 1, 1, 0, 1, 2, 2, 1, 2, 0, 0, 0, 0, 1, 2, 1, 1, 2, 0, 2,
+       0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 0, 0, 2, 1, 1, 0,
+       0, 1, 2, 2, 1, 2], dtype=int64)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">display(y_val)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>array([1, 0, 2, 1, 1, 0, 1, 2, 1, 1, 2, 0, 0, 0, 0, 1, 2, 1, 1, 2, 0, 2,
+       0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 0, 0, 2, 1, 1, 0,
+       0, 1, 2, 2, 1, 2])
+</code></pre>
+<h2 id="check-the-multi-class-confusion-matric"><a href="#check-the-multi-class-confusion-matric" class="headerlink" title="check the multi-class confusion matric"></a>check the multi-class confusion matric</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> multilabel_confusion_matrix</span><br><span class="line">display(multilabel_confusion_matrix(y_val, y_pred))</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>array([[[31,  0],
+        [ 0, 19]],
+
+       [[35,  0],
+        [ 1, 14]],
+
+       [[33,  1],
+        [ 0, 16]]], dtype=int64)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -581,7 +769,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/">https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2021/12/26/2021-12-26-1/">https://datasciencebyexample.github.io/2021/12/26/2021-12-26-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,16 +807,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/multi-class/">
+                                    <span class="chip bg-color">multi-class</span>
                                 </a>
                             
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
+                                <a href="/tags/classification/">
+                                    <span class="chip bg-color">classification</span>
                                 </a>
                             
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/pytorch/">
+                                    <span class="chip bg-color">pytorch</span>
                                 </a>
                             
                         </div>
@@ -674,17 +862,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/14/2021-06-14-1/">
+                <a href="/2021/12/26/2021-12-26-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Multi-class classification using simple deep learning structure in Pytorch with iris dataset">
                         
-                        <span class="card-title">explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe</span>
+                        <span class="card-title">Multi-class classification using simple deep learning structure in Pytorch with iris dataset</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -694,34 +883,35 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/machine-learning/" class="post-category">
+                                    machine learning
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/multi-class/">
+                        <span class="chip bg-color">multi-class</span>
                     </a>
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/classification/">
+                        <span class="chip bg-color">classification</span>
                     </a>
                     
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                    <a href="/tags/pytorch/">
+                        <span class="chip bg-color">pytorch</span>
                     </a>
                     
                 </div>
@@ -735,13 +925,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/10/2021-06-10-1/">
+                <a href="/2021/10/24/2021-10-24-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="time series feature engineering using tsfresh, training vs test">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="How to auto run python jobs using crontab">
                         
-                        <span class="card-title">time series feature engineering using tsfresh, training vs test</span>
+                        <span class="card-title">How to auto run python jobs using crontab</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -752,14 +942,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -769,24 +959,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/tsfresh/">
-                        <span class="chip bg-color">tsfresh</span>
-                    </a>
-                    
-                    <a href="/tags/time-series/">
-                        <span class="chip bg-color">time series</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
+                    <a href="/tags/crontab/">
+                        <span class="chip bg-color">crontab</span>
                     </a>
                     
                 </div>
