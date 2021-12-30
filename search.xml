@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Use Python to solove Linear Programming optimization problem</title>
+      <link href="2021/12/29/2021-12-29-1/"/>
+      <url>2021/12/29/2021-12-29-1/</url>
+      
+        <content type="html"><![CDATA[<p>Let’s first define the standard format of linear programming problem,<br>in which we will minimize the following equation<br>$$<br>    z=CX<br>$$<br>where， C is the vector of coefficients，X is the vector of variables to be optimized.<br>The constraints of this minimization can be written as:<br>$$<br>AX&lt;=B<br>$$<br>where，A and B are both coefficient matrix。</p><p>Let’s see an specific example：<br>$$<br>min , z=10x_1 +15x_2+25x_3<br>\s.t<br>\-1x_1-1x_2-1x_3&lt;=-1000<br>\-1x_1+2x_2-0x_3&lt;=0<br>\0x_1+0x_2-1x_3&lt;=-300<br>\-1x_1&lt;=0<br>\-1x_2&lt;=0<br>\-1x_3&lt;=0<br>$$</p><p>In Python, we could call the linprog function in Scipy package to solove linear programming problem,<br>and here is a simple demo of coding in Python: </p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Import required libraries</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> linprog</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the inequality constraints matrix</span></span><br><span class="line"><span class="comment"># Note: the inequality constraints must be in the form of &lt;=</span></span><br><span class="line">A = np.array([[-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>], [-<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>], [-<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the inequality constraints vector</span></span><br><span class="line">b = np.array([-<span class="number">1000</span>, <span class="number">0</span>, -<span class="number">300</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the coefficients of the linear objective function vector</span></span><br><span class="line">c = np.array([<span class="number">10</span>, <span class="number">15</span>, <span class="number">25</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Solve linear programming problem</span></span><br><span class="line">res = linprog(c, A_ub=A, b_ub=b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print results</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Optimal value:&#x27;</span>, <span class="built_in">round</span>(res.fun, ndigits=<span class="number">2</span>),</span><br><span class="line">      <span class="string">&#x27;\nx values:&#x27;</span>, res.x,</span><br><span class="line">      <span class="string">&#x27;\nNumber of iterations performed:&#x27;</span>, res.nit,</span><br><span class="line">      <span class="string">&#x27;\nStatus:&#x27;</span>, res.message)</span><br></pre></td></tr></table></figure><pre><code>Optimal value: 14500.0 x values: [7.0000000e+02 7.1017063e-09 3.0000000e+02] Number of iterations performed: 7 Status: Optimization terminated successfully.</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> optimization </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linear programming </tag>
+            
+            <tag> optimization </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Multi-class classification using simple deep learning structure in Pytorch with iris dataset</title>
       <link href="2021/12/26/2021-12-26-1/"/>
       <url>2021/12/26/2021-12-26-1/</url>
@@ -284,9 +311,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> machine learning </tag>
             
@@ -313,9 +340,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> machine learning </tag>
             
@@ -344,9 +371,9 @@
             
             <tag> python </tag>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> preprocessing </tag>
             
         </tags>
       
@@ -373,9 +400,9 @@
             
             <tag> python </tag>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> preprocessing </tag>
             
         </tags>
       
@@ -433,11 +460,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -516,9 +543,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -545,9 +572,9 @@
             
             <tag> python </tag>
             
-            <tag> pandas </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pandas </tag>
             
         </tags>
       
