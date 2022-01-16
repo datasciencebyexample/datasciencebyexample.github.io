@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Convert short texts to numeric vectors with Character ngram tf-idf vectorizer using scikit learn in Python</title>
+      <link href="2022/01/15/2022-01-15-1/"/>
+      <url>2022/01/15/2022-01-15-1/</url>
+      
+        <content type="html"><![CDATA[<p>When apply machine learning algorithms, to handel words or short texts, we usually need to get their numeric embedding vecotors first.<br>Some powerfulmethods including using pre-trained deep learning model such as BERT to more semantic embedding. If computation resource is a limit, or we want to have simpler embedding methods, we could try TF-IDF metrics. </p><p>Here we introduce a very simple way to combine character level n-gram methods and TF-IDF to convert short texts such as a few words to numeric vectors.  Within numeric vectors, we could further apply classification methods such as Gradient Boosted Machine for downstream tasks.</p><p>First, let’s review what’s n-gram:</p><p>Quote some definition from the Wikipedia N-Gram page:</p><p>…an n-gram is a contiguous sequence of n items from a given sequence of text or speech. The items can be phonemes, syllables, letters, words or base pairs according to the application… An n-gram of size 1 is referred to as a “unigram”; size 2 is a “bigram”; size 3 is a “trigram”. Larger sizes are sometimes referred to by the value of n, e.g., “four-gram”, “five-gram”, and so on.</p><p>The two most common types of N-Grams, by far, are (1) character-level, where the items consist of one or more characters and (2) word-level, where the items consist of one or more words. The size of the item (or token as it’s often called) is defined by n;</p><p>Second, what’s TF-IDF metrics?</p><p>TF-IDF (Term Frequency - Inverse Document Frequency) encoding is an improved way of BOW (bag of words) which is the same as TF. It considers the frequently seen term in various documents to be less of importance.</p><p>TF (Term Frequency): Counts how many term exists in a document<br>IDF (Inverse Document Frequency): Inverse of the number of documents which contains the term</p><p>So TF-IDF is the basically product of TF and IDF metrics.</p><p>It turns out to be very simple to implement character level n-gram TF-IDF encoding of short texts by using scikit-learn package.<br>This means we can easily incorporate the process step in our data process and feature engineering pipeline</p><h2 id="Step-1-Fit-character-n-gram-tf-idf-vectorizer-with-training-data"><a href="#Step-1-Fit-character-n-gram-tf-idf-vectorizer-with-training-data" class="headerlink" title="Step 1 , Fit character n-gram tf idf vectorizer with training data"></a>Step 1 , Fit character n-gram tf idf vectorizer with training data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># using gram of length at 2 for example</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line">corpus = [<span class="string">&#x27;great people&#x27;</span>, <span class="string">&#x27;feel happy&#x27;</span>, <span class="string">&#x27;nice work&#x27;</span>,<span class="string">&#x27;warm weather&#x27;</span>]</span><br><span class="line">vectorizer = TfidfVectorizer(analyzer=<span class="string">&#x27;char&#x27;</span>, ngram_range=(<span class="number">2</span>,<span class="number">2</span>)).fit(corpus)</span><br><span class="line"><span class="built_in">print</span>(vectorizer.get_feature_names())</span><br></pre></td></tr></table></figure><pre><code>[&#39; h&#39;, &#39; p&#39;, &#39; w&#39;, &#39;ap&#39;, &#39;ar&#39;, &#39;at&#39;, &#39;ce&#39;, &#39;e &#39;, &#39;ea&#39;, &#39;ee&#39;, &#39;el&#39;, &#39;eo&#39;, &#39;er&#39;, &#39;fe&#39;, &#39;gr&#39;, &#39;ha&#39;, &#39;he&#39;, &#39;ic&#39;, &#39;l &#39;, &#39;le&#39;, &#39;m &#39;, &#39;ni&#39;, &#39;op&#39;, &#39;or&#39;, &#39;pe&#39;, &#39;pl&#39;, &#39;pp&#39;, &#39;py&#39;, &#39;re&#39;, &#39;rk&#39;, &#39;rm&#39;, &#39;t &#39;, &#39;th&#39;, &#39;wa&#39;, &#39;we&#39;, &#39;wo&#39;]</code></pre><h2 id="Step-2-Transform-new-text-to-tf-idf-weighted-vector"><a href="#Step-2-Transform-new-text-to-tf-idf-weighted-vector" class="headerlink" title="Step 2, Transform new text to tf-idf weighted vector"></a>Step 2, Transform new text to tf-idf weighted vector</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new_text = [<span class="string">&#x27;pineapple milk&#x27;</span>]</span><br><span class="line">tfidf_vector = vectorizer.transform(new_text).toarray()</span><br><span class="line"><span class="built_in">print</span>(tfidf_vector)</span><br></pre></td></tr></table></figure><pre><code>[[0.         0.         0.         0.42176478 0.         0.  0.         0.42176478 0.3325242  0.         0.         0.  0.         0.         0.         0.         0.         0.  0.         0.42176478 0.         0.         0.         0.  0.         0.42176478 0.42176478 0.         0.         0.  0.         0.         0.         0.         0.         0.        ]]</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> machine learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> text mining </tag>
+            
+            <tag> natural language processing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Use Python to solve Linear Programming optimization problem</title>
       <link href="2021/12/29/2021-12-29-1/"/>
       <url>2021/12/29/2021-12-29-1/</url>
@@ -427,9 +454,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> feature engineering </tag>
             
@@ -456,9 +483,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> feature engineering </tag>
             
@@ -543,9 +570,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -570,11 +597,11 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
             
             <tag> preprocessing </tag>
+            
+            <tag> pandas </tag>
             
         </tags>
       
