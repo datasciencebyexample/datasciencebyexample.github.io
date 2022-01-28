@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>A transformer example to maintain same feature order and add missing features back for feature engineering</title>
+      <link href="2022/01/27/2022-01-27-1/"/>
+      <url>2022/01/27/2022-01-27-1/</url>
+      
+        <content type="html"><![CDATA[<p>For data science projects, one important steps in feature engineering is to make sure the order of feature columns during training<br>and prediction/test time is the same. Otherwise, we will not get the results as we expect.</p><p>This is usually not a problem in train/test split or cross validation stages, where training and test data are generally split form the<br>same dataframe. However, once model is put online, and the transformer need to handel each single event, which usually comes in the<br>format of json data, then transformed to dataframe. During this process, the orignal order may not hold.</p><p>To ensure the same feature order is used, we could build a transformer for the pipeline; During the fit stage, the orignal order will be<br>remembered, and during the transform stage, the same order will be enforced; Meanwhile, if there is any missing column, we will add a null value<br>column. </p><h2 id="set-up-some-example-dataframe"><a href="#set-up-some-example-dataframe" class="headerlink" title="set up some example dataframe"></a>set up some example dataframe</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># training example, where we have 3 features</span></span><br><span class="line">df_train = pd.DataFrame(data=[[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;f&#x27;</span>],[<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>]])</span><br><span class="line">df_train.columns =  [<span class="string">&#x27;cat1&#x27;</span>,<span class="string">&#x27;cat2&#x27;</span>,<span class="string">&#x27;cat3&#x27;</span>]</span><br><span class="line">display(df_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># test example where we missing the 3rd feature</span></span><br><span class="line">df_test = pd.DataFrame(data=[[<span class="string">&#x27;h&#x27;</span>,<span class="string">&#x27;j&#x27;</span>]])</span><br><span class="line">df_test.columns =  [<span class="string">&#x27;cat2&#x27;</span>,<span class="string">&#x27;cat1&#x27;</span>]</span><br><span class="line">display(df_test)</span><br></pre></td></tr></table></figure><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>cat1</th>      <th>cat2</th>      <th>cat3</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>a</td>      <td>b</td>      <td>f</td>    </tr>    <tr>      <th>1</th>      <td>c</td>      <td>d</td>      <td>e</td>    </tr>  </tbody></table></div><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>cat2</th>      <th>cat1</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>h</td>      <td>j</td>    </tr>  </tbody></table></div><h2 id="a-transformer-which-can-be-added-to-a-full-pipeline"><a href="#a-transformer-which-can-be-added-to-a-full-pipeline" class="headerlink" title="a transformer which can be added to a full pipeline"></a>a transformer which can be added to a full pipeline</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">orderMaitain_Transformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"></span><br><span class="line">     <span class="comment"># Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        self.dtype_dict = &#123;&#125; </span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;initialized&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return self</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line">        </span><br><span class="line">        self.dtype_dict = X.dtypes.apply(<span class="keyword">lambda</span> x: x.name).to_dict()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line">        <span class="comment">#print(self.dtype_dict)</span></span><br><span class="line">        train_columns = []</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># add missing column if any</span></span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> self.dtype_dict:</span><br><span class="line">            train_columns.append(col)</span><br><span class="line">            <span class="keyword">if</span> col <span class="keyword">not</span> <span class="keyword">in</span> X.columns:</span><br><span class="line">                <span class="comment"># null boolean are treated as False; can also use other strategy as well</span></span><br><span class="line">                <span class="keyword">if</span> self.dtype_dict[col].startswith(<span class="string">&#x27;bool&#x27;</span>):</span><br><span class="line">                    X[col]=<span class="literal">False</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    X[col] = pd.Series(dtype=self.dtype_dict[col])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># apply same order to both training and test</span></span><br><span class="line">        <span class="built_in">print</span>(train_columns)</span><br><span class="line">        X = X[train_columns]  </span><br><span class="line">        <span class="keyword">return</span> X  </span><br><span class="line">    </span><br><span class="line">orderMaitain_transformer = orderMaitain_Transformer()</span><br><span class="line"></span><br></pre></td></tr></table></figure><pre><code>initialized</code></pre><h2 id="apply-transfomer-during-training-and-test-stages"><a href="#apply-transfomer-during-training-and-test-stages" class="headerlink" title="apply transfomer during training and test stages"></a>apply transfomer during training and test stages</h2><h3 id="during-training-stage"><a href="#during-training-stage" class="headerlink" title="during training stage"></a>during training stage</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">orderMaitain_transformer.fit_transform(df_train)</span><br></pre></td></tr></table></figure><pre><code>[&#39;cat1&#39;, &#39;cat2&#39;, &#39;cat3&#39;]</code></pre><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>cat1</th>      <th>cat2</th>      <th>cat3</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>a</td>      <td>b</td>      <td>f</td>    </tr>    <tr>      <th>1</th>      <td>c</td>      <td>d</td>      <td>e</td>    </tr>  </tbody></table></div><h3 id="during-test-and-prediction-stage"><a href="#during-test-and-prediction-stage" class="headerlink" title="during test and prediction stage"></a>during test and prediction stage</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># check that the resuls have an emppty column added, the order is the same as training</span></span><br><span class="line">orderMaitain_transformer.transform(df_test)</span><br></pre></td></tr></table></figure><pre><code>[&#39;cat1&#39;, &#39;cat2&#39;, &#39;cat3&#39;]</code></pre><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>cat1</th>      <th>cat2</th>      <th>cat3</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>j</td>      <td>h</td>      <td>NaN</td>    </tr>  </tbody></table></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pipeline </tag>
+            
+            <tag> transformer </tag>
+            
+            <tag> scikit-learn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Convert short texts to numeric vectors with Character ngram tf-idf vectorizer using scikit learn in Python</title>
       <link href="2022/01/15/2022-01-15-1/"/>
       <url>2022/01/15/2022-01-15-1/</url>
@@ -454,9 +483,9 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pipeline </tag>
             
             <tag> feature engineering </tag>
             
@@ -483,15 +512,15 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
             
-            <tag> feature engineering </tag>
+            <tag> pipeline </tag>
             
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -599,9 +628,9 @@
             
             <tag> python </tag>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> preprocessing </tag>
             
         </tags>
       

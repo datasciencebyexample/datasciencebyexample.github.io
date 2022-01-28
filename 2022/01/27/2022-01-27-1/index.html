@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Convert short texts to numeric vectors with Character ngram tf-idf vectorizer using scikit learn in Python, DataScienceTribe">
+    <meta name="keywords" content="A transformer example to maintain same feature order and add missing features back for feature engineering, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Convert short texts to numeric vectors with Character ngram tf-idf vectorizer using scikit learn in Python | DataScienceTribe</title>
+    <title>A transformer example to maintain same feature order and add missing features back for feature engineering | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Convert short texts to numeric vectors with Character ngram tf-idf vectorizer using scikit learn in Python</h1>
+                    <h1 class="description center-align post-title">A transformer example to maintain same feature order and add missing features back for feature engineering</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/text-mining/">
-                                <span class="chip bg-color">text mining</span>
+                            <a href="/tags/pipeline/">
+                                <span class="chip bg-color">pipeline</span>
                             </a>
                         
-                            <a href="/tags/natural-language-processing/">
-                                <span class="chip bg-color">natural language processing</span>
+                            <a href="/tags/transformer/">
+                                <span class="chip bg-color">transformer</span>
+                            </a>
+                        
+                            <a href="/tags/scikit-learn/">
+                                <span class="chip bg-color">scikit-learn</span>
                             </a>
                         
                     </div>
@@ -362,8 +366,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/machine-learning/" class="post-category">
-                                machine learning
+                            <a href="/categories/data-science/" class="post-category">
+                                data science
                             </a>
                         
                     </div>
@@ -375,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-01-15
+                    2022-01-27
                 </div>
                 
 
@@ -396,30 +400,180 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>When apply machine learning algorithms, to handel words or short texts, we usually need to get their numeric embedding vecotors first.<br>Some powerfulmethods including using pre-trained deep learning model such as BERT to more semantic embedding. If computation resource is a limit, or we want to have simpler embedding methods, we could try TF-IDF metrics. </p>
-<p>Here we introduce a very simple way to combine character level n-gram methods and TF-IDF to convert short texts such as a few words to numeric vectors.  Within numeric vectors, we could further apply classification methods such as Gradient Boosted Machine for downstream tasks.</p>
-<p>First, let’s review what’s n-gram:</p>
-<p>Quote some definition from the Wikipedia N-Gram page:</p>
-<p>…an n-gram is a contiguous sequence of n items from a given sequence of text or speech. The items can be phonemes, syllables, letters, words or base pairs according to the application… An n-gram of size 1 is referred to as a “unigram”; size 2 is a “bigram”; size 3 is a “trigram”. Larger sizes are sometimes referred to by the value of n, e.g., “four-gram”, “five-gram”, and so on.</p>
-<p>The two most common types of N-Grams, by far, are (1) character-level, where the items consist of one or more characters and (2) word-level, where the items consist of one or more words. The size of the item (or token as it’s often called) is defined by n;</p>
-<p>Second, what’s TF-IDF metrics?</p>
-<p>TF-IDF (Term Frequency - Inverse Document Frequency) encoding is an improved way of BOW (bag of words) which is the same as TF. It considers the frequently seen term in various documents to be less of importance.</p>
-<p>TF (Term Frequency): Counts how many term exists in a document<br>IDF (Inverse Document Frequency): Inverse of the number of documents which contains the term</p>
-<p>So TF-IDF is the basically product of TF and IDF metrics.</p>
-<p>It turns out to be very simple to implement character level n-gram TF-IDF encoding of short texts by using scikit-learn package.<br>This means we can easily incorporate the process step in our data process and feature engineering pipeline</p>
-<h2 id="Step-1-Fit-character-n-gram-tf-idf-vectorizer-with-training-data"><a href="#Step-1-Fit-character-n-gram-tf-idf-vectorizer-with-training-data" class="headerlink" title="Step 1 , Fit character n-gram tf idf vectorizer with training data"></a>Step 1 , Fit character n-gram tf idf vectorizer with training data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># using gram of length at 2 for example</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line">corpus = [<span class="string">&#x27;great people&#x27;</span>, <span class="string">&#x27;feel happy&#x27;</span>, <span class="string">&#x27;nice work&#x27;</span>,<span class="string">&#x27;warm weather&#x27;</span>]</span><br><span class="line">vectorizer = TfidfVectorizer(analyzer=<span class="string">&#x27;char&#x27;</span>, ngram_range=(<span class="number">2</span>,<span class="number">2</span>)).fit(corpus)</span><br><span class="line"><span class="built_in">print</span>(vectorizer.get_feature_names())</span><br></pre></td></tr></table></figure>
+                <p>For data science projects, one important steps in feature engineering is to make sure the order of feature columns during training<br>and prediction/test time is the same. Otherwise, we will not get the results as we expect.</p>
+<p>This is usually not a problem in train/test split or cross validation stages, where training and test data are generally split form the<br>same dataframe. However, once model is put online, and the transformer need to handel each single event, which usually comes in the<br>format of json data, then transformed to dataframe. During this process, the orignal order may not hold.</p>
+<p>To ensure the same feature order is used, we could build a transformer for the pipeline; During the fit stage, the orignal order will be<br>remembered, and during the transform stage, the same order will be enforced; Meanwhile, if there is any missing column, we will add a null value<br>column. </p>
+<h2 id="set-up-some-example-dataframe"><a href="#set-up-some-example-dataframe" class="headerlink" title="set up some example dataframe"></a>set up some example dataframe</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># training example, where we have 3 features</span></span><br><span class="line">df_train = pd.DataFrame(data=[[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;f&#x27;</span>],[<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>]])</span><br><span class="line">df_train.columns =  [<span class="string">&#x27;cat1&#x27;</span>,<span class="string">&#x27;cat2&#x27;</span>,<span class="string">&#x27;cat3&#x27;</span>]</span><br><span class="line">display(df_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># test example where we missing the 3rd feature</span></span><br><span class="line">df_test = pd.DataFrame(data=[[<span class="string">&#x27;h&#x27;</span>,<span class="string">&#x27;j&#x27;</span>]])</span><br><span class="line">df_test.columns =  [<span class="string">&#x27;cat2&#x27;</span>,<span class="string">&#x27;cat1&#x27;</span>]</span><br><span class="line">display(df_test)</span><br></pre></td></tr></table></figure>
 
-<pre><code>[&#39; h&#39;, &#39; p&#39;, &#39; w&#39;, &#39;ap&#39;, &#39;ar&#39;, &#39;at&#39;, &#39;ce&#39;, &#39;e &#39;, &#39;ea&#39;, &#39;ee&#39;, &#39;el&#39;, &#39;eo&#39;, &#39;er&#39;, &#39;fe&#39;, &#39;gr&#39;, &#39;ha&#39;, &#39;he&#39;, &#39;ic&#39;, &#39;l &#39;, &#39;le&#39;, &#39;m &#39;, &#39;ni&#39;, &#39;op&#39;, &#39;or&#39;, &#39;pe&#39;, &#39;pl&#39;, &#39;pp&#39;, &#39;py&#39;, &#39;re&#39;, &#39;rk&#39;, &#39;rm&#39;, &#39;t &#39;, &#39;th&#39;, &#39;wa&#39;, &#39;we&#39;, &#39;wo&#39;]
-</code></pre>
-<h2 id="Step-2-Transform-new-text-to-tf-idf-weighted-vector"><a href="#Step-2-Transform-new-text-to-tf-idf-weighted-vector" class="headerlink" title="Step 2, Transform new text to tf-idf weighted vector"></a>Step 2, Transform new text to tf-idf weighted vector</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">new_text = [<span class="string">&#x27;pineapple milk&#x27;</span>]</span><br><span class="line">tfidf_vector = vectorizer.transform(new_text).toarray()</span><br><span class="line"><span class="built_in">print</span>(tfidf_vector)</span><br></pre></td></tr></table></figure>
 
-<pre><code>[[0.         0.         0.         0.42176478 0.         0.
-  0.         0.42176478 0.3325242  0.         0.         0.
-  0.         0.         0.         0.         0.         0.
-  0.         0.42176478 0.         0.         0.         0.
-  0.         0.42176478 0.42176478 0.         0.         0.
-  0.         0.         0.         0.         0.         0.        ]]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
 </code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cat1</th>
+      <th>cat2</th>
+      <th>cat3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>b</td>
+      <td>f</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>c</td>
+      <td>d</td>
+      <td>e</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cat2</th>
+      <th>cat1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>h</td>
+      <td>j</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+<h2 id="a-transformer-which-can-be-added-to-a-full-pipeline"><a href="#a-transformer-which-can-be-added-to-a-full-pipeline" class="headerlink" title="a transformer which can be added to a full pipeline"></a>a transformer which can be added to a full pipeline</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">orderMaitain_Transformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"></span><br><span class="line">     <span class="comment"># Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        self.dtype_dict = &#123;&#125; </span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;initialized&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return self</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line">        </span><br><span class="line">        self.dtype_dict = X.dtypes.apply(<span class="keyword">lambda</span> x: x.name).to_dict()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line">        <span class="comment">#print(self.dtype_dict)</span></span><br><span class="line">        train_columns = []</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># add missing column if any</span></span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> self.dtype_dict:</span><br><span class="line">            train_columns.append(col)</span><br><span class="line">            <span class="keyword">if</span> col <span class="keyword">not</span> <span class="keyword">in</span> X.columns:</span><br><span class="line">                <span class="comment"># null boolean are treated as False; can also use other strategy as well</span></span><br><span class="line">                <span class="keyword">if</span> self.dtype_dict[col].startswith(<span class="string">&#x27;bool&#x27;</span>):</span><br><span class="line">                    X[col]=<span class="literal">False</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    X[col] = pd.Series(dtype=self.dtype_dict[col])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># apply same order to both training and test</span></span><br><span class="line">        <span class="built_in">print</span>(train_columns)</span><br><span class="line">        X = X[train_columns]  </span><br><span class="line">        <span class="keyword">return</span> X  </span><br><span class="line">    </span><br><span class="line">orderMaitain_transformer = orderMaitain_Transformer()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>initialized
+</code></pre>
+<h2 id="apply-transfomer-during-training-and-test-stages"><a href="#apply-transfomer-during-training-and-test-stages" class="headerlink" title="apply transfomer during training and test stages"></a>apply transfomer during training and test stages</h2><h3 id="during-training-stage"><a href="#during-training-stage" class="headerlink" title="during training stage"></a>during training stage</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">orderMaitain_transformer.fit_transform(df_train)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;cat1&#39;, &#39;cat2&#39;, &#39;cat3&#39;]
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cat1</th>
+      <th>cat2</th>
+      <th>cat3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>b</td>
+      <td>f</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>c</td>
+      <td>d</td>
+      <td>e</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="during-test-and-prediction-stage"><a href="#during-test-and-prediction-stage" class="headerlink" title="during test and prediction stage"></a>during test and prediction stage</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># check that the resuls have an emppty column added, the order is the same as training</span></span><br><span class="line">orderMaitain_transformer.transform(df_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;cat1&#39;, &#39;cat2&#39;, &#39;cat3&#39;]
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cat1</th>
+      <th>cat2</th>
+      <th>cat3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>j</td>
+      <td>h</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
                 
             </div>
@@ -446,7 +600,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/01/15/2022-01-15-1/">https://datasciencebyexample.github.io/2022/01/15/2022-01-15-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/01/27/2022-01-27-1/">https://datasciencebyexample.github.io/2022/01/27/2022-01-27-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -484,12 +638,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/text-mining/">
-                                    <span class="chip bg-color">text mining</span>
+                                <a href="/tags/pipeline/">
+                                    <span class="chip bg-color">pipeline</span>
                                 </a>
                             
-                                <a href="/tags/natural-language-processing/">
-                                    <span class="chip bg-color">natural language processing</span>
+                                <a href="/tags/transformer/">
+                                    <span class="chip bg-color">transformer</span>
+                                </a>
+                            
+                                <a href="/tags/scikit-learn/">
+                                    <span class="chip bg-color">scikit-learn</span>
                                 </a>
                             
                         </div>
@@ -535,9 +693,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/01/27/2022-01-27-1/">
                     <div class="card-image">
@@ -555,9 +714,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -570,6 +729,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -596,13 +756,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/29/2021-12-29-1/">
+                <a href="/2022/01/15/2022-01-15-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Use Python to solve Linear Programming optimization problem">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Convert short texts to numeric vectors with Character ngram tf-idf vectorizer using scikit learn in Python">
                         
-                        <span class="card-title">Use Python to solve Linear Programming optimization problem</span>
+                        <span class="card-title">Convert short texts to numeric vectors with Character ngram tf-idf vectorizer using scikit learn in Python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -613,14 +773,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/optimization/" class="post-category">
-                                    optimization
+                            <a href="/categories/machine-learning/" class="post-category">
+                                    machine learning
                                 </a>
                             
                             
@@ -630,12 +790,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linear-programming/">
-                        <span class="chip bg-color">linear programming</span>
+                    <a href="/tags/text-mining/">
+                        <span class="chip bg-color">text mining</span>
                     </a>
                     
-                    <a href="/tags/optimization/">
-                        <span class="chip bg-color">optimization</span>
+                    <a href="/tags/natural-language-processing/">
+                        <span class="chip bg-color">natural language processing</span>
                     </a>
                     
                 </div>
