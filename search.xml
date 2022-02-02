@@ -425,9 +425,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> python </tag>
             
             <tag> pandas tip </tag>
             
@@ -454,9 +454,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> python </tag>
             
             <tag> pandas tip </tag>
             
@@ -483,9 +483,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> feature engineering </tag>
             
@@ -512,15 +512,15 @@
       
         <tags>
             
+            <tag> pipeline </tag>
+            
             <tag> preprocessing </tag>
             
-            <tag> pipeline </tag>
+            <tag> feature engineering </tag>
             
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -626,11 +626,11 @@
       
         <tags>
             
-            <tag> python </tag>
+            <tag> preprocessing </tag>
             
             <tag> pandas </tag>
             
-            <tag> preprocessing </tag>
+            <tag> python </tag>
             
         </tags>
       
