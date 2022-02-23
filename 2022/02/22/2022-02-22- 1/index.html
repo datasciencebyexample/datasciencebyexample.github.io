@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="word tokenization and sentence tokenization in python using NLTK package, DataScienceTribe">
+    <meta name="keywords" content="Convert arbitrary date to the date of  Monday or Sundy within the same week in Python, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>word tokenization and sentence tokenization in python using NLTK package | DataScienceTribe</title>
+    <title>Convert arbitrary date to the date of  Monday or Sundy within the same week in Python | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">word tokenization and sentence tokenization in python using NLTK package</h1>
+                    <h1 class="description center-align post-title">Convert arbitrary date to the date of  Monday or Sundy within the same week in Python</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/tokenization/">
-                                <span class="chip bg-color">tokenization</span>
-                            </a>
-                        
-                            <a href="/tags/NLTK/">
-                                <span class="chip bg-color">NLTK</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -375,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-09
+                    2022-02-22
                 </div>
                 
 
@@ -396,24 +392,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="What-is-Tokenization"><a href="#What-is-Tokenization" class="headerlink" title="What is Tokenization?"></a>What is Tokenization?</h1><p>Tokenization is the process by which a large quantity of text is divided into smaller parts called tokens.<br>These tokens are very useful for finding patterns and are considered as a base step for stemming and lemmatization.<br>Tokenization also helps to substitute sensitive data elements with non-sensitive data elements.</p>
-<p>Natural language processing is used for building applications such as Text classification, intelligent chatbot, sentimental analysis, language translation, etc.<br>It becomes vital to understand the pattern in the text to achieve the above-stated purpose.</p>
-<h1 id="Tokenization-of-words"><a href="#Tokenization-of-words" class="headerlink" title="Tokenization of words"></a>Tokenization of words</h1><p>We use the method word_tokenize() to split a sentence into words.<br>The output of word tokenization can be converted to Data Frame for better text understanding in machine learning applications.<br>It can also be provided as input for further text cleaning steps such as punctuation removal, numeric character removal or stemming.</p>
-<p>Code example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from nltk.tokenize import word_tokenize</span><br><span class="line">text = &quot;God is Great! I won a lottery.&quot;</span><br><span class="line">print(word_tokenize(text))</span><br><span class="line"></span><br><span class="line">Output: [&#x27;God&#x27;, &#x27;is&#x27;, &#x27;Great&#x27;, &#x27;!&#x27;, &#x27;I&#x27;, &#x27;won&#x27;, &#x27;a&#x27;, &#x27;lottery&#x27;, &#x27;.&#x27;]</span><br></pre></td></tr></table></figure>
+                <p>It is common practice to convert date to the week number for normalization or feature preprocessing. While this is pretty useful, sometimes we want to compare the week number in a more strict fashion, such that we can order week 50 of last year and week 2 of this year, for example.</p>
+<p>Following code shows both<br>(1） how to get week number of datetime object<br>(2) get the exacte date of the Monday or Sunday within the same week</p>
+<h2 id="get-week-number-for-any-date"><a href="#get-week-number-for-any-date" class="headerlink" title="get week number for any date"></a>get week number for any date</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta, datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># example of a date str</span></span><br><span class="line">dt_str = <span class="string">&#x27;2022/02/22 05:23:20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert string to datetime object</span></span><br><span class="line">dt_obj = datetime.strptime(dt_str, <span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># get date of that Monday </span></span><br><span class="line">year, week_num, day_of_week = dt_obj.isocalendar()</span><br><span class="line"><span class="built_in">print</span>(week_num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>From the above example, one can see the punctuationa are also included. Sometimes we want to exclude that.<br>To achieve this purpose, there are two ways:</p>
-<h2 id="USE-nltk-RegexpTokenizer-TO-REMOVE-ALL-PUNCTUATION-MARKS"><a href="#USE-nltk-RegexpTokenizer-TO-REMOVE-ALL-PUNCTUATION-MARKS" class="headerlink" title="USE nltk.RegexpTokenizer() TO REMOVE ALL PUNCTUATION MARKS"></a>USE nltk.RegexpTokenizer() TO REMOVE ALL PUNCTUATION MARKS</h2><p>Call nltk.RegexpTokenizer(pattern) with pattern as r”\w+” to create a tokenzier that uses pattern to split a string.<br>Call RegexpTokenizer.tokenize(text) with RegexpTokenizer as the previous result and text as a string representing a sentence to return text as a list of words with punctuation’s removed.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sentence  = &quot;Think and wonder, wonder and think.&quot;</span><br><span class="line"></span><br><span class="line">tokenizer = nltk.RegexpTokenizer(r&quot;\w+&quot;)</span><br><span class="line">new_words = tokenizer.tokenize(sentence)</span><br><span class="line"></span><br><span class="line">print(new_words)</span><br><span class="line">OUTPUT</span><br><span class="line">[&#x27;Think&#x27;, &#x27;and&#x27;, &#x27;wonder&#x27;, &#x27;wonder&#x27;, &#x27;and&#x27;, &#x27;think&#x27;]</span><br></pre></td></tr></table></figure>
+<pre><code>8
+</code></pre>
+<h2 id="get-date-of-Monday-or-Sunday-for-any-date-within-the-same-week"><a href="#get-date-of-Monday-or-Sunday-for-any-date-within-the-same-week" class="headerlink" title="get date of Monday or Sunday for any date within the same week"></a>get date of Monday or Sunday for any date within the same week</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta, datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># get the date of Monday for that week</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_date_of_week</span>(<span class="params">date</span>):</span></span><br><span class="line">    start = date - timedelta(days=date.weekday())</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(start)[:<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># get the date of Sunday for that week</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">end_date_of_week</span>(<span class="params">date</span>):</span></span><br><span class="line">    start = date - timedelta(days=date.weekday())</span><br><span class="line">    end = start + timedelta(days=<span class="number">6</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(end)[:<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># example of a date str</span></span><br><span class="line">dt_str = <span class="string">&#x27;2022/02/22 05:23:20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert string to datetime object</span></span><br><span class="line">dt_obj = datetime.strptime(dt_str, <span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># get date of that Monday </span></span><br><span class="line"><span class="built_in">print</span>(start_date_of_week(dt_obj) )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># get date of that Sunday </span></span><br><span class="line"><span class="built_in">print</span>(end_date_of_week(dt_obj) )</span><br></pre></td></tr></table></figure>
 
-
-<h2 id="USE-nltk-word-tokenize-AND-LIST-COMPREHENSION-TO-REMOVE-ALL-PUNCTUATION-MARKS"><a href="#USE-nltk-word-tokenize-AND-LIST-COMPREHENSION-TO-REMOVE-ALL-PUNCTUATION-MARKS" class="headerlink" title="USE nltk.word_tokenize() AND LIST COMPREHENSION TO REMOVE ALL PUNCTUATION MARKS"></a>USE nltk.word_tokenize() AND LIST COMPREHENSION TO REMOVE ALL PUNCTUATION MARKS</h2><p>Call nltk.word_tokenize(text) with text as a string representing a sentence to return text as a list of words. Use the syntax [word for word in words if condition] with words as the previous result and condition as word.isalnum() to create a list containing each word in words that only contain alphanumeric characters.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sentence  = &quot;Think and wonder, wonder and think.&quot;</span><br><span class="line"></span><br><span class="line">words = nltk.word_tokenize(sentence)</span><br><span class="line">new_words= [word for word in words if word.isalnum()]</span><br><span class="line"></span><br><span class="line">print(new_words)</span><br><span class="line">OUTPUT</span><br><span class="line">[&#x27;Think&#x27;, &#x27;and&#x27;, &#x27;wonder&#x27;, &#x27;wonder&#x27;, &#x27;and&#x27;, &#x27;think&#x27;]</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="Tokenization-of-Sentences"><a href="#Tokenization-of-Sentences" class="headerlink" title="Tokenization of Sentences"></a>Tokenization of Sentences</h1><p>Sometimes you need to get sentences out of the texts at first.</p>
-<p>Code example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from nltk.tokenize import sent_tokenize</span><br><span class="line">text = &quot;God is Great! I won a lottery.&quot;</span><br><span class="line">print(sent_tokenize(text))</span><br><span class="line"></span><br><span class="line">Output: [&#x27;God is Great!&#x27;, &#x27;I won a lottery &#x27;]</span><br></pre></td></tr></table></figure>
+<pre><code>2022-02-21
+2022-02-27
+</code></pre>
 
                 
             </div>
@@ -440,7 +429,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/09/2021-06-09-1/">https://datasciencebyexample.github.io/2021/06/09/2021-06-09-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/02/22/2022-02-22-%201/">https://datasciencebyexample.github.io/2022/02/22/2022-02-22-%201/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -478,12 +467,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/tokenization/">
-                                    <span class="chip bg-color">tokenization</span>
-                                </a>
-                            
-                                <a href="/tags/NLTK/">
-                                    <span class="chip bg-color">NLTK</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
                         </div>
@@ -529,17 +514,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/10/2021-06-10-1/">
+                <a href="/2022/02/22/2022-02-22-%201/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="time series feature engineering using tsfresh, training vs test">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Convert arbitrary date to the date of  Monday or Sundy within the same week in Python">
                         
-                        <span class="card-title">time series feature engineering using tsfresh, training vs test</span>
+                        <span class="card-title">Convert arbitrary date to the date of  Monday or Sundy within the same week in Python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -549,9 +535,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -564,27 +550,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
-                    </a>
-                    
-                    <a href="/tags/tsfresh/">
-                        <span class="chip bg-color">tsfresh</span>
-                    </a>
-                    
-                    <a href="/tags/time-series/">
-                        <span class="chip bg-color">time series</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -598,13 +569,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/08/2021-06-08-1/">
+                <a href="/2022/01/27/2022-01-27-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="missing value or null value processing in pandas dataframe">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="A transformer example to maintain same feature order and add missing features back for feature engineering">
                         
-                        <span class="card-title">missing value or null value processing in pandas dataframe</span>
+                        <span class="card-title">A transformer example to maintain same feature order and add missing features back for feature engineering</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -615,7 +586,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-27
                             </span>
                         <span class="publish-author">
                             
@@ -632,12 +603,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/pipeline/">
+                        <span class="chip bg-color">pipeline</span>
                     </a>
                     
-                    <a href="/tags/dataframe/">
-                        <span class="chip bg-color">dataframe</span>
+                    <a href="/tags/transformer/">
+                        <span class="chip bg-color">transformer</span>
+                    </a>
+                    
+                    <a href="/tags/scikit-learn/">
+                        <span class="chip bg-color">scikit-learn</span>
                     </a>
                     
                 </div>

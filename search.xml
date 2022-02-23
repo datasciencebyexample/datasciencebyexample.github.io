@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Convert arbitrary date to the date of  Monday or Sundy within the same week in Python</title>
+      <link href="2022/02/22/2022-02-22-%201/"/>
+      <url>2022/02/22/2022-02-22-%201/</url>
+      
+        <content type="html"><![CDATA[<p>It is common practice to convert date to the week number for normalization or feature preprocessing. While this is pretty useful, sometimes we want to compare the week number in a more strict fashion, such that we can order week 50 of last year and week 2 of this year, for example.</p><p>Following code shows both<br>(1） how to get week number of datetime object<br>(2) get the exacte date of the Monday or Sunday within the same week</p><h2 id="get-week-number-for-any-date"><a href="#get-week-number-for-any-date" class="headerlink" title="get week number for any date"></a>get week number for any date</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta, datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># example of a date str</span></span><br><span class="line">dt_str = <span class="string">&#x27;2022/02/22 05:23:20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert string to datetime object</span></span><br><span class="line">dt_obj = datetime.strptime(dt_str, <span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># get date of that Monday </span></span><br><span class="line">year, week_num, day_of_week = dt_obj.isocalendar()</span><br><span class="line"><span class="built_in">print</span>(week_num)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><pre><code>8</code></pre><h2 id="get-date-of-Monday-or-Sunday-for-any-date-within-the-same-week"><a href="#get-date-of-Monday-or-Sunday-for-any-date-within-the-same-week" class="headerlink" title="get date of Monday or Sunday for any date within the same week"></a>get date of Monday or Sunday for any date within the same week</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta, datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># get the date of Monday for that week</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_date_of_week</span>(<span class="params">date</span>):</span></span><br><span class="line">    start = date - timedelta(days=date.weekday())</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(start)[:<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># get the date of Sunday for that week</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">end_date_of_week</span>(<span class="params">date</span>):</span></span><br><span class="line">    start = date - timedelta(days=date.weekday())</span><br><span class="line">    end = start + timedelta(days=<span class="number">6</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(end)[:<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># example of a date str</span></span><br><span class="line">dt_str = <span class="string">&#x27;2022/02/22 05:23:20&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert string to datetime object</span></span><br><span class="line">dt_obj = datetime.strptime(dt_str, <span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># get date of that Monday </span></span><br><span class="line"><span class="built_in">print</span>(start_date_of_week(dt_obj) )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># get date of that Sunday </span></span><br><span class="line"><span class="built_in">print</span>(end_date_of_week(dt_obj) )</span><br></pre></td></tr></table></figure><pre><code>2022-02-212022-02-27</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>A transformer example to maintain same feature order and add missing features back for feature engineering</title>
       <link href="2022/01/27/2022-01-27-1/"/>
       <url>2022/01/27/2022-01-27-1/</url>
@@ -425,9 +450,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> python </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> pandas tip </tag>
             
@@ -454,9 +479,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> python </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> pandas tip </tag>
             
@@ -483,9 +508,9 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pipeline </tag>
             
             <tag> feature engineering </tag>
             
@@ -512,9 +537,9 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pipeline </tag>
             
             <tag> feature engineering </tag>
             
@@ -599,9 +624,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -626,11 +651,11 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
+            <tag> python </tag>
             
             <tag> pandas </tag>
             
-            <tag> python </tag>
+            <tag> preprocessing </tag>
             
         </tags>
       
