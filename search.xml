@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Ten important Python libraries that Data Scientist must know</title>
+      <link href="2022/03/13/2022-03-12-%201/"/>
+      <url>2022/03/13/2022-03-12-%201/</url>
+      
+        <content type="html"><![CDATA[<p>Good libraries are like useful toolbox, and learning these libraries can make you more productive, whether you’re a novice or a data science expert.</p><p>Below is a basic introduction to some of the most popular Python libraries for data science and machine learning.</p><h2 id="1-Scikit-learn"><a href="#1-Scikit-learn" class="headerlink" title="1. Scikit-learn"></a>1. Scikit-learn</h2><p>This is the most basic and popular Python library for machine learning. In fact, Scikit-learn is the main library for machine learning. It has algorithms and modules for preprocessing, cross-validation, and other similar purposes.</p><p>Some of these algorithms involve regression, decision trees, ensemble modeling, and unsupervised learning algorithms such as clustering.</p><p>Project address: <a href="https://github.com/scikit-learn/scikit-learn">https://github.com/scikit-learn/scikit-learn</a></p><h2 id="2-NumPy"><a href="#2-NumPy" class="headerlink" title="2. NumPy"></a>2. NumPy</h2><p>NumPy is another wonderful Python library for machine learning and heavy computing. NumPy facilitates simple and efficient numerical computation. It has many other libraries built on top of it, such as Pandas.</p><p>You should at least make sure to learn about NumPy arrays, which are fundamental and have many applications in machine learning, data science, and artificial intelligence-based programs.</p><p>Project address: <a href="https://github.com/numpy/numpy">https://github.com/numpy/numpy</a></p><h2 id="3-Pandas"><a href="#3-Pandas" class="headerlink" title="3. Pandas"></a>3. Pandas</h2><p>This is a Python library built on top of NumPy. It is handy in terms of data structures and exploratory analysis. Another important feature it provides is a DataFrame, a two-dimensional data structure with potentially different types of columns.</p><p>Pandas will be one of the most important libraries you will ever need, which is why it is so important to learn Pandas well.</p><p>Project address: <a href="https://github.com/pandas-dev/pandas">https://github.com/pandas-dev/pandas</a></p><h2 id="4-Matplotlib"><a href="#4-Matplotlib" class="headerlink" title="4. Matplotlib"></a>4. Matplotlib</h2><p>If you need to plot, then Matlotlib is an option. It provides a flexible plotting and visualization library, and Matplotlib is powerful. However, it is cumbersome, so, you can choose Seaborn instead.</p><p>Project address: <a href="https://github.com/matplotlib/matplotlib">https://github.com/matplotlib/matplotlib</a></p><h2 id="5-Seaborn"><a href="#5-Seaborn" class="headerlink" title="5. Seaborn"></a>5. Seaborn</h2><p>Like Matplotlib, it’s a great plotting library, but with Seaborn it’s easier than ever to draw common data visualizations.</p><p>It builds on top of Matplotlib and provides a more pleasant high-level wrapper. You should learn effective data visualization.</p><p>Project address: <a href="https://github.com/seaborn">https://github.com/seaborn</a></p><h2 id="6-SciPy"><a href="#6-SciPy" class="headerlink" title="6. SciPy"></a>6. SciPy</h2><p>This is a Python library for scientific and technical computing. It will give you all the tools you need for scientific and technical computing.</p><p>It has modules for optimization, linear algebra, integration, interpolation, special functions, fast Fourier transforms, signal and image processing, independent dependency estimation solvers, and other tasks.</p><p>Project address: <a href="https://github.com/scipy/scipy">https://github.com/scipy/scipy</a></p><h2 id="7-OpenCV"><a href="#7-OpenCV" class="headerlink" title="7. OpenCV"></a>7. OpenCV</h2><p>This is another great library for Python developers in computer vision. In case you didn’t know, computer vision is one of the most exciting fields in machine learning and artificial intelligence.</p><p>It has applications in many industries such as self-driving cars, robotics, augmented reality, etc., and OpenCV is the best computer vision library.</p><p>Although you can use OpenCV in many programming languages ​​like C++, its Python version is beginner friendly and easy to use, which makes it a great library to be included in this list.</p><p>If you want to learn Python and OpenCV for basic image processing, and do image classification and object detection, and need a course, then I highly recommend taking a hands-on course that will teach you an OpenCV through several labs and exercises.</p><p>Project address: <a href="https://github.com/opencv/opencv">https://github.com/opencv/opencv</a></p><h2 id="8-TensorFlow"><a href="#8-TensorFlow" class="headerlink" title="8. TensorFlow"></a>8. TensorFlow</h2><p>This is one of the most popular machine learning libraries, and chances are you’ve already heard of it. You probably know TensorFlow from Google, invented by their Google Brain team, and used in the RankBrain algorithm that powers millions of search questions on Google’s search engine.</p><p>In general, it is a symbolic math library that is also used in machine learning applications such as neural networks. TensorFlow has many applications, and you can find many stories online, such as how a Japanese farmer used TensorFlow to sort cucumbers.</p><p>Project address: <a href="https://github.com/tensorflow/tensorflow">https://github.com/tensorflow/tensorflow</a></p><h2 id="9-PyTorch"><a href="#9-PyTorch" class="headerlink" title="9. PyTorch"></a>9. PyTorch</h2><p>This is another exciting and powerful Python library for data science and machine learning, something every data scientist should learn.</p><p>In case you didn’t know, PyTorch is one of the best deep learning libraries developed by Facebook for deep learning applications such as face recognition self-driving cars and more.</p><p>You can also use PyTorch to build machine learning models like NLP and computer vision, to name a few. You can also use PyTorch to create deep neural networks.</p><p>Project address: <a href="https://github.com/pytorch/pytorch">https://github.com/pytorch/pytorch</a></p><h2 id="10-Keras"><a href="#10-Keras" class="headerlink" title="10. Keras"></a>10. Keras</h2><p>One of the main problems with creating machine learning and deep learning-based solutions is that implementing them can be tedious, requiring many lines of complex code. Keras is a library that makes it easier for you to create these deep learning solutions.</p><p>With just a few lines of code, you can create a model that may require hundreds of lines of traditional code.</p><p>Project address: <a href="https://github.com/keras-team/keras">https://github.com/keras-team/keras</a> </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Convert arbitrary date to the date of  Monday or Sundy within the same week in Python</title>
       <link href="2022/02/22/2022-02-22-%201/"/>
       <url>2022/02/22/2022-02-22-%201/</url>
@@ -541,11 +566,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
