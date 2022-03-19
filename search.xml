@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Good use of regular expression, remove spaces between punctuation and words, normalize texts automatically</title>
+      <link href="2022/03/19/2022-03-19-1/"/>
+      <url>2022/03/19/2022-03-19-1/</url>
+      
+        <content type="html"><![CDATA[<p>Regular expression (shortened as regex) is very powerful way to improve efficiency and change formats for us.<br>Here are example how we can leverage grouping in regrex, and remove extra spaces between punctuation and chaters in fron of it.<br>Thus we can normalize format errors in texts automatically.</p><h2 id="Engish-sentence-example，remove-spaces-between-punctuation-and-words"><a href="#Engish-sentence-example，remove-spaces-between-punctuation-and-words" class="headerlink" title="Engish sentence example，remove spaces between punctuation and words"></a>Engish sentence example，remove spaces between punctuation and words</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">sent = <span class="string">&quot;What a wonderful day ,I want to go out and have a walk   !&quot;</span></span><br><span class="line">sent=re.sub(<span class="string">r&#x27;\s+([?,.!;&quot;])&#x27;</span>, <span class="string">r&#x27;\1&#x27;</span>, sent)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sent)</span><br></pre></td></tr></table></figure><pre><code>What a wonderful day,I want to go out and have a walk!</code></pre><p>In the above regrex rule definition: r’\s+([?,.!;”])’, the parentheses define a group (the first group), the square brackets in the group represent all the punctuation marks we need to distinguish by regex, and \s+ represents multiple spaces. So the whole rules means we replace the format of spaces + group with group only, so it automatically removes any extra spaces before the punctuations.</p><h2 id="Chinese-sentence-example，remove-spaces-between-punctuation-and-words"><a href="#Chinese-sentence-example，remove-spaces-between-punctuation-and-words" class="headerlink" title="Chinese sentence example，remove spaces between punctuation and words"></a>Chinese sentence example，remove spaces between punctuation and words</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">sent = <span class="string">&quot;天气真好   ! 我要出去散步 。&quot;</span></span><br><span class="line">sent=re.sub(<span class="string">r&#x27;\s+([?,.!;&quot;。，])&#x27;</span>, <span class="string">r&#x27;\1&#x27;</span>, sent)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(sent)</span><br></pre></td></tr></table></figure><pre><code>天气真好! 我要出去散步。</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> regex </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ten important Python libraries that Data Scientist must know</title>
       <link href="2022/03/13/2022-03-12-%201/"/>
       <url>2022/03/13/2022-03-12-%201/</url>
