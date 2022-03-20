@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="boost exact phrase search results ranking in elasticsearch, DataScienceTribe">
+    <meta name="keywords" content="What is Web3? Its relationship with Web1, Web2 and metaverse, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>boost exact phrase search results ranking in elasticsearch | DataScienceTribe</title>
+    <title>What is Web3? Its relationship with Web1, Web2 and metaverse | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">boost exact phrase search results ranking in elasticsearch</h1>
+                    <h1 class="description center-align post-title">What is Web3? Its relationship with Web1, Web2 and metaverse</h1>
                 </div>
             </div>
         </div>
@@ -346,12 +346,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/elasticsearch/">
-                                <span class="chip bg-color">elasticsearch</span>
-                            </a>
-                        
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/Web3/">
+                                <span class="chip bg-color">Web3</span>
                             </a>
                         
                     </div>
@@ -362,8 +358,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/search/" class="post-category">
-                                search
+                            <a href="/categories/Metaverse/" class="post-category">
+                                Metaverse
                             </a>
                         
                     </div>
@@ -375,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-05
+                    2022-03-20
                 </div>
                 
 
@@ -396,22 +392,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Elasticsearch use the DSL format to create query.</p>
-<p>One easy search is to use multi_match by passing the query key word, and give the fields to search for.</p>
-<p>Here is an example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line">es = Elasticsearch()</span><br><span class="line">indexname = &#x27;myindex&#x27;</span><br><span class="line"></span><br><span class="line">keyword = &#x27;test&#x27;</span><br><span class="line">   dsl=&#123;</span><br><span class="line">       &quot;query&quot;: &#123;</span><br><span class="line">           &quot;multi_match&quot; : &#123;</span><br><span class="line">                   &quot;query&quot;:  keyword,</span><br><span class="line">                   &quot;fields&quot;: [ &quot;content&quot;]</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">   dsize=10</span><br><span class="line">   result_r = es.search(index=indexname, body=dsl,size=dsize)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>The problem with the above query is that:if your query keyword is a phrase, you might find many results that have the exact match are ranked lower.</p>
-<p>To solve this problem, you might want to try this new dsl format:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dsl=&#123;</span><br><span class="line">   </span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">       &quot;bool&quot;: &#123;</span><br><span class="line">         &quot;must&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ]</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ],</span><br><span class="line">         &quot;should&quot;: [</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">                  &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;type&quot;: &quot;phrase&quot;,</span><br><span class="line">               &quot;boost&quot;: 10</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;,</span><br><span class="line">           &#123;</span><br><span class="line">             &quot;multi_match&quot;: &#123;</span><br><span class="line">               &quot;query&quot;: keyword,</span><br><span class="line">               &quot;fields&quot;: [</span><br><span class="line">               &quot;content1&quot;,&quot;content2&quot;</span><br><span class="line">               ],</span><br><span class="line">               &quot;operator&quot;: &quot;and&quot;,</span><br><span class="line">               &quot;boost&quot;: 4</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">           </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>one thing to explain in the above the query, is the ‘operator’; According to the official elasticsearch webpage:</p>
-<p>operator and minimum_should_match<br>The best_fields and most_fields types are field-centric — they generate a match query per field. This means that the operator and minimum_should_match parameters are applied to each field individually, which is probably not what you want.</p>
-<p>Take this query for example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;multi_match&quot; : &#123;</span><br><span class="line">      &quot;query&quot;:      &quot;Will Smith&quot;,</span><br><span class="line">      &quot;type&quot;:       &quot;best_fields&quot;,</span><br><span class="line">      &quot;fields&quot;:     [ &quot;first_name&quot;, &quot;last_name&quot; ],</span><br><span class="line">      &quot;operator&quot;:   &quot;and&quot; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This query is executed as:</p>
-<p>  (+first_name:will +first_name:smith)<br>| (+last_name:will  +last_name:smith)</p>
-<p>In other words, all terms must be present in a single field for a document to match.</p>
+                <p>The Internet has so far been in two phases: Web 1.0 and Web 2.0.</p>
+<p>The next phase, naturally, is Web 3.0 (Web3 for short). This article talks about some of the basic understanding of Web3 and what it is.<br><img src="/content/images/2022-03-20-1.jpg" alt="png"></p>
+<h2 id="1-Historical-review"><a href="#1-Historical-review" class="headerlink" title="1. Historical review"></a>1. Historical review</h2><p>In the Web 1.0 stage, users are pure content consumers, and the content is provided by the website. You can watch whatever the website lets you watch. A typical example is a news portal.<br><img src="/content/images/2022-03-20-2.jpg" alt="png"></p>
+<p>In the Web 2.0 stage, users are the producers of content, and a website is just a platform that provides services to users. Typical Web 2.0 platforms include Wikipedia, Douyin, WeChat, and so on.<br><img src="/content/images/2022-03-20-3.jpg" alt="png"></p>
+<h2 id="2-Characteristics-of-Web3"><a href="#2-Characteristics-of-Web3" class="headerlink" title="2. Characteristics of Web3"></a>2. Characteristics of Web3</h2><p>Many features of Web3 are still unclear, but many experts believe that it is related to the blockchain.<br>Simply speaking, Web 1.0 is users reading the Internet, Web 2.0 is users writing to the Internet, and Web3 is users living on the Internet.</p>
+<p>Entertainment, work, study, consumption, and communication all take place online. A website is not just a service, it is a living space where part of people’s lives can be done online.</p>
+<p>Study on educational sites, meet on conference sites, make friends on social networking sites, and have fun on gaming sites. All websites together form an all-encompassing online world.</p>
+<h2 id="3-Virtual-world"><a href="#3-Virtual-world" class="headerlink" title="3. Virtual world"></a>3. Virtual world</h2><p>All the life functions of a website, if they can be linked together to allow users to move from one scene to another seamlessly, constitute a virtual world. This is probably what the recently popular metaverse looks like.</p>
+<p>At that stage, users no longer visit the website, but enter the virtual world and live a virtual online life.</p>
+<h2 id="4-Web3-is-distributed"><a href="#4-Web3-is-distributed" class="headerlink" title="4. Web3 is distributed"></a>4. Web3 is distributed</h2><p>Such a virtual world obviously cannot be monopolized by one or several giants, otherwise we will rely on these giants and have to abide by the rules set by them. When your life is in the virtual world, one day the giant suddenly decides to close your account, your virtual life will come to an abrupt end!</p>
+<p>This is why many people have proposed that Web3 should be distributed. This has two meanings:</p>
+<p>(1) It is not centralized, so no single company can control it;</p>
+<p>(2) There are multiple providers for any kind of service, which are connected by distributed protocols, and users can transfer from one provider to another service provider with minimal cost.</p>
+<h2 id="5-The-role-of-blockchain"><a href="#5-The-role-of-blockchain" class="headerlink" title="5. The role of blockchain"></a>5. The role of blockchain</h2><p>If Web3 is determined to be distributed, then blockchain is simply natural infrastructure. Because the blockchain is an implementation of a distributed database, it is distributed in itself, and once the information is on the chain, it cannot be modified.</p>
+<p>This solves the core problem of Web3: data exchange between different websites. Different websites can freely read and write the same user’s data, and these data can be trusted, thus ensuring that users entering another website are like entering different regions of the same world.</p>
+<p>Once Web3 is built on the blockchain, according to the design of the blockchain, users need to have a digital wallet, which is your ID card and bank account in the virtual world. Your identity, property, and consumption are all identified through this digital wallet. Websites identify who you are by the ID of your digital wallet.</p>
+<p>On the other hand, with digital wallets, banking and finance become virtual, which makes the virtual world more like the real world.</p>
+<h2 id="6-Digital-Assets"><a href="#6-Digital-Assets" class="headerlink" title="6. Digital Assets"></a>6. Digital Assets</h2><p>The blockchain allows arbitrary data to be written, so inevitably, all digital records of our virtual lives can be placed on the blockchain.</p>
+<p>If each virtual item has its own number and records them in the blockchain, their owner (ie, linked to a digital wallet) can be determined.</p>
+<p>For example, each digital picture in the virtual world can have a unique number on the blockchain, which will not be confused with other pictures, and the owner of each picture can be determined by linking to a digital wallet.</p>
+<p>We could also trade the picture, register it to another digital wallet, and make its owner someone else. Now the very popular NFT is doing this, but it is not simply a picture registered on the blockchain, but a digital collectible.</p>
+<p>Entrepreneur Chris Dixon recently said publicly: “Web3 is ownership”, which is exactly what he means.</p>
+<p>If everyone, all items, and all transactions are registered on the blockchain, the Web3 based on it is simply endless and unimaginable now. The possibility of the virtual world is 100 times, 1000 times more than the real world.</p>
+<p>At present, it is only the initial stage of Web3, the infrastructure has not been completed, and the gameplay is still being explored, but the progress is very fast. Countless innovations and opportunities should emerge in this area, which deserves close attention. </p>
 
                 
             </div>
@@ -438,7 +442,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/">https://datasciencebyexample.github.io/2021/06/05/2021-06-05-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/03/20/2022-03-20-1/">https://datasciencebyexample.github.io/2022/03/20/2022-03-20-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -476,12 +480,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/elasticsearch/">
-                                    <span class="chip bg-color">elasticsearch</span>
-                                </a>
-                            
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/Web3/">
+                                    <span class="chip bg-color">Web3</span>
                                 </a>
                             
                         </div>
@@ -527,17 +527,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/08/2021-06-08-1/">
+                <a href="/2022/03/20/2022-03-20-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="missing value or null value processing in pandas dataframe">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="What is Web3? Its relationship with Web1, Web2 and metaverse">
                         
-                        <span class="card-title">missing value or null value processing in pandas dataframe</span>
+                        <span class="card-title">What is Web3? Its relationship with Web1, Web2 and metaverse</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -547,30 +548,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/Metaverse/" class="post-category">
+                                    Metaverse
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
-                    
-                    <a href="/tags/dataframe/">
-                        <span class="chip bg-color">dataframe</span>
+                    <a href="/tags/Web3/">
+                        <span class="chip bg-color">Web3</span>
                     </a>
                     
                 </div>
@@ -584,13 +582,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
+                <a href="/2022/03/19/2022-03-19-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Good use of regular expression, remove spaces between punctuation and words, normalize texts automatically">
                         
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">Good use of regular expression, remove spaces between punctuation and words, normalize texts automatically</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -601,7 +599,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-19
                             </span>
                         <span class="publish-author">
                             
@@ -622,12 +620,8 @@
                         <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/regex/">
+                        <span class="chip bg-color">regex</span>
                     </a>
                     
                 </div>

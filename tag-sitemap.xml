@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/Web3/</loc>
+        <lastmod>2022-03-20T03:51:02.351Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/regex/</loc>
         <lastmod>2022-03-19T18:00:52.575Z</lastmod>
         <changefreq>weekly</changefreq>

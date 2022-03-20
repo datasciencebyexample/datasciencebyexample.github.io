@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>What is Web3? Its relationship with Web1, Web2 and metaverse</title>
+      <link href="2022/03/20/2022-03-20-1/"/>
+      <url>2022/03/20/2022-03-20-1/</url>
+      
+        <content type="html"><![CDATA[<p>The Internet has so far been in two phases: Web 1.0 and Web 2.0.</p><p>The next phase, naturally, is Web 3.0 (Web3 for short). This article talks about some of the basic understanding of Web3 and what it is.<br><img src="/content/images/2022-03-20-1.jpg" alt="png"></p><h2 id="1-Historical-review"><a href="#1-Historical-review" class="headerlink" title="1. Historical review"></a>1. Historical review</h2><p>In the Web 1.0 stage, users are pure content consumers, and the content is provided by the website. You can watch whatever the website lets you watch. A typical example is a news portal.<br><img src="/content/images/2022-03-20-2.jpg" alt="png"></p><p>In the Web 2.0 stage, users are the producers of content, and a website is just a platform that provides services to users. Typical Web 2.0 platforms include Wikipedia, Douyin, WeChat, and so on.<br><img src="/content/images/2022-03-20-3.jpg" alt="png"></p><h2 id="2-Characteristics-of-Web3"><a href="#2-Characteristics-of-Web3" class="headerlink" title="2. Characteristics of Web3"></a>2. Characteristics of Web3</h2><p>Many features of Web3 are still unclear, but many experts believe that it is related to the blockchain.<br>Simply speaking, Web 1.0 is users reading the Internet, Web 2.0 is users writing to the Internet, and Web3 is users living on the Internet.</p><p>Entertainment, work, study, consumption, and communication all take place online. A website is not just a service, it is a living space where part of people’s lives can be done online.</p><p>Study on educational sites, meet on conference sites, make friends on social networking sites, and have fun on gaming sites. All websites together form an all-encompassing online world.</p><h2 id="3-Virtual-world"><a href="#3-Virtual-world" class="headerlink" title="3. Virtual world"></a>3. Virtual world</h2><p>All the life functions of a website, if they can be linked together to allow users to move from one scene to another seamlessly, constitute a virtual world. This is probably what the recently popular metaverse looks like.</p><p>At that stage, users no longer visit the website, but enter the virtual world and live a virtual online life.</p><h2 id="4-Web3-is-distributed"><a href="#4-Web3-is-distributed" class="headerlink" title="4. Web3 is distributed"></a>4. Web3 is distributed</h2><p>Such a virtual world obviously cannot be monopolized by one or several giants, otherwise we will rely on these giants and have to abide by the rules set by them. When your life is in the virtual world, one day the giant suddenly decides to close your account, your virtual life will come to an abrupt end!</p><p>This is why many people have proposed that Web3 should be distributed. This has two meanings:</p><p>(1) It is not centralized, so no single company can control it;</p><p>(2) There are multiple providers for any kind of service, which are connected by distributed protocols, and users can transfer from one provider to another service provider with minimal cost.</p><h2 id="5-The-role-of-blockchain"><a href="#5-The-role-of-blockchain" class="headerlink" title="5. The role of blockchain"></a>5. The role of blockchain</h2><p>If Web3 is determined to be distributed, then blockchain is simply natural infrastructure. Because the blockchain is an implementation of a distributed database, it is distributed in itself, and once the information is on the chain, it cannot be modified.</p><p>This solves the core problem of Web3: data exchange between different websites. Different websites can freely read and write the same user’s data, and these data can be trusted, thus ensuring that users entering another website are like entering different regions of the same world.</p><p>Once Web3 is built on the blockchain, according to the design of the blockchain, users need to have a digital wallet, which is your ID card and bank account in the virtual world. Your identity, property, and consumption are all identified through this digital wallet. Websites identify who you are by the ID of your digital wallet.</p><p>On the other hand, with digital wallets, banking and finance become virtual, which makes the virtual world more like the real world.</p><h2 id="6-Digital-Assets"><a href="#6-Digital-Assets" class="headerlink" title="6. Digital Assets"></a>6. Digital Assets</h2><p>The blockchain allows arbitrary data to be written, so inevitably, all digital records of our virtual lives can be placed on the blockchain.</p><p>If each virtual item has its own number and records them in the blockchain, their owner (ie, linked to a digital wallet) can be determined.</p><p>For example, each digital picture in the virtual world can have a unique number on the blockchain, which will not be confused with other pictures, and the owner of each picture can be determined by linking to a digital wallet.</p><p>We could also trade the picture, register it to another digital wallet, and make its owner someone else. Now the very popular NFT is doing this, but it is not simply a picture registered on the blockchain, but a digital collectible.</p><p>Entrepreneur Chris Dixon recently said publicly: “Web3 is ownership”, which is exactly what he means.</p><p>If everyone, all items, and all transactions are registered on the blockchain, the Web3 based on it is simply endless and unimaginable now. The possibility of the virtual world is 100 times, 1000 times more than the real world.</p><p>At present, it is only the initial stage of Web3, the infrastructure has not been completed, and the gameplay is still being explored, but the progress is very fast. Countless innovations and opportunities should emerge in this area, which deserves close attention. </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Metaverse </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Good use of regular expression, remove spaces between punctuation and words, normalize texts automatically</title>
       <link href="2022/03/19/2022-03-19-1/"/>
       <url>2022/03/19/2022-03-19-1/</url>
@@ -676,9 +701,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
