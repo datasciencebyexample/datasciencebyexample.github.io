@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to plot mulitiple subplots of barplots using seaborn</title>
+      <link href="2022/05/15/2022-05-15-1/"/>
+      <url>2022/05/15/2022-05-15-1/</url>
+      
+        <content type="html"><![CDATA[<p>Sometimes we want to plot multiple barplots in subplots, this examples shows a nice way to do it.</p><h2 id="load-sample-data"><a href="#load-sample-data" class="headerlink" title="load sample data"></a>load sample data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_theme(style=<span class="string">&quot;whitegrid&quot;</span>)</span><br><span class="line">tips = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tips.head(<span class="number">2</span>)</span><br></pre></td></tr></table></figure><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>total_bill</th>      <th>tip</th>      <th>sex</th>      <th>smoker</th>      <th>day</th>      <th>time</th>      <th>size</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>16.99</td>      <td>1.01</td>      <td>Female</td>      <td>No</td>      <td>Sun</td>      <td>Dinner</td>      <td>2</td>    </tr>    <tr>      <th>1</th>      <td>10.34</td>      <td>1.66</td>      <td>Male</td>      <td>No</td>      <td>Sun</td>      <td>Dinner</td>      <td>3</td>    </tr>  </tbody></table></div><h2 id="aggregate-the-data-by-day-and-sex-and-sum-tips-for-each-dimension"><a href="#aggregate-the-data-by-day-and-sex-and-sum-tips-for-each-dimension" class="headerlink" title="aggregate the data by day and sex, and sum tips for each dimension"></a>aggregate the data by day and sex, and sum tips for each dimension</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tips_agg = tips.groupby([<span class="string">&#x27;day&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>])[<span class="string">&#x27;tip&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line">tips_agg</span><br></pre></td></tr></table></figure><div><style scoped>    .dataframe tbody tr th:only-of-type {        vertical-align: middle;    }<pre><code>.dataframe tbody tr th &#123;    vertical-align: top;&#125;.dataframe thead th &#123;    text-align: right;&#125;</code></pre><p></style></p><table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>day</th>      <th>sex</th>      <th>tip</th>    </tr>  </thead>  <tbody>    <tr>      <th>0</th>      <td>Thur</td>      <td>Male</td>      <td>89.41</td>    </tr>    <tr>      <th>1</th>      <td>Thur</td>      <td>Female</td>      <td>82.42</td>    </tr>    <tr>      <th>2</th>      <td>Fri</td>      <td>Male</td>      <td>26.93</td>    </tr>    <tr>      <th>3</th>      <td>Fri</td>      <td>Female</td>      <td>25.03</td>    </tr>    <tr>      <th>4</th>      <td>Sat</td>      <td>Male</td>      <td>181.95</td>    </tr>    <tr>      <th>5</th>      <td>Sat</td>      <td>Female</td>      <td>78.45</td>    </tr>    <tr>      <th>6</th>      <td>Sun</td>      <td>Male</td>      <td>186.78</td>    </tr>    <tr>      <th>7</th>      <td>Sun</td>      <td>Female</td>      <td>60.61</td>    </tr>  </tbody></table></div><h2 id="install-the-latest-seaborn-package-if-not-installed"><a href="#install-the-latest-seaborn-package-if-not-installed" class="headerlink" title="install the latest seaborn package if not installed"></a>install the latest seaborn package if not installed</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pip install seaborn==<span class="number">0.11</span><span class="number">.2</span></span><br></pre></td></tr></table></figure><h2 id="visualize-the-total-tips-of-male-vs-female-for-each-different-weekday-in-the-data"><a href="#visualize-the-total-tips-of-male-vs-female-for-each-different-weekday-in-the-data" class="headerlink" title="visualize the total tips of male vs female, for each different weekday in the data"></a>visualize the total tips of male vs female, for each different weekday in the data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># automatically adjust the rows and colums </span></span><br><span class="line">all_days = <span class="built_in">list</span>(<span class="built_in">set</span>(tips_agg[<span class="string">&#x27;day&#x27;</span>]))</span><br><span class="line">n_cols = <span class="number">3</span></span><br><span class="line">n_rows = math.ceil(<span class="built_in">len</span>(all_days)/n_cols)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># give the figsize</span></span><br><span class="line">fig, axes = plt.subplots( n_rows, n_cols, figsize=(<span class="number">20</span>, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_rows):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n_cols):</span><br><span class="line">    index = i*n_cols+j</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> index &gt;= <span class="built_in">len</span>(all_days):</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    day = all_days[index]</span><br><span class="line">    bp = sns.barplot(ax=axes[i, j], data=tips_agg[tips_agg[<span class="string">&#x27;day&#x27;</span>]==day], x=<span class="string">&#x27;sex&#x27;</span>, y=<span class="string">&#x27;tip&#x27;</span>)</span><br><span class="line">    bp.<span class="built_in">set</span>(title=day)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> bp.get_xticklabels():</span><br><span class="line">        item.set_rotation(<span class="number">45</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># if the x axis title is very long, this configuration will be very useful </span></span><br><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure><p><img src="/content/images/2022-05-15-1.png" alt="png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> visualization </tag>
+            
+            <tag> seaborn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to use SentenceTransformer, a powerful and simple text embedding method based on transformer methods</title>
       <link href="2022/04/10/2022-04-10-1/"/>
       <url>2022/04/10/2022-04-10-1/</url>
@@ -649,11 +676,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       

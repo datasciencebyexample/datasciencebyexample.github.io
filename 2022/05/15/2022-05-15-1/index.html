@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="time series feature engineering using tsfresh, training vs test, DataScienceTribe">
+    <meta name="keywords" content="How to plot mulitiple subplots of barplots using seaborn, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>time series feature engineering using tsfresh, training vs test | DataScienceTribe</title>
+    <title>How to plot mulitiple subplots of barplots using seaborn | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">time series feature engineering using tsfresh, training vs test</h1>
+                    <h1 class="description center-align post-title">How to plot mulitiple subplots of barplots using seaborn</h1>
                 </div>
             </div>
         </div>
@@ -346,24 +346,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/visualization/">
+                                <span class="chip bg-color">visualization</span>
                             </a>
                         
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
-                            </a>
-                        
-                            <a href="/tags/tsfresh/">
-                                <span class="chip bg-color">tsfresh</span>
-                            </a>
-                        
-                            <a href="/tags/time-series/">
-                                <span class="chip bg-color">time series</span>
-                            </a>
-                        
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/seaborn/">
+                                <span class="chip bg-color">seaborn</span>
                             </a>
                         
                     </div>
@@ -387,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-10
+                    2022-05-15
                 </div>
                 
 
@@ -408,67 +396,160 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>During the test stage, i.e., once the model is on production, for any new data,<br>tsfresh feature generation does not depend the training data. So one can apply the same feature engineering process as the training data<br>without worrying about stroing information from training stage.</p>
-<p>On ther hand, one can also use the following example to leverage scikit learn pipleline style to handel the feature generation<br>for both training and test stages.</p>
-<h1 id="Feature-Selection-in-a-sklearn-pipeline"><a href="#Feature-Selection-in-a-sklearn-pipeline" class="headerlink" title="Feature Selection in a sklearn pipeline"></a>Feature Selection in a sklearn pipeline</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tsfresh.examples <span class="keyword">import</span> load_robot_execution_failures</span><br><span class="line"><span class="keyword">from</span> tsfresh.transformers <span class="keyword">import</span> RelevantFeatureAugmenter</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> impute</span><br></pre></td></tr></table></figure>
+                <p>Sometimes we want to plot multiple barplots in subplots, this examples shows a nice way to do it.</p>
+<h2 id="load-sample-data"><a href="#load-sample-data" class="headerlink" title="load sample data"></a>load sample data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_theme(style=<span class="string">&quot;whitegrid&quot;</span>)</span><br><span class="line">tips = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="Load-and-Prepare-the-Data"><a href="#Load-and-Prepare-the-Data" class="headerlink" title="Load and Prepare the Data"></a>Load and Prepare the Data</h2><p>Check out the first example notebook to learn more about the data and format.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tsfresh.examples.robot_execution_failures <span class="keyword">import</span> download_robot_execution_failures</span><br><span class="line">download_robot_execution_failures() </span><br><span class="line">df_ts, y = load_robot_execution_failures()</span><br></pre></td></tr></table></figure>
 
-<p>We want to use the extracted features to predict for each of the robot executions, if it was a failure or not.<br>Therefore our basic “entity” is a single robot execution given by a distinct <code>id</code>.</p>
-<p>A dataframe with these identifiers as index needs to be prepared for the pipeline.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X = pd.DataFrame(index=y.index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split data into train and test set</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tips.head(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="Build-the-pipeline"><a href="#Build-the-pipeline" class="headerlink" title="Build the pipeline"></a>Build the pipeline</h2><p>We build a sklearn pipeline that consists of a feature extraction step (<code>RelevantFeatureAugmenter</code>) with a subsequent <code>RandomForestClassifier</code>.</p>
-<p>The <code>RelevantFeatureAugmenter</code> takes roughly the same arguments as <code>extract_features</code> and <code>select_features</code> do.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl = Pipeline([</span><br><span class="line">        (<span class="string">&#x27;augmenter&#x27;</span>, RelevantFeatureAugmenter(column_id=<span class="string">&#x27;id&#x27;</span>, column_sort=<span class="string">&#x27;time&#x27;</span>)),</span><br><span class="line">        (<span class="string">&#x27;classifier&#x27;</span>, RandomForestClassifier())</span><br><span class="line">      ])</span><br></pre></td></tr></table></figure>
 
-<div class="alert alert-warning">
-    
-<p>Here comes the tricky part!</p>
-<p>The input to the pipeline will be our dataframe <code>X</code>, which one row per identifier.<br>It is currently empty.<br>But which time series data should the <code>RelevantFeatureAugmenter</code> to actually extract the features from?</p>
-<p>We need to pass the time series data (stored in <code>df_ts</code>) to the transformer.</p>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
-<p>In this case, df_ts contains the time series of both train and test set, if you have different dataframes for<br>train and test set, you have to call set_params two times<br>(see further below on how to deal with two independent data sets)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts);</span><br></pre></td></tr></table></figure>
 
-<p>We are now ready to fit the pipeline</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
 
-<p>The augmenter has used the input time series data to extract time series features for each of the identifiers in the <code>X_train</code> and selected only the relevant ones using the passed <code>y_train</code> as target.<br>These features have been added to <code>X_train</code> as new columns.<br>The classifier can now use these features during trainings.</p>
-<h2 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h2><p>During interference, the augmentor does only extract the relevant features it has found out in the training phase and the classifier predicts the target using these features.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
+<h2 id="aggregate-the-data-by-day-and-sex-and-sum-tips-for-each-dimension"><a href="#aggregate-the-data-by-day-and-sex-and-sum-tips-for-each-dimension" class="headerlink" title="aggregate the data by day and sex, and sum tips for each dimension"></a>aggregate the data by day and sex, and sum tips for each dimension</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tips_agg = tips.groupby([<span class="string">&#x27;day&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>])[<span class="string">&#x27;tip&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line">tips_agg</span><br></pre></td></tr></table></figure>
 
-<p>So, finally we inspect the performance:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
 
-<p>You can also find out, which columns the augmenter has selected</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.named_steps[<span class="string">&quot;augmenter&quot;</span>].feature_selector.relevant_features</span><br></pre></td></tr></table></figure>
 
-<div class="alert alert-info">
-    
-<p>In this example we passed in an empty (except the index) <code>X_train</code> or <code>X_test</code> into the pipeline.<br>However, you can also fill the input with other features you have (e.g. features extracted from the metadata)<br>or even use other pipeline components before.</p>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>sex</th>
+      <th>tip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Thur</td>
+      <td>Male</td>
+      <td>89.41</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Thur</td>
+      <td>Female</td>
+      <td>82.42</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Fri</td>
+      <td>Male</td>
+      <td>26.93</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Fri</td>
+      <td>Female</td>
+      <td>25.03</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sat</td>
+      <td>Male</td>
+      <td>181.95</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sat</td>
+      <td>Female</td>
+      <td>78.45</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Sun</td>
+      <td>Male</td>
+      <td>186.78</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Sun</td>
+      <td>Female</td>
+      <td>60.61</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
-<h2 id="Separating-the-time-series-data-containers"><a href="#Separating-the-time-series-data-containers" class="headerlink" title="Separating the time series data containers"></a>Separating the time series data containers</h2><p>In the example above we passed in a single <code>df_ts</code> into the <code>RelevantFeatureAugmenter</code>, which was used both for training and predicting.<br>During training, only the data with the <code>id</code>s from <code>X_train</code> where extracted and during prediction the rest.</p>
-<p>However, it is perfectly fine to call <code>set_params</code> twice: once before training and once before prediction.<br>This can be handy if you for example dump the trained pipeline to disk and re-use it only later for prediction.<br>You only need to make sure that the <code>id</code>s of the enteties you use during training/prediction are actually present in the passed time series data.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_ts_train = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_train.index)]</span><br><span class="line">df_ts_test = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_test.index)]</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_train);</span><br><span class="line">ppl.fit(X_train, y_train);</span><br></pre></td></tr></table></figure>
+<h2 id="install-the-latest-seaborn-package-if-not-installed"><a href="#install-the-latest-seaborn-package-if-not-installed" class="headerlink" title="install the latest seaborn package if not installed"></a>install the latest seaborn package if not installed</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pip install seaborn==<span class="number">0.11</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="visualize-the-total-tips-of-male-vs-female-for-each-different-weekday-in-the-data"><a href="#visualize-the-total-tips-of-male-vs-female-for-each-different-weekday-in-the-data" class="headerlink" title="visualize the total tips of male vs female, for each different weekday in the data"></a>visualize the total tips of male vs female, for each different weekday in the data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># automatically adjust the rows and colums </span></span><br><span class="line">all_days = <span class="built_in">list</span>(<span class="built_in">set</span>(tips_agg[<span class="string">&#x27;day&#x27;</span>]))</span><br><span class="line">n_cols = <span class="number">3</span></span><br><span class="line">n_rows = math.ceil(<span class="built_in">len</span>(all_days)/n_cols)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># give the figsize</span></span><br><span class="line">fig, axes = plt.subplots( n_rows, n_cols, figsize=(<span class="number">20</span>, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_rows):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n_cols):</span><br><span class="line">    index = i*n_cols+j</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> index &gt;= <span class="built_in">len</span>(all_days):</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    day = all_days[index]</span><br><span class="line">    bp = sns.barplot(ax=axes[i, j], data=tips_agg[tips_agg[<span class="string">&#x27;day&#x27;</span>]==day], x=<span class="string">&#x27;sex&#x27;</span>, y=<span class="string">&#x27;tip&#x27;</span>)</span><br><span class="line">    bp.<span class="built_in">set</span>(title=day)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> bp.get_xticklabels():</span><br><span class="line">        item.set_rotation(<span class="number">45</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># if the x axis title is very long, this configuration will be very useful </span></span><br><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(ppl, f)</span><br></pre></td></tr></table></figure>
-
-<p>Later: load the fitted model and do predictions on new, unseen data</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ppk = pickle.load(f)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_test);</span><br><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<p><img src="/content/images/2022-05-15-1.png" alt="png"></p>
 
                 
             </div>
@@ -495,7 +576,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/">https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/05/15/2022-05-15-1/">https://datasciencebyexample.github.io/2022/05/15/2022-05-15-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -533,24 +614,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/visualization/">
+                                    <span class="chip bg-color">visualization</span>
                                 </a>
                             
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
-                                </a>
-                            
-                                <a href="/tags/tsfresh/">
-                                    <span class="chip bg-color">tsfresh</span>
-                                </a>
-                            
-                                <a href="/tags/time-series/">
-                                    <span class="chip bg-color">time series</span>
-                                </a>
-                            
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/seaborn/">
+                                    <span class="chip bg-color">seaborn</span>
                                 </a>
                             
                         </div>
@@ -596,74 +665,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/12/2021-06-12-1/">
+                <a href="/2022/05/15/2022-05-15-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="aggregate features from different rows into one row in pandas dataframe">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="How to plot mulitiple subplots of barplots using seaborn">
                         
-                        <span class="card-title">aggregate features from different rows into one row in pandas dataframe</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-12
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/09/2021-06-09-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="word tokenization and sentence tokenization in python using NLTK package">
-                        
-                        <span class="card-title">word tokenization and sentence tokenization in python using NLTK package</span>
+                        <span class="card-title">How to plot mulitiple subplots of barplots using seaborn</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -674,7 +687,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-15
                             </span>
                         <span class="publish-author">
                             
@@ -688,15 +701,77 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tokenization/">
-                        <span class="chip bg-color">tokenization</span>
+                    <a href="/tags/visualization/">
+                        <span class="chip bg-color">visualization</span>
                     </a>
                     
-                    <a href="/tags/NLTK/">
-                        <span class="chip bg-color">NLTK</span>
+                    <a href="/tags/seaborn/">
+                        <span class="chip bg-color">seaborn</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/04/10/2022-04-10-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="How to use SentenceTransformer, a powerful and simple text embedding method based on transformer methods">
+                        
+                        <span class="card-title">How to use SentenceTransformer, a powerful and simple text embedding method based on transformer methods</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/machine-learning/" class="post-category">
+                                    machine learning
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/transformer/">
+                        <span class="chip bg-color">transformer</span>
+                    </a>
+                    
+                    <a href="/tags/BERT/">
+                        <span class="chip bg-color">BERT</span>
+                    </a>
+                    
+                    <a href="/tags/SentenceTransfomer/">
+                        <span class="chip bg-color">SentenceTransfomer</span>
+                    </a>
+                    
+                    <a href="/tags/embedding/">
+                        <span class="chip bg-color">embedding</span>
                     </a>
                     
                 </div>
