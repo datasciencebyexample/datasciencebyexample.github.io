@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to insert images in DataBricks notebook</title>
+      <link href="2022/06/22/2022-06-22-1/"/>
+      <url>2022/06/22/2022-06-22-1/</url>
+      
+        <content type="html"><![CDATA[<p>Following steps show how to upload images to databricks filestore, and insert that path in the notebook cell.</p><h2 id="upload-the-image-to-databricks"><a href="#upload-the-image-to-databricks" class="headerlink" title="upload the image to databricks"></a>upload the image to databricks</h2><p>As shown in the following, in the homepage of your databricks account, click the import and explore data part.</p><p><img src="/content/images/2022-06-22-1.png" alt="step1"></p><p>after the this, in the upload file menu, further click the drop file place to choose image file from your local computer.</p><p><img src="/content/images/2022-06-22-2.png" alt="step2"></p><p>with this being successful, you will see the path of the image you just uploaded, here our file name is called dbx_test.png,<br>as shown in the following:</p><p><img src="/content/images/2022-06-22-3.png" alt="step3"></p><h2 id="insert-the-image-path-using-markdown-in-notebook"><a href="#insert-the-image-path-using-markdown-in-notebook" class="headerlink" title="insert the image path using markdown in notebook"></a>insert the image path using markdown in notebook</h2><p>Notice that, the path begins with /FileStore/, but we need replace with file/, as shown in the following:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%md</span><br><span class="line">![test image](files/tables/dbx_test.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>in the above code, “test image” is just some description you can name whatever you want to.</p><p>As the result, after your run the cell, you will see the image shown up like this:</p><p><img src="/content/images/2022-06-22-4.png" alt="step4"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> visualization </tag>
+            
+            <tag> databricks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to plot mulitiple subplots of barplots using seaborn</title>
       <link href="2022/05/15/2022-05-15-1/"/>
       <url>2022/05/15/2022-05-15-1/</url>

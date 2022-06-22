@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How to plot mulitiple subplots of barplots using seaborn, DataScienceTribe">
+    <meta name="keywords" content="How to insert images in DataBricks notebook, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>How to plot mulitiple subplots of barplots using seaborn | DataScienceTribe</title>
+    <title>How to insert images in DataBricks notebook | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How to plot mulitiple subplots of barplots using seaborn</h1>
+                    <h1 class="description center-align post-title">How to insert images in DataBricks notebook</h1>
                 </div>
             </div>
         </div>
@@ -350,8 +350,8 @@
                                 <span class="chip bg-color">visualization</span>
                             </a>
                         
-                            <a href="/tags/seaborn/">
-                                <span class="chip bg-color">seaborn</span>
+                            <a href="/tags/databricks/">
+                                <span class="chip bg-color">databricks</span>
                             </a>
                         
                     </div>
@@ -375,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-05-15
+                    2022-06-22
                 </div>
                 
 
@@ -396,160 +396,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Sometimes we want to plot multiple barplots in subplots, this examples shows a nice way to do it.</p>
-<h2 id="load-sample-data"><a href="#load-sample-data" class="headerlink" title="load sample data"></a>load sample data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">sns.set_theme(style=<span class="string">&quot;whitegrid&quot;</span>)</span><br><span class="line">tips = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>Following steps show how to upload images to databricks filestore, and insert that path in the notebook cell.</p>
+<h2 id="upload-the-image-to-databricks"><a href="#upload-the-image-to-databricks" class="headerlink" title="upload the image to databricks"></a>upload the image to databricks</h2><p>As shown in the following, in the homepage of your databricks account, click the import and explore data part.</p>
+<p><img src="/content/images/2022-06-22-1.png" alt="step1"></p>
+<p>after the this, in the upload file menu, further click the drop file place to choose image file from your local computer.</p>
+<p><img src="/content/images/2022-06-22-2.png" alt="step2"></p>
+<p>with this being successful, you will see the path of the image you just uploaded, here our file name is called dbx_test.png,<br>as shown in the following:</p>
+<p><img src="/content/images/2022-06-22-3.png" alt="step3"></p>
+<h2 id="insert-the-image-path-using-markdown-in-notebook"><a href="#insert-the-image-path-using-markdown-in-notebook" class="headerlink" title="insert the image path using markdown in notebook"></a>insert the image path using markdown in notebook</h2><p>Notice that, the path begins with /FileStore/, but we need replace with file/, as shown in the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%md</span><br><span class="line">![test image](files/tables/dbx_test.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tips.head(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>total_bill</th>
-      <th>tip</th>
-      <th>sex</th>
-      <th>smoker</th>
-      <th>day</th>
-      <th>time</th>
-      <th>size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>16.99</td>
-      <td>1.01</td>
-      <td>Female</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10.34</td>
-      <td>1.66</td>
-      <td>Male</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-<h2 id="aggregate-the-data-by-day-and-sex-and-sum-tips-for-each-dimension"><a href="#aggregate-the-data-by-day-and-sex-and-sum-tips-for-each-dimension" class="headerlink" title="aggregate the data by day and sex, and sum tips for each dimension"></a>aggregate the data by day and sex, and sum tips for each dimension</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tips_agg = tips.groupby([<span class="string">&#x27;day&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>])[<span class="string">&#x27;tip&#x27;</span>].<span class="built_in">sum</span>().reset_index()</span><br><span class="line">tips_agg</span><br></pre></td></tr></table></figure>
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>sex</th>
-      <th>tip</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Thur</td>
-      <td>Male</td>
-      <td>89.41</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Thur</td>
-      <td>Female</td>
-      <td>82.42</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Fri</td>
-      <td>Male</td>
-      <td>26.93</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Fri</td>
-      <td>Female</td>
-      <td>25.03</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Sat</td>
-      <td>Male</td>
-      <td>181.95</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Sat</td>
-      <td>Female</td>
-      <td>78.45</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Sun</td>
-      <td>Male</td>
-      <td>186.78</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Sun</td>
-      <td>Female</td>
-      <td>60.61</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-<h2 id="install-the-latest-seaborn-package-if-not-installed"><a href="#install-the-latest-seaborn-package-if-not-installed" class="headerlink" title="install the latest seaborn package if not installed"></a>install the latest seaborn package if not installed</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pip install seaborn==<span class="number">0.11</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="visualize-the-total-tips-of-male-vs-female-for-each-different-weekday-in-the-data"><a href="#visualize-the-total-tips-of-male-vs-female-for-each-different-weekday-in-the-data" class="headerlink" title="visualize the total tips of male vs female, for each different weekday in the data"></a>visualize the total tips of male vs female, for each different weekday in the data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># automatically adjust the rows and colums </span></span><br><span class="line">all_days = <span class="built_in">list</span>(<span class="built_in">set</span>(tips_agg[<span class="string">&#x27;day&#x27;</span>]))</span><br><span class="line">n_cols = <span class="number">3</span></span><br><span class="line">n_rows = math.ceil(<span class="built_in">len</span>(all_days)/n_cols)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># give the figsize</span></span><br><span class="line">fig, axes = plt.subplots( n_rows, n_cols, figsize=(<span class="number">20</span>, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_rows):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n_cols):</span><br><span class="line">    index = i*n_cols+j</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> index &gt;= <span class="built_in">len</span>(all_days):</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    day = all_days[index]</span><br><span class="line">    bp = sns.barplot(ax=axes[i, j], data=tips_agg[tips_agg[<span class="string">&#x27;day&#x27;</span>]==day], x=<span class="string">&#x27;sex&#x27;</span>, y=<span class="string">&#x27;tip&#x27;</span>)</span><br><span class="line">    bp.<span class="built_in">set</span>(title=day)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> bp.get_xticklabels():</span><br><span class="line">        item.set_rotation(<span class="number">45</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># if the x axis title is very long, this configuration will be very useful </span></span><br><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/content/images/2022-05-15-1.png" alt="png"></p>
+<p>in the above code, “test image” is just some description you can name whatever you want to.</p>
+<p>As the result, after your run the cell, you will see the image shown up like this:</p>
+<p><img src="/content/images/2022-06-22-4.png" alt="step4"></p>
 
                 
             </div>
@@ -576,7 +435,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/05/15/2022-05-15-1/">https://datasciencebyexample.github.io/2022/05/15/2022-05-15-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/06/22/2022-06-22-1/">https://datasciencebyexample.github.io/2022/06/22/2022-06-22-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -618,8 +477,8 @@
                                     <span class="chip bg-color">visualization</span>
                                 </a>
                             
-                                <a href="/tags/seaborn/">
-                                    <span class="chip bg-color">seaborn</span>
+                                <a href="/tags/databricks/">
+                                    <span class="chip bg-color">databricks</span>
                                 </a>
                             
                         </div>
@@ -665,9 +524,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/06/22/2022-06-22-1/">
                     <div class="card-image">
@@ -685,9 +545,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -700,6 +560,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -722,13 +583,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/10/2022-04-10-1/">
+                <a href="/2022/05/15/2022-05-15-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="How to use SentenceTransformer, a powerful and simple text embedding method based on transformer methods">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="How to plot mulitiple subplots of barplots using seaborn">
                         
-                        <span class="card-title">How to use SentenceTransformer, a powerful and simple text embedding method based on transformer methods</span>
+                        <span class="card-title">How to plot mulitiple subplots of barplots using seaborn</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -739,14 +600,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/machine-learning/" class="post-category">
-                                    machine learning
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
                                 </a>
                             
                             
@@ -756,20 +617,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/transformer/">
-                        <span class="chip bg-color">transformer</span>
+                    <a href="/tags/visualization/">
+                        <span class="chip bg-color">visualization</span>
                     </a>
                     
-                    <a href="/tags/BERT/">
-                        <span class="chip bg-color">BERT</span>
-                    </a>
-                    
-                    <a href="/tags/SentenceTransfomer/">
-                        <span class="chip bg-color">SentenceTransfomer</span>
-                    </a>
-                    
-                    <a href="/tags/embedding/">
-                        <span class="chip bg-color">embedding</span>
+                    <a href="/tags/seaborn/">
+                        <span class="chip bg-color">seaborn</span>
                     </a>
                     
                 </div>
