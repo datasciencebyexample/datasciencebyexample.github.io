@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How to insert images in DataBricks notebook, DataScienceTribe">
+    <meta name="keywords" content="hyperparameter tuning using Optuna with RandomForestClassifier Example (Python code), DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>How to insert images in DataBricks notebook | DataScienceTribe</title>
+    <title>hyperparameter tuning using Optuna with RandomForestClassifier Example (Python code) | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How to insert images in DataBricks notebook</h1>
+                    <h1 class="description center-align post-title">hyperparameter tuning using Optuna with RandomForestClassifier Example (Python code)</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/visualization/">
-                                <span class="chip bg-color">visualization</span>
-                            </a>
-                        
-                            <a href="/tags/databricks/">
-                                <span class="chip bg-color">databricks</span>
+                            <a href="/tags/hyperparameter-tuning/">
+                                <span class="chip bg-color">hyperparameter tuning</span>
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-06-22
+                    2022-07-02
                 </div>
                 
 
@@ -402,19 +398,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Following steps show how to upload images to databricks filestore, and insert that path in the notebook cell.</p>
-<h2 id="upload-the-image-to-databricks"><a href="#upload-the-image-to-databricks" class="headerlink" title="upload the image to databricks"></a>upload the image to databricks</h2><p>As shown in the following, in the homepage of your databricks account, click the import and explore data part.</p>
-<p><img src="/content/images/2022-06-22-1.png" alt="step1"></p>
-<p>after the this, in the upload file menu, further click the drop file place to choose image file from your local computer.</p>
-<p><img src="/content/images/2022-06-22-2.png" alt="step2"></p>
-<p>with this being successful, you will see the path of the image you just uploaded, here our file name is called dbx_test.png,<br>as shown in the following:</p>
-<p><img src="/content/images/2022-06-22-3.png" alt="step3"></p>
-<h2 id="insert-the-image-path-using-markdown-in-notebook"><a href="#insert-the-image-path-using-markdown-in-notebook" class="headerlink" title="insert the image path using markdown in notebook"></a>insert the image path using markdown in notebook</h2><p>Notice that, the path begins with /FileStore/, but we need replace with file/, as shown in the following:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%md</span><br><span class="line">![test image](files/tables/dbx_test.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>For some popular machine learning algorithms, how to set the hyper parameters could affect machine learning algorithm performance greatly.</p>
+<p>One naive way is to loop though different combinations of the hyper parameter space and choose the best configuration. This is called grid search strategy. But this method could be very slow.</p>
+<p>A better way is to use some kind of optimization method to optimize our optimization. Tools such as Optuna and Hyperopt play roles here.</p>
+<p>In the following, we will use the Optuna as example, and apply it on a Random Forrest Classifier.</p>
+<h2 id="1-Import-libraries-and-get-the-newsgroup-data"><a href="#1-Import-libraries-and-get-the-newsgroup-data" class="headerlink" title="1. Import libraries and get the newsgroup data"></a>1. Import libraries and get the newsgroup data</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import os</span><br><span class="line">from sklearn.datasets import fetch_20newsgroups</span><br><span class="line">from sklearn.model_selection import cross_val_score</span><br><span class="line">from sklearn.metrics import f1_score</span><br><span class="line">from sklearn.feature_extraction.text import TfidfVectorizer</span><br><span class="line">from sklearn.pipeline import Pipeline</span><br><span class="line">import joblib</span><br><span class="line">from lightgbm import LGBMClassifier</span><br><span class="line">from sklearn.ensemble import RandomForestClassifier</span><br><span class="line"></span><br><span class="line">import optuna</span><br><span class="line"></span><br><span class="line">data = fetch_20newsgroups()</span><br><span class="line"></span><br><span class="line">X = data[&#x27;data&#x27;][:5000]</span><br><span class="line">y = data[&#x27;target&#x27;][:5000]</span><br></pre></td></tr></table></figure>
+<h2 id="2-Define-a-machine-leaning-pipeline-with-TfidfVectorizer-and-RandomForestClassifie"><a href="#2-Define-a-machine-leaning-pipeline-with-TfidfVectorizer-and-RandomForestClassifie" class="headerlink" title="2. Define a machine leaning pipeline with TfidfVectorizer and RandomForestClassifie"></a>2. Define a machine leaning pipeline with TfidfVectorizer and RandomForestClassifie</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">model = Pipeline([</span><br><span class="line">    (&#x27;tfidf&#x27;, TfidfVectorizer(stop_words=&#x27;english&#x27;)),   </span><br><span class="line">    (&#x27;rf&#x27;, RandomForestClassifier())</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
 
-<p>in the above code, “test image” is just some description you can name whatever you want to.</p>
-<p>As the result, after your run the cell, you will see the image shown up like this:</p>
-<p><img src="/content/images/2022-06-22-4.png" alt="step4"></p>
+<h2 id="3-Define-hyper-parameter-space-and-Optuna-objective-to-optimize"><a href="#3-Define-hyper-parameter-space-and-Optuna-objective-to-optimize" class="headerlink" title="3. Define hyper parameter space and Optuna objective to optimize"></a>3. Define hyper parameter space and Optuna objective to optimize</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def objective(trial):    </span><br><span class="line">    </span><br><span class="line">    joblib.dump(study, &#x27;study.pkl&#x27;)</span><br><span class="line">    </span><br><span class="line">    tfidf__analyzer = trial.suggest_categorical(&#x27;tfidf__analyzer&#x27;, [&#x27;word&#x27;, &#x27;char&#x27;, &#x27;char_wb&#x27;]) </span><br><span class="line">    tfidf__lowercase = trial.suggest_categorical(&#x27;tfidf__lowercase&#x27;, [False, True]) </span><br><span class="line">    tfidf__max_features = trial.suggest_int(&#x27;tfidf__max_features&#x27;, 500, 10_000) </span><br><span class="line">    rf__n_estimators = trial.suggest_int(&#x27;rf__num_estimators&#x27;, 300, 500) </span><br><span class="line">    rf__max_depth = trial.suggest_int(&#x27;rf__max_depth&#x27;, 5, 15) </span><br><span class="line">    rf__min_samples_split = trial.suggest_int(&#x27;rf__min_samples_split&#x27;, 10, 30) </span><br><span class="line">    </span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    params = &#123;</span><br><span class="line">        &#x27;tfidf__analyzer&#x27;: tfidf__analyzer,</span><br><span class="line">        &#x27;tfidf__lowercase&#x27;: tfidf__lowercase,</span><br><span class="line">        &#x27;tfidf__max_features&#x27;: tfidf__max_features,</span><br><span class="line">        &#x27;rf__n_estimators&#x27;: rf__n_estimators,</span><br><span class="line">        &#x27;rf__max_depth&#x27;: rf__max_depth,</span><br><span class="line">        &#x27;rf__min_samples_split&#x27;: rf__min_samples_split,</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    model.set_params(**params)</span><br><span class="line"></span><br><span class="line">    return  -np.mean(cross_val_score(model, X, y, cv=3, n_jobs=-1,scoring=&#x27;neg_log_loss&#x27;))</span><br></pre></td></tr></table></figure>
+<p>Notice that, by default Optuna tries to minimize the objective function, since we use native log loss function to maximize the Random Forrest Classifier, we add another negative sign in in front of the cross-validation scores.</p>
+<h2 id="4-Run-the-Optuna-trials-to-find-the-best-hyper-parameter-configuration"><a href="#4-Run-the-Optuna-trials-to-find-the-best-hyper-parameter-configuration" class="headerlink" title="4. Run the Optuna trials to find the best hyper parameter configuration"></a>4. Run the Optuna trials to find the best hyper parameter configuration</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># by default, the direction is to minimizae, but can set it to maximize too</span><br><span class="line">#study = optuna.create_study(direction=&#x27;minimize&#x27;)</span><br><span class="line">study = optuna.create_study()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#study.optimize(objective, timeout=3600)</span><br><span class="line">study.optimize(objective, n_trials=20)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># to record the value for the last time</span><br><span class="line">joblib.dump(study, &#x27;study.pkl&#x27;)</span><br></pre></td></tr></table></figure>
+<p>Notice that, we are saving the hyper parameter optimization process into a local pickle file, which means we can monitor the process in the middle or at the end by opening another notebook.</p>
+<h2 id="5-how-to-visualize-the-results"><a href="#5-how-to-visualize-the-results" class="headerlink" title="5. how to visualize the results"></a>5. how to visualize the results</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">import joblib</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">import optuna</span><br><span class="line"></span><br><span class="line">data = joblib.load(&#x27;study.pkl&#x27;)</span><br><span class="line"></span><br><span class="line">df = data.trials_dataframe()</span><br><span class="line">df.dropna(inplace=True)</span><br><span class="line">df.reset_index(inplace=True)</span><br><span class="line"></span><br><span class="line">df[&#x27;time&#x27;] = (df.datetime_complete - df.datetime_start).dt.total_seconds()</span><br><span class="line">df = df[df.time&gt;=0]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&#x27;best val:&#x27;,  round(df.value.min(),4))</span><br><span class="line">print(&#x27;best params:&#x27;,  data.best_params)</span><br><span class="line"></span><br><span class="line">a = sns.lineplot(x=df.index, y=df.value.cummin())</span><br><span class="line">a.set_xlabel(&#x27;trial number&#x27;)</span><br><span class="line">sns.scatterplot(x=df.index, y=df.value, color=&#x27;red&#x27;)</span><br><span class="line">a.set_ylabel(&#x27;log loss&#x27;)</span><br><span class="line">a.legend([&#x27;best value&#x27;, &quot;trial&#x27;s value&quot;]);</span><br></pre></td></tr></table></figure>
+<p><img src="/content/images/2022-07-02-1.png" alt="Optuna tuning results with trails"></p>
+<h2 id="6-download-the-whole-code-notebook"><a href="#6-download-the-whole-code-notebook" class="headerlink" title="6. download the whole code notebook"></a>6. download the whole code notebook</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/tree/main/hyper-parameter-tunning">github link</a></p>
 
                 
             </div>
@@ -441,7 +438,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/06/22/2022-06-22-1/">https://datasciencebyexample.github.io/2022/06/22/2022-06-22-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/07/02/2022-07-02-1/">https://datasciencebyexample.github.io/2022/07/02/2022-07-02-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -479,12 +476,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/visualization/">
-                                    <span class="chip bg-color">visualization</span>
-                                </a>
-                            
-                                <a href="/tags/databricks/">
-                                    <span class="chip bg-color">databricks</span>
+                                <a href="/tags/hyperparameter-tuning/">
+                                    <span class="chip bg-color">hyperparameter tuning</span>
                                 </a>
                             
                         </div>
@@ -530,9 +523,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/07/02/2022-07-02-1/">
                     <div class="card-image">
@@ -550,9 +544,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -565,6 +559,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -583,13 +578,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/15/2022-05-15-1/">
+                <a href="/2022/06/22/2022-06-22-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="How to plot mulitiple subplots of barplots using seaborn">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="How to insert images in DataBricks notebook">
                         
-                        <span class="card-title">How to plot mulitiple subplots of barplots using seaborn</span>
+                        <span class="card-title">How to insert images in DataBricks notebook</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -600,7 +595,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-22
                             </span>
                         <span class="publish-author">
                             
@@ -621,8 +616,8 @@
                         <span class="chip bg-color">visualization</span>
                     </a>
                     
-                    <a href="/tags/seaborn/">
-                        <span class="chip bg-color">seaborn</span>
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
                     </a>
                     
                 </div>
