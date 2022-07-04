@@ -811,9 +811,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -838,9 +838,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> python </tag>
             
             <tag> preprocessing </tag>
             
