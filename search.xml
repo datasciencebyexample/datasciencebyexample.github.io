@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>An simple but useful example of online calculator using javascript</title>
+      <link href="2022/07/05/2022-07-05-1/"/>
+      <url>2022/07/05/2022-07-05-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="code-link"><a href="#code-link" class="headerlink" title="code link"></a>code link</h2><p><a href="https://github.com/robotlearner001/blog/tree/main/online-calculator-javascript">github link</a></p><h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2> <iframe src="/scripts/calculator/calculator.html" width="100%" height="1000" style="border:1px solid black;"></iframe>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> scripts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hyperparameter tuning using Optuna with RandomForestClassifier Example (Python code)</title>
       <link href="2022/07/02/2022-07-02-1/"/>
       <url>2022/07/02/2022-07-02-1/</url>
