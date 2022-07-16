@@ -1,0 +1,1413 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="A great columnTransformer example to preprocess data for online article SOV prediction, DataScienceTribe">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Global site - Google Ads -->
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5472621737702667"
+     crossorigin="anonymous"></script>
+
+	
+    <title>A great columnTransformer example to preprocess data for online article SOV prediction | DataScienceTribe</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">DataScienceTribe</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">DataScienceTribe</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">A great columnTransformer example to preprocess data for online article SOV prediction</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/transformer/">
+                                <span class="chip bg-color">transformer</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/data-science/" class="post-category">
+                                data science
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-07-16
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>ColumnTransformer is one of the most useful data transforming tools for data science projects. Here we show a complete example of applying columnTransformer as the preprocessing tools, and then apply RandomForrest Regression models to predict share of voice (SOV) for online articles. </p>
+<h2 id="data-introduction"><a href="#data-introduction" class="headerlink" title="data introduction"></a>data introduction</h2><p>The original link of data is here: <a target="_blank" rel="noopener" href="https://archive-beta.ics.uci.edu/ml/datasets/online+news+popularity">https://archive-beta.ics.uci.edu/ml/datasets/online+news+popularity</a><br>Features are already created, but checking the feature names alone would help us greatly to undrstand what would influence the online article ranking.</p>
+<p>What do the instances that comprise the dataset represent?</p>
+<p>Number of Attributes: 61 (58 predictive attributes, 2 non-predictive, 1 goal field)</p>
+<p>Attribute Information:<br>     0. url:                           URL of the article (non-predictive)<br>     1. timedelta:                     Days between the article publication and the dataset acquisition (non-predictive)<br>     2. n_tokens_title:                Number of words in the title<br>     3. n_tokens_content:              Number of words in the content<br>     4. n_unique_tokens:               Rate of unique words in the content<br>     5. n_non_stop_words:              Rate of non-stop words in the content<br>     6. n_non_stop_unique_tokens:      Rate of unique non-stop words in the content<br>     7. num_hrefs:                     Number of links<br>     8. num_self_hrefs:                Number of links to other articles published by Mashable<br>     9. num_imgs:                      Number of images<br>    10. num_videos:                    Number of videos<br>    11. average_token_length:          Average length of the words in the content<br>    12. num_keywords:                  Number of keywords in the metadata<br>    13. data_channel_is_lifestyle:     Is data channel ‘Lifestyle’?<br>    14. data_channel_is_entertainment: Is data channel ‘Entertainment’?<br>    15. data_channel_is_bus:           Is data channel ‘Business’?<br>    16. data_channel_is_socmed:        Is data channel ‘Social Media’?<br>    17. data_channel_is_tech:          Is data channel ‘Tech’?<br>    18. data_channel_is_world:         Is data channel ‘World’?<br>    19. kw_min_min:                    Worst keyword (min. shares)<br>    20. kw_max_min:                    Worst keyword (max. shares)<br>    21. kw_avg_min:                    Worst keyword (avg. shares)<br>    22. kw_min_max:                    Best keyword (min. shares)<br>    23. kw_max_max:                    Best keyword (max. shares)<br>    24. kw_avg_max:                    Best keyword (avg. shares)<br>    25. kw_min_avg:                    Avg. keyword (min. shares)<br>    26. kw_max_avg:                    Avg. keyword (max. shares)<br>    27. kw_avg_avg:                    Avg. keyword (avg. shares)<br>    28. self_reference_min_shares:     Min. shares of referenced articles in Mashable<br>    29. self_reference_max_shares:     Max. shares of referenced articles in Mashable<br>    30. self_reference_avg_sharess:    Avg. shares of referenced articles in Mashable<br>    31. weekday_is_monday:             Was the article published on a Monday?<br>    32. weekday_is_tuesday:            Was the article published on a Tuesday?<br>    33. weekday_is_wednesday:          Was the article published on a Wednesday?<br>    34. weekday_is_thursday:           Was the article published on a Thursday?<br>    35. weekday_is_friday:             Was the article published on a Friday?<br>    36. weekday_is_saturday:           Was the article published on a Saturday?<br>    37. weekday_is_sunday:             Was the article published on a Sunday?<br>    38. is_weekend:                    Was the article published on the weekend?<br>    39. LDA_00:                        Closeness to LDA topic 0<br>    40. LDA_01:                        Closeness to LDA topic 1<br>    41. LDA_02:                        Closeness to LDA topic 2<br>    42. LDA_03:                        Closeness to LDA topic 3<br>    43. LDA_04:                        Closeness to LDA topic 4<br>    44. global_subjectivity:           Text subjectivity<br>    45. global_sentiment_polarity:     Text sentiment polarity<br>    46. global_rate_positive_words:    Rate of positive words in the content<br>    47. global_rate_negative_words:    Rate of negative words in the content<br>    48. rate_positive_words:           Rate of positive words among non-neutral tokens<br>    49. rate_negative_words:           Rate of negative words among non-neutral tokens<br>    50. avg_positive_polarity:         Avg. polarity of positive words<br>    51. min_positive_polarity:         Min. polarity of positive words<br>    52. max_positive_polarity:         Max. polarity of positive words<br>    53. avg_negative_polarity:         Avg. polarity of negative  words<br>    54. min_negative_polarity:         Min. polarity of negative  words<br>    55. max_negative_polarity:         Max. polarity of negative  words<br>    56. title_subjectivity:            Title subjectivity<br>    57. title_sentiment_polarity:      Title polarity<br>    58. abs_title_subjectivity:        Absolute subjectivity level<br>    59. abs_title_sentiment_polarity:  Absolute polarity level<br>    60. shares:                        Number of shares (target)</p>
+<p>Additional Information</p>
+<ul>
+<li>The articles were published by Mashable (<a target="_blank" rel="noopener" href="http://www.mashable.com/">www.mashable.com</a>) and their content as the rights to reproduce it belongs to them. Hence, this dataset does not share the original content but some statistics associated with it. The original content be publicly accessed and retrieved using the provided urls.</li>
+<li>Acquisition date: January 8, 2015</li>
+<li>The estimated relative performance values were estimated by the authors using a Random Forest classifier and a rolling windows as assessment method.  See their article for more details on how the relative performance values were set.</li>
+</ul>
+<h2 id="load-libraires"><a href="#load-libraires" class="headerlink" title="load libraires"></a>load libraires</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> OneHotEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> make_pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.impute <span class="keyword">import</span> SimpleImputer</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> ColumnTransformer</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> KBinsDiscretizer</span><br><span class="line"><span class="keyword">from</span> sklearn.inspection <span class="keyword">import</span> permutation_importance</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="import-data"><a href="#import-data" class="headerlink" title="import data"></a>import data</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;data/OnlineNewsPopularity.csv&#x27;</span>)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>url</th>
+      <th>timedelta</th>
+      <th>n_tokens_title</th>
+      <th>n_tokens_content</th>
+      <th>n_unique_tokens</th>
+      <th>n_non_stop_words</th>
+      <th>n_non_stop_unique_tokens</th>
+      <th>num_hrefs</th>
+      <th>num_self_hrefs</th>
+      <th>num_imgs</th>
+      <th>...</th>
+      <th>min_positive_polarity</th>
+      <th>max_positive_polarity</th>
+      <th>avg_negative_polarity</th>
+      <th>min_negative_polarity</th>
+      <th>max_negative_polarity</th>
+      <th>title_subjectivity</th>
+      <th>title_sentiment_polarity</th>
+      <th>abs_title_subjectivity</th>
+      <th>abs_title_sentiment_polarity</th>
+      <th>shares</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://mashable.com/2013/01/07/amazon-instant-...</td>
+      <td>731.0</td>
+      <td>12.0</td>
+      <td>219.0</td>
+      <td>0.663594</td>
+      <td>1.0</td>
+      <td>0.815385</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.100000</td>
+      <td>0.70</td>
+      <td>-0.350000</td>
+      <td>-0.600</td>
+      <td>-0.200000</td>
+      <td>0.500000</td>
+      <td>-0.187500</td>
+      <td>0.000000</td>
+      <td>0.187500</td>
+      <td>593</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>http://mashable.com/2013/01/07/ap-samsung-spon...</td>
+      <td>731.0</td>
+      <td>9.0</td>
+      <td>255.0</td>
+      <td>0.604743</td>
+      <td>1.0</td>
+      <td>0.791946</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.033333</td>
+      <td>0.70</td>
+      <td>-0.118750</td>
+      <td>-0.125</td>
+      <td>-0.100000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.500000</td>
+      <td>0.000000</td>
+      <td>711</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>http://mashable.com/2013/01/07/apple-40-billio...</td>
+      <td>731.0</td>
+      <td>9.0</td>
+      <td>211.0</td>
+      <td>0.575130</td>
+      <td>1.0</td>
+      <td>0.663866</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.100000</td>
+      <td>1.00</td>
+      <td>-0.466667</td>
+      <td>-0.800</td>
+      <td>-0.133333</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.500000</td>
+      <td>0.000000</td>
+      <td>1500</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>http://mashable.com/2013/01/07/astronaut-notre...</td>
+      <td>731.0</td>
+      <td>9.0</td>
+      <td>531.0</td>
+      <td>0.503788</td>
+      <td>1.0</td>
+      <td>0.665635</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.136364</td>
+      <td>0.80</td>
+      <td>-0.369697</td>
+      <td>-0.600</td>
+      <td>-0.166667</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.500000</td>
+      <td>0.000000</td>
+      <td>1200</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>http://mashable.com/2013/01/07/att-u-verse-apps/</td>
+      <td>731.0</td>
+      <td>13.0</td>
+      <td>1072.0</td>
+      <td>0.415646</td>
+      <td>1.0</td>
+      <td>0.540890</td>
+      <td>19.0</td>
+      <td>19.0</td>
+      <td>20.0</td>
+      <td>...</td>
+      <td>0.033333</td>
+      <td>1.00</td>
+      <td>-0.220192</td>
+      <td>-0.500</td>
+      <td>-0.050000</td>
+      <td>0.454545</td>
+      <td>0.136364</td>
+      <td>0.045455</td>
+      <td>0.136364</td>
+      <td>505</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>39639</th>
+      <td>http://mashable.com/2014/12/27/samsung-app-aut...</td>
+      <td>8.0</td>
+      <td>11.0</td>
+      <td>346.0</td>
+      <td>0.529052</td>
+      <td>1.0</td>
+      <td>0.684783</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.100000</td>
+      <td>0.75</td>
+      <td>-0.260000</td>
+      <td>-0.500</td>
+      <td>-0.125000</td>
+      <td>0.100000</td>
+      <td>0.000000</td>
+      <td>0.400000</td>
+      <td>0.000000</td>
+      <td>1800</td>
+    </tr>
+    <tr>
+      <th>39640</th>
+      <td>http://mashable.com/2014/12/27/seth-rogen-jame...</td>
+      <td>8.0</td>
+      <td>12.0</td>
+      <td>328.0</td>
+      <td>0.696296</td>
+      <td>1.0</td>
+      <td>0.885057</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>3.0</td>
+      <td>...</td>
+      <td>0.136364</td>
+      <td>0.70</td>
+      <td>-0.211111</td>
+      <td>-0.400</td>
+      <td>-0.100000</td>
+      <td>0.300000</td>
+      <td>1.000000</td>
+      <td>0.200000</td>
+      <td>1.000000</td>
+      <td>1900</td>
+    </tr>
+    <tr>
+      <th>39641</th>
+      <td>http://mashable.com/2014/12/27/son-pays-off-mo...</td>
+      <td>8.0</td>
+      <td>10.0</td>
+      <td>442.0</td>
+      <td>0.516355</td>
+      <td>1.0</td>
+      <td>0.644128</td>
+      <td>24.0</td>
+      <td>1.0</td>
+      <td>12.0</td>
+      <td>...</td>
+      <td>0.136364</td>
+      <td>0.50</td>
+      <td>-0.356439</td>
+      <td>-0.800</td>
+      <td>-0.166667</td>
+      <td>0.454545</td>
+      <td>0.136364</td>
+      <td>0.045455</td>
+      <td>0.136364</td>
+      <td>1900</td>
+    </tr>
+    <tr>
+      <th>39642</th>
+      <td>http://mashable.com/2014/12/27/ukraine-blasts/</td>
+      <td>8.0</td>
+      <td>6.0</td>
+      <td>682.0</td>
+      <td>0.539493</td>
+      <td>1.0</td>
+      <td>0.692661</td>
+      <td>10.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.062500</td>
+      <td>0.50</td>
+      <td>-0.205246</td>
+      <td>-0.500</td>
+      <td>-0.012500</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.500000</td>
+      <td>0.000000</td>
+      <td>1100</td>
+    </tr>
+    <tr>
+      <th>39643</th>
+      <td>http://mashable.com/2014/12/27/youtube-channel...</td>
+      <td>8.0</td>
+      <td>10.0</td>
+      <td>157.0</td>
+      <td>0.701987</td>
+      <td>1.0</td>
+      <td>0.846154</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.100000</td>
+      <td>0.50</td>
+      <td>-0.200000</td>
+      <td>-0.200</td>
+      <td>-0.200000</td>
+      <td>0.333333</td>
+      <td>0.250000</td>
+      <td>0.166667</td>
+      <td>0.250000</td>
+      <td>1300</td>
+    </tr>
+  </tbody>
+</table>
+<p>39644 rows × 61 columns</p>
+</div>
+
+
+
+<h2 id="define-features-and-targets"><a href="#define-features-and-targets" class="headerlink" title="define features and targets"></a>define features and targets</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># be careful the features has a prefix of white space</span></span><br><span class="line">numeric_features = [<span class="string">&#x27; n_tokens_title&#x27;</span>, <span class="string">&#x27; n_tokens_content&#x27;</span>, <span class="string">&#x27; n_unique_tokens&#x27;</span>, <span class="string">&#x27; n_non_stop_words&#x27;</span>, <span class="string">&#x27; n_non_stop_unique_tokens&#x27;</span>, <span class="string">&#x27; num_hrefs&#x27;</span>, <span class="string">&#x27; num_self_hrefs&#x27;</span>, <span class="string">&#x27; num_imgs&#x27;</span>, <span class="string">&#x27; num_videos&#x27;</span>, <span class="string">&#x27; average_token_length&#x27;</span>, <span class="string">&#x27; num_keywords&#x27;</span>, <span class="string">&#x27; data_channel_is_lifestyle&#x27;</span>, <span class="string">&#x27; data_channel_is_entertainment&#x27;</span>, <span class="string">&#x27; data_channel_is_bus&#x27;</span>, <span class="string">&#x27; data_channel_is_socmed&#x27;</span>, <span class="string">&#x27; data_channel_is_tech&#x27;</span>, <span class="string">&#x27; data_channel_is_world&#x27;</span>, <span class="string">&#x27; kw_min_min&#x27;</span>, <span class="string">&#x27; kw_max_min&#x27;</span>, <span class="string">&#x27; kw_avg_min&#x27;</span>, <span class="string">&#x27; kw_min_max&#x27;</span>, <span class="string">&#x27; kw_max_max&#x27;</span>, <span class="string">&#x27; kw_avg_max&#x27;</span>, <span class="string">&#x27; kw_min_avg&#x27;</span>, <span class="string">&#x27; kw_max_avg&#x27;</span>, <span class="string">&#x27; kw_avg_avg&#x27;</span>, <span class="string">&#x27; self_reference_min_shares&#x27;</span>, <span class="string">&#x27; self_reference_max_shares&#x27;</span>, <span class="string">&#x27; self_reference_avg_sharess&#x27;</span>, <span class="string">&#x27; weekday_is_monday&#x27;</span>, <span class="string">&#x27; weekday_is_tuesday&#x27;</span>, <span class="string">&#x27; weekday_is_wednesday&#x27;</span>, <span class="string">&#x27; weekday_is_thursday&#x27;</span>, <span class="string">&#x27; weekday_is_friday&#x27;</span>, <span class="string">&#x27; weekday_is_saturday&#x27;</span>, <span class="string">&#x27; weekday_is_sunday&#x27;</span>, <span class="string">&#x27; is_weekend&#x27;</span>, <span class="string">&#x27; LDA_00&#x27;</span>, <span class="string">&#x27; LDA_01&#x27;</span>, <span class="string">&#x27; LDA_02&#x27;</span>, <span class="string">&#x27; LDA_03&#x27;</span>, <span class="string">&#x27; LDA_04&#x27;</span>, <span class="string">&#x27; global_subjectivity&#x27;</span>, <span class="string">&#x27; global_sentiment_polarity&#x27;</span>, <span class="string">&#x27; global_rate_positive_words&#x27;</span>, <span class="string">&#x27; global_rate_negative_words&#x27;</span>, <span class="string">&#x27; rate_positive_words&#x27;</span>, <span class="string">&#x27; rate_negative_words&#x27;</span>, <span class="string">&#x27; avg_positive_polarity&#x27;</span>, <span class="string">&#x27; min_positive_polarity&#x27;</span>, <span class="string">&#x27; max_positive_polarity&#x27;</span>, <span class="string">&#x27; avg_negative_polarity&#x27;</span>, <span class="string">&#x27; min_negative_polarity&#x27;</span>, <span class="string">&#x27; max_negative_polarity&#x27;</span>, <span class="string">&#x27; title_subjectivity&#x27;</span>, <span class="string">&#x27; title_sentiment_polarity&#x27;</span>, <span class="string">&#x27; abs_title_subjectivity&#x27;</span>, <span class="string">&#x27; abs_title_sentiment_polarity&#x27;</span>]</span><br><span class="line">categorical_features =[]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">target = <span class="string">&#x27; shares&#x27;</span></span><br><span class="line"></span><br><span class="line">X = df.drop(target,axis=<span class="number">1</span>)</span><br><span class="line">y = df[target]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="training-and-test-data-split"><a href="#training-and-test-data-split" class="headerlink" title="training and test data split"></a>training and test data split</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="define-transformers"><a href="#define-transformers" class="headerlink" title="define transformers"></a>define transformers</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># steps to handle numeric features</span></span><br><span class="line">numeric_transformer = Pipeline(steps=[</span><br><span class="line">        (<span class="string">&#x27;num_imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;mean&#x27;</span>)),</span><br><span class="line">        (<span class="string">&#x27;scaler&#x27;</span>, StandardScaler())</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line"><span class="comment"># steps to handel categorical features</span></span><br><span class="line">categorical_transformer = Pipeline(steps = [        </span><br><span class="line">      (<span class="string">&quot;cat_imputer&quot;</span>, SimpleImputer(strategy=<span class="string">&#x27;constant&#x27;</span>, fill_value = <span class="string">&quot;missing&quot;</span>)),</span><br><span class="line">      (<span class="string">&quot;encoder&quot;</span>, OneHotEncoder(handle_unknown=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line"><span class="comment"># TFIDF vectorizer to handel the url only</span></span><br><span class="line">tfidfvectorizer = TfidfVectorizer(max_features = <span class="number">100</span>, stop_words=<span class="string">&#x27;english&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># a customize transformer to be used in the  ColumnTransformer</span></span><br><span class="line"><span class="comment"># which takes a list of one or string features, and return the word counts for the list of features</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, x, y=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, _X</span>):</span></span><br><span class="line">        X = pd.DataFrame(_X)</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> X.columns:</span><br><span class="line">            X[col]= X[col].apply(<span class="keyword">lambda</span> x: <span class="built_in">len</span>(x.split(<span class="string">&#x27;-&#x27;</span>)))</span><br><span class="line">        <span class="keyword">return</span> X</span><br><span class="line">    </span><br><span class="line">counter = Counter()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># integrate a preprocessor to handel different types of features</span></span><br><span class="line"><span class="comment"># notice in the transformer list of the ColumnTransformer,the parameter is &#x27;url&#x27;, a string type</span></span><br><span class="line"><span class="comment"># while parameters for other transformers are list type</span></span><br><span class="line">preprocessor = ColumnTransformer(</span><br><span class="line">    transformers=[</span><br><span class="line">        (<span class="string">&#x27;url&#x27;</span>, tfidfvectorizer, <span class="string">&#x27;url&#x27;</span>),</span><br><span class="line">        (<span class="string">&#x27;num&#x27;</span>, numeric_transformer, numeric_features),</span><br><span class="line">        (<span class="string">&#x27;count&#x27;</span>, counter, [<span class="string">&#x27;url&#x27;</span>]),</span><br><span class="line">        <span class="comment">#(&#x27;cat&#x27;, categorical_transformer, categorical_features)</span></span><br><span class="line">    ])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># check the format of the training data after preprocessing steps</span></span><br><span class="line"><span class="comment"># preprocessor.fit_transform(X_train)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="define-a-whole-piple-to-include-model"><a href="#define-a-whole-piple-to-include-model" class="headerlink" title="define a whole piple to include model"></a>define a whole piple to include model</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pipeline = Pipeline(</span><br><span class="line">    steps =[</span><br><span class="line">        (<span class="string">&#x27;preprocessor&#x27;</span>, preprocessor),                            </span><br><span class="line">        (<span class="string">&#x27;model&#x27;</span>,RandomForestRegressor(verbose=<span class="number">0</span>, n_jobs=-<span class="number">1</span>))</span><br><span class="line">    ])</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pipeline.fit(X_train,y_train)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Pipeline(steps=[(&#39;preprocessor&#39;,
+                 ColumnTransformer(transformers=[(&#39;url&#39;,
+                                                  TfidfVectorizer(max_features=100,
+                                                                  stop_words=&#39;english&#39;),
+                                                  &#39;url&#39;),
+                                                 (&#39;num&#39;,
+                                                  Pipeline(steps=[(&#39;num_imputer&#39;,
+                                                                   SimpleImputer()),
+                                                                  (&#39;scaler&#39;,
+                                                                   StandardScaler())]),
+                                                  [&#39; n_tokens_title&#39;,
+                                                   &#39; n_tokens_content&#39;,
+                                                   &#39; n_unique_tokens&#39;,
+                                                   &#39; n_non_stop_words&#39;,
+                                                   &#39; n_non_stop_unique_tokens&#39;,
+                                                   &#39; num_hrefs&#39;,
+                                                   &#39; num_self_hrefs&#39;,
+                                                   &#39; n...
+                                                   &#39; data_channel_is_tech&#39;,
+                                                   &#39; data_channel_is_world&#39;,
+                                                   &#39; kw_min_min&#39;, &#39; kw_max_min&#39;,
+                                                   &#39; kw_avg_min&#39;, &#39; kw_min_max&#39;,
+                                                   &#39; kw_max_max&#39;, &#39; kw_avg_max&#39;,
+                                                   &#39; kw_min_avg&#39;, &#39; kw_max_avg&#39;,
+                                                   &#39; kw_avg_avg&#39;,
+                                                   &#39; self_reference_min_shares&#39;,
+                                                   &#39; self_reference_max_shares&#39;,
+                                                   &#39; &#39;
+                                                   &#39;self_reference_avg_sharess&#39;,
+                                                   &#39; weekday_is_monday&#39;, ...]),
+                                                 (&#39;count&#39;, Counter(),
+                                                  [&#39;url&#39;])])),
+                (&#39;model&#39;, RandomForestRegressor(n_jobs=-1))])
+</code></pre>
+<h2 id="plot-the-lift-chart"><a href="#plot-the-lift-chart" class="headerlink" title="plot the lift chart"></a>plot the lift chart</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_predicted_vs_actuals</span>(<span class="params">y_true, y_predicted, title = <span class="string">&quot;Pred Vs Actual&quot;</span></span>):</span></span><br><span class="line">    </span><br><span class="line">    rmse= mean_squared_error(y_true= y_true, y_pred=y_predicted,squared=<span class="literal">False</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;RMSE:&quot;</span>, rmse)</span><br><span class="line">   </span><br><span class="line">    predVsActual = pd.DataFrame( &#123;<span class="string">&#x27;y_true&#x27;</span>: y_true,<span class="string">&#x27;y_pred&#x27;</span>: y_predicted&#125;)</span><br><span class="line">    predVsActual[<span class="string">&quot;pred_deciles&quot;</span>] = pd.qcut(predVsActual[<span class="string">&quot;y_pred&quot;</span>],q=<span class="number">10</span> ,labels=<span class="literal">False</span>, duplicates = <span class="string">&#x27;drop&#x27;</span>)</span><br><span class="line">   </span><br><span class="line">    aggregations = &#123;</span><br><span class="line">        <span class="string">&#x27;y_true&#x27;</span>:<span class="string">&#x27;mean&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;y_pred&#x27;</span>: <span class="string">&#x27;mean&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    counts = predVsActual.groupby(<span class="string">&quot;pred_deciles&quot;</span>).count()[<span class="string">&quot;y_pred&quot;</span>]</span><br><span class="line"> </span><br><span class="line">    predVsActual= predVsActual.groupby(<span class="string">&quot;pred_deciles&quot;</span>).agg(aggregations)</span><br><span class="line">    predVsActual[<span class="string">&quot;counts&quot;</span>] = counts</span><br><span class="line">    predVsActual[[<span class="string">&quot;y_true&quot;</span>,<span class="string">&quot;y_pred&quot;</span>]].plot(title=title)</span><br><span class="line">    plt.show()</span><br><span class="line">    <span class="built_in">print</span>(predVsActual)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">test_preds = pipeline.predict(X_test)</span><br><span class="line">plot_predicted_vs_actuals(y_test, test_preds)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>RMSE: 11240.043547942365
+</code></pre>
+<p><img src="/content/images/2022-07-16-1.png" alt="lift plot"></p>
+<pre><code>                   y_true        y_pred  counts
+pred_deciles                                   
+0             1410.976040   1226.474250     793
+1             2334.482976   1623.177175     793
+2             2066.532156   1958.356570     793
+3             2311.552333   2279.694124     793
+4             2859.727617   2645.796381     793
+5             2926.430556   3046.564318     792
+6             3554.585120   3543.738184     793
+7             4165.051702   4249.105233     793
+8             4935.030265   5450.838789     793
+9             6709.374527  11123.519130     793
+</code></pre>
+<h2 id="code-and-data-link"><a href="#code-and-data-link" class="headerlink" title="code and data link"></a>code and data link</h2><p>please check out this github link: <a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/tree/main/ColumnTransformer-Example">https://github.com/robotlearner001/blog/tree/main/ColumnTransformer-Example</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">robot learner</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://datasciencebyexample.github.io/2022/07/16/2022-07-16-1/">https://datasciencebyexample.github.io/2022/07/16/2022-07-16-1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">robot learner</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/transformer/">
+                                    <span class="chip bg-color">transformer</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/07/16/2022-07-16-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="A great columnTransformer example to preprocess data for online article SOV prediction">
+                        
+                        <span class="card-title">A great columnTransformer example to preprocess data for online article SOV prediction</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/transformer/">
+                        <span class="chip bg-color">transformer</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/05/2022-07-05-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="An simple but useful example of online calculator using javascript">
+                        
+                        <span class="card-title">An simple but useful example of online calculator using javascript</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/scripts/">
+                        <span class="chip bg-color">scripts</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">robot learner</a>
+            <br>
+            
+            
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
