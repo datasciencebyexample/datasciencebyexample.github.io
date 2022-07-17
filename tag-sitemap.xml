@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/cosmology/</loc>
+        <lastmod>2022-07-17T01:41:41.706Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
         <lastmod>2022-07-16T05:05:38.631Z</lastmod>
         <changefreq>weekly</changefreq>
