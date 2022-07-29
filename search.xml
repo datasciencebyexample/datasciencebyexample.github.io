@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>StagingBucket already exists error during cdk Bootstrap</title>
+      <link href="2022/07/28/2022-07-28-1/"/>
+      <url>2022/07/28/2022-07-28-1/</url>
+      
+        <content type="html"><![CDATA[<p>During my practice of fllowing the AWS Cloud Development Kit (AWS CDK) script that automatically provisions container<br>image-based Lambda functions that perform ML inference using pre-trained Hugging Face modelsWhen using the aws cdk stack deployment,<br>I got some error like this:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>:<span class="number">45</span>:<span class="number">26</span> AM CREATE_FAILED        | AWS::S3::Bucket       | StagingBucket</span><br><span class="line">cdk-hnb659fds-assets-xxxxxxxxxxx-us-east-<span class="number">1</span> already exists</span><br><span class="line"></span><br><span class="line">Environment aws://xxxxxxxxx/us-east-<span class="number">1</span> failed bootstrapping: Error: </span><br><span class="line">The stack named CDKToolkit failed creation, it may need to be manually deleted <span class="keyword">from</span> the AWS console: ROLLBACK_COMPLETE: </span><br><span class="line">cdk-hnb659fds-assets-xxxxxxx-us-east-<span class="number">1</span> already exists</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>As a reminder, here are the steps I was doing:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cdk bootstrap</span><br><span class="line">cdk deploy</span><br></pre></td></tr></table></figure><p>When I reach the cdk bootstrap I get the above error:</p><p>The error happens probably because I previously mannually removed some images on the aws ECR.<br>So to fix that error, first I go to the aws console and find the CloudFormation dashboard, and delete the stack called “CDKToolkit”,<br>shown as below</p><p><img src="/content/images/2022-07-28-1.png" alt="lift plot"></p><p>Then I went to S3 buckets in aws console, and delete the bucket named as “cdk-hnb659fds-assets-xxxxxxxxxxx-us-east-1”, as shown below:</p><p><img src="/content/images/2022-07-28-2.png" alt="lift plot"></p><p>After it’s done, I rerun cdk bootstrap, it works.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> stack overflow </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> aws </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Reveal secrets of early Universe, three questions to understand the James Webb telescope</title>
       <link href="2022/07/17/2022-07-17-1/"/>
       <url>2022/07/17/2022-07-17-1/</url>
@@ -803,11 +828,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -886,9 +911,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
