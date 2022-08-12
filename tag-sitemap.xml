@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/gpt3/</loc>
+        <lastmod>2022-08-12T01:50:11.636Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
         <lastmod>2022-08-06T22:35:27.234Z</lastmod>
         <changefreq>weekly</changefreq>
