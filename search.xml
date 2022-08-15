@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Common python errors and how to fix them</title>
+      <link href="2022/08/15/2022-08-15-1/"/>
+      <url>2022/08/15/2022-08-15-1/</url>
+      
+        <content type="html"><![CDATA[<p>The following is a list of common errors in Python, and knowing how to fix them will save your day.</p><h2 id="1-IndentationError"><a href="#1-IndentationError" class="headerlink" title="1. IndentationError"></a>1. IndentationError</h2><p>In Python, all code is lined up with correct spaces. So, whether there are extra spaces or missing spaces, the entire code doesn’t run and just returns an error function.</p><p>Python code follows the PEP8 whitespace specification, using 4 spaces for each level of indentation.<br>example:<br><img src="/content/images/2022-08-15-1.png"><br>how to fix:<br><img src="/content/images/2022-08-15-2.png"></p><h2 id="2-Mixing-Tab-and-Space-TabError"><a href="#2-Mixing-Tab-and-Space-TabError" class="headerlink" title="2. Mixing Tab and Space (TabError)"></a>2. Mixing Tab and Space (TabError)</h2><p>This type of error is caused by using both tabs and spaces for encoding. The tab key is essentially a tab, not an indent. Spaces are recommended due to the varying width of spaces represented by tabs in different text editors.</p><h2 id="3-SyntaxError"><a href="#3-SyntaxError" class="headerlink" title="3. SyntaxError"></a>3. SyntaxError</h2><p>There are three reasons for syntax errors:</p><ol><li>invalid syntax</li></ol><p>Missing punctuation, mixed use of Chinese and English symbols, misspelling, variable name or function name using keywords.</p><ol start="2"><li>Invalid character in identifier</li></ol><p>Unrecognized characters appear in the code, check for extra characters or Chinese characters.</p><ol start="3"><li><p>Incomplete string detected (EOL while scanning string literal)</p><p> In many cases, it is due to inconsistent quotation marks around the string.</p></li></ol><p>some examples:<br><img src="/content/images/2022-08-15-3.png"><br>Error reason: the comma is a Chinese comma<br>Error message: SyntaxError: invalid character in identifier</p><p><img src="/content/images/2022-08-15-4.png"><br>Error reason: parentheses are not paired</p><p>Error message: SyntaxError:unexpected EOF while parsing</p><p><img src="/content/images/2022-08-15-5.png"><br>Cause of error: Forgot to add a colon at the end of statements such as if/elif/else/while/for/def/class</p><p>Error message: SyntaxError: invalid syntax</p><h2 id="4-NameError"><a href="#4-NameError" class="headerlink" title="4. NameError"></a>4. NameError</h2><p>Variable name error is the most common and most commonly encountered built-in error type. It often occurs in Python variable naming. If the variable cannot be found, a NameError will be raised. There are a few things to keep in mind about the rules for variable names:</p><ol><li>The variable name can only contain letters, numbers and underscores, and cannot start with numbers;</li><li>Variable names cannot contain spaces, but underscores can be used to separate words within them;</li><li>Do not use Python keywords and function names as variable names, such as print;</li><li>Variable names should be short and descriptive;</li><li>Use lowercase l and uppercase O with caution, because it is easy to be mistaken for numbers 1 and 0.</li></ol><p>If there is a variable name error, you can check whether the variable is assigned a value, whether there is a case of inconsistent capitalization or a wrong variable name, and correct it after finding it.</p><h2 id="5-IndexError"><a href="#5-IndexError" class="headerlink" title="5. IndexError"></a>5. IndexError</h2><p>An index is the position of an item in an array or list, this exception occurs when we try to access an element from a list or a tuple from an index that does not exist in the list.</p><p>For example, if you have a list of 10 elements with indices between 0 and 9, if you try to access an element at index 10 or 11 or more, an IndexError will be raised.</p><h2 id="6-KeyError"><a href="#6-KeyError" class="headerlink" title="6. KeyError"></a>6. KeyError</h2><p>When reading the key and value in the dictionary, if the key does not exist, a KeyError will be triggered.</p><h2 id="7-TypeError"><a href="#7-TypeError" class="headerlink" title="7. TypeError"></a>7. TypeError</h2><p>This error is raised when an incorrect or unsupported object type is used in a program. This error is also raised if you try to call a non-callable object or iterate through a non-iterable identifier.</p><p>example<br><img src="/content/images/2022-08-15-6.png"><br>Reason for error: When using “+” for splicing, you must use a string, or use the str() function to convert the number into a string<br>Error message: TypeError: can only concatenate str(not “int”) to str</p><h2 id="8-AttributeError"><a href="#8-AttributeError" class="headerlink" title="8. AttributeError"></a>8. AttributeError</h2><p>Property errors are raised when attribute references and assignments fail.<br>The cause of such errors is an attempt to access an unknown object property, in other words the property of the corresponding object cannot be found. You can check whether the constructor <strong>init</strong>() in the class is written correctly, with two underscores on the left and right sides.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>What are the risks when more people start to use AI writers such as GPT3 to produce articles?</title>
       <link href="2022/08/11/2022-08-11-1/"/>
       <url>2022/08/11/2022-08-11-1/</url>
