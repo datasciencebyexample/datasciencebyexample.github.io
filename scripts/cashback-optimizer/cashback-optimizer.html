@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/layout.css" />
+  </head>
+
+  <body>
+    <!--- Header Section -->
+    <div id="headerWrapper">
+      <h1 id="headerTitle">Cash Back Credit Card Usage Optimizer</h1>
+    </div>
+
+
+ <!--- Expenses Section -->
+    <h2>How much do you spend yearly?</h2>
+    <h4>Estimate your average yearly spending in the following categories </h4>
+    <div class="containerDiv">
+      <div class="Entry">
+        <p class="EntryWords">Dining</p>
+        <input
+          name="dining"
+          id="dining_entry"
+          class="EntryInput"
+          type="number"
+		  min="0"
+		  oninput="validity.valid||(value='');"
+          value="0"
+        />
+      </div>
+      <div class="Entry">
+        <p class="EntryWords">Grocery</p>
+        <input
+          name="grocery"
+          id="grocery_entry"
+          class="EntryInput"
+          type="number"
+		  min="0"
+		  oninput="validity.valid||(value='');"
+          value="0"
+        />
+      </div>
+      <div class="Entry">
+        <p class="EntryWords">Gas</p>
+        <input
+          name="gas"
+          id="gas_entry"
+          class="EntryInput"
+          type="number"
+		  min="0"
+		  oninput="validity.valid||(value='');"
+          value="0"
+        />
+      </div>
+      <div class="Entry">
+        <p class="EntryWords">Amazon</p>
+        <input
+          name="amazon"
+          id="amazon_entry"
+          class="EntryInput"
+          type="number"
+		  min="0"
+		  oninput="validity.valid||(value='');"
+          value="0"
+        />
+      </div>
+      <div class="Entry">
+        <p class="EntryWords">Online shopping</p>
+        <input
+          name="online"
+          id="online_entry"
+          class="EntryInput"
+          type="number"
+		  min="0"
+		  oninput="validity.valid||(value='');"
+          value="0"
+        />
+      </div>
+ 	 
+      <div class="Entry">
+        <p class="EntryWords">Others</p>
+        <input
+          name="others"
+          id="others_entry"
+          class="EntryInput"
+          type="number"
+		  min="0"
+		  oninput="validity.valid||(value='');"
+          value="0"
+        />
+      </div>
+      <!-- Fake Entry to allow for appropraite spacing in 1, 2, or 3 columns -->
+      <div class="Entry" id="fake_spacer"></div>
+    </div>
+	
+	
+	
+    
+
+    <!--- choose Cards -->
+    <h2>List of best cash back credit cards we use to optimize usage</h2>
+	<h4>you can also check a subset of the cards you have to optimize</h4>
+    <div class="containerDiv">
+
+ 
+
+      <div class="CheckboxEntry">
+        <label>
+          <input type="checkbox" id = "Citi_custom_cash_back_Checkbox"/>
+          Citi Custom Cash
+        </label>
+        <img
+            class="image"
+            src="image/citi_custom_cash.png"
+        />
+      </div>
+      <div class="CheckboxEntry">
+        <label>
+          <input type="checkbox" id = "Citi_double_cash_Checkbox"/>
+          Citi Double Cash
+        </label>
+        <img
+            class="image"
+            src="image/citi-double-cash.png"
+        />
+      </div>
+      <div class="CheckboxEntry">
+        <label>
+          <input type="checkbox" id = "Wells_Fargo_active_cash_Checkbox"/>
+          Wells Fargo Active Cash
+        </label>
+        <img
+            class="image"
+            src="image/Wells_Fargo_Active_Cash.png"
+        />
+      </div>
+ 
+      <div class="CheckboxEntry">
+        <label>
+          <input type="checkbox" id = "AMX_blue_cash_everyday_Checkbox"/>
+          American Express Blue Cash Everyday
+        </label>
+        <img
+            class="image"
+            src="image/blue-cash-everyday.png"
+        />
+      </div>
+	  
+      <div class="CheckboxEntry">
+        <label>
+          <input type="checkbox" id = "BOA_customized_cash_rewards_Checkbox"/>
+          Bank of America Customized Cash
+        </label>
+        <img
+            class="image"
+            src="image/bank_of_america_customized_cash.png"
+        />
+      </div>
+
+      <div class="CheckboxEntry">
+        <label>
+          <input type="checkbox" id = "CapitalOne_savorone_Checkbox"/>
+          Capital One SavorOne Rewards
+        </label>
+        <img
+            class="image"
+            src="image/savor_one.png"
+        />
+      </div>
+	  
+	  <div class="CheckboxEntry">
+        <label>
+          <input type="checkbox" id = "Chase_amazon_rewards_signature_Checkbox"/>
+          Amazon Rewards Visa Signature Card by Chase
+        </label>
+        <img
+            class="image"
+            src="image/amazon_visa_card.png"
+        />
+      </div>
+
+      
+    </div>
+
+   
+ <!--- recommend button here -->
+ <!--- Recommend Button Section -->
+    <div class="buttonDiv">
+      <button id="compute_button">Start Optimization</button>
+    </div>
+	
+ <!--- new Results -->
+  
+<div id="recommendDiv">
+      <h2>Your best card usages to maximize cashback</h2>
+	  
+	  
+      <div class="containerDiv recommendDivWrapper">
+       
+
+        <div id="card2" class="creditNoRotate">
+ 
+          <div  id="card2_text" class="creditNoRotate_words">
+           
+          </div>
+        </div>
+
+
+		
+      </div>
+
+
+    </div>
+ 
+  
+
+   
+
+   
+    <script src="js/compare-button.js"  type="module" defer></script>
+ 
+  </body>
+</html>
