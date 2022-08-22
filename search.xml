@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Maximize your credit cards cashback using AI optimization</title>
+      <link href="2022/08/21/2022-08-21-1/"/>
+      <url>2022/08/21/2022-08-21-1/</url>
+      
+        <content type="html"><![CDATA[<p>In general, there are many credit cards that offer good cash back rates for certain spending categories ranging from 1% to 5%. </p><p>The main spending categories include gas, dining, grocery, online shopping (not including amazon, target, walmart etc), and amazon shopping. There are other smaller and more specific categories, but the above categories are the main stream ones and matter to most of us.</p><p>One conventional wisdom of choosing the credit cards is trying to think about your biggest spending category, and then choose the credit cards that offers maximum cashback percentage on that category. </p><p>With optimization algorithms in AI, we could do it better. First, we estimate our annual spending in different spending categories. Then, the algorithm will figure out the best spending strategy for us using different credit cards.</p><p>The default list of credit cards are chosen with the following conditions:</p><ol><li>no annual fee, to save you money</li><li>it offers the best cash back in certain main spending categories</li><li>one of the credit cards is for Amazon shopping only, and it has 3% cashback rate; however, if you happend to have the paid Amazon prime membership, the rate is 5%. In our optimization algorithm, we use the 3% for calculation, but keep in mind, you might get more than that if you have the membership.</li><li>Some cards offer very good cashback but with a spending cap, so if your spending in that category is higher than the cap, say 500 per month or 6000 per year, the algorithm will tell you how to allocate some percentage of your spending using another credit card.</li></ol><p>With this AI based optimization algorithm, your cashback rate is usually higher than 3%!</p><p>One thing to notice is that, the best cashback outcome comes from having all the listed credit cards; however, you can also specify a subset of the credit cards, for example, you only have 2 or 3 cards, you can checkbox them, and run the algorithm. The algorithm will tell you the best scenario using the credit cards you pick.</p><p>Now try your luck!</p><h2 id="cashback-optimizer-demo"><a href="#cashback-optimizer-demo" class="headerlink" title="cashback optimizer demo"></a>cashback optimizer demo</h2><p>or go to the direct link <a href="https://www.datasciencebyexample.com/scripts/cashback-optimizer/cashback-optimizer.html">cashback optimizer</a><br> <iframe src="/scripts/cashback-optimizer/cashback-optimizer.html" width="100%" height="2000" style="border:1px solid black;"></p></iframe>]]></content>
+      
+      
+      <categories>
+          
+          <category> optimization </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> credit card </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Common python errors and how to fix them</title>
       <link href="2022/08/15/2022-08-15-1/"/>
       <url>2022/08/15/2022-08-15-1/</url>
@@ -903,11 +928,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -986,9 +1011,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
