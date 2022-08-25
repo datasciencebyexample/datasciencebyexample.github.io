@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="time series feature engineering using tsfresh, training vs test, DataScienceTribe">
+    <meta name="keywords" content="Understand the NaN and None difference in Pandas once for all, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>time series feature engineering using tsfresh, training vs test | DataScienceTribe</title>
+    <title>Understand the NaN and None difference in Pandas once for all | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">time series feature engineering using tsfresh, training vs test</h1>
+                    <h1 class="description center-align post-title">Understand the NaN and None difference in Pandas once for all</h1>
                 </div>
             </div>
         </div>
@@ -352,24 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
-                            </a>
-                        
-                            <a href="/tags/tsfresh/">
-                                <span class="chip bg-color">tsfresh</span>
-                            </a>
-                        
-                            <a href="/tags/time-series/">
-                                <span class="chip bg-color">time series</span>
-                            </a>
-                        
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/pandas/">
+                                <span class="chip bg-color">pandas</span>
                             </a>
                         
                     </div>
@@ -393,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-10
+                    2022-08-24
                 </div>
                 
 
@@ -414,67 +398,77 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>During the test stage, i.e., once the model is on production, for any new data,<br>tsfresh feature generation does not depend the training data. So one can apply the same feature engineering process as the training data<br>without worrying about stroing information from training stage.</p>
-<p>On ther hand, one can also use the following example to leverage scikit learn pipleline style to handel the feature generation<br>for both training and test stages.</p>
-<h1 id="Feature-Selection-in-a-sklearn-pipeline"><a href="#Feature-Selection-in-a-sklearn-pipeline" class="headerlink" title="Feature Selection in a sklearn pipeline"></a>Feature Selection in a sklearn pipeline</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tsfresh.examples <span class="keyword">import</span> load_robot_execution_failures</span><br><span class="line"><span class="keyword">from</span> tsfresh.transformers <span class="keyword">import</span> RelevantFeatureAugmenter</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> impute</span><br></pre></td></tr></table></figure>
-
-<h2 id="Load-and-Prepare-the-Data"><a href="#Load-and-Prepare-the-Data" class="headerlink" title="Load and Prepare the Data"></a>Load and Prepare the Data</h2><p>Check out the first example notebook to learn more about the data and format.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tsfresh.examples.robot_execution_failures <span class="keyword">import</span> download_robot_execution_failures</span><br><span class="line">download_robot_execution_failures() </span><br><span class="line">df_ts, y = load_robot_execution_failures()</span><br></pre></td></tr></table></figure>
-
-<p>We want to use the extracted features to predict for each of the robot executions, if it was a failure or not.<br>Therefore our basic “entity” is a single robot execution given by a distinct <code>id</code>.</p>
-<p>A dataframe with these identifiers as index needs to be prepared for the pipeline.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X = pd.DataFrame(index=y.index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split data into train and test set</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Build-the-pipeline"><a href="#Build-the-pipeline" class="headerlink" title="Build the pipeline"></a>Build the pipeline</h2><p>We build a sklearn pipeline that consists of a feature extraction step (<code>RelevantFeatureAugmenter</code>) with a subsequent <code>RandomForestClassifier</code>.</p>
-<p>The <code>RelevantFeatureAugmenter</code> takes roughly the same arguments as <code>extract_features</code> and <code>select_features</code> do.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl = Pipeline([</span><br><span class="line">        (<span class="string">&#x27;augmenter&#x27;</span>, RelevantFeatureAugmenter(column_id=<span class="string">&#x27;id&#x27;</span>, column_sort=<span class="string">&#x27;time&#x27;</span>)),</span><br><span class="line">        (<span class="string">&#x27;classifier&#x27;</span>, RandomForestClassifier())</span><br><span class="line">      ])</span><br></pre></td></tr></table></figure>
-
-<div class="alert alert-warning">
-    
-<p>Here comes the tricky part!</p>
-<p>The input to the pipeline will be our dataframe <code>X</code>, which one row per identifier.<br>It is currently empty.<br>But which time series data should the <code>RelevantFeatureAugmenter</code> to actually extract the features from?</p>
-<p>We need to pass the time series data (stored in <code>df_ts</code>) to the transformer.</p>
-</div>
-
-<p>In this case, df_ts contains the time series of both train and test set, if you have different dataframes for<br>train and test set, you have to call set_params two times<br>(see further below on how to deal with two independent data sets)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts);</span><br></pre></td></tr></table></figure>
-
-<p>We are now ready to fit the pipeline</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
-
-<p>The augmenter has used the input time series data to extract time series features for each of the identifiers in the <code>X_train</code> and selected only the relevant ones using the passed <code>y_train</code> as target.<br>These features have been added to <code>X_train</code> as new columns.<br>The classifier can now use these features during trainings.</p>
-<h2 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h2><p>During interference, the augmentor does only extract the relevant features it has found out in the training phase and the classifier predicts the target using these features.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
-
-<p>So, finally we inspect the performance:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
-
-<p>You can also find out, which columns the augmenter has selected</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.named_steps[<span class="string">&quot;augmenter&quot;</span>].feature_selector.relevant_features</span><br></pre></td></tr></table></figure>
-
-<div class="alert alert-info">
-    
-<p>In this example we passed in an empty (except the index) <code>X_train</code> or <code>X_test</code> into the pipeline.<br>However, you can also fill the input with other features you have (e.g. features extracted from the metadata)<br>or even use other pipeline components before.</p>
-</div>
-
-<h2 id="Separating-the-time-series-data-containers"><a href="#Separating-the-time-series-data-containers" class="headerlink" title="Separating the time series data containers"></a>Separating the time series data containers</h2><p>In the example above we passed in a single <code>df_ts</code> into the <code>RelevantFeatureAugmenter</code>, which was used both for training and predicting.<br>During training, only the data with the <code>id</code>s from <code>X_train</code> where extracted and during prediction the rest.</p>
-<p>However, it is perfectly fine to call <code>set_params</code> twice: once before training and once before prediction.<br>This can be handy if you for example dump the trained pipeline to disk and re-use it only later for prediction.<br>You only need to make sure that the <code>id</code>s of the enteties you use during training/prediction are actually present in the passed time series data.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_ts_train = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_train.index)]</span><br><span class="line">df_ts_test = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_test.index)]</span><br></pre></td></tr></table></figure>
+                <p>Pandas and Numpy are widely used formats for data mining and data sciences, but sometimes people get confused by None and NaN, which are very similar but slighly different data types. Here we figure it out once for all with some examples. </p>
+<h2 id="main-difference"><a href="#main-difference" class="headerlink" title="main difference"></a>main difference</h2><p>The distinction between None and NaN in Pandas can be summaried as:</p>
+<ol>
+<li>None represents a missing entry, but its type is not numeric. So any column (ad Pandas Series) that contains a None value is definately not a numeric type, such as int or float.</li>
+<li>NaN which stands for not-a-number, is on the other hand a numeric type. This means that NaN can be found in a numeric colmum of int or float type.</li>
+</ol>
+<h2 id="tests-in-action"><a href="#tests-in-action" class="headerlink" title="tests in action"></a>tests in action</h2><p>in the following test, a None value is automatically transfered as a NaN value, because Pandas automatically converted None to NaN<br>given that the other value in the series is a numeric. The will make the series a numeric type and will be much easier for many<br>following operations.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">pd.Series([<span class="number">1</span>,<span class="literal">None</span>])</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_train);</span><br><span class="line">ppl.fit(X_train, y_train);</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(ppl, f)</span><br></pre></td></tr></table></figure>
+<pre><code>0    1.0
+1    NaN
+dtype: float64
+</code></pre>
+<p>in the following test, the other value in the series is a string, so the None value stay as None value. This make the whole<br>series an object type.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">pd.Series([<span class="string">&quot;1&quot;</span>,<span class="literal">None</span>])</span><br></pre></td></tr></table></figure>
 
-<p>Later: load the fitted model and do predictions on new, unseen data</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ppk = pickle.load(f)</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_test);</span><br><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0       1
+1    None
+dtype: object
+</code></pre>
+<h2 id="None-type-can-lead-to-more-arithmetics-errors"><a href="#None-type-can-lead-to-more-arithmetics-errors" class="headerlink" title="None type can lead to more arithmetics errors"></a>None type can lead to more arithmetics errors</h2><p>Why did we claim with NaN type, it will be much easier for many other operations useful to data science?<br>It just gives less error for many arithmetics operations. For example, the followng operation will give an error:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="literal">None</span> + <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-8-3fd8740bf8ab&gt; in &lt;module&gt;
+----&gt; 1 None + 1
+
+
+TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#39;
+</code></pre>
+<p>while the following operations with NaN type is fine, we just get another NaN type, but no error.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.nan + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>nan
+</code></pre>
+<h2 id="How-to-check-the-None-and-NaN-type"><a href="#How-to-check-the-None-and-NaN-type" class="headerlink" title="How to check the None and NaN type"></a>How to check the None and NaN type</h2><p>There are several differnt ways to check if a data type is None or NaN values;<br>First using numpy, the function np.isnan() can check if a value is a NaN value, but it won’t work with None values.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.isnan(np.nan)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True
+</code></pre>
+<p>in Pandas, there are functions that are isnull() and isna(), which are literally does the same things. isnull() is just an alias of the isna() method; Basically isnull() detects missing values, so both nan or None will be True.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.isnull(np.nan)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.isnull(<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>True
+</code></pre>
 
                 
             </div>
@@ -501,7 +495,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/">https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/08/24/2022-08-24-1/">https://datasciencebyexample.github.io/2022/08/24/2022-08-24-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -539,24 +533,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
-                                </a>
-                            
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
-                                </a>
-                            
-                                <a href="/tags/tsfresh/">
-                                    <span class="chip bg-color">tsfresh</span>
-                                </a>
-                            
-                                <a href="/tags/time-series/">
-                                    <span class="chip bg-color">time series</span>
-                                </a>
-                            
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/pandas/">
+                                    <span class="chip bg-color">pandas</span>
                                 </a>
                             
                         </div>
@@ -602,74 +580,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/12/2021-06-12-1/">
+                <a href="/2022/08/24/2022-08-24-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="aggregate features from different rows into one row in pandas dataframe">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Understand the NaN and None difference in Pandas once for all">
                         
-                        <span class="card-title">aggregate features from different rows into one row in pandas dataframe</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-12
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/09/2021-06-09-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="word tokenization and sentence tokenization in python using NLTK package">
-                        
-                        <span class="card-title">word tokenization and sentence tokenization in python using NLTK package</span>
+                        <span class="card-title">Understand the NaN and None difference in Pandas once for all</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -680,7 +602,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-24
                             </span>
                         <span class="publish-author">
                             
@@ -694,15 +616,61 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tokenization/">
-                        <span class="chip bg-color">tokenization</span>
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
                     </a>
                     
-                    <a href="/tags/NLTK/">
-                        <span class="chip bg-color">NLTK</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/21/2022-08-21-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Maximize your credit cards cashback using AI optimization">
+                        
+                        <span class="card-title">Maximize your credit cards cashback using AI optimization</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/optimization/" class="post-category">
+                                    optimization
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/credit-card/">
+                        <span class="chip bg-color">credit card</span>
                     </a>
                     
                 </div>
