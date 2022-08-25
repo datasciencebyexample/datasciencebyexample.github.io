@@ -398,13 +398,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Pandas and Numpy are widely used formats for data mining and data sciences, but sometimes people get confused by None and NaN, which are very similar but slighly different data types. Here we figure it out once for all with some examples. </p>
-<h2 id="main-difference"><a href="#main-difference" class="headerlink" title="main difference"></a>main difference</h2><p>The distinction between None and NaN in Pandas can be summaried as:</p>
+                <p>Pandas and Numpy are widely used formats for data mining and data sciences, but sometimes people get confused by None and NaN, which are very similar but slightly different data types. Here we figure it out once for all with some examples. </p>
+<h2 id="main-difference"><a href="#main-difference" class="headerlink" title="main difference"></a>main difference</h2><p>The distinction between None and NaN in Pandas can be summarized as:</p>
 <ol>
 <li>None represents a missing entry, but its type is not numeric. So any column (ad Pandas Series) that contains a None value is definately not a numeric type, such as int or float.</li>
-<li>NaN which stands for not-a-number, is on the other hand a numeric type. This means that NaN can be found in a numeric colmum of int or float type.</li>
+<li>NaN which stands for not-a-number, is on the other hand a numeric type. This means that NaN can be found in a numeric column of int or float type.</li>
 </ol>
-<h2 id="tests-in-action"><a href="#tests-in-action" class="headerlink" title="tests in action"></a>tests in action</h2><p>in the following test, a None value is automatically transfered as a NaN value, because Pandas automatically converted None to NaN<br>given that the other value in the series is a numeric. The will make the series a numeric type and will be much easier for many<br>following operations.</p>
+<h2 id="tests-in-action"><a href="#tests-in-action" class="headerlink" title="tests in action"></a>tests in action</h2><p>in the following test, a None value is automatically transferred as a NaN value, because Pandas automatically converted None to NaN<br>given that the other value in the series is a numeric. The will make the series a numeric type and will be much easier for many<br>following operations.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">pd.Series([<span class="number">1</span>,<span class="literal">None</span>])</span><br></pre></td></tr></table></figure>
 
 
@@ -424,7 +424,7 @@ dtype: float64
 1    None
 dtype: object
 </code></pre>
-<h2 id="None-type-can-lead-to-more-arithmetics-errors"><a href="#None-type-can-lead-to-more-arithmetics-errors" class="headerlink" title="None type can lead to more arithmetics errors"></a>None type can lead to more arithmetics errors</h2><p>Why did we claim with NaN type, it will be much easier for many other operations useful to data science?<br>It just gives less error for many arithmetics operations. For example, the followng operation will give an error:</p>
+<h2 id="None-type-can-lead-to-more-arithmetic-errors"><a href="#None-type-can-lead-to-more-arithmetic-errors" class="headerlink" title="None type can lead to more arithmetic errors"></a>None type can lead to more arithmetic errors</h2><p>Why did we claim with NaN type, it will be much easier for many other operations useful to data science?<br>It just gives less error for many arithmetic operations. For example, the following operation will give an error:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="literal">None</span> + <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 
@@ -446,7 +446,7 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
 
 <pre><code>nan
 </code></pre>
-<h2 id="How-to-check-the-None-and-NaN-type"><a href="#How-to-check-the-None-and-NaN-type" class="headerlink" title="How to check the None and NaN type"></a>How to check the None and NaN type</h2><p>There are several differnt ways to check if a data type is None or NaN values;<br>First using numpy, the function np.isnan() can check if a value is a NaN value, but it won’t work with None values.</p>
+<h2 id="How-to-check-the-None-and-NaN-type"><a href="#How-to-check-the-None-and-NaN-type" class="headerlink" title="How to check the None and NaN type"></a>How to check the None and NaN type</h2><p>There are several different ways to check if a data type is None or NaN values;<br>First using numpy, the function np.isnan() can check if a value is a NaN value, but it won’t work with None values.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.isnan(np.nan)</span><br></pre></td></tr></table></figure>
 
 
