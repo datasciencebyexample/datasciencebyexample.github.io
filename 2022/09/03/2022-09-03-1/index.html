@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Understand the NaN and None difference in Pandas once for all, DataScienceTribe">
+    <meta name="keywords" content="Be an AWS lambda expert No.3 - How to handle CORS errors when calling AWS API Gateway endpoint from frontend, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Understand the NaN and None difference in Pandas once for all | DataScienceTribe</title>
+    <title>Be an AWS lambda expert No.3 - How to handle CORS errors when calling AWS API Gateway endpoint from frontend | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Understand the NaN and None difference in Pandas once for all</h1>
+                    <h1 class="description center-align post-title">Be an AWS lambda expert No.3 - How to handle CORS errors when calling AWS API Gateway endpoint from frontend</h1>
                 </div>
             </div>
         </div>
@@ -352,8 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
+                            <a href="/tags/aws/">
+                                <span class="chip bg-color">aws</span>
+                            </a>
+                        
+                            <a href="/tags/CORS/">
+                                <span class="chip bg-color">CORS</span>
                             </a>
                         
                     </div>
@@ -377,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-24
+                    2022-09-03
                 </div>
                 
 
@@ -398,77 +402,47 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Pandas and Numpy are widely used formats for data mining and data sciences, but sometimes people get confused by None and NaN, which are very similar but slightly different data types. Here we figure it out once for all with some examples. </p>
-<h2 id="main-difference"><a href="#main-difference" class="headerlink" title="main difference"></a>main difference</h2><p>The distinction between None and NaN in Pandas can be summarized as:</p>
+                <p>We have developed a AWS lambda function, then we put it online by using AWS API gateway.  </p>
+<p>We could also test the API and verify it is working as what we expect, things really look awesome.</p>
+<p>So we are ready to send the API endpoint to our frontend and call it from the website.</p>
+<p>As soon as we did that, we found some CORS errors like this:</p>
+<p>Error message:<br><em>Access to XMLHttpRequest at ‘<a target="_blank" rel="noopener" href="https://xxx.execute-api.us-east-1.amazonaws.com/prod/&#39;">https://xxx.execute-api.us-east-1.amazonaws.com/prod/&#39;</a> from origin ‘<a target="_blank" rel="noopener" href="https://www.datasciencebyexample.com&/#39;">https://www.datasciencebyexample.com&#39;</a> has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource.</em></p>
+<p>The CORS error stands for Cross-Origin Resource Sharing (CORS) error. By default, the server side and web side can’t be talking from different domains.<br>So we need to relax this requirement from both sides. </p>
+<h2 id="Enable-CORS-on-AWS-API-gateway"><a href="#Enable-CORS-on-AWS-API-gateway" class="headerlink" title="Enable CORS on AWS API gateway"></a>Enable CORS on AWS API gateway</h2><p>First, on the server side, we need to make sure the response from the server side, i.e. the API, should have the header including ‘Access-Control-Allow-Origin’ key, to tell which domain is allowed to call the API. We can put specific domain to be the value for the value, or ‘*’ to stand for all sites are allowed. Notice that this header is provided by the API side, not from the frontend side.</p>
+<p>With AWS API gateway, one can check the official guide here,<br><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html</a>, or just follow the following steps:</p>
 <ol>
-<li>None represents a missing entry, but its type is not numeric. So any column (ad Pandas Series) that contains a None value is definately not a numeric type, such as int or float.</li>
-<li>NaN which stands for not-a-number, is on the other hand a numeric type. This means that NaN can be found in a numeric column of int or float type.</li>
+<li><p>Sign in to the API Gateway console at <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/apigateway">https://console.aws.amazon.com/apigateway</a>.</p>
+</li>
+<li><p>In the API Gateway console, choose an API under APIs.</p>
+</li>
+<li><p>Choose a resource under Resources. This will enable CORS for all the methods on the resource. Alternatively, you could choose a method under the resource to enable CORS for just this method.</p>
+</li>
+<li><p>Choose Enable CORS from the Actions drop-down menu.<br>and Choose Enable CORS</p>
+</li>
+<li><p>In the Enable CORS form, don’t need to change anyting, just use the default suggestions, basicaly they are:</p>
+<ol>
+<li><p>In the Access-Control-Allow-Headers input field, type a static string of a comma-separated list of headers that the client must submit in the actual request of the resource. Use the console-provided header list of Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token or specify your own headers.</p>
+</li>
+<li><p>Use the console-provided value of ‘*’ as the Access-Control-Allow-Origin header value to allow access requests from all domains, or specify a named domain to all access requests from the specified domain.</p>
+</li>
 </ol>
-<h2 id="tests-in-action"><a href="#tests-in-action" class="headerlink" title="tests in action"></a>tests in action</h2><p>in the following test, a None value is automatically transferred as a NaN value, because Pandas automatically converted None to NaN<br>given that the other value in the series is a numeric. The will make the series a numeric type and will be much easier for many<br>following operations.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">pd.Series([<span class="number">1</span>,<span class="literal">None</span>])</span><br></pre></td></tr></table></figure>
+<p> Choose Enable CORS and replace existing CORS headers.</p>
+</li>
+<li><p>Last but not least, remember to deploy the API again, otherwise it might not take effect.</p>
+</li>
+</ol>
+<p>Here is screen shot of what described in the above steps:<br><img src="/content/images/2022-09-03-1.png"></p>
+<p>We can check if the CORS setting is working by calling the API using requests library in python, and print out the headers from response:<br><img src="/content/images/2022-09-03-2.png"></p>
+<h2 id="Calling-API-using-javascript-fetch"><a href="#Calling-API-using-javascript-fetch" class="headerlink" title="Calling API using javascript fetch"></a>Calling API using javascript fetch</h2><p>After verifing the header has the “Access-Control-Allow-Origin” key and value from the response header, we are sure the CORS is all set up on the server side.<br>To call the endpoint on the frontend, we don’t need to much work, just find the method that you like. </p>
+<p>Here is an example of calling the POST endpoint using fetch in javascript:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function CORSexample(input) &#123;</span><br><span class="line"> </span><br><span class="line">    // call api</span><br><span class="line">    // POST request using fetch()</span><br><span class="line">	fetch(&quot;https://xxx.execute-api.us-east-1.amazonaws.com/prod/&quot;, &#123;</span><br><span class="line">		method: &quot;POST&quot;,</span><br><span class="line">		// Adding body or contents to send</span><br><span class="line">		body: JSON.stringify(&#123;</span><br><span class="line">			&quot;data&quot;:&#123;&quot;query&quot;:input&#125;</span><br><span class="line">		&#125;),</span><br><span class="line">		 </span><br><span class="line">		// Adding headers to the request if necessary</span><br><span class="line">		headers: &#123;</span><br><span class="line">			&quot;Content-type&quot;: &quot;application/json; charset=UTF-8&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	 </span><br><span class="line">	// Converting result to JSON</span><br><span class="line">	.then(response =&gt; response.json())</span><br><span class="line">	 </span><br><span class="line">	.then(function(result)</span><br><span class="line">	  &#123;</span><br><span class="line">	   console.log(result)</span><br><span class="line">	   // in some older jquery version, one has to parse the json to be object</span><br><span class="line">	   // it&#x27;s not necessary in new versions, just try it or not</span><br><span class="line">	   //var result = $.parseJSON(result)</span><br><span class="line">	  </span><br><span class="line">	   // continue other custome stuff you have </span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">	  </span><br><span class="line">	&#125;).catch(error =&gt; console.error(&#x27;Error:&#x27;, error)); </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>0    1.0
-1    NaN
-dtype: float64
-</code></pre>
-<p>in the following test, the other value in the series is a string, so the None value stay as None value. This make the whole<br>series an object type.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">pd.Series([<span class="string">&quot;1&quot;</span>,<span class="literal">None</span>])</span><br></pre></td></tr></table></figure>
 
 
 
-
-<pre><code>0       1
-1    None
-dtype: object
-</code></pre>
-<h2 id="None-type-can-lead-to-more-arithmetic-errors"><a href="#None-type-can-lead-to-more-arithmetic-errors" class="headerlink" title="None type can lead to more arithmetic errors"></a>None type can lead to more arithmetic errors</h2><p>Why did we claim with NaN type, it will be much easier for many other operations useful to data science?<br>It just gives less error for many arithmetic operations. For example, the following operation will give an error:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="literal">None</span> + <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-8-3fd8740bf8ab&gt; in &lt;module&gt;
-----&gt; 1 None + 1
-
-
-TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#39;
-</code></pre>
-<p>while the following operations with NaN type is fine, we just get another NaN type, but no error.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.nan + <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>nan
-</code></pre>
-<h2 id="How-to-check-the-None-and-NaN-type"><a href="#How-to-check-the-None-and-NaN-type" class="headerlink" title="How to check the None and NaN type"></a>How to check the None and NaN type</h2><p>There are several different ways to check if a data type is None or NaN values;<br>First using numpy, the function np.isnan() can check if a value is a NaN value, but it won’t work with None values.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.isnan(np.nan)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True
-</code></pre>
-<p>in Pandas, there are functions that are isnull() and isna(), which are literally does the same things. isnull() is just an alias of the isna() method; Basically isnull() detects missing values, so both nan or None will be True.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.isnull(np.nan)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.isnull(<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>True
-</code></pre>
 
                 
             </div>
@@ -495,7 +469,7 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/08/24/2022-08-24-1/">https://datasciencebyexample.github.io/2022/08/24/2022-08-24-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/09/03/2022-09-03-1/">https://datasciencebyexample.github.io/2022/09/03/2022-09-03-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -533,8 +507,12 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
+                                <a href="/tags/aws/">
+                                    <span class="chip bg-color">aws</span>
+                                </a>
+                            
+                                <a href="/tags/CORS/">
+                                    <span class="chip bg-color">CORS</span>
                                 </a>
                             
                         </div>
@@ -580,9 +558,10 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/09/03/2022-09-03-1/">
                     <div class="card-image">
@@ -600,9 +579,9 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -615,6 +594,7 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -637,13 +617,13 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/21/2022-08-21-1/">
+                <a href="/2022/08/24/2022-08-24-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Maximize your credit cards cashback using AI optimization">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Understand the NaN and None difference in Pandas once for all">
                         
-                        <span class="card-title">Maximize your credit cards cashback using AI optimization</span>
+                        <span class="card-title">Understand the NaN and None difference in Pandas once for all</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -654,14 +634,14 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/optimization/" class="post-category">
-                                    optimization
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
                                 </a>
                             
                             
@@ -671,8 +651,8 @@ TypeError: unsupported operand type(s) for +: &#39;NoneType&#39; and &#39;int&#3
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/credit-card/">
-                        <span class="chip bg-color">credit card</span>
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
                     </a>
                     
                 </div>
