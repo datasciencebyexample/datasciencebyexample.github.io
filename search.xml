@@ -31,6 +31,33 @@
     
     
     <entry>
+      <title>Be an AWS lambda expert No.1 - How to install python packages by adding custom layer to lambda function easliy</title>
+      <link href="2022/09/01/2022-09-01-1/"/>
+      <url>2022/09/01/2022-09-01-1/</url>
+      
+        <content type="html"><![CDATA[<p>AWS lambda function is an agile way to implement serverless API endpoint; It is also quite easy to spin up some python models as long as the model is<br>not very complex. </p><h2 id="1-Try-adding-existing-AWS-layers-to-see-if-it-satisfies-your-needs"><a href="#1-Try-adding-existing-AWS-layers-to-see-if-it-satisfies-your-needs" class="headerlink" title="1. Try adding existing AWS layers to see if it satisfies your needs"></a>1. Try adding existing AWS layers to see if it satisfies your needs</h2><p>To include some very common pythons packages, such as pandas, numpy and requests,<br>you can add the aws layer called “AWSDataWranger”.</p><p>The following screen shows how to add it after you create the lambda function, here we are using the python3.9 environment.</p><p><img src="/content/images/2022-09-01-1.png"></p><p>Most of the time, we may want to more custom python packages to be installed, so we have to create a custom layer to have those packages specifically installed.<br>Notice that, there is a 250M size limit for each layer, so this means we usually can only install one or two packages in each layer. And those packages cann’t<br>be too large.</p><p>The easiest way to create a custom layer and ship it to AWS, such that you can choose to add it in your lambda fuctions, is by using The AWS Command Line Interface (AWS CLI).</p><h2 id="2-Install-AWS-CLI"><a href="#2-Install-AWS-CLI" class="headerlink" title="2. Install AWS CLI"></a>2. Install AWS CLI</h2><p>AWS CLI provides direct access to the Amazon Web Services public API. So it’s likely you already have aws cli set up.<br>If not, you can follow the offical instructions to install it on different platforms.<br>Here we take the Unbuntu linux as an example.</p><p>There are couples of ways to install AWS CLI, one way is to install AWS CLI is by using pip:<br>Step 1: Install pip (on Ubuntu OS), if you don’t have it already<br>$ sudo apt install python3-pip</p><p>Step 2: Install CLI<br>$ pip install awscli –upgrade –user</p><p>Step 3: Check installation<br>$ aws –version</p><p>Step 4: Configure AWS CLI to link your own credentials<br>$ aws configure</p><p>As a result of the above command, the AWS CLI will prompt you for four pieces of information.<br>The first two are your AWS Access Key ID and AWS Secret Access Key, which serve as your account credentials.<br><img src="/content/images/2022-09-01-2.png"></p><p>The passkey ID and a secret passkey ID can be created from AWS Management Console.<br>For the region name, it is something like us-west-2 in this example.<br>We also need to write our default output format. We can choose between the default value, in which case we will only have to press Enter.<br>Or we can also select the JSON format (JavaScript Object Notation), in which case we’ll type json and hit Enter.</p><p>The AWS CLI configuration is stored in ~ /.aws / config and ~ /.aws / credentials, as you can see in the following screenshot.<br><img src="/content/images/2022-09-01-3.png"></p><h2 id="3-Create-a-virtual-python-environment"><a href="#3-Create-a-virtual-python-environment" class="headerlink" title="3. Create a virtual python environment"></a>3. Create a virtual python environment</h2><p>Taking python 3.9 as an example, we first need to install the latest version of Python 3.9 and the development libraries:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install python3.9</span><br><span class="line">sudo  apt-get install python3.9-dev python3.9-venv</span><br></pre></td></tr></table></figure><p>Now we can create a Python 3.9 virtual environment called sandbox or any name you like using the following command.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3.9 -m venv sandbox</span><br></pre></td></tr></table></figure><p>and activate the virtual environment:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source sandbox/bin/activate</span><br></pre></td></tr></table></figure><p>Now we have the sandbox virtual environment turned on, we are ready to install python packages that we want to use in lambda functions.</p><h2 id="4-Install-python-packages-and-zip-it-and-upload-to-AWS"><a href="#4-Install-python-packages-and-zip-it-and-upload-to-AWS" class="headerlink" title="4. Install python packages and zip it and upload to AWS"></a>4. Install python packages and zip it and upload to AWS</h2><p>Here we take installing openai package as an example, with the sandbox virtual environment, we install it using pip:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install openai</span><br></pre></td></tr></table></figure><p>after the openai is successfully installed in the sandbox virtual environment, we deactivate and environment by typing:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure><p>Now, we make a new folder called ‘python’, copy the sandbox virtual environment packages into this directory, and then zip it:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir python</span><br><span class="line">cd python</span><br><span class="line">cp -r ../sandbox/lib64/python3.9/site-packages/* .</span><br><span class="line">cd ..</span><br><span class="line">zip -r openai_layer.zip python</span><br></pre></td></tr></table></figure><p>Now, we should be able to use the aws cli command to upload the zip file as a custom layer with name “openai” like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">aws lambda publish-layer-version --layer-name openai --zip-file fileb://openai_layer.zip --compatible-runtimes python3.9</span><br></pre></td></tr></table></figure><p>Notice that, “fileb://“ is necessary to make it work in the above command.<br>with successful upload, the command will output info about relevant messages telling your layer name and version.</p><h2 id="5-Choose-the-custom-layer-for-lambda-function"><a href="#5-Choose-the-custom-layer-for-lambda-function" class="headerlink" title="5. Choose the custom layer for lambda function"></a>5. Choose the custom layer for lambda function</h2><p>If we go back the layer adding part of the lambda function, after refreshing, we should be able to see the custom layer called openai and its version at 1.<br>Just choose it and add it. Now we are ready to import it in the code!<br><img src="/content/images/2022-09-01-4.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> aws </tag>
+            
+            <tag> lambda function </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Understand the NaN and None difference in Pandas once for all</title>
       <link href="2022/08/24/2022-08-24-1/"/>
       <url>2022/08/24/2022-08-24-1/</url>
@@ -1090,9 +1117,9 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
+            
+            <tag> pandas </tag>
             
             <tag> preprocessing </tag>
             

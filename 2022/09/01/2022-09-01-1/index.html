@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Be an AWS lambda expert No.3 - How to handle CORS errors when calling AWS API Gateway endpoint from frontend, DataScienceTribe">
+    <meta name="keywords" content="Be an AWS lambda expert No.1 - How to install python packages by adding custom layer to lambda function easliy, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Be an AWS lambda expert No.3 - How to handle CORS errors when calling AWS API Gateway endpoint from frontend | DataScienceTribe</title>
+    <title>Be an AWS lambda expert No.1 - How to install python packages by adding custom layer to lambda function easliy | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Be an AWS lambda expert No.3 - How to handle CORS errors when calling AWS API Gateway endpoint from frontend</h1>
+                    <h1 class="description center-align post-title">Be an AWS lambda expert No.1 - How to install python packages by adding custom layer to lambda function easliy</h1>
                 </div>
             </div>
         </div>
@@ -356,8 +356,8 @@
                                 <span class="chip bg-color">aws</span>
                             </a>
                         
-                            <a href="/tags/CORS/">
-                                <span class="chip bg-color">CORS</span>
+                            <a href="/tags/lambda-function/">
+                                <span class="chip bg-color">lambda function</span>
                             </a>
                         
                     </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-03
+                    2022-09-01
                 </div>
                 
 
@@ -402,47 +402,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>We have developed a AWS lambda function, then we put it online by using AWS API gateway.  </p>
-<p>We could also test the API and verify it is working as what we expect, things really look awesome.</p>
-<p>So we are ready to send the API endpoint to our frontend and call it from the website.</p>
-<p>As soon as we did that, we found some CORS errors like this:</p>
-<p>Error message:<br><em>Access to XMLHttpRequest at ‘<a target="_blank" rel="noopener" href="https://xxx.execute-api.us-east-1.amazonaws.com/prod/&#39;">https://xxx.execute-api.us-east-1.amazonaws.com/prod/&#39;</a> from origin ‘<a target="_blank" rel="noopener" href="https://www.datasciencebyexample.com&/#39;">https://www.datasciencebyexample.com&#39;</a> has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource.</em></p>
-<p>The CORS error stands for Cross-Origin Resource Sharing (CORS) error. By default, the server side and web side can’t be talking from different domains.<br>So we need to relax this requirement from both sides. </p>
-<h2 id="Enable-CORS-on-AWS-API-gateway"><a href="#Enable-CORS-on-AWS-API-gateway" class="headerlink" title="Enable CORS on AWS API gateway"></a>Enable CORS on AWS API gateway</h2><p>First, on the server side, we need to make sure the response from the server side, i.e. the API, should have the header including ‘Access-Control-Allow-Origin’ key, to tell which domain is allowed to call the API. We can put specific domain to be the value for the value, or ‘*’ to stand for all sites are allowed. Notice that this header is provided by the API side, not from the frontend side.</p>
-<p>With AWS API gateway, one can check the official guide here,<br><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html</a>, or just follow the following steps:</p>
-<ol>
-<li><p>Sign in to the API Gateway console at <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/apigateway">https://console.aws.amazon.com/apigateway</a>.</p>
-</li>
-<li><p>In the API Gateway console, choose an API under APIs.</p>
-</li>
-<li><p>Choose a resource under Resources. This will enable CORS for all the methods on the resource. Alternatively, you could choose a method under the resource to enable CORS for just this method.</p>
-</li>
-<li><p>Choose Enable CORS from the Actions drop-down menu.<br>and Choose Enable CORS</p>
-</li>
-<li><p>In the Enable CORS form, don’t need to change anyting, just use the default suggestions, basicaly they are:</p>
-<ol>
-<li><p>In the Access-Control-Allow-Headers input field, type a static string of a comma-separated list of headers that the client must submit in the actual request of the resource. Use the console-provided header list of Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token or specify your own headers.</p>
-</li>
-<li><p>Use the console-provided value of ‘*’ as the Access-Control-Allow-Origin header value to allow access requests from all domains, or specify a named domain to all access requests from the specified domain.</p>
-</li>
-</ol>
-<p> Choose Enable CORS and replace existing CORS headers.</p>
-</li>
-<li><p>Last but not least, remember to deploy the API again, otherwise it might not take effect.</p>
-</li>
-</ol>
-<p>Here is screen shot of what described in the above steps:<br><img src="/content/images/2022-09-03-1.png"></p>
-<p>We can check if the CORS setting is working by calling the API using requests library in python, and print out the headers from response:<br><img src="/content/images/2022-09-03-2.png"></p>
-<h2 id="Calling-API-using-javascript-fetch"><a href="#Calling-API-using-javascript-fetch" class="headerlink" title="Calling API using javascript fetch"></a>Calling API using javascript fetch</h2><p>After verifing the header has the “Access-Control-Allow-Origin” key and value from the response header, we are sure the CORS is all set up on the server side.<br>To call the endpoint on the frontend, we don’t need to much work, just find the method that you like. </p>
-<p>Here is an example of calling the POST endpoint using fetch in javascript:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function CORSexample(input) &#123;</span><br><span class="line"> </span><br><span class="line">    // call api</span><br><span class="line">    // POST request using fetch()</span><br><span class="line">	fetch(&quot;https://xxx.execute-api.us-east-1.amazonaws.com/prod/&quot;, &#123;</span><br><span class="line">		method: &quot;POST&quot;,</span><br><span class="line">		// Adding body or contents to send</span><br><span class="line">		body: JSON.stringify(&#123;</span><br><span class="line">			&quot;data&quot;:&#123;&quot;query&quot;:input&#125;</span><br><span class="line">		&#125;),</span><br><span class="line">		 </span><br><span class="line">		// Adding headers to the request if necessary</span><br><span class="line">		headers: &#123;</span><br><span class="line">			&quot;Content-type&quot;: &quot;application/json; charset=UTF-8&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	 </span><br><span class="line">	// Converting result to JSON</span><br><span class="line">	.then(response =&gt; response.json())</span><br><span class="line">	 </span><br><span class="line">	.then(function(result)</span><br><span class="line">	  &#123;</span><br><span class="line">	   console.log(result)</span><br><span class="line">	   // in some older jquery version, one has to parse the json to be object</span><br><span class="line">	   // it&#x27;s not necessary in new versions, just try it or not</span><br><span class="line">	   //var result = $.parseJSON(result)</span><br><span class="line">	  </span><br><span class="line">	   // continue other custome stuff you have </span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">	  </span><br><span class="line">	&#125;).catch(error =&gt; console.error(&#x27;Error:&#x27;, error)); </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <p>AWS lambda function is an agile way to implement serverless API endpoint; It is also quite easy to spin up some python models as long as the model is<br>not very complex. </p>
+<h2 id="1-Try-adding-existing-AWS-layers-to-see-if-it-satisfies-your-needs"><a href="#1-Try-adding-existing-AWS-layers-to-see-if-it-satisfies-your-needs" class="headerlink" title="1. Try adding existing AWS layers to see if it satisfies your needs"></a>1. Try adding existing AWS layers to see if it satisfies your needs</h2><p>To include some very common pythons packages, such as pandas, numpy and requests,<br>you can add the aws layer called “AWSDataWranger”.</p>
+<p>The following screen shows how to add it after you create the lambda function, here we are using the python3.9 environment.</p>
+<p><img src="/content/images/2022-09-01-1.png"></p>
+<p>Most of the time, we may want to more custom python packages to be installed, so we have to create a custom layer to have those packages specifically installed.<br>Notice that, there is a 250M size limit for each layer, so this means we usually can only install one or two packages in each layer. And those packages cann’t<br>be too large.</p>
+<p>The easiest way to create a custom layer and ship it to AWS, such that you can choose to add it in your lambda fuctions, is by using The AWS Command Line Interface (AWS CLI).</p>
+<h2 id="2-Install-AWS-CLI"><a href="#2-Install-AWS-CLI" class="headerlink" title="2. Install AWS CLI"></a>2. Install AWS CLI</h2><p>AWS CLI provides direct access to the Amazon Web Services public API. So it’s likely you already have aws cli set up.<br>If not, you can follow the offical instructions to install it on different platforms.<br>Here we take the Unbuntu linux as an example.</p>
+<p>There are couples of ways to install AWS CLI, one way is to install AWS CLI is by using pip:<br>Step 1: Install pip (on Ubuntu OS), if you don’t have it already<br>$ sudo apt install python3-pip</p>
+<p>Step 2: Install CLI<br>$ pip install awscli –upgrade –user</p>
+<p>Step 3: Check installation<br>$ aws –version</p>
+<p>Step 4: Configure AWS CLI to link your own credentials<br>$ aws configure</p>
+<p>As a result of the above command, the AWS CLI will prompt you for four pieces of information.<br>The first two are your AWS Access Key ID and AWS Secret Access Key, which serve as your account credentials.<br><img src="/content/images/2022-09-01-2.png"></p>
+<p>The passkey ID and a secret passkey ID can be created from AWS Management Console.<br>For the region name, it is something like us-west-2 in this example.<br>We also need to write our default output format. We can choose between the default value, in which case we will only have to press Enter.<br>Or we can also select the JSON format (JavaScript Object Notation), in which case we’ll type json and hit Enter.</p>
+<p>The AWS CLI configuration is stored in ~ /.aws / config and ~ /.aws / credentials, as you can see in the following screenshot.<br><img src="/content/images/2022-09-01-3.png"></p>
+<h2 id="3-Create-a-virtual-python-environment"><a href="#3-Create-a-virtual-python-environment" class="headerlink" title="3. Create a virtual python environment"></a>3. Create a virtual python environment</h2><p>Taking python 3.9 as an example, we first need to install the latest version of Python 3.9 and the development libraries:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install python3.9</span><br><span class="line">sudo  apt-get install python3.9-dev python3.9-venv</span><br></pre></td></tr></table></figure>
+<p>Now we can create a Python 3.9 virtual environment called sandbox or any name you like using the following command.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3.9 -m venv sandbox</span><br></pre></td></tr></table></figure>
+<p>and activate the virtual environment:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source sandbox/bin/activate</span><br></pre></td></tr></table></figure>
 
+<p>Now we have the sandbox virtual environment turned on, we are ready to install python packages that we want to use in lambda functions.</p>
+<h2 id="4-Install-python-packages-and-zip-it-and-upload-to-AWS"><a href="#4-Install-python-packages-and-zip-it-and-upload-to-AWS" class="headerlink" title="4. Install python packages and zip it and upload to AWS"></a>4. Install python packages and zip it and upload to AWS</h2><p>Here we take installing openai package as an example, with the sandbox virtual environment, we install it using pip:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install openai</span><br></pre></td></tr></table></figure>
+<p>after the openai is successfully installed in the sandbox virtual environment, we deactivate and environment by typing:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
 
+<p>Now, we make a new folder called ‘python’, copy the sandbox virtual environment packages into this directory, and then zip it:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir python</span><br><span class="line">cd python</span><br><span class="line">cp -r ../sandbox/lib64/python3.9/site-packages/* .</span><br><span class="line">cd ..</span><br><span class="line">zip -r openai_layer.zip python</span><br></pre></td></tr></table></figure>
 
-
-
-
-
+<p>Now, we should be able to use the aws cli command to upload the zip file as a custom layer with name “openai” like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">aws lambda publish-layer-version --layer-name openai --zip-file fileb://openai_layer.zip --compatible-runtimes python3.9</span><br></pre></td></tr></table></figure>
+<p>Notice that, “fileb://“ is necessary to make it work in the above command.<br>with successful upload, the command will output info about relevant messages telling your layer name and version.</p>
+<h2 id="5-Choose-the-custom-layer-for-lambda-function"><a href="#5-Choose-the-custom-layer-for-lambda-function" class="headerlink" title="5. Choose the custom layer for lambda function"></a>5. Choose the custom layer for lambda function</h2><p>If we go back the layer adding part of the lambda function, after refreshing, we should be able to see the custom layer called openai and its version at 1.<br>Just choose it and add it. Now we are ready to import it in the code!<br><img src="/content/images/2022-09-01-4.png"></p>
 
                 
             </div>
@@ -469,7 +462,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/09/03/2022-09-03-1/">https://datasciencebyexample.github.io/2022/09/03/2022-09-03-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/09/01/2022-09-01-1/">https://datasciencebyexample.github.io/2022/09/01/2022-09-01-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -511,8 +504,8 @@
                                     <span class="chip bg-color">aws</span>
                                 </a>
                             
-                                <a href="/tags/CORS/">
-                                    <span class="chip bg-color">CORS</span>
+                                <a href="/tags/lambda-function/">
+                                    <span class="chip bg-color">lambda function</span>
                                 </a>
                             
                         </div>
@@ -558,10 +551,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
                 <a href="/2022/09/03/2022-09-03-1/">
                     <div class="card-image">
@@ -579,9 +571,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -594,7 +586,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -617,13 +608,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/01/2022-09-01-1/">
+                <a href="/2022/08/24/2022-08-24-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Be an AWS lambda expert No.1 - How to install python packages by adding custom layer to lambda function easliy">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Understand the NaN and None difference in Pandas once for all">
                         
-                        <span class="card-title">Be an AWS lambda expert No.1 - How to install python packages by adding custom layer to lambda function easliy</span>
+                        <span class="card-title">Understand the NaN and None difference in Pandas once for all</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -634,7 +625,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-24
                             </span>
                         <span class="publish-author">
                             
@@ -651,12 +642,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/aws/">
-                        <span class="chip bg-color">aws</span>
-                    </a>
-                    
-                    <a href="/tags/lambda-function/">
-                        <span class="chip bg-color">lambda function</span>
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
                     </a>
                     
                 </div>
