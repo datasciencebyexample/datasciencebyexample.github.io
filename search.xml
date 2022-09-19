@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to remove part of an image using Python</title>
+      <link href="2022/09/18/2022-09-18-1/"/>
+      <url>2022/09/18/2022-09-18-1/</url>
+      
+        <content type="html"><![CDATA[<p>What does remove part of an image mean? mathematically and programmatically, most of the times, it means convert the array for corresponding area of the image to be<br>(0,0,0) for the RGB channel value,  or a black color.</p><p>Removing part of an image is useful in many situations. For example, in the text to image application, using Dallie2,<br>we can edit part of the image with inpainting. </p><h2 id="Image-processing-using-Python-Image-Library"><a href="#Image-processing-using-Python-Image-Library" class="headerlink" title="Image processing using Python Image Library"></a>Image processing using Python Image Library</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np      </span><br><span class="line">  </span><br><span class="line"><span class="comment"># Opening the image and converting </span></span><br><span class="line"><span class="comment"># it to RGB color mode</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&quot;lena.png&quot;</span>).convert(<span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line"></span><br><span class="line">display(img)</span><br></pre></td></tr></table></figure><p><img src="/content/images/2022-09-18-1.png"></p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Extracting the image data &amp;</span></span><br><span class="line"><span class="comment"># creating an numpy array out of it</span></span><br><span class="line">img_arr = np.array(img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the pixel size of this image</span></span><br><span class="line"><span class="built_in">print</span>(img_arr.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check some of the values</span></span><br><span class="line">img_arr</span><br></pre></td></tr></table></figure><pre><code>(225, 400, 3)array([[[108,  73,  53],        [109,  72,  54],        [109,  67,  51],        ...,        [ 56,  41,  44],        [ 62,  47,  50],        [ 70,  54,  57]],       [[110,  75,  55],        [110,  73,  55],        [109,  67,  51],        ...,        [ 54,  39,  42],        [ 57,  42,  45],        [ 64,  48,  51]],       [[109,  74,  55],        [110,  73,  55],        [107,  68,  53],        ...,        [ 51,  39,  41],        [ 56,  41,  44],        [ 61,  46,  49]],       ...,       [[130,  75,  54],        [128,  74,  50],        [130,  78,  56],        ...,        [123,  75,  61],        [122,  74,  60],        [128,  80,  66]],       [[129,  72,  52],        [127,  70,  50],        [131,  77,  53],        ...,        [126,  78,  64],        [122,  74,  60],        [126,  78,  64]],       [[134,  72,  49],        [133,  72,  51],        [126,  71,  51],        ...,        [140,  87,  71],        [135,  79,  64],        [140,  84,  67]]], dtype=uint8)</code></pre><p>from the the above results, we can see that, the image has 225 (y direction) times 400 (x direction) pixels; At each pixel, there is a tuple of size 3 represents the RGB color. </p><p>One thing to be careful is the channel difference between RGB and RGBA. If you take a snapshot of the screen. The pixels inside the bounding box are returned as an “RGB” image on Windows or “RGBA” on macOS. For RGB channel, it needs 24 bits to encode the pixel, while for RGBA, it needs 32 bits to encode the pixel.</p><p>If the original image has RGB channel, but we need RGBA channel, we can use the following function to convert the image from RGB channel to RGBA channel, or vice versa.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">img_rgba = Image.<span class="built_in">open</span>(<span class="string">&quot;lena.jpg&quot;</span>).convert(<span class="string">&#x27;RGBA&#x27;</span>)</span><br><span class="line">img_arr_rgba = np.array(img_rgba)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the pixel size of this new image</span></span><br><span class="line"><span class="built_in">print</span>(img_arr_rgba.shape)</span><br></pre></td></tr></table></figure><pre><code>(225, 400, 4)</code></pre><p>Let us get back to our task of removing parts of the image as the following</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Turning part of the the pixel values of to be black</span></span><br><span class="line"><span class="comment"># the order is  ymin: ymax,  xmin:xmax</span></span><br><span class="line">img_arr[<span class="number">150</span> : <span class="number">225</span>, <span class="number">0</span> : <span class="number">100</span>] = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating an image out of the previously modified array</span></span><br><span class="line">img_edit = Image.fromarray(img_arr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Displaying the image</span></span><br><span class="line">display(img_edit)</span><br></pre></td></tr></table></figure><p><img src="/content/images/2022-09-18-2.png"></p><p>Now you can see the left corner of the image is black now.</p><h2 id="code-link-in-github"><a href="#code-link-in-github" class="headerlink" title="code link in github"></a>code link in github</h2><p><a href="https://github.com/robotlearner001/blog/blob/main/remove-part-of-image-using-python/2022-09-17-remove-part-of-image-using-python.ipynb">https://github.com/robotlearner001/blog/blob/main/remove-part-of-image-using-python/2022-09-17-remove-part-of-image-using-python.ipynb</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> image processing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PIL </tag>
+            
+            <tag> image editing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ways to make your Pandas operatoins 100 times faster</title>
       <link href="2022/09/10/2022-09-10-1/"/>
       <url>2022/09/10/2022-09-10-1/</url>
@@ -1169,9 +1196,9 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
+            
+            <tag> pandas </tag>
             
             <tag> preprocessing </tag>
             
