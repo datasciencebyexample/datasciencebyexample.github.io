@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How to remove part of an image using Python, DataScienceTribe">
+    <meta name="keywords" content="OpenCV and Pillow color code order difference, BGR vs RGB, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>How to remove part of an image using Python | DataScienceTribe</title>
+    <title>OpenCV and Pillow color code order difference, BGR vs RGB | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How to remove part of an image using Python</h1>
+                    <h1 class="description center-align post-title">OpenCV and Pillow color code order difference, BGR vs RGB</h1>
                 </div>
             </div>
         </div>
@@ -360,6 +360,10 @@
                                 <span class="chip bg-color">image editing</span>
                             </a>
                         
+                            <a href="/tags/OpenCV/">
+                                <span class="chip bg-color">OpenCV</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -381,7 +385,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-18
+                    2022-09-19
                 </div>
                 
 
@@ -402,84 +406,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>What does remove part of an image mean? mathematically and programmatically, most of the times, it means convert the array for corresponding area of the image to be<br>(0,0,0) for the RGB channel value,  or a black color.</p>
-<p>Removing part of an image is useful in many situations. For example, in the text to image application, using Dallie2,<br>we can edit part of the image with inpainting. </p>
-<h2 id="Image-processing-using-Python-Image-Library"><a href="#Image-processing-using-Python-Image-Library" class="headerlink" title="Image processing using Python Image Library"></a>Image processing using Python Image Library</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np      </span><br><span class="line">  </span><br><span class="line"><span class="comment"># Opening the image and converting </span></span><br><span class="line"><span class="comment"># it to RGB color mode</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&quot;lena.png&quot;</span>).convert(<span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line"></span><br><span class="line">display(img)</span><br></pre></td></tr></table></figure>
+                <p>We can use opencv to read in a video, and extract each frame as an image.  Then we can use Python Image Library to further analyze or edit<br>the image. But when you open the image, you might find it the color seems totally wrong.</p>
+<p>This is just because opencv and Python Image Library (PIL) use different order of color code. The order in opencv is BGR, while in PIL it’s RGB. Fortunately, it’s easy to correct it as you will find in the following example</p>
+<h2 id="Read-a-short-video-of-Robin-bird-using-opencv"><a href="#Read-a-short-video-of-Robin-bird-using-opencv" class="headerlink" title="Read a short video of Robin bird using opencv"></a>Read a short video of Robin bird using opencv</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">vidcap = cv2.VideoCapture(<span class="string">&#x27;robin.mp4&#x27;</span>)</span><br><span class="line"></span><br><span class="line">success = <span class="literal">True</span></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> success <span class="keyword">and</span> count&lt;<span class="number">100</span>:</span><br><span class="line">    success,image = vidcap.read()</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># we got the 100th frame in the video as an image array</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Now we use PIL to view the image, and find the Robin in blue color. If you checked the original video, or you have seen a Robin before,<br>you know there is something wrong.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">display(Image.fromarray(image))</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/content/images/2022-09-18-1.png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Extracting the image data &amp;</span></span><br><span class="line"><span class="comment"># creating an numpy array out of it</span></span><br><span class="line">img_arr = np.array(img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the pixel size of this image</span></span><br><span class="line"><span class="built_in">print</span>(img_arr.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check some of the values</span></span><br><span class="line">img_arr</span><br></pre></td></tr></table></figure>
+<p><img src="/content/images/2022-09-19-1.png"></p>
+<h2 id="Switch-from-BGR-to-RGB-using-opencv"><a href="#Switch-from-BGR-to-RGB-using-opencv" class="headerlink" title="Switch from BGR to RGB using opencv"></a>Switch from BGR to RGB using opencv</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)</span><br></pre></td></tr></table></figure>
 
-<pre><code>(225, 400, 3)
-
-
-
+<p>Now we get the correct image of Robin, much better!</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">display(Image.fromarray(image_rgb))</span><br></pre></td></tr></table></figure>
 
 
-array([[[108,  73,  53],
-        [109,  72,  54],
-        [109,  67,  51],
-        ...,
-        [ 56,  41,  44],
-        [ 62,  47,  50],
-        [ 70,  54,  57]],
-
-       [[110,  75,  55],
-        [110,  73,  55],
-        [109,  67,  51],
-        ...,
-        [ 54,  39,  42],
-        [ 57,  42,  45],
-        [ 64,  48,  51]],
-
-       [[109,  74,  55],
-        [110,  73,  55],
-        [107,  68,  53],
-        ...,
-        [ 51,  39,  41],
-        [ 56,  41,  44],
-        [ 61,  46,  49]],
-
-       ...,
-
-       [[130,  75,  54],
-        [128,  74,  50],
-        [130,  78,  56],
-        ...,
-        [123,  75,  61],
-        [122,  74,  60],
-        [128,  80,  66]],
-
-       [[129,  72,  52],
-        [127,  70,  50],
-        [131,  77,  53],
-        ...,
-        [126,  78,  64],
-        [122,  74,  60],
-        [126,  78,  64]],
-
-       [[134,  72,  49],
-        [133,  72,  51],
-        [126,  71,  51],
-        ...,
-        [140,  87,  71],
-        [135,  79,  64],
-        [140,  84,  67]]], dtype=uint8)
-</code></pre>
-<p>from the the above results, we can see that, the image has 225 (y direction) times 400 (x direction) pixels; At each pixel, there is a tuple of size 3 represents the RGB color. </p>
-<p>One thing to be careful is the channel difference between RGB and RGBA. If you take a snapshot of the screen. The pixels inside the bounding box are returned as an “RGB” image on Windows or “RGBA” on macOS. For RGB channel, it needs 24 bits to encode the pixel, while for RGBA, it needs 32 bits to encode the pixel.</p>
-<p>If the original image has RGB channel, but we need RGBA channel, we can use the following function to convert the image from RGB channel to RGBA channel, or vice versa.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">img_rgba = Image.<span class="built_in">open</span>(<span class="string">&quot;lena.jpg&quot;</span>).convert(<span class="string">&#x27;RGBA&#x27;</span>)</span><br><span class="line">img_arr_rgba = np.array(img_rgba)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the pixel size of this new image</span></span><br><span class="line"><span class="built_in">print</span>(img_arr_rgba.shape)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(225, 400, 4)
-</code></pre>
-<p>Let us get back to our task of removing parts of the image as the following</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Turning part of the the pixel values of to be black</span></span><br><span class="line"><span class="comment"># the order is  ymin: ymax,  xmin:xmax</span></span><br><span class="line">img_arr[<span class="number">150</span> : <span class="number">225</span>, <span class="number">0</span> : <span class="number">100</span>] = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating an image out of the previously modified array</span></span><br><span class="line">img_edit = Image.fromarray(img_arr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Displaying the image</span></span><br><span class="line">display(img_edit)</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/content/images/2022-09-18-2.png"></p>
-<p>Now you can see the left corner of the image is black now.</p>
-<h2 id="code-link-in-github"><a href="#code-link-in-github" class="headerlink" title="code link in github"></a>code link in github</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/blob/main/remove-part-of-image-using-python/2022-09-17-remove-part-of-image-using-python.ipynb">https://github.com/robotlearner001/blog/blob/main/remove-part-of-image-using-python/2022-09-17-remove-part-of-image-using-python.ipynb</a></p>
+<p><img src="/content/images/2022-09-19-2.png"></p>
+<h2 id="code-link-in-github"><a href="#code-link-in-github" class="headerlink" title="code link in github"></a>code link in github</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/blob/main/opencv-and-pillow-color-order-difference/2022-09-20-opencv-and-pillow-channel-difference.ipynb">https://github.com/robotlearner001/blog/blob/main/opencv-and-pillow-color-order-difference/2022-09-20-opencv-and-pillow-channel-difference.ipynb</a></p>
 
                 
             </div>
@@ -506,7 +449,7 @@ array([[[108,  73,  53],
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/09/18/2022-09-18-1/">https://datasciencebyexample.github.io/2022/09/18/2022-09-18-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/09/19/2022-09-19-1/">https://datasciencebyexample.github.io/2022/09/19/2022-09-19-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,6 +495,10 @@ array([[[108,  73,  53],
                                     <span class="chip bg-color">image editing</span>
                                 </a>
                             
+                                <a href="/tags/OpenCV/">
+                                    <span class="chip bg-color">OpenCV</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -595,9 +542,10 @@ array([[[108,  73,  53],
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/09/19/2022-09-19-1/">
                     <div class="card-image">
@@ -615,9 +563,9 @@ array([[[108,  73,  53],
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -630,6 +578,7 @@ array([[[108,  73,  53],
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -656,13 +605,13 @@ array([[[108,  73,  53],
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/10/2022-09-10-1/">
+                <a href="/2022/09/18/2022-09-18-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Ways to make your Pandas operatoins 100 times faster">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="How to remove part of an image using Python">
                         
-                        <span class="card-title">Ways to make your Pandas operatoins 100 times faster</span>
+                        <span class="card-title">How to remove part of an image using Python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -673,14 +622,14 @@ array([[[108,  73,  53],
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/image-processing/" class="post-category">
+                                    image processing
                                 </a>
                             
                             
@@ -690,8 +639,12 @@ array([[[108,  73,  53],
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/PIL/">
+                        <span class="chip bg-color">PIL</span>
+                    </a>
+                    
+                    <a href="/tags/image-editing/">
+                        <span class="chip bg-color">image editing</span>
                     </a>
                     
                 </div>

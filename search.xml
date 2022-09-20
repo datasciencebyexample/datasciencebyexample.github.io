@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>OpenCV and Pillow color code order difference, BGR vs RGB</title>
+      <link href="2022/09/19/2022-09-19-1/"/>
+      <url>2022/09/19/2022-09-19-1/</url>
+      
+        <content type="html"><![CDATA[<p>We can use opencv to read in a video, and extract each frame as an image.  Then we can use Python Image Library to further analyze or edit<br>the image. But when you open the image, you might find it the color seems totally wrong.</p><p>This is just because opencv and Python Image Library (PIL) use different order of color code. The order in opencv is BGR, while in PIL it’s RGB. Fortunately, it’s easy to correct it as you will find in the following example</p><h2 id="Read-a-short-video-of-Robin-bird-using-opencv"><a href="#Read-a-short-video-of-Robin-bird-using-opencv" class="headerlink" title="Read a short video of Robin bird using opencv"></a>Read a short video of Robin bird using opencv</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">vidcap = cv2.VideoCapture(<span class="string">&#x27;robin.mp4&#x27;</span>)</span><br><span class="line"></span><br><span class="line">success = <span class="literal">True</span></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> success <span class="keyword">and</span> count&lt;<span class="number">100</span>:</span><br><span class="line">    success,image = vidcap.read()</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># we got the 100th frame in the video as an image array</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Now we use PIL to view the image, and find the Robin in blue color. If you checked the original video, or you have seen a Robin before,<br>you know there is something wrong.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">display(Image.fromarray(image))</span><br></pre></td></tr></table></figure><p><img src="/content/images/2022-09-19-1.png"></p><h2 id="Switch-from-BGR-to-RGB-using-opencv"><a href="#Switch-from-BGR-to-RGB-using-opencv" class="headerlink" title="Switch from BGR to RGB using opencv"></a>Switch from BGR to RGB using opencv</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)</span><br></pre></td></tr></table></figure><p>Now we get the correct image of Robin, much better!</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">display(Image.fromarray(image_rgb))</span><br></pre></td></tr></table></figure><p><img src="/content/images/2022-09-19-2.png"></p><h2 id="code-link-in-github"><a href="#code-link-in-github" class="headerlink" title="code link in github"></a>code link in github</h2><p><a href="https://github.com/robotlearner001/blog/blob/main/opencv-and-pillow-color-order-difference/2022-09-20-opencv-and-pillow-channel-difference.ipynb">https://github.com/robotlearner001/blog/blob/main/opencv-and-pillow-color-order-difference/2022-09-20-opencv-and-pillow-channel-difference.ipynb</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> image processing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PIL </tag>
+            
+            <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to remove part of an image using Python</title>
       <link href="2022/09/18/2022-09-18-1/"/>
       <url>2022/09/18/2022-09-18-1/</url>
@@ -1196,9 +1225,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> python </tag>
             
             <tag> preprocessing </tag>
             
