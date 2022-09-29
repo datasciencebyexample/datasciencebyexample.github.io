@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART)</title>
+      <link href="2022/09/28/2022-09-28-1/"/>
+      <url>2022/09/28/2022-09-28-1/</url>
+      
+        <content type="html"><![CDATA[<p>Dinosaurs would dream of getting this capability.</p><p>In NASA’s “Double Asteroid Redirection Test (DART)”, an unmanned spacecraft launched from Earth successfully hit an asteroid,<br>which NASA says is the world’s first “planet” Defense” test. At the time of impact, they were relatively close to Earth—just under 11 million kilometers.</p><p>Dimorphos is an asteroid moon orbiting the near-Earth asteroid Didymos, which astronomers discovered more than two decades ago, meaning “twin” in Greek.<br>Didymos is about 780 meters wide, and the Dimorphos running around it have a diameter of 160 meters, and its name means “two forms”<br><img src="/content/images/2022-09-28-1.png" alt="DART size comparison"></p><p>Despite the small target chosen, the fast impact would change only 1% of the speed at which Dimorphos orbits Didymos, which doesn’t sound like much,<br>but it’s enough change to be seen through a telescope.</p><p>According to its original orbit, Dimorphos circles Didymos every 11 hours and 55 minutes.<br>It is expected that the period may change to 11 hours and 45 minutes after the impact.<br>DART team members say it will take scientists about two months to determine whether the asteroid’s orbit has changed.</p><p><img src="/content/images/2022-09-28-2.png" alt="orbit change expected for DART"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> physics </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DART </tag>
+            
+            <tag> Asteroid </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OpenCV and Pillow color code order difference, BGR vs RGB</title>
       <link href="2022/09/19/2022-09-19-1/"/>
       <url>2022/09/19/2022-09-19-1/</url>
@@ -1198,9 +1225,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -1225,9 +1252,9 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
+            
+            <tag> pandas </tag>
             
             <tag> preprocessing </tag>
             
