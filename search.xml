@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to make AWS S3 buckets public through bucket policy</title>
+      <link href="2022/10/01/2022-10-01-1/"/>
+      <url>2022/10/01/2022-10-01-1/</url>
+      
+        <content type="html"><![CDATA[<p>The first step is to create a S3 buckets, here is how we can create one on AWS website through UI:<br><img src="/content/images/2022-10-01-1.png" alt="create S3 bucket"></p><p>After clicking the “create bucket”, in the following configuration page, give it a name.<br>Notice that the bucket name should be unique among all AWS buckets, not only unique to your own buckets.<br>We call it “datasciencebyexample-demo” here.</p><p>If we want to make part or all of the contents in this bucket public, unlick the “Block all public access”<br>option in this step as the following screenshot:<br><img src="/content/images/2022-10-01-2.png" alt="allow public access in S3"></p><p>Clicking into this new bucket, and let’s create one new folder called “test”:<br><img src="/content/images/2022-10-01-3.png" alt="create folder in S3"></p><p>Get into the test folder, and upload some files, for example, we uploaded a file called text.txt.<br>But if we open the url of this just uploaded file in the bucket, you will find the file is still not publicly accessible.<br><img src="/content/images/2022-10-01-4.png"></p><p>Why is that? The previous step we did actually only make this bucket “Objects can be public”.<br>We still need to add bucket policy to make all of the bucket or part of bucket contents really public.</p><p>Now go back to the bucket level, find Permission tab, and click the Edit button under bucket policy:<br><img src="/content/images/2022-10-01-5.png"></p><p>If we want to make all objects under this bucket to be public, put the following policy statement in the text box:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span><br><span class="line">    &quot;Statement&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;Effect&quot;: &quot;Allow&quot;,</span><br><span class="line">            &quot;Principal&quot;: &quot;*&quot;,</span><br><span class="line">            &quot;Action&quot;: &quot;s3:GetObject&quot;,</span><br><span class="line">            &quot;Resource&quot;: &quot;arn:aws:s3:::datasciencebyexample-demo/*&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>If we only want to make objects under the “test” directory to be public, put the following policy statement in the text box:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span><br><span class="line">    &quot;Statement&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;Effect&quot;: &quot;Allow&quot;,</span><br><span class="line">            &quot;Principal&quot;: &quot;*&quot;,</span><br><span class="line">            &quot;Action&quot;: &quot;s3:GetObject&quot;,</span><br><span class="line">            &quot;Resource&quot;: &quot;arn:aws:s3:::datasciencebyexample-demo/test/*&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>After saving the bucket policy, you will find your file urls are now public!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> aws </tag>
+            
+            <tag> s3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART)</title>
       <link href="2022/09/28/2022-09-28-1/"/>
       <url>2022/09/28/2022-09-28-1/</url>
@@ -47,11 +74,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1109,9 +1136,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> feature engineering </tag>
             
@@ -1138,9 +1165,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> tsfresh </tag>
             
@@ -1252,9 +1279,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> python </tag>
             
             <tag> preprocessing </tag>
             
