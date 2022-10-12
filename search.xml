@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>How to authenticate databricks command line tool</title>
+      <link href="2022/10/12/2022-10-12-1/"/>
+      <url>2022/10/12/2022-10-12-1/</url>
+      
+        <content type="html"><![CDATA[<p>Once we have installed the databricks command line tool (CLI), we still need to add authentication to the databricks website host.</p><p>Steps to install databricks command line for both linux and windows system can be found here:<br><a href="https://www.datasciencebyexample.com/2022/10/08/2022-10-11-1/">https://www.datasciencebyexample.com/2022/10/08/2022-10-11-1/</a></p><p>First, To authenticate to the CLI you use a Databricks personal access token. In order to generate a personal token, go to the workspace and click user setting as the following:</p><p><img src="/content/images/2022-10-12-1.png"><br><img src="/content/images/2022-10-12-2.png"></p><p>Following the above screen shots, generated a token and saved it somewhere for later use.</p><p>Second, on your local comuter, type the following databricks command:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks configure --token</span><br></pre></td></tr></table></figure><p>The command begins by issuing the prompt:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Databricks Host (should begin with https://):</span><br></pre></td></tr></table></figure><p>Now enter your workspace URL, with the format https://<instance-name>.cloud.databricks.com.<br>The command continues by issuing the prompt to enter your personal access token you saved from the first step:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Token:</span><br></pre></td></tr></table></figure><p>After you complete the prompts, your access credentials are stored in the file ~/.databrickscfg on Unix, Linux, or macOS, or %USERPROFILE%.databrickscfg on Windows.<br>The file contains a default profile entry:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[DEFAULT]</span><br><span class="line">host = &lt;workspace-URL&gt;</span><br><span class="line">token = &lt;personal-access-token&gt;</span><br></pre></td></tr></table></figure><p>Now you should be able to continue other work, such as create secret scope and key.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> databricks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to install databricks command line tool in linux and windows</title>
+      <link href="2022/10/11/2022-10-11-1/"/>
+      <url>2022/10/11/2022-10-11-1/</url>
+      
+        <content type="html"><![CDATA[<p>Sometimes we need to interact with databricks command line to get work done, for example, create new secrets scope and key.</p><p>Install the databricks command line in linux or MAC OS is pretty easy:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install databricks-cli</span><br></pre></td></tr></table></figure><p>or if you want to install the latest version, do this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install databricks-cli --upgrade</span><br></pre></td></tr></table></figure><p>After the the package is installed, check to see if it’s working:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks --version</span><br></pre></td></tr></table></figure><p>Install the databricks command line in Windows will take longer time.<br>First, we still need to install the databricks-cli library, go to your python environment in windows, such as Anaconda:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install databricks-cli</span><br></pre></td></tr></table></figure><p>Now if we try the databricks command, it might complain with this error:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks : The term &#x27;databricks&#x27; is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was</span><br><span class="line">included, verify that the path is correct and try again.</span><br></pre></td></tr></table></figure><p>This is because the command is not in the default system PATH. To add the databricks command in the system path in windows,<br>First observe where the databricks-cli library is installed, you might see this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Requirement already satisfied: databricks-cli in c:\users\&lt;yourusername&gt;\appdata\roaming\python\python38\site-packages (0.17.3)</span><br></pre></td></tr></table></figure><p>Or just run </p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip --version</span><br></pre></td></tr></table></figure><p>You will see the pip path under windows; Usually the python package is installed under the same directory as pip.  However this is not true all the time,<br>so the safest method is still trying to figure out the path by checking the specific package you just installed.</p><p>Now, the databricks command installation path should be as the following:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\&lt;yourusername&gt;\AppData\Roaming\Python\Python38\Scripts\databricks.exe</span><br></pre></td></tr></table></figure><p>We can use the command with the whole path, or we could put the following path in the system path in windows:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\&lt;yourusername&gt;\AppData\Roaming\Python\Python38\Scripts\</span><br></pre></td></tr></table></figure><p>Search “Edit the system environment variable” in windows, and add the above path as a new variable under PATH:<br><img src="/content/images/2022-10-11-1.png"></p><p>After the above step, you can try this command again, and it should be working:</p><figure class="highlight plaintext"><figcaption><span>--version</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> databricks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to add watermark using Python</title>
       <link href="2022/10/08/2022-10-08-1/"/>
       <url>2022/10/08/2022-10-08-1/</url>
@@ -1196,11 +1246,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       

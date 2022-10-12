@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="aggregate features from different rows into one row in pandas dataframe, DataScienceTribe">
+    <meta name="keywords" content="How to install databricks command line tool in linux and windows, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>aggregate features from different rows into one row in pandas dataframe | DataScienceTribe</title>
+    <title>How to install databricks command line tool in linux and windows | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">aggregate features from different rows into one row in pandas dataframe</h1>
+                    <h1 class="description center-align post-title">How to install databricks command line tool in linux and windows</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
-                            </a>
-                        
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/databricks/">
+                                <span class="chip bg-color">databricks</span>
                             </a>
                         
                     </div>
@@ -372,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-12
+                    2022-10-11
                 </div>
                 
 
@@ -406,160 +398,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>In many use cases, different features of the same event are stored in a table by multiple rows.<br>multiple columns will indicate each characteristics of one feature, such as name, value, timestamp, etc.</p>
-<p>In machine learning, we need to aggregate them into one row for training, and the following shows how do do it in dataframe easily.</p>
-<h2 id="generate-some-example-dataframe"><a href="#generate-some-example-dataframe" class="headerlink" title="generate some example dataframe"></a>generate some example dataframe</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = [ [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value1&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value2&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name3&#x27;</span>,<span class="string">&#x27;value3&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value4&#x27;</span>],[<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value5&#x27;</span>] </span><br><span class="line">       ]</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data=data)</span><br><span class="line">df.columns =[<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line">display(df)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>Sometimes we need to interact with databricks command line to get work done, for example, create new secrets scope and key.</p>
+<p>Install the databricks command line in linux or MAC OS is pretty easy:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install databricks-cli</span><br></pre></td></tr></table></figure>
+<p>or if you want to install the latest version, do this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install databricks-cli --upgrade</span><br></pre></td></tr></table></figure>
+<p>After the the package is installed, check to see if it’s working:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks --version</span><br></pre></td></tr></table></figure>
 
+<p>Install the databricks command line in Windows will take longer time.<br>First, we still need to install the databricks-cli library, go to your python environment in windows, such as Anaconda:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install databricks-cli</span><br></pre></td></tr></table></figure>
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<p>Now if we try the databricks command, it might complain with this error:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks : The term &#x27;databricks&#x27; is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was</span><br><span class="line">included, verify that the path is correct and try again.</span><br></pre></td></tr></table></figure>
 
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
+<p>This is because the command is not in the default system PATH. To add the databricks command in the system path in windows,<br>First observe where the databricks-cli library is installed, you might see this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Requirement already satisfied: databricks-cli in c:\users\&lt;yourusername&gt;\appdata\roaming\python\python38\site-packages (0.17.3)</span><br></pre></td></tr></table></figure>
+<p>Or just run </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip --version</span><br></pre></td></tr></table></figure>
+<p>You will see the pip path under windows; Usually the python package is installed under the same directory as pip.  However this is not true all the time,<br>so the safest method is still trying to figure out the path by checking the specific package you just installed.</p>
+<p>Now, the databricks command installation path should be as the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\&lt;yourusername&gt;\AppData\Roaming\Python\Python38\Scripts\databricks.exe</span><br></pre></td></tr></table></figure>
 
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>name1</td>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>name2</td>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>name3</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2</td>
-      <td>name1</td>
-      <td>value4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2</td>
-      <td>name2</td>
-      <td>value5</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<p>We can use the command with the whole path, or we could put the following path in the system path in windows:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\&lt;yourusername&gt;\AppData\Roaming\Python\Python38\Scripts\</span><br></pre></td></tr></table></figure>
 
-
-<h2 id="group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column"><a href="#group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column" class="headerlink" title="group the dataframe by id, then aggregate all the feature values into one column"></a>group the dataframe by id, then aggregate all the feature values into one column</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df2 = df.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">df3 = pd.DataFrame(data=df2[<span class="number">0</span>].values.tolist())</span><br><span class="line">display(df3)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-<h1 id="put-the-above-the-transformation-into-a-scikit-learn-customed-transformer"><a href="#put-the-above-the-transformation-into-a-scikit-learn-customed-transformer" class="headerlink" title="put the above the transformation into a scikit-learn customed transformer"></a>put the above the transformation into a scikit-learn customed transformer</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_Transformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;start&#x27;</span>)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">           </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return self</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Customized transformer</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X2 = X.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">        X3 = pd.DataFrame(data=X2[<span class="number">0</span>].values.tolist())     </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X3</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X1</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"><span class="comment"># get a transformer object</span></span><br><span class="line">my_transformer = my_Transformer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># apply the transform on the original data</span></span><br><span class="line"></span><br><span class="line">df_new = my_transformer.transform(df)</span><br><span class="line">display(df_new)</span><br></pre></td></tr></table></figure>
-
-<pre><code>start
-</code></pre>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<p>Search “Edit the system environment variable” in windows, and add the above path as a new variable under PATH:<br><img src="/content/images/2022-10-11-1.png"></p>
+<p>After the above step, you can try this command again, and it should be working:</p>
+<figure class="highlight plaintext"><figcaption><span>--version</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 
                 
@@ -587,7 +453,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/">https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/10/11/2022-10-11-1/">https://datasciencebyexample.github.io/2022/10/11/2022-10-11-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -625,16 +491,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
-                                </a>
-                            
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
-                                </a>
-                            
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/databricks/">
+                                    <span class="chip bg-color">databricks</span>
                                 </a>
                             
                         </div>
@@ -684,13 +542,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/06/14/2021-06-14-1/">
+                <a href="/2022/10/12/2022-10-12-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="How to authenticate databricks command line tool">
                         
-                        <span class="card-title">explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe</span>
+                        <span class="card-title">How to authenticate databricks command line tool</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -701,14 +559,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-12
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -718,16 +576,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
                     </a>
                     
                 </div>
@@ -741,13 +591,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/10/2021-06-10-1/">
+                <a href="/2022/10/08/2022-10-08-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="time series feature engineering using tsfresh, training vs test">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="How to add watermark using Python">
                         
-                        <span class="card-title">time series feature engineering using tsfresh, training vs test</span>
+                        <span class="card-title">How to add watermark using Python</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,14 +608,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/image-processing/" class="post-category">
+                                    image processing
                                 </a>
                             
                             
@@ -775,24 +625,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
-                    </a>
-                    
-                    <a href="/tags/tsfresh/">
-                        <span class="chip bg-color">tsfresh</span>
-                    </a>
-                    
-                    <a href="/tags/time-series/">
-                        <span class="chip bg-color">time series</span>
+                    <a href="/tags/PIL/">
+                        <span class="chip bg-color">PIL</span>
                     </a>
                     
                 </div>
