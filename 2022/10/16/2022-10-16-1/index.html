@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="time series feature engineering using tsfresh, training vs test, DataScienceTribe">
+    <meta name="keywords" content="Create secrets scopes and keys for databricks, and how to give scope access to someone else, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>time series feature engineering using tsfresh, training vs test | DataScienceTribe</title>
+    <title>Create secrets scopes and keys for databricks, and how to give scope access to someone else | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">time series feature engineering using tsfresh, training vs test</h1>
+                    <h1 class="description center-align post-title">Create secrets scopes and keys for databricks, and how to give scope access to someone else</h1>
                 </div>
             </div>
         </div>
@@ -352,24 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
-                            </a>
-                        
-                            <a href="/tags/tsfresh/">
-                                <span class="chip bg-color">tsfresh</span>
-                            </a>
-                        
-                            <a href="/tags/time-series/">
-                                <span class="chip bg-color">time series</span>
-                            </a>
-                        
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/databricks/">
+                                <span class="chip bg-color">databricks</span>
                             </a>
                         
                     </div>
@@ -380,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -393,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-10
+                    2022-10-16
                 </div>
                 
 
@@ -414,67 +398,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>During the test stage, i.e., once the model is on production, for any new data,<br>tsfresh feature generation does not depend the training data. So one can apply the same feature engineering process as the training data<br>without worrying about stroing information from training stage.</p>
-<p>On ther hand, one can also use the following example to leverage scikit learn pipleline style to handel the feature generation<br>for both training and test stages.</p>
-<h1 id="Feature-Selection-in-a-sklearn-pipeline"><a href="#Feature-Selection-in-a-sklearn-pipeline" class="headerlink" title="Feature Selection in a sklearn pipeline"></a>Feature Selection in a sklearn pipeline</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tsfresh.examples <span class="keyword">import</span> load_robot_execution_failures</span><br><span class="line"><span class="keyword">from</span> tsfresh.transformers <span class="keyword">import</span> RelevantFeatureAugmenter</span><br><span class="line"><span class="keyword">from</span> tsfresh.utilities.dataframe_functions <span class="keyword">import</span> impute</span><br></pre></td></tr></table></figure>
+                <p>In previous blogs, we have discussed about how to install the databricks command line tool (CLI),<br>and how to add authentication to the databricks website host.</p>
+<p>Steps to install databricks command line for both linux and windows system can be found here:<br><a target="_blank" rel="noopener" href="https://www.datasciencebyexample.com/2022/10/11/2022-10-11-1/">https://www.datasciencebyexample.com/2022/10/11/2022-10-11-1/</a></p>
+<p>Steps to add authentication to the databricks website host can be found here:<br><a target="_blank" rel="noopener" href="https://www.datasciencebyexample.com/2022/10/12/2022-10-12-1/">https://www.datasciencebyexample.com/2022/10/12/2022-10-12-1/</a></p>
+<p>Now back to how to create secrets scopes and keys uisng databricks command line tool.<br>Go to your terminal where you have installed the CLT.</p>
+<h2 id="1-add-scope-in-databricks"><a href="#1-add-scope-in-databricks" class="headerlink" title="1. add scope in databricks"></a>1. add scope in databricks</h2><p>Step 1: Creating a New Scope<br>scope name that make sense to yourself, where token will live</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks secrets create-scope --scope &lt;scope-name&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Load-and-Prepare-the-Data"><a href="#Load-and-Prepare-the-Data" class="headerlink" title="Load and Prepare the Data"></a>Load and Prepare the Data</h2><p>Check out the first example notebook to learn more about the data and format.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tsfresh.examples.robot_execution_failures <span class="keyword">import</span> download_robot_execution_failures</span><br><span class="line">download_robot_execution_failures() </span><br><span class="line">df_ts, y = load_robot_execution_failures()</span><br></pre></td></tr></table></figure>
+<p>Step 2: Pushing Token to Scope as the key for the scope</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks secrets put --scope &lt;scope-name&gt; --key &lt;key-name&gt;</span><br></pre></td></tr></table></figure>
 
-<p>We want to use the extracted features to predict for each of the robot executions, if it was a failure or not.<br>Therefore our basic “entity” is a single robot execution given by a distinct <code>id</code>.</p>
-<p>A dataframe with these identifiers as index needs to be prepared for the pipeline.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X = pd.DataFrame(index=y.index)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Split data into train and test set</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y)</span><br></pre></td></tr></table></figure>
+<p>Step 3: Access token in Databricks Notebook</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dbutils.secrets.get(scope=&lt;scope-name&gt;, key=&lt;key-name&gt;)</span><br></pre></td></tr></table></figure>
+<p>if you try to print out the key obtained by dbutils in the databricks notebook, it will be something that doesn’t make sense.<br>This is expected behavior to protect the key; Just define some variable to hold the key and use in later operations that will expect the key.</p>
+<h2 id="2-Managing-Scope-Giving-Scope-Access-to-Someone-Else"><a href="#2-Managing-Scope-Giving-Scope-Access-to-Someone-Else" class="headerlink" title="2. Managing Scope - Giving Scope Access to Someone Else"></a>2. Managing Scope - Giving Scope Access to Someone Else</h2><p>check what users have access to scope:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks secrets list-acls --scope &lt;name-of-scope&gt;</span><br></pre></td></tr></table></figure>
+<p>Now give access to other users:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">databricks secrets put-acl --scope &lt;name-of-scope&gt; --principal &lt;email-of-user&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Build-the-pipeline"><a href="#Build-the-pipeline" class="headerlink" title="Build the pipeline"></a>Build the pipeline</h2><p>We build a sklearn pipeline that consists of a feature extraction step (<code>RelevantFeatureAugmenter</code>) with a subsequent <code>RandomForestClassifier</code>.</p>
-<p>The <code>RelevantFeatureAugmenter</code> takes roughly the same arguments as <code>extract_features</code> and <code>select_features</code> do.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl = Pipeline([</span><br><span class="line">        (<span class="string">&#x27;augmenter&#x27;</span>, RelevantFeatureAugmenter(column_id=<span class="string">&#x27;id&#x27;</span>, column_sort=<span class="string">&#x27;time&#x27;</span>)),</span><br><span class="line">        (<span class="string">&#x27;classifier&#x27;</span>, RandomForestClassifier())</span><br><span class="line">      ])</span><br></pre></td></tr></table></figure>
-
-<div class="alert alert-warning">
-    
-<p>Here comes the tricky part!</p>
-<p>The input to the pipeline will be our dataframe <code>X</code>, which one row per identifier.<br>It is currently empty.<br>But which time series data should the <code>RelevantFeatureAugmenter</code> to actually extract the features from?</p>
-<p>We need to pass the time series data (stored in <code>df_ts</code>) to the transformer.</p>
-</div>
-
-<p>In this case, df_ts contains the time series of both train and test set, if you have different dataframes for<br>train and test set, you have to call set_params two times<br>(see further below on how to deal with two independent data sets)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts);</span><br></pre></td></tr></table></figure>
-
-<p>We are now ready to fit the pipeline</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
-
-<p>The augmenter has used the input time series data to extract time series features for each of the identifiers in the <code>X_train</code> and selected only the relevant ones using the passed <code>y_train</code> as target.<br>These features have been added to <code>X_train</code> as new columns.<br>The classifier can now use these features during trainings.</p>
-<h2 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h2><p>During interference, the augmentor does only extract the relevant features it has found out in the training phase and the classifier predicts the target using these features.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
-
-<p>So, finally we inspect the performance:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
-
-<p>You can also find out, which columns the augmenter has selected</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.named_steps[<span class="string">&quot;augmenter&quot;</span>].feature_selector.relevant_features</span><br></pre></td></tr></table></figure>
-
-<div class="alert alert-info">
-    
-<p>In this example we passed in an empty (except the index) <code>X_train</code> or <code>X_test</code> into the pipeline.<br>However, you can also fill the input with other features you have (e.g. features extracted from the metadata)<br>or even use other pipeline components before.</p>
-</div>
-
-<h2 id="Separating-the-time-series-data-containers"><a href="#Separating-the-time-series-data-containers" class="headerlink" title="Separating the time series data containers"></a>Separating the time series data containers</h2><p>In the example above we passed in a single <code>df_ts</code> into the <code>RelevantFeatureAugmenter</code>, which was used both for training and predicting.<br>During training, only the data with the <code>id</code>s from <code>X_train</code> where extracted and during prediction the rest.</p>
-<p>However, it is perfectly fine to call <code>set_params</code> twice: once before training and once before prediction.<br>This can be handy if you for example dump the trained pipeline to disk and re-use it only later for prediction.<br>You only need to make sure that the <code>id</code>s of the enteties you use during training/prediction are actually present in the passed time series data.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_ts_train = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_train.index)]</span><br><span class="line">df_ts_test = df_ts[df_ts[<span class="string">&quot;id&quot;</span>].isin(y_test.index)]</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_train);</span><br><span class="line">ppl.fit(X_train, y_train);</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(ppl, f)</span><br></pre></td></tr></table></figure>
-
-<p>Later: load the fitted model and do predictions on new, unseen data</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;pipeline.pkl&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ppk = pickle.load(f)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ppl.set_params(augmenter__timeseries_container=df_ts_test);</span><br><span class="line">y_pred = ppl.predict(X_test)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -501,7 +442,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/">https://datasciencebyexample.github.io/2021/06/10/2021-06-10-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/10/16/2022-10-16-1/">https://datasciencebyexample.github.io/2022/10/16/2022-10-16-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -539,24 +480,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
-                                </a>
-                            
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
-                                </a>
-                            
-                                <a href="/tags/tsfresh/">
-                                    <span class="chip bg-color">tsfresh</span>
-                                </a>
-                            
-                                <a href="/tags/time-series/">
-                                    <span class="chip bg-color">time series</span>
-                                </a>
-                            
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/databricks/">
+                                    <span class="chip bg-color">databricks</span>
                                 </a>
                             
                         </div>
@@ -602,17 +527,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/12/2021-06-12-1/">
+                <a href="/2022/10/16/2022-10-16-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="aggregate features from different rows into one row in pandas dataframe">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Create secrets scopes and keys for databricks, and how to give scope access to someone else">
                         
-                        <span class="card-title">aggregate features from different rows into one row in pandas dataframe</span>
+                        <span class="card-title">Create secrets scopes and keys for databricks, and how to give scope access to someone else</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -622,34 +548,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
                     </a>
                     
                 </div>
@@ -663,13 +582,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/09/2021-06-09-1/">
+                <a href="/2022/10/12/2022-10-12-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="word tokenization and sentence tokenization in python using NLTK package">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="How to authenticate databricks command line tool">
                         
-                        <span class="card-title">word tokenization and sentence tokenization in python using NLTK package</span>
+                        <span class="card-title">How to authenticate databricks command line tool</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -680,14 +599,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -697,12 +616,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tokenization/">
-                        <span class="chip bg-color">tokenization</span>
-                    </a>
-                    
-                    <a href="/tags/NLTK/">
-                        <span class="chip bg-color">NLTK</span>
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
                     </a>
                     
                 </div>
