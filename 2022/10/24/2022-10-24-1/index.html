@@ -402,7 +402,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. </p>
+                <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. </p>
 <p>The overall run time complexity should be O(log (m+n)).</p>
 <h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br>Input: nums1 = [1,3], nums2 = [2]<br>Output: 2.00000<br>Explanation: merged array = [1,2,3] and median is 2.</p>
 <p>Example 2:<br>Input: nums1 = [1,2], nums2 = [3,4]<br>Output: 2.50000<br>Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.</p>
@@ -410,6 +410,9 @@
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMedianSortedArrays(self, nums1, nums2):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums1: List[int]</span><br><span class="line">        :type nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        nums = nums1 + nums2</span><br><span class="line">        nums.sort()</span><br><span class="line">        if len(nums) % 2 == 0:</span><br><span class="line">            return (nums[len(nums)//2] + nums[len(nums)//2 - 1])/2.0</span><br><span class="line">        else:</span><br><span class="line">            return nums[len(nums)//2]</span><br></pre></td></tr></table></figure>
 
 <h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nums1 = [1,2,5,]</span><br><span class="line">nums2 = [3,4,8,10]</span><br><span class="line">solution = Solution()</span><br><span class="line">result = solution.findMedianSortedArrays(nums1,nums2)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>
+
                 
             </div>
             <hr/>
@@ -524,18 +527,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/10/24/2022-10-24-1/">
+                <a href="/2022/10/25/2022-10-25-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Find median of two sorted arrays">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Regular expression matching">
                         
-                        <span class="card-title">Find median of two sorted arrays</span>
+                        <span class="card-title">Regular expression matching</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -545,9 +547,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -560,7 +562,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
