@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Find first missing positive integer in an unsorted array</title>
+      <link href="2022/11/01/2022-11-01-1/"/>
+      <url>2022/11/01/2022-11-01-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given an unsorted integer array nums, return the smallest missing positive integer.<br>You must implement an algorithm that runs in O(n) time and uses constant extra space.</p><h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br>Input: nums = [1,2,0]<br>Output: 3<br>Explanation: The numbers in the range [1,2] are all in the array.</p><p>Example 2:<br>Input: nums = [3,4,-1,1]<br>Output: 2<br>Explanation: 1 is in the array but 2 is missing.</p><p>Example 3:<br>Input: nums = [7,8,9,11,12]<br>Output: 1<br>Explanation: The smallest positive integer 1 is missing.</p><h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>1 &lt;= nums.length &lt;= 105<br>-231 &lt;= nums[i] &lt;= 231 - 1</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># runs in O(n) time and uses constant extra space.</span><br><span class="line">class Solution(object):</span><br><span class="line">    def firstMissingPositive(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if len(nums) == 0:</span><br><span class="line">            return 1</span><br><span class="line">        </span><br><span class="line">        # mark the number from 0 to n</span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            if nums[i] &lt;= 0:</span><br><span class="line">                nums[i] = len(nums) + 1</span><br><span class="line"></span><br><span class="line">        # mark the number that exists in nums</span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            num = abs(nums[i])</span><br><span class="line">            if num &lt;= len(nums):</span><br><span class="line">                nums[num - 1] = -abs(nums[num - 1])</span><br><span class="line">                </span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            if nums[i] &gt; 0:</span><br><span class="line">                return i + 1</span><br><span class="line">        </span><br><span class="line">        return len(nums) + 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># just do the same thing without using extra space</span><br><span class="line">class Solution2(object):</span><br><span class="line">    def firstMissingPositive(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if len(nums) == 0:</span><br><span class="line">            return 1</span><br><span class="line"></span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            n = nums[i]</span><br><span class="line">            while 0 &lt; n &lt;= len(nums) and n != nums[n-1]:</span><br><span class="line">                nums[i], nums[n-1] = nums[n-1], nums[i]</span><br><span class="line">                n = nums[i]</span><br><span class="line"></span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            if nums[i] != i + 1:</span><br><span class="line">                return i + 1</span><br><span class="line">        return len(nums) + 1</span><br></pre></td></tr></table></figure><h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Test solution</span><br><span class="line">print(Solution().firstMissingPositive([1,2,0]))</span><br><span class="line">print(Solution().firstMissingPositive([3,4,-1,1]))</span><br><span class="line">print(Solution().firstMissingPositive([7,8,9,11,12]))</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> interview questions </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to call a function multi-times with try and catch before raise error in Python</title>
       <link href="2022/10/28/2022-10-28-1/"/>
       <url>2022/10/28/2022-10-28-1/</url>
@@ -1377,11 +1404,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
