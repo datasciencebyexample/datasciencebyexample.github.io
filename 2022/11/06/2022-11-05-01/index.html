@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Compute how much water are trapped after raining (trapping rain water), DataScienceTribe">
+    <meta name="keywords" content="wildcard matching using dynamic programming, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Compute how much water are trapped after raining (trapping rain water) | DataScienceTribe</title>
+    <title>wildcard matching using dynamic programming | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Compute how much water are trapped after raining (trapping rain water)</h1>
+                    <h1 class="description center-align post-title">wildcard matching using dynamic programming</h1>
                 </div>
             </div>
         </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-11-02
+                    2022-11-06
                 </div>
                 
 
@@ -402,13 +402,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.</p>
-<h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br><img src="/content/images/2022-11-02-1.png"><br>Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]<br>Output: 6<br>Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.</p>
-<p>Example 2:<br>Input: height = [4,2,0,3,2,5]<br>Output: 9</p>
-<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>n == height.length<br>1 &lt;= n &lt;= 2 * 104<br>0 &lt;= height[i] &lt;= 105</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def trap(self, height):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type height: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not height:</span><br><span class="line">            return 0</span><br><span class="line">        left = 0</span><br><span class="line">        right = len(height) - 1</span><br><span class="line">        left_max = height[left]</span><br><span class="line">        right_max = height[right]</span><br><span class="line">        res = 0</span><br><span class="line">        while left &lt; right:</span><br><span class="line">            if height[left] &lt; height[right]:</span><br><span class="line">                if height[left] &gt;= left_max:</span><br><span class="line">                    left_max = height[left]</span><br><span class="line">                else:</span><br><span class="line">                    res += left_max - height[left]</span><br><span class="line">                left += 1</span><br><span class="line">            else:</span><br><span class="line">                if height[right] &gt;= right_max:</span><br><span class="line">                    right_max = height[right]</span><br><span class="line">                else:</span><br><span class="line">                    res += right_max - height[right]</span><br><span class="line">                right -= 1</span><br><span class="line">        return res</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for ‘?’ and ‘<em>‘ where:<br>‘?’ Matches any single character.<br>‘</em>‘ Matches any sequence of characters (including the empty sequence).<br>The matching should cover the entire input string (not partial).</p>
+<h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br>Input: s = “aa”, p = “a”<br>Output: false<br>Explanation: “a” does not match the entire string “aa”.</p>
+<p>Example 2:<br>Input: s = “aa”, p = “<em>“<br>Output: true<br>Explanation: ‘</em>‘ matches any sequence.</p>
+<p>Example 3:<br>Input: s = “cb”, p = “?a”<br>Output: false<br>Explanation: ‘?’ matches ‘c’, but the second letter is ‘a’, which does not match ‘b’.</p>
+<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>0 &lt;= s.length, p.length &lt;= 2000<br>s contains only lowercase English letters.<br>p contains only lowercase English letters, ‘?’ or ‘*’.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def isMatch(self, s, p):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :type p: str</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # dp[i][j] = dp[i-1][j-1] if s[i] == p[j] or p[j] == &#x27;?&#x27;</span><br><span class="line">        # dp[i][j] = dp[i-1][j] or dp[i][j-1] if p[j] == &#x27;*&#x27;</span><br><span class="line">        # dp[0][0] = True</span><br><span class="line">        # dp[i][0] = False</span><br><span class="line">        # dp[0][j] = dp[0][j-1] if p[j] == &#x27;*&#x27;</span><br><span class="line">        # dp[0][j] = False if p[j] != &#x27;*&#x27;</span><br><span class="line">        # return dp[-1][-1]</span><br><span class="line">        dp = [[False] * (len(p) + 1) for _ in range(len(s) + 1)]</span><br><span class="line">        dp[0][0] = True</span><br><span class="line">        for j in range(1, len(p) + 1):</span><br><span class="line">            if p[j - 1] == &#x27;*&#x27;:</span><br><span class="line">                dp[0][j] = dp[0][j - 1]</span><br><span class="line">        for i in range(1, len(s) + 1):</span><br><span class="line">            for j in range(1, len(p) + 1):</span><br><span class="line">                if p[j - 1] == &#x27;?&#x27; or p[j - 1] == s[i - 1]:</span><br><span class="line">                    dp[i][j] = dp[i - 1][j - 1]</span><br><span class="line">                elif p[j - 1] == &#x27;*&#x27;:</span><br><span class="line">                    dp[i][j] = dp[i - 1][j] or dp[i][j - 1]</span><br><span class="line">        return dp[-1][-1]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = Solution()</span><br><span class="line">print(s.trap([0,1,0,2,1,0,1,3,2,1,2,1]))</span><br><span class="line">print(s.trap([4,2,0,3,2,5]))</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = Solution()</span><br><span class="line">assert s.isMatch(&quot;aa&quot;, &quot;a&quot;) == False</span><br><span class="line">assert s.isMatch(&quot;aa&quot;, &quot;*&quot;) == True</span><br><span class="line">assert s.isMatch(&quot;cb&quot;, &quot;?a&quot;) == False</span><br><span class="line">assert s.isMatch(&quot;adceb&quot;, &quot;*a*b&quot;) == True</span><br><span class="line">assert s.isMatch(&quot;acdcb&quot;, &quot;a*c?b&quot;) == False</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
 
 <p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>
 
@@ -437,7 +438,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/11/02/2022-11-02-1/">https://datasciencebyexample.github.io/2022/11/02/2022-11-02-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/11/06/2022-11-05-01/">https://datasciencebyexample.github.io/2022/11/06/2022-11-05-01/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -526,9 +527,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/11/06/2022-11-05-01/">
                     <div class="card-image">
@@ -546,9 +548,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -561,6 +563,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -583,13 +586,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/11/01/2022-11-01-1/">
+                <a href="/2022/11/02/2022-11-02-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Find first missing positive integer in an unsorted array">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Compute how much water are trapped after raining (trapping rain water)">
                         
-                        <span class="card-title">Find first missing positive integer in an unsorted array</span>
+                        <span class="card-title">Compute how much water are trapped after raining (trapping rain water)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -600,7 +603,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-02
                             </span>
                         <span class="publish-author">
                             
