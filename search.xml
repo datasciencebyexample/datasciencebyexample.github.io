@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Minimum window substring</title>
+      <link href="2022/11/08/2022-11-08-01/"/>
+      <url>2022/11/08/2022-11-08-01/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.<br>If there is no such substring, return the empty string “”.</p><h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br>Input: s = “ADOBECODEBANC”, t = “ABC”<br>Output: “BANC”<br>Explanation: The minimum window substring “BANC” includes ‘A’, ‘B’, and ‘C’ from string t.</p><p>Example 2:<br>Input: s = “a”, t = “a”<br>Output: “a”<br>Explanation: The entire string s is the minimum window.</p><p>Example 3:<br>Input: s = “a”, t = “aa”<br>Output: “”<br>Explanation: Both ‘a’s from t must be included in the window.<br>Since the largest window of s only has one ‘a’, return empty string.</p><h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>m == s.length<br>n == t.length<br>1 &lt;= m, n &lt;= 105<br>s and t consist of uppercase and lowercase English letters.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def minWindow(self, s, t):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :type t: str</span><br><span class="line">        :rtype: str</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not s or not t or len(s) &lt; len(t):</span><br><span class="line">            return &quot;&quot;</span><br><span class="line">        n = len(s)</span><br><span class="line">        m = len(t)</span><br><span class="line">        hash_map = &#123;&#125;</span><br><span class="line">        for i in t:</span><br><span class="line">            hash_map[i] = hash_map.get(i, 0) + 1</span><br><span class="line">        left = right = 0</span><br><span class="line">        count = len(hash_map)</span><br><span class="line">        min_len = n+1</span><br><span class="line">        min_start = 0</span><br><span class="line">        while right &lt; n:</span><br><span class="line">            if s[right] in hash_map:</span><br><span class="line">                hash_map[s[right]] -= 1</span><br><span class="line">                if hash_map[s[right]] == 0:</span><br><span class="line">                    count -= 1</span><br><span class="line">            right += 1</span><br><span class="line">            while count == 0:</span><br><span class="line">                if right - left &lt; min_len:</span><br><span class="line">                    min_len = right - left</span><br><span class="line">                    min_start = left</span><br><span class="line">                if s[left] in hash_map:</span><br><span class="line">                    hash_map[s[left]] += 1</span><br><span class="line">                    if hash_map[s[left]] &gt; 0:</span><br><span class="line">                        count += 1</span><br><span class="line">                left += 1</span><br><span class="line">        if min_len == n+1:</span><br><span class="line">            return &quot;&quot;</span><br><span class="line">        return s[min_start:min_start+min_len]</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import unittest</span><br><span class="line"></span><br><span class="line">class TestSolution(unittest.TestCase):</span><br><span class="line">    def setUp(self):</span><br><span class="line">        self.s = Solution()</span><br><span class="line"></span><br><span class="line">    def test_case1(self):</span><br><span class="line">        str1 = &quot;ADOBECODEBANC&quot;</span><br><span class="line">        str2 = &quot;ABC&quot;</span><br><span class="line">        result = &quot;BANC&quot;</span><br><span class="line">        self.assertEqual(self.s.minWindow(str1,str2),result)</span><br><span class="line"></span><br><span class="line">    def test_case2(self):</span><br><span class="line">        str1 = &quot;a&quot;</span><br><span class="line">        str2 = &quot;b&quot;</span><br><span class="line">        result = &quot;&quot;</span><br><span class="line">        self.assertEqual(self.s.minWindow(str1,str2),result)</span><br><span class="line"></span><br><span class="line">    def test_case3(self):</span><br><span class="line">        str1 = &quot;a&quot;</span><br><span class="line">        str2 = &quot;aa&quot;</span><br><span class="line">        result = &quot;&quot;</span><br><span class="line">        self.assertEqual(self.s.minWindow(str1,str2),result)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    unittest.main()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> interview questions </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>wildcard matching using dynamic programming</title>
       <link href="2022/11/06/2022-11-05-01/"/>
       <url>2022/11/06/2022-11-05-01/</url>
@@ -1541,9 +1568,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
