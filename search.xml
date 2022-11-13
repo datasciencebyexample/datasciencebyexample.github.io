@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Largest rectangle in histogram</title>
+      <link href="2022/11/12/largest-rectangle-in-histogram/"/>
+      <url>2022/11/12/largest-rectangle-in-histogram/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given an array of integers heights representing the histogram’s bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.</p><h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br><img src="/content/images/2022-11-12-1.jpg"></p><p>Input: heights = [2,1,5,6,2,3]<br>Output: 10<br>Explanation: The above is a histogram where width of each bar is 1.<br>The largest rectangle is shown in the red area, which has an area = 10 units.</p><p>Example 2:<br><img src="/content/images/2022-11-12-2.jpg"><br>Input: heights = [2,4]<br>Output: 4</p><h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>1 &lt;= heights.length &lt;= 105<br>0 &lt;= heights[i] &lt;= 104</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def largestRectangleArea(self, heights):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type heights: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not heights:</span><br><span class="line">            return 0</span><br><span class="line">        stack = []</span><br><span class="line">        max_area = 0</span><br><span class="line">        for i in range(len(heights)):</span><br><span class="line">            if not stack or heights[i] &gt;= heights[stack[-1]]:</span><br><span class="line">                stack.append(i)</span><br><span class="line">            else:</span><br><span class="line">                while stack and heights[i] &lt; heights[stack[-1]]:</span><br><span class="line">                    h = heights[stack.pop()]</span><br><span class="line">                    w = i if not stack else i - stack[-1] - 1</span><br><span class="line">                    max_area = max(max_area, h * w)</span><br><span class="line">                stack.append(i)</span><br><span class="line">        while stack:</span><br><span class="line">            h = heights[stack.pop()]</span><br><span class="line">            w = len(heights) if not stack else len(heights) - stack[-1] - 1</span><br><span class="line">            max_area = max(max_area, h * w)</span><br><span class="line">        return max_area</span><br></pre></td></tr></table></figure><h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = Solution()</span><br><span class="line">print(s.largestRectangleArea([2,1,5,6,2,3]))</span><br><span class="line">print(s.largestRectangleArea([2,4]))</span><br><span class="line">print(s.largestRectangleArea([2,4,5,6,7,8,9]))</span><br><span class="line">print(s.largestRectangleArea([9,8,7,6,5,4,3,2,1]))</span><br><span class="line">print(s.largestRectangleArea([1,2,3,4,5,6,7,8,9]))</span><br></pre></td></tr></table></figure><p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> interview questions </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Minimum window substring</title>
       <link href="2022/11/08/2022-11-08-01/"/>
       <url>2022/11/08/2022-11-08-01/</url>
@@ -1568,9 +1595,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
