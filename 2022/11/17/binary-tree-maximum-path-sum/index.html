@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How to remove part of an image using Python, DataScienceTribe">
+    <meta name="keywords" content="Binary Tree Maximum Path Sum, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>How to remove part of an image using Python | DataScienceTribe</title>
+    <title>Binary Tree Maximum Path Sum | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How to remove part of an image using Python</h1>
+                    <h1 class="description center-align post-title">Binary Tree Maximum Path Sum</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/PIL/">
-                                <span class="chip bg-color">PIL</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
-                            <a href="/tags/image-editing/">
-                                <span class="chip bg-color">image editing</span>
+                            <a href="/tags/interview-questions/">
+                                <span class="chip bg-color">interview questions</span>
                             </a>
                         
                     </div>
@@ -368,8 +368,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/image-processing/" class="post-category">
-                                image processing
+                            <a href="/categories/algorithm/" class="post-category">
+                                algorithm
                             </a>
                         
                     </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-18
+                    2022-11-17
                 </div>
                 
 
@@ -402,84 +402,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>What does remove part of an image mean? mathematically and programmatically, most of the times, it means convert the array for corresponding area of the image to be<br>(0,0,0) for the RGB channel value,  or a black color.</p>
-<p>Removing part of an image is useful in many situations. For example, in the text to image application, using Dallie2,<br>we can edit part of the image with inpainting. </p>
-<h2 id="Image-processing-using-Python-Image-Library"><a href="#Image-processing-using-Python-Image-Library" class="headerlink" title="Image processing using Python Image Library"></a>Image processing using Python Image Library</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np      </span><br><span class="line">  </span><br><span class="line"><span class="comment"># Opening the image and converting </span></span><br><span class="line"><span class="comment"># it to RGB color mode</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&quot;lena.png&quot;</span>).convert(<span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line"></span><br><span class="line">display(img)</span><br></pre></td></tr></table></figure>
+                <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.<br>The path sum of a path is the sum of the node’s values in the path.<br>Given the root of a binary tree, return the maximum path sum of any non-empty path.</p>
+<h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p><img src="/content/images/2022-11-16-1.jpg"></p>
+<p>Example 1:<br>Input: root = [1,2,3]<br>Output: 6<br>Explanation: The optimal path is 2 -&gt; 1 -&gt; 3 with a path sum of 2 + 1 + 3 = 6.</p>
+<p><img src="/content/images/2022-11-16-2.jpg"></p>
+<p>Example 2:<br>Input: root = [-10,9,20,null,null,15,7]<br>Output: 42<br>Explanation: The optimal path is 15 -&gt; 20 -&gt; 7 with a path sum of 15 + 20 + 7 = 42.</p>
+<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>The number of nodes in the tree is in the range [1, 3 * 104].<br>-1000 &lt;= Node.val &lt;= 1000</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode(object):</span><br><span class="line">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="line">#         self.val = val</span><br><span class="line">#         self.left = left</span><br><span class="line">#         self.right = right</span><br><span class="line">class Solution(object):</span><br><span class="line">    def maxPathSum(self, root):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type root: TreeNode</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.max_sum = float(&#x27;-inf&#x27;)</span><br><span class="line">        self.max_gain(root)</span><br><span class="line">        return self.max_sum</span><br><span class="line">    </span><br><span class="line">    def max_gain(self, node):</span><br><span class="line">        if not node:</span><br><span class="line">            return 0</span><br><span class="line">        </span><br><span class="line">        left_gain = max(self.max_gain(node.left), 0)</span><br><span class="line">        right_gain = max(self.max_gain(node.right), 0)</span><br><span class="line">        </span><br><span class="line">        price_newpath = node.val + left_gain + right_gain</span><br><span class="line">        </span><br><span class="line">        self.max_sum = max(self.max_sum, price_newpath)</span><br><span class="line">        </span><br><span class="line">        return node.val + max(left_gain, right_gain)</span><br></pre></td></tr></table></figure>
 
+<h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class TreeNode(object):</span><br><span class="line">    def __init__(self, val=0, left=None, right=None):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br><span class="line"></span><br><span class="line">root = TreeNode(1)</span><br><span class="line">root.left = TreeNode(2)</span><br><span class="line">root.right = TreeNode(3)</span><br><span class="line"></span><br><span class="line">solution = Solution()</span><br><span class="line">print( solution.maxPathSum(root) )</span><br><span class="line"></span><br><span class="line"># output: 6</span><br><span class="line"></span><br><span class="line"># test the solution      </span><br><span class="line">class TreeNode(object):</span><br><span class="line">    def __init__(self, val=0, left=None, right=None):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br><span class="line"></span><br><span class="line">root = TreeNode(-10)</span><br><span class="line">root.left = TreeNode(9)</span><br><span class="line">root.right = TreeNode(20)</span><br><span class="line">root.right.left = TreeNode(15)</span><br><span class="line">root.right.right = TreeNode(7)</span><br><span class="line"></span><br><span class="line">solution = Solution()</span><br><span class="line">print(solution.maxPathSum(root))</span><br><span class="line"></span><br><span class="line"># output: 42</span><br></pre></td></tr></table></figure>
 
-<p><img src="/content/images/2022-09-18-1.png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Extracting the image data &amp;</span></span><br><span class="line"><span class="comment"># creating an numpy array out of it</span></span><br><span class="line">img_arr = np.array(img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the pixel size of this image</span></span><br><span class="line"><span class="built_in">print</span>(img_arr.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check some of the values</span></span><br><span class="line">img_arr</span><br></pre></td></tr></table></figure>
-
-<pre><code>(225, 400, 3)
-
-
-
-
-
-array([[[108,  73,  53],
-        [109,  72,  54],
-        [109,  67,  51],
-        ...,
-        [ 56,  41,  44],
-        [ 62,  47,  50],
-        [ 70,  54,  57]],
-
-       [[110,  75,  55],
-        [110,  73,  55],
-        [109,  67,  51],
-        ...,
-        [ 54,  39,  42],
-        [ 57,  42,  45],
-        [ 64,  48,  51]],
-
-       [[109,  74,  55],
-        [110,  73,  55],
-        [107,  68,  53],
-        ...,
-        [ 51,  39,  41],
-        [ 56,  41,  44],
-        [ 61,  46,  49]],
-
-       ...,
-
-       [[130,  75,  54],
-        [128,  74,  50],
-        [130,  78,  56],
-        ...,
-        [123,  75,  61],
-        [122,  74,  60],
-        [128,  80,  66]],
-
-       [[129,  72,  52],
-        [127,  70,  50],
-        [131,  77,  53],
-        ...,
-        [126,  78,  64],
-        [122,  74,  60],
-        [126,  78,  64]],
-
-       [[134,  72,  49],
-        [133,  72,  51],
-        [126,  71,  51],
-        ...,
-        [140,  87,  71],
-        [135,  79,  64],
-        [140,  84,  67]]], dtype=uint8)
-</code></pre>
-<p>from the the above results, we can see that, the image has 225 (y direction) times 400 (x direction) pixels; At each pixel, there is a tuple of size 3 represents the RGB color. </p>
-<p>One thing to be careful is the channel difference between RGB and RGBA. If you take a snapshot of the screen. The pixels inside the bounding box are returned as an “RGB” image on Windows or “RGBA” on macOS. For RGB channel, it needs 24 bits to encode the pixel, while for RGBA, it needs 32 bits to encode the pixel.</p>
-<p>If the original image has RGB channel, but we need RGBA channel, we can use the following function to convert the image from RGB channel to RGBA channel, or vice versa.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">img_rgba = Image.<span class="built_in">open</span>(<span class="string">&quot;lena.jpg&quot;</span>).convert(<span class="string">&#x27;RGBA&#x27;</span>)</span><br><span class="line">img_arr_rgba = np.array(img_rgba)</span><br><span class="line"></span><br><span class="line"><span class="comment"># check the pixel size of this new image</span></span><br><span class="line"><span class="built_in">print</span>(img_arr_rgba.shape)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(225, 400, 4)
-</code></pre>
-<p>Let us get back to our task of removing parts of the image as the following</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Turning part of the the pixel values of to be black</span></span><br><span class="line"><span class="comment"># the order is  ymin: ymax,  xmin:xmax</span></span><br><span class="line">img_arr[<span class="number">150</span> : <span class="number">225</span>, <span class="number">0</span> : <span class="number">100</span>] = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating an image out of the previously modified array</span></span><br><span class="line">img_edit = Image.fromarray(img_arr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Displaying the image</span></span><br><span class="line">display(img_edit)</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/content/images/2022-09-18-2.png"></p>
-<p>Now you can see the left corner of the image is black now.</p>
-<h2 id="code-link-in-github"><a href="#code-link-in-github" class="headerlink" title="code link in github"></a>code link in github</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/blob/main/remove-part-of-image-using-python/2022-09-17-remove-part-of-image-using-python.ipynb">https://github.com/robotlearner001/blog/blob/main/remove-part-of-image-using-python/2022-09-17-remove-part-of-image-using-python.ipynb</a></p>
+<p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>
 
                 
             </div>
@@ -506,7 +439,7 @@ array([[[108,  73,  53],
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/09/18/2022-09-18-1/">https://datasciencebyexample.github.io/2022/09/18/2022-09-18-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/11/17/binary-tree-maximum-path-sum/">https://datasciencebyexample.github.io/2022/11/17/binary-tree-maximum-path-sum/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,12 +477,12 @@ array([[[108,  73,  53],
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/PIL/">
-                                    <span class="chip bg-color">PIL</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
-                                <a href="/tags/image-editing/">
-                                    <span class="chip bg-color">image editing</span>
+                                <a href="/tags/interview-questions/">
+                                    <span class="chip bg-color">interview questions</span>
                                 </a>
                             
                         </div>
@@ -599,13 +532,13 @@ array([[[108,  73,  53],
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/09/19/2022-09-19-1/">
+                <a href="/2022/11/17/word-ladder/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="OpenCV and Pillow color code order difference, BGR vs RGB">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Word ladder">
                         
-                        <span class="card-title">OpenCV and Pillow color code order difference, BGR vs RGB</span>
+                        <span class="card-title">Word ladder</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -616,14 +549,14 @@ array([[[108,  73,  53],
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/image-processing/" class="post-category">
-                                    image processing
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
@@ -633,16 +566,12 @@ array([[[108,  73,  53],
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PIL/">
-                        <span class="chip bg-color">PIL</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
-                    <a href="/tags/image-editing/">
-                        <span class="chip bg-color">image editing</span>
-                    </a>
-                    
-                    <a href="/tags/OpenCV/">
-                        <span class="chip bg-color">OpenCV</span>
+                    <a href="/tags/interview-questions/">
+                        <span class="chip bg-color">interview questions</span>
                     </a>
                     
                 </div>
@@ -656,13 +585,13 @@ array([[[108,  73,  53],
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/10/2022-09-10-1/">
+                <a href="/2022/11/12/largest-rectangle-in-histogram/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Ways to make your Pandas operatoins 100 times faster">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Largest rectangle in histogram">
                         
-                        <span class="card-title">Ways to make your Pandas operatoins 100 times faster</span>
+                        <span class="card-title">Largest rectangle in histogram</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -673,14 +602,14 @@ array([[[108,  73,  53],
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
@@ -690,8 +619,12 @@ array([[[108,  73,  53],
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/interview-questions/">
+                        <span class="chip bg-color">interview questions</span>
                     </a>
                     
                 </div>
