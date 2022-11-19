@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/google-cloud/</loc>
+        <lastmod>2022-11-19T22:16:51.892Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/interview-questions/</loc>
         <lastmod>2022-11-18T02:43:24.821Z</lastmod>
         <changefreq>weekly</changefreq>

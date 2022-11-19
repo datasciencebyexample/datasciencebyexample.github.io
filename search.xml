@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>How to fix google cloud API user rate limit exceeded error</title>
+      <link href="2022/11/19/google-cloud-user-rate-limit-exceeded/"/>
+      <url>2022/11/19/google-cloud-user-rate-limit-exceeded/</url>
+      
+        <content type="html"><![CDATA[<p>We are using the google cloud translate API, and suddenly noticed it gives error.<br>A closer check of the logs shows there is some 403 error, which complains “user rate limit exceeded”.</p><p>Then checking the google cloud console, and realized it’s because of the credit card associated with billing expired.</p><p>So the the steps to fix the error are:<br>(1) go to billing page, and update the credit card information.<br>(2) go the account management, and reactivate the account.</p><p>Now the API works correctly again.</p><p><img src="/content/images/2022-11-19-1.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> google cloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Word ladder</title>
       <link href="2022/11/17/word-ladder/"/>
       <url>2022/11/17/word-ladder/</url>
@@ -1533,9 +1558,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> feature engineering </tag>
             
@@ -1562,9 +1587,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> tsfresh </tag>
             
@@ -1649,9 +1674,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -1678,9 +1703,9 @@
             
             <tag> python </tag>
             
-            <tag> pandas </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pandas </tag>
             
         </tags>
       
