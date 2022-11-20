@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Predict the 2022 world cup using Poisson distribution</title>
+      <link href="2022/11/20/fifa-world-cup-2022-prediction-with-poisson-distribution/"/>
+      <url>2022/11/20/fifa-world-cup-2022-prediction-with-poisson-distribution/</url>
+      
+        <content type="html"><![CDATA[<p>There are many ways to predict the world cup or any games, complex machine learning models are one of those choices.<br>Here we introduct one simple way but many of the times robust way to predict by using Poisson distribution.</p><p>The code can be found here:<br><a href="https://github.com/robotlearner001/blog/tree/main/world-cup-2022-prediction">github link</a></p><p>And the following image shows the prediction:<br><img src="/content/images/2022-11-20-1.jpg"></p><p>and the predicted final winner of 2022 world cup is:<br>Brazil</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> poisson distribution </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to fix google cloud API user rate limit exceeded error</title>
       <link href="2022/11/19/google-cloud-user-rate-limit-exceeded/"/>
       <url>2022/11/19/google-cloud-user-rate-limit-exceeded/</url>
@@ -496,11 +521,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1558,9 +1583,9 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pipeline </tag>
             
             <tag> feature engineering </tag>
             
@@ -1587,9 +1612,9 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pipeline </tag>
             
             <tag> tsfresh </tag>
             
@@ -1674,9 +1699,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -1703,9 +1728,9 @@
             
             <tag> python </tag>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> preprocessing </tag>
             
         </tags>
       
