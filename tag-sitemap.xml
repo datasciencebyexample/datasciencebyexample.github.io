@@ -3,36 +3,36 @@
 
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/poisson-distribution/</loc>
-        <lastmod>2022-11-20T19:10:49.990Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/google-cloud/</loc>
-        <lastmod>2022-11-19T22:16:51.892Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/interview-questions/</loc>
-        <lastmod>2022-11-18T02:43:24.821Z</lastmod>
+        <lastmod>2022-11-29T01:10:28.314Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/leetcode/</loc>
-        <lastmod>2022-11-18T02:43:24.821Z</lastmod>
+        <lastmod>2022-11-29T01:10:28.314Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/poisson-distribution/</loc>
+        <lastmod>2022-11-21T21:56:01.674Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/google-cloud/</loc>
+        <lastmod>2022-11-21T21:55:47.150Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/python/</loc>
-        <lastmod>2022-10-29T03:37:20.771Z</lastmod>
+        <lastmod>2022-11-21T21:51:26.836Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -80,14 +80,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
