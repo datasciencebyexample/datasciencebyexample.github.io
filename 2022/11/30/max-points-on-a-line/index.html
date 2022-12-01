@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="aggregate features from different rows into one row in pandas dataframe, DataScienceTribe">
+    <meta name="keywords" content="Max points on a line, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>aggregate features from different rows into one row in pandas dataframe | DataScienceTribe</title>
+    <title>Max points on a line | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -236,7 +236,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">aggregate features from different rows into one row in pandas dataframe</h1>
+                    <h1 class="description center-align post-title">Max points on a line</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
-                            <a href="/tags/pipeline/">
-                                <span class="chip bg-color">pipeline</span>
-                            </a>
-                        
-                            <a href="/tags/feature-engineering/">
-                                <span class="chip bg-color">feature engineering</span>
+                            <a href="/tags/interview-questions/">
+                                <span class="chip bg-color">interview questions</span>
                             </a>
                         
                     </div>
@@ -372,8 +368,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/algorithm/" class="post-category">
+                                algorithm
                             </a>
                         
                     </div>
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-12
+                    2022-11-30
                 </div>
                 
 
@@ -406,161 +402,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>In many use cases, different features of the same event are stored in a table by multiple rows.<br>multiple columns will indicate each characteristics of one feature, such as name, value, timestamp, etc.</p>
-<p>In machine learning, we need to aggregate them into one row for training, and the following shows how do do it in dataframe easily.</p>
-<h2 id="generate-some-example-dataframe"><a href="#generate-some-example-dataframe" class="headerlink" title="generate some example dataframe"></a>generate some example dataframe</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = [ [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value1&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value2&#x27;</span>],[<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;name3&#x27;</span>,<span class="string">&#x27;value3&#x27;</span>],</span><br><span class="line">         [<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name1&#x27;</span>,<span class="string">&#x27;value4&#x27;</span>],[<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;name2&#x27;</span>,<span class="string">&#x27;value5&#x27;</span>] </span><br><span class="line">       ]</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data=data)</span><br><span class="line">df.columns =[<span class="string">&#x27;id&#x27;</span>,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line">display(df)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.</p>
+<h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br><img src="/content/images/2022-11-30-1.jpg"></p>
+<p>Input: points = [[1,1],[2,2],[3,3]]<br>Output: 3</p>
+<p>Example 2:<br><img src="/content/images/2022-11-30-2.jpg"></p>
+<p>Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]<br>Output: 4</p>
+<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>1 &lt;= points.length &lt;= 300<br>points[i].length == 2<br>-104 &lt;= xi, yi &lt;= 104<br>All the points are unique.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxPoints(self, points):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type points: List[List[int]]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        n = len(points)</span><br><span class="line">        if n &lt; 3:</span><br><span class="line">            return n</span><br><span class="line">        </span><br><span class="line">        ans = 0</span><br><span class="line">        for i in range(n):</span><br><span class="line">            dic = &#123;&#x27;inf&#x27;:0&#125;</span><br><span class="line">            samePointsNum = 0</span><br><span class="line">            x1, y1 = points[i]</span><br><span class="line">            for j in range(i+1, n):</span><br><span class="line">                x2, y2 = points[j]</span><br><span class="line">                if x1 == x2 and y1 == y2:</span><br><span class="line">                    samePointsNum += 1</span><br><span class="line">                    continue</span><br><span class="line">                if x1 == x2:</span><br><span class="line">                    slope = &#x27;inf&#x27;</span><br><span class="line">                else:</span><br><span class="line">                    slope = (y2-y1)*1.0/(x2-x1)</span><br><span class="line">                if slope not in dic:</span><br><span class="line">                    dic[slope] = 1</span><br><span class="line">                else:</span><br><span class="line">                    dic[slope] += 1</span><br><span class="line">            ans = max(ans, max(dic.values())+samePointsNum+1)</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
 
+<h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]</span><br><span class="line">print(Solution().maxPoints(points))</span><br><span class="line"></span><br><span class="line">points = [[1,1],[2,2],[3,3]]</span><br><span class="line">print(Solution().maxPoints(points))</span><br></pre></td></tr></table></figure>
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>name</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>name1</td>
-      <td>value1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>name2</td>
-      <td>value2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>name3</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2</td>
-      <td>name1</td>
-      <td>value4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2</td>
-      <td>name2</td>
-      <td>value5</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-<h2 id="group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column"><a href="#group-the-dataframe-by-id-then-aggregate-all-the-feature-values-into-one-column" class="headerlink" title="group the dataframe by id, then aggregate all the feature values into one column"></a>group the dataframe by id, then aggregate all the feature values into one column</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df2 = df.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">df3 = pd.DataFrame(data=df2[<span class="number">0</span>].values.tolist())</span><br><span class="line">display(df3)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-<h1 id="put-the-above-the-transformation-into-a-scikit-learn-customed-transformer"><a href="#put-the-above-the-transformation-into-a-scikit-learn-customed-transformer" class="headerlink" title="put the above the transformation into a scikit-learn customed transformer"></a>put the above the transformation into a scikit-learn customed transformer</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_Transformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Class Constructor</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;start&#x27;</span>)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">           </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Return self</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="comment">#Customized transformer</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X_, y=<span class="literal">None</span></span>):</span></span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X2 = X.groupby(<span class="string">&#x27;id&#x27;</span>).apply(<span class="keyword">lambda</span> x: <span class="built_in">dict</span>(x[[<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;value&#x27;</span>]].values.tolist())).reset_index()</span><br><span class="line">        X3 = pd.DataFrame(data=X2[<span class="number">0</span>].values.tolist())     </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X3</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> X1</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"><span class="comment"># get a transformer object</span></span><br><span class="line">my_transformer = my_Transformer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># apply the transform on the original data</span></span><br><span class="line"></span><br><span class="line">df_new = my_transformer.transform(df)</span><br><span class="line">display(df_new)</span><br></pre></td></tr></table></figure>
-
-<pre><code>start
-</code></pre>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>value1</td>
-      <td>value2</td>
-      <td>value3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>value4</td>
-      <td>value5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+<p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>
 
                 
             </div>
@@ -587,7 +439,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/">https://datasciencebyexample.github.io/2021/06/12/2021-06-12-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/11/30/max-points-on-a-line/">https://datasciencebyexample.github.io/2022/11/30/max-points-on-a-line/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -625,16 +477,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
-                                <a href="/tags/pipeline/">
-                                    <span class="chip bg-color">pipeline</span>
-                                </a>
-                            
-                                <a href="/tags/feature-engineering/">
-                                    <span class="chip bg-color">feature engineering</span>
+                                <a href="/tags/interview-questions/">
+                                    <span class="chip bg-color">interview questions</span>
                                 </a>
                             
                         </div>
@@ -680,17 +528,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/14/2021-06-14-1/">
+                <a href="/2022/11/30/max-points-on-a-line/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Max points on a line">
                         
-                        <span class="card-title">explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe</span>
+                        <span class="card-title">Max points on a line</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -700,34 +549,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                    <a href="/tags/interview-questions/">
+                        <span class="chip bg-color">interview questions</span>
                     </a>
                     
                 </div>
@@ -741,13 +587,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/10/2021-06-10-1/">
+                <a href="/2022/11/28/word-break-II/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="time series feature engineering using tsfresh, training vs test">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Word break II">
                         
-                        <span class="card-title">time series feature engineering using tsfresh, training vs test</span>
+                        <span class="card-title">Word break II</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,14 +604,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
@@ -775,24 +621,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
-                    <a href="/tags/pipeline/">
-                        <span class="chip bg-color">pipeline</span>
-                    </a>
-                    
-                    <a href="/tags/feature-engineering/">
-                        <span class="chip bg-color">feature engineering</span>
-                    </a>
-                    
-                    <a href="/tags/tsfresh/">
-                        <span class="chip bg-color">tsfresh</span>
-                    </a>
-                    
-                    <a href="/tags/time-series/">
-                        <span class="chip bg-color">time series</span>
+                    <a href="/tags/interview-questions/">
+                        <span class="chip bg-color">interview questions</span>
                     </a>
                     
                 </div>

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Max points on a line</title>
+      <link href="2022/11/30/max-points-on-a-line/"/>
+      <url>2022/11/30/max-points-on-a-line/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h2><p>Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.</p><h2 id="Input-and-output-examples"><a href="#Input-and-output-examples" class="headerlink" title="Input and output examples"></a>Input and output examples</h2><p>Example 1:<br><img src="/content/images/2022-11-30-1.jpg"></p><p>Input: points = [[1,1],[2,2],[3,3]]<br>Output: 3</p><p>Example 2:<br><img src="/content/images/2022-11-30-2.jpg"></p><p>Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]<br>Output: 4</p><h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h2><p>1 &lt;= points.length &lt;= 300<br>points[i].length == 2<br>-104 &lt;= xi, yi &lt;= 104<br>All the points are unique.</p><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxPoints(self, points):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type points: List[List[int]]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        n = len(points)</span><br><span class="line">        if n &lt; 3:</span><br><span class="line">            return n</span><br><span class="line">        </span><br><span class="line">        ans = 0</span><br><span class="line">        for i in range(n):</span><br><span class="line">            dic = &#123;&#x27;inf&#x27;:0&#125;</span><br><span class="line">            samePointsNum = 0</span><br><span class="line">            x1, y1 = points[i]</span><br><span class="line">            for j in range(i+1, n):</span><br><span class="line">                x2, y2 = points[j]</span><br><span class="line">                if x1 == x2 and y1 == y2:</span><br><span class="line">                    samePointsNum += 1</span><br><span class="line">                    continue</span><br><span class="line">                if x1 == x2:</span><br><span class="line">                    slope = &#x27;inf&#x27;</span><br><span class="line">                else:</span><br><span class="line">                    slope = (y2-y1)*1.0/(x2-x1)</span><br><span class="line">                if slope not in dic:</span><br><span class="line">                    dic[slope] = 1</span><br><span class="line">                else:</span><br><span class="line">                    dic[slope] += 1</span><br><span class="line">            ans = max(ans, max(dic.values())+samePointsNum+1)</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure><h3 id="Test-the-the-solution"><a href="#Test-the-the-solution" class="headerlink" title="Test the the solution:"></a>Test the the solution:</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]</span><br><span class="line">print(Solution().maxPoints(points))</span><br><span class="line"></span><br><span class="line">points = [[1,1],[2,2],[3,3]]</span><br><span class="line">print(Solution().maxPoints(points))</span><br></pre></td></tr></table></figure><p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> interview questions </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Word break II</title>
       <link href="2022/11/28/word-break-II/"/>
       <url>2022/11/28/word-break-II/</url>
@@ -548,11 +575,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1643,11 +1670,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
