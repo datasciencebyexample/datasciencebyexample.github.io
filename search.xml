@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>OpenAI&#39;s chatbot has just changed the search engine industry</title>
+      <link href="2022/12/02/openai-chatbot-has-just-changed-the-search-engine-industry/"/>
+      <url>2022/12/02/openai-chatbot-has-just-changed-the-search-engine-industry/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/content/images/2022-12-02-1.png"></p><p>The game of the search engine has just been changed!</p><p>The reaction to OpenAI’s new chatbot product on Dec 1st 2022 has been overwhelmingly positive. The sheer volume of people wanting to experience it crashed the website for one whole day, demonstrating just how popular the product has become. It’s clear that people are excited to explore the potential of this technology, and to see how it can be used to help improve their lives. </p><p>For years, the search engines giant, such as Google and Baidu have been trying to better understand user’s intention. instead of just searching for specific keywords, search engines are getting better to understand more natural language inquiries. This means that instead of just typing in specific keywords, users can ask questions in their own words and get more accurate results. This shift has created greater accuracy and relevance for search engine results, which can help people find what they’re looking for more quickly and easily.</p><p>But the introduction of OpenAI’s chatbot has further changed the game of search engine. Chatbots are capable of understanding natural language queries, which means users can ask questions in their own words and get more accurate results. Chatbots can also be used to provide personalized recommendations, further improving the search experience. </p><p>Two fundamental differences of OpenAI’s chatbot and Google’s search engine:<br>(1) cost to the users:  Search engine is free in general if you don’t consider the ad.  OpenAI’s chatbot will charge people for its usage.<br>(2)  with search engine, the most relevant raw data can be found for the users to further digest and research; but with OpenAI’s chatbot, the users don’t need to any research and simply get the answers right away.</p><p>The question people need to ask themselves now is: do you want to pay for results and enjoy being lazy or doing some research based on relevant raw data.</p><p>Here we ask OpenAI one question for fun, the question is “ who will win the 2022 FIFA world cup?”<br>and the answer is very honest:<br>“I’m sorry, but I am a large language model trained by OpenAI and my knowledge cutoff is 2021, so I do not have any information about the 2022 FIFA World Cup. My training only goes up until 2021, and I am not currently able to browse the internet, so I cannot provide any updated information on current events or future events. My function is to assist with general knowledge and provide information based on my training, not to provide current or future event predictions.”</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gpt3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Max points on a line</title>
       <link href="2022/11/30/max-points-on-a-line/"/>
       <url>2022/11/30/max-points-on-a-line/</url>
@@ -575,11 +600,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1670,11 +1695,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -1753,9 +1778,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
