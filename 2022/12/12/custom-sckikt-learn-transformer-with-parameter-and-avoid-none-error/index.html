@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="missing value or null value processing in pandas dataframe, DataScienceTribe">
+    <meta name="keywords" content="A custom scikit-learn transformer example with parameter input and avoid possible None error, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>missing value or null value processing in pandas dataframe | DataScienceTribe</title>
+    <title>A custom scikit-learn transformer example with parameter input and avoid possible None error | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">missing value or null value processing in pandas dataframe</h1>
+                    <h1 class="description center-align post-title">A custom scikit-learn transformer example with parameter input and avoid possible None error</h1>
                 </div>
             </div>
         </div>
@@ -356,8 +356,8 @@
                                 <span class="chip bg-color">pandas</span>
                             </a>
                         
-                            <a href="/tags/dataframe/">
-                                <span class="chip bg-color">dataframe</span>
+                            <a href="/tags/scikit-learn/">
+                                <span class="chip bg-color">scikit-learn</span>
                             </a>
                         
                     </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-08
+                    2022-12-12
                 </div>
                 
 
@@ -402,57 +402,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="obtain-null-or-missing-values-of-a-dataframe"><a href="#obtain-null-or-missing-values-of-a-dataframe" class="headerlink" title="obtain null or missing values of a dataframe"></a>obtain null or missing values of a dataframe</h1><p>Suppose the dataframe has the following formats, with 10 rows and 5 clomns:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">          0         1         2         3         4         5</span><br><span class="line">0  0.520113  0.884000  1.260966 -0.236597  0.312972 -0.196281</span><br><span class="line">1 -0.837552       NaN  0.143017  0.862355  0.346550  0.842952</span><br><span class="line">2 -0.452595       NaN -0.420790  0.456215  1.203459  0.527425</span><br><span class="line">3  0.317503 -0.917042  1.780938 -1.584102  0.432745  0.389797</span><br><span class="line">4 -0.722852  1.704820 -0.113821 -1.466458  0.083002  0.011722</span><br><span class="line">5 -0.622851 -0.251935 -1.498837       NaN  1.098323  0.273814</span><br><span class="line">6  0.329585  0.075312 -0.690209 -3.807924  0.489317 -0.841368</span><br><span class="line">7 -1.123433 -1.187496  1.868894 -2.046456 -0.949718       NaN</span><br><span class="line">8  1.133880 -0.110447  0.050385 -1.158387  0.188222       NaN</span><br><span class="line">9 -0.513741  1.196259  0.704537  0.982395 -0.585040 -1.693810</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>A customer scikit-learn transfomer example with parameter.<br>It takes a pandas DataFrame with a column called input as input, and returns a DataFrame with a column called output containing the transformed data:</p>
+<h2 id="define-custom-transformer"><a href="#define-custom-transformer" class="headerlink" title="define custom transformer"></a>define custom transformer</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerTransformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, power=<span class="number">1</span></span>):</span></span><br><span class="line">        self.power = power</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="comment"># Fit simply returns self, nothing else to do</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X</span>):</span></span><br><span class="line">        <span class="comment"># Check if input is a DataFrame</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(X, pd.DataFrame):</span><br><span class="line">            <span class="comment"># If so, return a DataFrame with the transformed data</span></span><br><span class="line">            <span class="keyword">return</span> pd.DataFrame(&#123;<span class="string">&#x27;output&#x27;</span>: X[<span class="string">&#x27;input&#x27;</span>] ** self.power&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># If not, return a plain NumPy array with the transformed data</span></span><br><span class="line">            <span class="keyword">return</span> X[<span class="string">&#x27;input&#x27;</span>] ** self.power</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>the isnull() function which would return a dataframe like this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">       0      1      2      3      4      5</span><br><span class="line">0  False  False  False  False  False  False</span><br><span class="line">1  False   True  False  False  False  False</span><br><span class="line">2  False   True  False  False  False  False</span><br><span class="line">3  False  False  False  False  False  False</span><br><span class="line">4  False  False  False  False  False  False</span><br><span class="line">5  False  False  False   True  False  False</span><br><span class="line">6  False  False  False  False  False  False</span><br><span class="line">7  False  False  False  False  False   True</span><br><span class="line">8  False  False  False  False  False   True</span><br><span class="line">9  False  False  False  False  False  False</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>To use this transformer, we would first instantiate it with the desired power parameter, and then call its fit_transform method on a DataFrame with an input column. For example:</p>
+<h2 id="generate-some-sample-data-and-dataframe"><a href="#generate-some-sample-data-and-dataframe" class="headerlink" title="generate some sample data and dataframe"></a>generate some sample data and dataframe</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate some sample data</span></span><br><span class="line">data = np.random.randn(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a DataFrame with an &#x27;input&#x27; column</span></span><br><span class="line">X = pd.DataFrame(&#123;<span class="string">&#x27;input&#x27;</span>: data&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the DataFrame</span></span><br><span class="line"><span class="built_in">print</span>(X)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>following command will select rows that has any null values</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">df[df.isnull().any(axis=1)]</span><br></pre></td></tr></table></figure>
+<pre><code>      input
+0 -1.460135
+1  0.188532
+2 -0.272600
+3  0.306880
+4 -0.221020
+</code></pre>
+<h2 id="use-the-transfomer-with-parameter-intilization"><a href="#use-the-transfomer-with-parameter-intilization" class="headerlink" title="use the transfomer, with parameter intilization"></a>use the transfomer, with parameter intilization</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create the transformer</span></span><br><span class="line">transformer = PowerTransformer(power=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fit and transform the data</span></span><br><span class="line">X_transformed = transformer.fit_transform(X)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(X_transformed)</span><br></pre></td></tr></table></figure>
 
-<p>following command will select columns that has any null values</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">df[df.columns[df.isna().any()]]</span><br></pre></td></tr></table></figure>
-
-<p>follwoing command will select rows that have null values for a specific column, e.g., column=3</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">df[df[3].isnull()]</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="Drop-null-values"><a href="#Drop-null-values" class="headerlink" title="Drop null values"></a>Drop null values</h1><blockquote>
-<blockquote>
-<blockquote>
-<p>df = pd.DataFrame({“name”: [‘Alfred’, ‘Batman’, ‘Catwoman’],<br>…                    “toy”: [np.nan, ‘Batmobile’, ‘Bullwhip’],<br>…                    “born”: [pd.NaT, pd.Timestamp(“1940-04-25”),<br>…                             pd.NaT]})</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; df</span><br><span class="line">       name        toy       born</span><br><span class="line">0    Alfred        NaN        NaT</span><br><span class="line">1    Batman  Batmobile 1940-04-25</span><br><span class="line">2  Catwoman   Bullwhip        NaT</span><br></pre></td></tr></table></figure>
-
-<p>Drop the rows where at least one element is missing.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; df.dropna()</span><br><span class="line">     name        toy       born</span><br><span class="line">1  Batman  Batmobile 1940-04-25</span><br></pre></td></tr></table></figure>
-
-<p>Drop the columns where at least one element is missing.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; df.dropna(axis=&#x27;columns&#x27;)</span><br><span class="line">       name</span><br><span class="line">0    Alfred</span><br><span class="line">1    Batman</span><br><span class="line">2  Catwoman</span><br></pre></td></tr></table></figure>
-
-<p>Drop the rows where all elements are missing.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; df.dropna(how=&#x27;all&#x27;)</span><br><span class="line">       name        toy       born</span><br><span class="line">0    Alfred        NaN        NaT</span><br><span class="line">1    Batman  Batmobile 1940-04-25</span><br><span class="line">2  Catwoman   Bullwhip        NaT</span><br></pre></td></tr></table></figure>
-
-<p>Keep only the rows with at least 2 non-NA values.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; df.dropna(thresh=2)</span><br><span class="line">       name        toy       born</span><br><span class="line">1    Batman  Batmobile 1940-04-25</span><br><span class="line">2  Catwoman   Bullwhip        NaT</span><br></pre></td></tr></table></figure>
-<p>Define in which columns to look for missing values.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; df.dropna(subset=[&#x27;name&#x27;, &#x27;toy&#x27;])</span><br><span class="line">       name        toy       born</span><br><span class="line">1    Batman  Batmobile 1940-04-25</span><br><span class="line">2  Catwoman   Bullwhip        NaT</span><br></pre></td></tr></table></figure>
-<p>Keep the DataFrame with valid entries in the same variable.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; df.dropna(inplace=True)</span><br><span class="line">&gt;&gt;&gt; df</span><br><span class="line">     name        toy       born</span><br><span class="line">1  Batman  Batmobile 1940-04-25</span><br></pre></td></tr></table></figure>
-
-<h1 id="Fill-missing-values"><a href="#Fill-missing-values" class="headerlink" title="Fill missing values"></a>Fill missing values</h1><p>Filling missing values using fillna(), replace() and interpolate()</p>
-<p>In order to fill null values in a datasets, we use fillna(), replace() and interpolate() function these function replace NaN values with some value of their own. All these function help in filling a null values in datasets of a DataFrame. Interpolate() function is basically used to fill NA values in the dataframe but it uses various interpolation technique to fill the missing values rather than hard-coding the value.</p>
-<p>Code #1: Filling null values with a single value</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># importing pandas as pd</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># importing numpy as np</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># dictionary of lists</span><br><span class="line"></span><br><span class="line">dict = &#123;&#x27;First Score&#x27;:[100, 90, np.nan, 95],</span><br><span class="line"></span><br><span class="line">        &#x27;Second Score&#x27;: [30, 45, 56, np.nan],</span><br><span class="line"></span><br><span class="line">        &#x27;Third Score&#x27;:[np.nan, 40, 80, 98]&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># creating a dataframe from dictionary</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(dict)</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># filling missing value using fillna()  </span><br><span class="line"></span><br><span class="line">df.fillna(0)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Code #2: Filling null values with the previous ones</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># importing pandas as pd</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># importing numpy as np</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># dictionary of lists</span><br><span class="line"></span><br><span class="line">dict = &#123;&#x27;First Score&#x27;:[100, 90, np.nan, 95],</span><br><span class="line"></span><br><span class="line">        &#x27;Second Score&#x27;: [30, 45, 56, np.nan],</span><br><span class="line"></span><br><span class="line">        &#x27;Third Score&#x27;:[np.nan, 40, 80, 98]&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># creating a dataframe from dictionary</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(dict)</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># filling a missing value with</span><br><span class="line"></span><br><span class="line"># previous ones  </span><br><span class="line"></span><br><span class="line">df.fillna(method =&#x27;pad&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>Code #3: Filling null value with the next ones</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># importing pandas as pd</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># importing numpy as np</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># dictionary of lists</span><br><span class="line"></span><br><span class="line">dict = &#123;&#x27;First Score&#x27;:[100, 90, np.nan, 95],</span><br><span class="line"></span><br><span class="line">        &#x27;Second Score&#x27;: [30, 45, 56, np.nan],</span><br><span class="line"></span><br><span class="line">        &#x27;Third Score&#x27;:[np.nan, 40, 80, 98]&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># creating a dataframe from dictionary</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(dict)</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"># filling  null value using fillna() function  </span><br><span class="line"></span><br><span class="line">df.fillna(method =&#x27;bfill&#x27;) </span><br></pre></td></tr></table></figure>
+<pre><code>     output
+0  2.131994
+1  0.035544
+2  0.074311
+3  0.094175
+4  0.048850
+</code></pre>
+<h2 id="possible-error-Parameter-sees-none-value"><a href="#possible-error-Parameter-sees-none-value" class="headerlink" title="possible error:  Parameter sees none value"></a>possible error:  Parameter sees none value</h2><p>the above example shows some practices: (1) the transformer have an default value in the init function (2) when calling the transfomer make sure to have the ···parameter=value format</p>
+<p>   For example,  We can skip the parameter name like this, it will work for one time use:<br><code>transformer = PowerTransformer(2)   </code></p>
+<p>But it will raise None error in using with other methos such as <code>sklearn.model_selection.cross_val_score</code></p>
+<h2 id="code-link"><a href="#code-link" class="headerlink" title="code link"></a>code link</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/blob/main/custom_scikit-learn_transformer/2022-12-12-custom-transformer-with-parameter.ipynb">github link</a></p>
 
                 
             </div>
@@ -479,7 +454,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/08/2021-06-08-1/">https://datasciencebyexample.github.io/2021/06/08/2021-06-08-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2022/12/12/custom-sckikt-learn-transformer-with-parameter-and-avoid-none-error/">https://datasciencebyexample.github.io/2022/12/12/custom-sckikt-learn-transformer-with-parameter-and-avoid-none-error/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -521,8 +496,8 @@
                                     <span class="chip bg-color">pandas</span>
                                 </a>
                             
-                                <a href="/tags/dataframe/">
-                                    <span class="chip bg-color">dataframe</span>
+                                <a href="/tags/scikit-learn/">
+                                    <span class="chip bg-color">scikit-learn</span>
                                 </a>
                             
                         </div>
@@ -568,17 +543,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/09/2021-06-09-1/">
+                <a href="/2022/12/12/custom-sckikt-learn-transformer-with-parameter-and-avoid-none-error/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="word tokenization and sentence tokenization in python using NLTK package">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="A custom scikit-learn transformer example with parameter input and avoid possible None error">
                         
-                        <span class="card-title">word tokenization and sentence tokenization in python using NLTK package</span>
+                        <span class="card-title">A custom scikit-learn transformer example with parameter input and avoid possible None error</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -588,9 +564,63 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
+                    </a>
+                    
+                    <a href="/tags/scikit-learn/">
+                        <span class="chip bg-color">scikit-learn</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/02/openai-chatbot-has-just-changed-the-search-engine-industry/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="OpenAI&#39;s chatbot has just changed the search engine industry">
+                        
+                        <span class="card-title">OpenAI&#39;s chatbot has just changed the search engine industry</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -606,65 +636,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tokenization/">
-                        <span class="chip bg-color">tokenization</span>
-                    </a>
-                    
-                    <a href="/tags/NLTK/">
-                        <span class="chip bg-color">NLTK</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/05/2021-06-05-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="boost exact phrase search results ranking in elasticsearch">
-                        
-                        <span class="card-title">boost exact phrase search results ranking in elasticsearch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/search/" class="post-category">
-                                    search
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
+                    <a href="/tags/gpt3/">
+                        <span class="chip bg-color">gpt3</span>
                     </a>
                     
                 </div>

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>A custom scikit-learn transformer example with parameter input and avoid possible None error</title>
+      <link href="2022/12/12/custom-sckikt-learn-transformer-with-parameter-and-avoid-none-error/"/>
+      <url>2022/12/12/custom-sckikt-learn-transformer-with-parameter-and-avoid-none-error/</url>
+      
+        <content type="html"><![CDATA[<p>A customer scikit-learn transfomer example with parameter.<br>It takes a pandas DataFrame with a column called input as input, and returns a DataFrame with a column called output containing the transformed data:</p><h2 id="define-custom-transformer"><a href="#define-custom-transformer" class="headerlink" title="define custom transformer"></a>define custom transformer</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.base <span class="keyword">import</span> BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PowerTransformer</span>(<span class="params">BaseEstimator, TransformerMixin</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, power=<span class="number">1</span></span>):</span></span><br><span class="line">        self.power = power</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span>(<span class="params">self, X, y=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="comment"># Fit simply returns self, nothing else to do</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transform</span>(<span class="params">self, X</span>):</span></span><br><span class="line">        <span class="comment"># Check if input is a DataFrame</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(X, pd.DataFrame):</span><br><span class="line">            <span class="comment"># If so, return a DataFrame with the transformed data</span></span><br><span class="line">            <span class="keyword">return</span> pd.DataFrame(&#123;<span class="string">&#x27;output&#x27;</span>: X[<span class="string">&#x27;input&#x27;</span>] ** self.power&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># If not, return a plain NumPy array with the transformed data</span></span><br><span class="line">            <span class="keyword">return</span> X[<span class="string">&#x27;input&#x27;</span>] ** self.power</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>To use this transformer, we would first instantiate it with the desired power parameter, and then call its fit_transform method on a DataFrame with an input column. For example:</p><h2 id="generate-some-sample-data-and-dataframe"><a href="#generate-some-sample-data-and-dataframe" class="headerlink" title="generate some sample data and dataframe"></a>generate some sample data and dataframe</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Generate some sample data</span></span><br><span class="line">data = np.random.randn(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a DataFrame with an &#x27;input&#x27; column</span></span><br><span class="line">X = pd.DataFrame(&#123;<span class="string">&#x27;input&#x27;</span>: data&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the DataFrame</span></span><br><span class="line"><span class="built_in">print</span>(X)</span><br><span class="line"></span><br></pre></td></tr></table></figure><pre><code>      input0 -1.4601351  0.1885322 -0.2726003  0.3068804 -0.221020</code></pre><h2 id="use-the-transfomer-with-parameter-intilization"><a href="#use-the-transfomer-with-parameter-intilization" class="headerlink" title="use the transfomer, with parameter intilization"></a>use the transfomer, with parameter intilization</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create the transformer</span></span><br><span class="line">transformer = PowerTransformer(power=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fit and transform the data</span></span><br><span class="line">X_transformed = transformer.fit_transform(X)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(X_transformed)</span><br></pre></td></tr></table></figure><pre><code>     output0  2.1319941  0.0355442  0.0743113  0.0941754  0.048850</code></pre><h2 id="possible-error-Parameter-sees-none-value"><a href="#possible-error-Parameter-sees-none-value" class="headerlink" title="possible error:  Parameter sees none value"></a>possible error:  Parameter sees none value</h2><p>the above example shows some practices: (1) the transformer have an default value in the init function (2) when calling the transfomer make sure to have the ···parameter=value format</p><p>   For example,  We can skip the parameter name like this, it will work for one time use:<br><code>transformer = PowerTransformer(2)   </code></p><p>But it will raise None error in using with other methos such as <code>sklearn.model_selection.cross_val_score</code></p><h2 id="code-link"><a href="#code-link" class="headerlink" title="code link"></a>code link</h2><p><a href="https://github.com/robotlearner001/blog/blob/main/custom_scikit-learn_transformer/2022-12-12-custom-transformer-with-parameter.ipynb">github link</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pandas </tag>
+            
+            <tag> scikit-learn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OpenAI&#39;s chatbot has just changed the search engine industry</title>
       <link href="2022/12/02/openai-chatbot-has-just-changed-the-search-engine-industry/"/>
       <url>2022/12/02/openai-chatbot-has-just-changed-the-search-engine-industry/</url>
@@ -1778,9 +1805,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
