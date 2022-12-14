@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>A list of poupular but hard leetcode problems for interview</title>
+      <link href="2022/12/14/populad-and-hard-leetcode-problems-and-solutions/"/>
+      <url>2022/12/14/populad-and-hard-leetcode-problems-and-solutions/</url>
+      
+        <content type="html"><![CDATA[<p>Here is the list most popular but hard interview questions that according to leetcode.</p><h2 id="List-of-problems-and-solutions"><a href="#List-of-problems-and-solutions" class="headerlink" title="List of problems and solutions"></a>List of problems and solutions</h2><ol><li><a href="https://www.datasciencebyexample.com/2022/10/24/2022-10-24-1/">find median of two sorted arrays</a></li><li><a href="https://www.datasciencebyexample.com/2022/10/25/2022-10-25-1/">Regular expression matching</a></li><li><a href="https://www.datasciencebyexample.com/2022/10/27/2022-10-27-1/">Merge K sorted lists</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/01/2022-11-01-1/">Find first missing positive </a></li><li><a href="https://www.datasciencebyexample.com/2022/11/02/2022-11-02-1/">Trapping rain water</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/06/2022-11-05-01/">Wildcard matching</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/08/2022-11-08-01/">Minimum window substring</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/12/largest-rectangle-in-histogram/">Largest rectangle in histogram</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/17/binary-tree-maximum-path-sum/">Binary Tree Maximum Path Sum</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/17/word-ladder/">Word ladder</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/28/word-break-II/">word break II</a></li><li><a href="https://www.datasciencebyexample.com/2022/11/30/max-points-on-a-line/">Max points on a line</a></li></ol><h2 id="link-in-github"><a href="#link-in-github" class="headerlink" title="link in github"></a>link in github</h2><p><a href="https://github.com/robotlearner001/blog/tree/main/leetcode-popular-and-hard-problems">github link</a></p><p>More interview questions can be found here:<br><a href="/categories/algorithm/">Algorithm</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> interview questions </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>A custom scikit-learn transformer example with parameter input and avoid possible None error</title>
       <link href="2022/12/12/custom-sckikt-learn-transformer-with-parameter-and-avoid-none-error/"/>
       <url>2022/12/12/custom-sckikt-learn-transformer-with-parameter-and-avoid-none-error/</url>
@@ -1722,11 +1749,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
