@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Revolutionizing Robotics, How RT-1 is Paving the Way for Intelligent Machines</title>
+      <link href="2022/12/15/revolutionizing-robotics-the-emergence-of-RT-1/"/>
+      <url>2022/12/15/revolutionizing-robotics-the-emergence-of-RT-1/</url>
+      
+        <content type="html"><![CDATA[<p>Great progress of robotics and learning from language models.</p><p>Researchers at OpenAI have developed the Robotics Transformer 1 (RT-1), a machine learning model that’s designed to help robots learn from large and diverse datasets. </p><p>RT-1, which is built on a transformer architecture, takes a short history of images from a robot’s camera alongside task descriptions, expressed in natural language, as inputs and directly outputs tokenized actions such as motor commands. </p><p>RT-1 is trained on a real-world robotics dataset of 130,000 episodes covering over 700 tasks, and is able to exhibit improved zero-shot generalisation to new tasks and environments compared to previous techniques. </p><p>RT-1 is also able to compress image tokens and adaptively select soft combinations that can be compressed based on their impact towards learning, resulting in a more than 2.4x inference speed-up.</p><h2 id="open-source-links"><a href="#open-source-links" class="headerlink" title="open source links"></a>open source links</h2><p><a href="https://github.com/google-research/robotics_transformer">code link</a><br><a href="https://robotics-transformer.github.io/assets/rt1.pdf">paper link</a><br><a href="https://robotics-transformer.github.io/">project website</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> machine learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> robotics </tag>
+            
+            <tag> news </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>A list of poupular but hard leetcode problems for interview</title>
       <link href="2022/12/14/populad-and-hard-leetcode-problems-and-solutions/"/>
       <url>2022/12/14/populad-and-hard-leetcode-problems-and-solutions/</url>
@@ -654,11 +681,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1749,11 +1776,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
