@@ -1,0 +1,1166 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Feature reduction and visualization using autoencoder with Pytorch, DataScienceTribe">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Global site - Google Ads -->
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5472621737702667"
+     crossorigin="anonymous"></script>
+
+	
+    <title>Feature reduction and visualization using autoencoder with Pytorch | DataScienceTribe</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">DataScienceTribe</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tools" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Tools</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">DataScienceTribe</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tools" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Tools
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Feature reduction and visualization using autoencoder with Pytorch</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/pytorch/">
+                                <span class="chip bg-color">pytorch</span>
+                            </a>
+                        
+                            <a href="/tags/deep-learning/">
+                                <span class="chip bg-color">deep learning</span>
+                            </a>
+                        
+                            <a href="/tags/autoencoder/">
+                                <span class="chip bg-color">autoencoder</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/machine-learning/" class="post-category">
+                                machine learning
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-12-19
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>In this notebook, we are going to use autoencoder architecture in Pytorch to reduce feature dimensions and visualiations.</p>
+<p>First, to install PyTorch, you may use the following pip command,</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ pip install torch torchvision</span><br></pre></td></tr></table></figure>
+
+<p>The <code>torchvision</code> package contains the image data sets that are ready for use in PyTorch.</p>
+<p>More details on its installation through <a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">this guide</a> from <a href="pytorch.org">pytorch.org</a>.</p>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>importing relevant dependencies.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br></pre></td></tr></table></figure>
+
+<p>Set seed and other configurations for reproducibility.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">seed = <span class="number">21</span></span><br><span class="line">torch.manual_seed(seed)</span><br><span class="line">torch.backends.cudnn.benchmark = <span class="literal">False</span></span><br><span class="line">torch.backends.cudnn.deterministic = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>Set the batch size, the number of training epochs, and the learning rate.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">batch_size = <span class="number">512</span></span><br><span class="line">epochs = <span class="number">50</span></span><br><span class="line">learning_rate = <span class="number">1e-3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>load the MNIST dataset as a convienient exampe using the <code>torchvision</code> package. </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">transform = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])</span><br><span class="line"></span><br><span class="line">train_dataset = torchvision.datasets.MNIST(</span><br><span class="line">    root=<span class="string">&quot;~/torch_datasets&quot;</span>, train=<span class="literal">True</span>, transform=transform, download=<span class="literal">True</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_loader = torch.utils.data.DataLoader(</span><br><span class="line">    train_dataset, batch_size=batch_size, shuffle=<span class="literal">True</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>check one example data</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">examples = <span class="built_in">enumerate</span>(train_loader)</span><br><span class="line">batch_idx, (example_data, example_targets) = <span class="built_in">next</span>(examples)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">example_data[<span class="number">0</span>][<span class="number">0</span>].<span class="built_in">max</span>()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>tensor(1.)
+</code></pre>
+<h2 id="Autoencoder"><a href="#Autoencoder" class="headerlink" title="Autoencoder"></a>Autoencoder</h2><p>An autoencoder is a type of neural network that finds the function mapping the features x to itself. This objective is known as reconstruction, and an autoencoder accomplishes this through the following process:<br>(1) an encoder learns the data representation in lower-dimension space,<br>(2) a decoder learns to reconstruct the original data based on the learned representation by the encoder.</p>
+<p>In the following we define our autoencoder class with fully connected layers and activation functions for both its encoder and decoder components.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> Tensor</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AE</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, **kwargs</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.encoder_hidden_layer = nn.Linear(</span><br><span class="line">            in_features=kwargs[<span class="string">&quot;input_shape&quot;</span>], out_features=<span class="number">1000</span></span><br><span class="line">        )</span><br><span class="line">        self.encoder_output_layer = nn.Linear(</span><br><span class="line">            in_features=<span class="number">1000</span>, out_features=<span class="number">128</span></span><br><span class="line">        )</span><br><span class="line">        self.encoder_output_layer2 = nn.Linear(</span><br><span class="line">            in_features=<span class="number">128</span>, out_features=<span class="number">32</span></span><br><span class="line">        )</span><br><span class="line">        self.encoder_output_layer3 = nn.Linear(</span><br><span class="line">            in_features=<span class="number">32</span>, out_features=<span class="number">2</span></span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">            </span><br><span class="line">        self.decoder_hidden_layer = nn.Linear(</span><br><span class="line">            in_features=<span class="number">2</span>, out_features=<span class="number">32</span></span><br><span class="line">        )</span><br><span class="line">        self.decoder_hidden_layer2 = nn.Linear(</span><br><span class="line">            in_features=<span class="number">32</span>, out_features=<span class="number">128</span></span><br><span class="line">        )</span><br><span class="line">        self.decoder_hidden_layer3 = nn.Linear(</span><br><span class="line">            in_features=<span class="number">128</span>, out_features=<span class="number">1000</span></span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        self.decoder_output_layer = nn.Linear(</span><br><span class="line">            in_features=<span class="number">1000</span>, out_features=kwargs[<span class="string">&quot;input_shape&quot;</span>]</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encode</span>(<span class="params">self, features: Tensor</span>) -&gt; Tensor:</span></span><br><span class="line">        code = self.encoder_hidden_layer(features)</span><br><span class="line">        code = torch.relu(code)</span><br><span class="line">        code = self.encoder_output_layer(code)</span><br><span class="line">        code = torch.relu(code)</span><br><span class="line">        code = self.encoder_output_layer2(code)</span><br><span class="line">        code = torch.relu(code)</span><br><span class="line">        code = self.encoder_output_layer3(code)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> code</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decode</span>(<span class="params">self, encoded: Tensor</span>) -&gt; Tensor:</span></span><br><span class="line">        </span><br><span class="line">        encode = self.decoder_hidden_layer(encoded)</span><br><span class="line">        encode = torch.relu(encode)</span><br><span class="line">        encode = self.decoder_hidden_layer2(encode)</span><br><span class="line">        encode = torch.relu(encode)</span><br><span class="line">        encode = self.decoder_hidden_layer3(encode)</span><br><span class="line">        encode = torch.relu(encode)</span><br><span class="line">        encode = self.decoder_output_layer(encode)</span><br><span class="line">        reconstructed = torch.sigmoid(encode)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> reconstructed   </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, features: Tensor</span>) -&gt; Tensor:</span></span><br><span class="line">        encoded = self.encode(features)</span><br><span class="line">        <span class="keyword">return</span> self.decode(encoded)</span><br></pre></td></tr></table></figure>
+
+<p>Before using our defined autoencoder class, we have the following things to do:<br>    1. We configure which device we want to run on.<br>    2. We instantiate an <code>AE</code> object.<br>    3. We define our optimizer.<br>    4. We define our reconstruction loss.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  use gpu if available</span></span><br><span class="line">device = torch.device(<span class="string">&quot;cuda&quot;</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">&quot;cpu&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a model from `AE` autoencoder class</span></span><br><span class="line"><span class="comment"># load it to the specified device, either gpu or cpu</span></span><br><span class="line">model = AE(input_shape=<span class="number">784</span>).to(device)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create an optimizer object</span></span><br><span class="line"><span class="comment"># Adam optimizer with learning rate 1e-3</span></span><br><span class="line">optimizer = optim.Adam(model.parameters(), lr=learning_rate)</span><br><span class="line"></span><br><span class="line"><span class="comment"># mean-squared error loss</span></span><br><span class="line">criterion = nn.MSELoss()</span><br></pre></td></tr></table></figure>
+
+<p>We train our autoencoder for our specified number of epochs.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(epochs):</span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> batch_features, _ <span class="keyword">in</span> train_loader:</span><br><span class="line">        <span class="comment"># reshape mini-batch data to [N, 784] matrix</span></span><br><span class="line">        <span class="comment"># load it to the active device</span></span><br><span class="line">        batch_features = batch_features.view(-<span class="number">1</span>, <span class="number">784</span>).to(device)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># reset the gradients back to zero</span></span><br><span class="line">        <span class="comment"># PyTorch accumulates gradients on subsequent backward passes</span></span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># compute reconstructions</span></span><br><span class="line">        outputs = model(batch_features)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># compute training reconstruction loss</span></span><br><span class="line">        train_loss = criterion(outputs, batch_features)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># compute accumulated gradients</span></span><br><span class="line">        train_loss.backward()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># perform parameter update based on current gradients</span></span><br><span class="line">        optimizer.step()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># add the mini-batch training loss to epoch loss</span></span><br><span class="line">        loss += train_loss.item()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># compute the epoch training loss</span></span><br><span class="line">    loss = loss / <span class="built_in">len</span>(train_loader)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># display the epoch training loss</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;epoch : &#123;&#125;/&#123;&#125;, recon loss = &#123;:.8f&#125;&quot;</span>.<span class="built_in">format</span>(epoch + <span class="number">1</span>, epochs, loss))</span><br></pre></td></tr></table></figure>
+
+<pre><code>epoch : 1/50, recon loss = 0.07389576
+epoch : 2/50, recon loss = 0.05296296
+epoch : 3/50, recon loss = 0.04810659
+epoch : 4/50, recon loss = 0.04541392
+epoch : 5/50, recon loss = 0.04336656
+epoch : 6/50, recon loss = 0.04195889
+epoch : 7/50, recon loss = 0.04092639
+epoch : 8/50, recon loss = 0.04033839
+epoch : 9/50, recon loss = 0.03984492
+epoch : 10/50, recon loss = 0.03948938
+epoch : 11/50, recon loss = 0.03939159
+epoch : 12/50, recon loss = 0.03877884
+epoch : 13/50, recon loss = 0.03859487
+epoch : 14/50, recon loss = 0.03825530
+epoch : 15/50, recon loss = 0.03797148
+epoch : 16/50, recon loss = 0.03789599
+epoch : 17/50, recon loss = 0.03754379
+epoch : 18/50, recon loss = 0.03740290
+epoch : 19/50, recon loss = 0.03735819
+epoch : 20/50, recon loss = 0.03729593
+epoch : 21/50, recon loss = 0.03699356
+epoch : 22/50, recon loss = 0.03768872
+epoch : 23/50, recon loss = 0.03694447
+epoch : 24/50, recon loss = 0.03680794
+epoch : 25/50, recon loss = 0.03654349
+epoch : 26/50, recon loss = 0.03630730
+epoch : 27/50, recon loss = 0.03620429
+epoch : 28/50, recon loss = 0.03615394
+epoch : 29/50, recon loss = 0.03615029
+epoch : 30/50, recon loss = 0.03593704
+epoch : 31/50, recon loss = 0.03589566
+epoch : 32/50, recon loss = 0.03570651
+epoch : 33/50, recon loss = 0.03599412
+epoch : 34/50, recon loss = 0.03587519
+epoch : 35/50, recon loss = 0.03641265
+epoch : 36/50, recon loss = 0.03615064
+epoch : 37/50, recon loss = 0.03541873
+epoch : 38/50, recon loss = 0.03545310
+epoch : 39/50, recon loss = 0.03534035
+epoch : 40/50, recon loss = 0.03541123
+epoch : 41/50, recon loss = 0.03511182
+epoch : 42/50, recon loss = 0.03499481
+epoch : 43/50, recon loss = 0.03487989
+epoch : 44/50, recon loss = 0.03506399
+epoch : 45/50, recon loss = 0.03487079
+epoch : 46/50, recon loss = 0.03481269
+epoch : 47/50, recon loss = 0.03454635
+epoch : 48/50, recon loss = 0.03444027
+epoch : 49/50, recon loss = 0.03448961
+epoch : 50/50, recon loss = 0.03482613
+</code></pre>
+<p>Let’s extract some test examples to reconstruct using our trained autoencoder.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test_dataset = torchvision.datasets.MNIST(</span><br><span class="line">    root=<span class="string">&quot;~/torch_datasets&quot;</span>, train=<span class="literal">False</span>, transform=transform, download=<span class="literal">True</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">test_loader = torch.utils.data.DataLoader(</span><br><span class="line">    test_dataset, batch_size=<span class="number">10</span>, shuffle=<span class="literal">False</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">test_examples = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># loop the test data once to get the first batch of 10 datapoints for reconstruction quality check</span></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">for</span> batch_features <span class="keyword">in</span> test_loader:</span><br><span class="line">        batch_features = batch_features[<span class="number">0</span>]</span><br><span class="line">        test_examples = batch_features.view(-<span class="number">1</span>, <span class="number">784</span>)</span><br><span class="line">        reconstruction = model(test_examples)</span><br><span class="line">        reconstruction_hidden = model.encode(test_examples)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Visualize-Reconstruction-Quality"><a href="#Visualize-Reconstruction-Quality" class="headerlink" title="Visualize Reconstruction Quality"></a>Visualize Reconstruction Quality</h2><p>Let’s try to reconstruct some test images using our trained autoencoder.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    number = <span class="number">10</span></span><br><span class="line">    plt.figure(figsize=(<span class="number">20</span>, <span class="number">4</span>))</span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(number):</span><br><span class="line">        <span class="comment"># display original</span></span><br><span class="line">        ax = plt.subplot(<span class="number">2</span>, number, index + <span class="number">1</span>)</span><br><span class="line">        plt.imshow(test_examples[index].numpy().reshape(<span class="number">28</span>, <span class="number">28</span>))</span><br><span class="line">        plt.gray()</span><br><span class="line">        ax.get_xaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">        ax.get_yaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># display reconstruction</span></span><br><span class="line">        ax = plt.subplot(<span class="number">2</span>, number, index + <span class="number">1</span> + number)</span><br><span class="line">        plt.imshow(reconstruction[index].numpy().reshape(<span class="number">28</span>, <span class="number">28</span>))</span><br><span class="line">        plt.gray()</span><br><span class="line">        ax.get_xaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">        ax.get_yaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/content/images/2022-12-19-1.png" alt="png"></p>
+<h2 id="Analysis-so-far"><a href="#Analysis-so-far" class="headerlink" title="Analysis so far"></a>Analysis so far</h2><p>as we can see the reconstruciton is good, but not super great; this is mainly because we use only 2 nodes for the<br>middle hidden layer. Using only 2 nodes is easy for us to see the reduced dimensions, but probably not good enough<br>to capture all the sailent features. For pure feature reduction purpose, we can choose a bigger number of nodes<br>for the middel hidden layer.</p>
+<h2 id="Visualize-the-middel-hidden-layer-with-2-nodes-for-lower-dimension-reduction"><a href="#Visualize-the-middel-hidden-layer-with-2-nodes-for-lower-dimension-reduction" class="headerlink" title="Visualize the middel hidden layer with 2 nodes for lower dimension reduction"></a>Visualize the middel hidden layer with 2 nodes for lower dimension reduction</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># reduce dimension example</span></span><br><span class="line"></span><br><span class="line">results =[]</span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">for</span> batch_features <span class="keyword">in</span> test_loader:</span><br><span class="line">        batch_features = batch_features[<span class="number">0</span>]</span><br><span class="line">        test_examples = batch_features.view(-<span class="number">1</span>, <span class="number">784</span>)</span><br><span class="line">        reconstruction_hidden = model.encode(test_examples)</span><br><span class="line">        results.append(reconstruction_hidden.numpy())</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">all_hidden = np.concatenate(results)</span><br><span class="line">all_hidden</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[-0.43485078,  0.31671965],
+       [ 1.5935664 ,  4.4088674 ],
+       [ 9.075943  ,  4.4781566 ],
+       ...,
+       [-0.90027434,  0.3994102 ],
+       [-2.9567816 ,  2.2586362 ],
+       [-4.884531  ,  1.9589175 ]], dtype=float32)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">labels = test_dataset.targets.numpy()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">rdf = pd.DataFrame(all_hidden)</span><br><span class="line">rdf[<span class="string">&#x27;lable&#x27;</span>] = labels</span><br><span class="line">rdf.columns = [<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>,<span class="string">&#x27;label&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">15</span>,<span class="number">8</span>))  </span><br><span class="line">sns.scatterplot(data=rdf,x=<span class="string">&#x27;x&#x27;</span>,y=<span class="string">&#x27;y&#x27;</span>,hue=<span class="string">&#x27;label&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;AxesSubplot:xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;
+</code></pre>
+<p><img src="/content/images/2022-12-19-2.png" alt="png"></p>
+<h2 id="code-link"><a href="#code-link" class="headerlink" title="code link"></a>code link</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/blob/main/autoencoder-pytorch-feature-reduction-and-visualization/2022-12-19-autoencoder-feature-reduction-visualization-in-pytorch.ipynb">code link</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">robot learner</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://datasciencebyexample.github.io/2022/12/19/autoencoder-feature-reduction-and-visualization-pytorch/">https://datasciencebyexample.github.io/2022/12/19/autoencoder-feature-reduction-and-visualization-pytorch/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">robot learner</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/pytorch/">
+                                    <span class="chip bg-color">pytorch</span>
+                                </a>
+                            
+                                <a href="/tags/deep-learning/">
+                                    <span class="chip bg-color">deep learning</span>
+                                </a>
+                            
+                                <a href="/tags/autoencoder/">
+                                    <span class="chip bg-color">autoencoder</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/12/19/autoencoder-feature-reduction-and-visualization-pytorch/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Feature reduction and visualization using autoencoder with Pytorch">
+                        
+                        <span class="card-title">Feature reduction and visualization using autoencoder with Pytorch</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/machine-learning/" class="post-category">
+                                    machine learning
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/pytorch/">
+                        <span class="chip bg-color">pytorch</span>
+                    </a>
+                    
+                    <a href="/tags/deep-learning/">
+                        <span class="chip bg-color">deep learning</span>
+                    </a>
+                    
+                    <a href="/tags/autoencoder/">
+                        <span class="chip bg-color">autoencoder</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/15/revolutionizing-robotics-the-emergence-of-RT-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Revolutionizing Robotics, How RT-1 is Paving the Way for Intelligent Machines">
+                        
+                        <span class="card-title">Revolutionizing Robotics, How RT-1 is Paving the Way for Intelligent Machines</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/machine-learning/" class="post-category">
+                                    machine learning
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/robotics/">
+                        <span class="chip bg-color">robotics</span>
+                    </a>
+                    
+                    <a href="/tags/news/">
+                        <span class="chip bg-color">news</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">robot learner</a>
+            <br>
+            
+            
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
