@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Real time in memory semnatic search with deep learning embedding and FAISS</title>
+      <link href="2023/01/14/embedding-plus-faiss-semantic-search/"/>
+      <url>2023/01/14/embedding-plus-faiss-semantic-search/</url>
+      
+        <content type="html"><![CDATA[<p>We use sentence transformer to encode short texts, and then index the results using in memory search engine FAISS;<br>Togehter we can achieve real time performance of the semantic search simply on CPU platforms.</p><h1 id="install-packages-if-necessary"><a href="#install-packages-if-necessary" class="headerlink" title="install packages if necessary"></a>install packages if necessary</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pip install faiss-cpu</span><br><span class="line">!pip install -U sentence-transformers</span><br></pre></td></tr></table></figure><h1 id="import-libraries"><a href="#import-libraries" class="headerlink" title="import libraries"></a>import libraries</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> faiss</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> fetch_20newsgroups</span><br><span class="line"><span class="keyword">from</span> sentence_transformers <span class="keyword">import</span> SentenceTransformer</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model = SentenceTransformer(<span class="string">&#x27;distilbert-base-nli-mean-tokens&#x27;</span>)</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model.encode([<span class="string">&#x27;how are you&#x27;</span>])[<span class="number">0</span>].shape</span><br></pre></td></tr></table></figure><pre><code>(768,)</code></pre><h1 id="get-data"><a href="#get-data" class="headerlink" title="get data"></a>get data</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = fetch_20newsgroups()[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line">subjects = [item.split(<span class="string">&#x27;\n&#x27;</span>)[<span class="number">1</span>] <span class="keyword">for</span> item <span class="keyword">in</span> data]</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">subjects[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure><pre><code>[&#39;Subject: WHAT car is this!?&#39;, &#39;Subject: SI Clock Poll - Final Call&#39;, &#39;Subject: PB questions...&#39;, &#39;Subject: Re: Weitek P9000 ?&#39;, &#39;Subject: Re: Shuttle Launch Question&#39;, &#39;Subject: Re: Rewording the Second Amendment (ideas)&#39;, &#39;Subject: Brain Tumor Treatment (thanks)&#39;, &#39;Subject: Re: IDE vs SCSI&#39;, &#39;Subject: WIn 3.0 ICON HELP PLEASE!&#39;, &#39;Subject: Re: Sigma Designs Double up??&#39;]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">encoded_data = model.encode(subjects)</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">encoded_data.shape</span><br></pre></td></tr></table></figure><pre><code>(11314, 768)</code></pre><h1 id="indexing-the-dataset"><a href="#indexing-the-dataset" class="headerlink" title="indexing the dataset"></a>indexing the dataset</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">index = faiss.IndexIDMap(faiss.IndexFlatIP(<span class="number">768</span>))</span><br><span class="line">index.add_with_ids(encoded_data, np.array(<span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(encoded_data))))</span><br></pre></td></tr></table></figure><h2 id="serializing-the-index-to-disk-The-serialized-index-can-be-then-exported-into-any-machine-for-hosting-the-search-engine"><a href="#serializing-the-index-to-disk-The-serialized-index-can-be-then-exported-into-any-machine-for-hosting-the-search-engine" class="headerlink" title="serializing the index to disk, The serialized index can be then exported into any machine for hosting the search engine"></a>serializing the index to disk, The serialized index can be then exported into any machine for hosting the search engine</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">faiss.write_index(index, <span class="string">&#x27;20news&#x27;</span>)</span><br></pre></td></tr></table></figure><h2 id="read-the-index-back-from-disk-for-demo-purpose-so-called-desearializing"><a href="#read-the-index-back-from-disk-for-demo-purpose-so-called-desearializing" class="headerlink" title="read the index back from disk for demo purpose,  so called desearializing"></a>read the index back from disk for demo purpose,  so called desearializing</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">index = faiss.read_index(<span class="string">&#x27;20news&#x27;</span>)</span><br></pre></td></tr></table></figure><h1 id="Now-do-the-semantic-search"><a href="#Now-do-the-semantic-search" class="headerlink" title="Now do the semantic search"></a>Now do the semantic search</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span>(<span class="params">query</span>):</span></span><br><span class="line">    start=time.time()</span><br><span class="line">    query_vector = model.encode([query])</span><br><span class="line">    k = <span class="number">5</span></span><br><span class="line">    top_k = index.search(query_vector, k)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;spent time: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(time.time()-start))</span><br><span class="line">    <span class="keyword">return</span> [subjects[_<span class="built_in">id</span>] <span class="keyword">for</span> _<span class="built_in">id</span> <span class="keyword">in</span> top_k[<span class="number">1</span>].tolist()[<span class="number">0</span>]]</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># type the query</span></span><br><span class="line"><span class="comment"># query=str(input())</span></span><br><span class="line"></span><br><span class="line">query = <span class="string">&quot;auto&quot;</span></span><br><span class="line">results=search(query)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;results :&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">   <span class="built_in">print</span>(<span class="string">&#x27;\t&#x27;</span>,result)</span><br></pre></td></tr></table></figure><pre><code>spent time: 0.035505056381225586results :     Subject: (w)rec.autos     Subject: Re: DRIVE     Subject: WHAT car is this!?     Subject: Re: WHAT car is this!?     Subject: Car AMP [Forsale]</code></pre><h1 id="Code-link"><a href="#Code-link" class="headerlink" title="Code link"></a>Code link</h1><p><a href="https://github.com/robotlearner001/blog/blob/main/embedding-plus-faiss/2023-01-13-sentence-transformer-ebmedding-faiss-semantic-search.ipynb">github link</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> deep learning </tag>
+            
+            <tag> semantic search </tag>
+            
+            <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Feature reduction and visualization using autoencoder with Pytorch</title>
       <link href="2022/12/19/autoencoder-feature-reduction-and-visualization-pytorch/"/>
       <url>2022/12/19/autoencoder-feature-reduction-and-visualization-pytorch/</url>
@@ -1658,9 +1689,9 @@
             
             <tag> preprocessing </tag>
             
-            <tag> machine learning </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> machine learning </tag>
             
         </tags>
       
@@ -1687,9 +1718,9 @@
             
             <tag> preprocessing </tag>
             
-            <tag> machine learning </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> machine learning </tag>
             
         </tags>
       
