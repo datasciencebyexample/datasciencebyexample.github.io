@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>Real time in memory semnatic search with deep learning embedding and FAISS</title>
+      <title>Real time in memory semantic search with deep learning embedding and FAISS</title>
       <link href="2023/01/14/embedding-plus-faiss-semantic-search/"/>
       <url>2023/01/14/embedding-plus-faiss-semantic-search/</url>
       
@@ -1836,11 +1836,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -1946,9 +1946,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> python </tag>
             
             <tag> preprocessing </tag>
             
