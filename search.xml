@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>FAISS index and normalization</title>
+      <link href="2023/01/18/fais-index-and-normalization/"/>
+      <url>2023/01/18/fais-index-and-normalization/</url>
+      
+        <content type="html"><![CDATA[<p>Previously, we have discussed how to implement a real time semantic search using sentence transformer and FAISS.<br><a href="https://www.datasciencebyexample.com/2023/01/14/embedding-plus-faiss-semantic-search/">real time semantic search</a></p><p>Here, we talk more about indexing in FAISS.<br>The most popular indexes we should look at are the simplest — flat indexes.</p><p>Flat indexes are ‘flat’ because we do not modify the vectors that we feed into them.</p><p>Because there is no approximation or clustering of our vectors — these indexes produce the most accurate results. While we have perfect search quality, this comes at the cost of significant search times.</p><h2 id="Two-flat-indexes"><a href="#Two-flat-indexes" class="headerlink" title="Two flat indexes"></a>Two flat indexes</h2><p>Two common flat index:</p><ul><li>IndexFlatL2, which uses Euclidean/L2 distance</li><li>IndexFlatIP, which uses inner product distance (similar as cosine distance but without normalization)</li></ul><p>The search speed between these two flat indexes are very similar, and IndexFlatIP is slightly faster for larger datasets.<br>See the following query time vs dataset size comparison:<br><img src="/content/images/2023-01-18-1.png"></p><h2 id="how-to-normalize-similarity-metrics"><a href="#how-to-normalize-similarity-metrics" class="headerlink" title="how to normalize similarity metrics"></a>how to normalize similarity metrics</h2><p>If the vectors we indexed are not normalized, the similarity metrics came out from FAISS are not normalized either.<br>For example, sometimes we want to have a cosine similarity metrics, where we can have a more meaningful threshold to compare.</p><p>It’s very easy to do it with FAISS, just need to make sure vectors are normalized before indexing, and before sending the query vector.</p><p>Example code, during indexing time:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index = faiss.IndexIDMap(faiss.IndexFlatIP(768))</span><br><span class="line">faiss.normalize_L2(encoded_data)</span><br><span class="line">index.add_with_ids(encoded_data, np.array(range(0, len(encoded_data))))</span><br></pre></td></tr></table></figure><p>during query time:</p><pre><code>query_vector = model.encode([query])k = 3faiss.normalize_L2(query_vector)top_k = index.search(query_vector, k)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> semantic search </tag>
+            
+            <tag> FAISS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>The fanaticism and reality of Web3</title>
       <link href="2023/01/15/the-fanaticism-and-reality-of-Web3/"/>
       <url>2023/01/15/the-fanaticism-and-reality-of-Web3/</url>
