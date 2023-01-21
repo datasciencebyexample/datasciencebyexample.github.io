@@ -9,6 +9,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/categories/data-engineering/</loc>
+        <lastmod>2023-01-21T04:06:04.913Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/categories/data-science/</loc>
         <lastmod>2023-01-18T22:30:15.808Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,13 +39,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/categories/algorithm/</loc>
         <lastmod>2022-12-14T23:54:04.193Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/categories/data-engineering/</loc>
-        <lastmod>2022-11-21T21:55:47.150Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

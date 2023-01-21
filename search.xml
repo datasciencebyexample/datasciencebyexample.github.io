@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>How to generate access token in Databricks</title>
+      <link href="2023/01/20/generate-access-token-in-databricks/"/>
+      <url>2023/01/20/generate-access-token-in-databricks/</url>
+      
+        <content type="html"><![CDATA[<p>In Databricks, personal access tokens can be used for secure authentication to the Databricks API instead of passwords.</p><p>The process of generating a new access token is very easy.</p><p>Step1. Click your user profile (email address) on the top right. Then click User Settings.<br><img src="/content/images/2023-01-20-1.png"></p><p>Step2.  Choose the “Access tokens” menu, and click “Generate new token”.<br>Give it a new name, and choose the expiration date. Then remember copy the token and store somewhere.<br><img src="/content/images/2023-01-20-2.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> databricks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>FAISS index and normalization</title>
       <link href="2023/01/18/fais-index-and-normalization/"/>
       <url>2023/01/18/fais-index-and-normalization/</url>
@@ -76,9 +101,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> vector search </tag>
-            
             <tag> FAISS </tag>
+            
+            <tag> vector search </tag>
             
         </tags>
       
@@ -793,11 +818,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1797,9 +1822,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> python </tag>
             
             <tag> pandas tip </tag>
             
@@ -1826,9 +1851,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> python </tag>
             
             <tag> pandas tip </tag>
             
@@ -1855,9 +1880,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> feature engineering </tag>
             
@@ -1884,9 +1909,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> pipeline </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> tsfresh </tag>
             
@@ -1971,9 +1996,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -1998,11 +2023,11 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pandas </tag>
             
             <tag> preprocessing </tag>
+            
+            <tag> python </tag>
             
         </tags>
       

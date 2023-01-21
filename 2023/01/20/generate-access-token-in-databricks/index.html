@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="some handy functions to group continous variables and missing value imputation in dataframe, DataScienceTribe">
+    <meta name="keywords" content="How to generate access token in Databricks, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>some handy functions to group continous variables and missing value imputation in dataframe | DataScienceTribe</title>
+    <title>How to generate access token in Databricks | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">some handy functions to group continous variables and missing value imputation in dataframe</h1>
+                    <h1 class="description center-align post-title">How to generate access token in Databricks</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/pandas-tip/">
-                                <span class="chip bg-color">pandas tip</span>
+                            <a href="/tags/databricks/">
+                                <span class="chip bg-color">databricks</span>
                             </a>
                         
                     </div>
@@ -372,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-15
+                    2023-01-20
                 </div>
                 
 
@@ -406,9 +398,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Following example shows how to group age variable into groups,<br>and some simple missing value imputaiton proecdures.</p>
-<p>There is also an example to transform timestamp variable to week day and hour infomation.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"># utility functions</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">def age_input(age):</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    if pd.isnull(age):</span><br><span class="line"></span><br><span class="line">        return &#x27;missing&#x27;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    age = int(age)</span><br><span class="line"></span><br><span class="line">    if age&lt;=20:</span><br><span class="line"></span><br><span class="line">        return &#x27;16-20&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=24:</span><br><span class="line"></span><br><span class="line">        return &#x27;21-24&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=34:</span><br><span class="line"></span><br><span class="line">        return &#x27;25-34&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=44:</span><br><span class="line"></span><br><span class="line">        return &#x27;35-44&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=54:</span><br><span class="line"></span><br><span class="line">        return &#x27;45-54&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=64:</span><br><span class="line"></span><br><span class="line">        return &#x27;55-64&#x27;</span><br><span class="line"></span><br><span class="line">    else:</span><br><span class="line"></span><br><span class="line">        return &#x27;65+&#x27;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"># missing value handelling or imputation in dataframe </span><br><span class="line"></span><br><span class="line">def missing_handle(df):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">    for col in df.columns:</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">        if df[col].dtype==object:</span><br><span class="line"></span><br><span class="line">            df[col] = df[col].fillna(&#x27;missing&#x27;)</span><br><span class="line"></span><br><span class="line">        elif df[col].dtype == bool:</span><br><span class="line"></span><br><span class="line">            df[col+&#x27;_null&#x27;] = df[col].apply(lambda x: 1 if pd.isnull(x) else 0)</span><br><span class="line"></span><br><span class="line">            df[col] = data[col].fillna(data[col].mode()[0])</span><br><span class="line"></span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line"></span><br><span class="line">            df[col] = df[col].fillna(-999)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    return df</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;sentat&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;sentat&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;sentat&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        # apply age group function here</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        X[&#x27;age_group&#x27;] = X[&#x27;age&#x27;].apply(age_input)</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;age&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        # apply missing handelling here</span><br><span class="line"></span><br><span class="line">        X = missing_handle(X)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"># define the transformer</span><br><span class="line">dayandhour_transformer = dayandhour_Transformer()</span><br><span class="line"></span><br><span class="line"># usage example</span><br><span class="line">df_new = dayandhour_transformer.transform(df)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>In Databricks, personal access tokens can be used for secure authentication to the Databricks API instead of passwords.</p>
+<p>The process of generating a new access token is very easy.</p>
+<p>Step1. Click your user profile (email address) on the top right. Then click User Settings.<br><img src="/content/images/2023-01-20-1.png"></p>
+<p>Step2.  Choose the “Access tokens” menu, and click “Generate new token”.<br>Give it a new name, and choose the expiration date. Then remember copy the token and store somewhere.<br><img src="/content/images/2023-01-20-2.png"></p>
+
                 
             </div>
             <hr/>
@@ -434,7 +428,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/15/2021-06-15-1/">https://datasciencebyexample.github.io/2021/06/15/2021-06-15-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/01/20/generate-access-token-in-databricks/">https://datasciencebyexample.github.io/2023/01/20/generate-access-token-in-databricks/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,16 +466,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
-                                </a>
-                            
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/pandas-tip/">
-                                    <span class="chip bg-color">pandas tip</span>
+                                <a href="/tags/databricks/">
+                                    <span class="chip bg-color">databricks</span>
                                 </a>
                             
                         </div>
@@ -527,17 +513,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/18/2021-06-18-1/">
+                <a href="/2023/01/20/generate-access-token-in-databricks/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="handles feature order in training and online production stage to avoid inconsistent error">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="How to generate access token in Databricks">
                         
-                        <span class="card-title">handles feature order in training and online production stage to avoid inconsistent error</span>
+                        <span class="card-title">How to generate access token in Databricks</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -547,34 +534,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
-                    </a>
-                    
-                    <a href="/tags/machine-learning/">
-                        <span class="chip bg-color">machine learning</span>
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
                     </a>
                     
                 </div>
@@ -588,13 +568,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/14/2021-06-14-1/">
+                <a href="/2023/01/18/fais-index-and-normalization/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="FAISS index and normalization">
                         
-                        <span class="card-title">explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe</span>
+                        <span class="card-title">FAISS index and normalization</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -605,7 +585,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-18
                             </span>
                         <span class="publish-author">
                             
@@ -622,16 +602,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/semantic-search/">
+                        <span class="chip bg-color">semantic search</span>
                     </a>
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                    <a href="/tags/FAISS/">
+                        <span class="chip bg-color">FAISS</span>
                     </a>
                     
                 </div>
