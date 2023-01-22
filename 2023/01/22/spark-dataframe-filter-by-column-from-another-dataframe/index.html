@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="some handy functions to group continous variables and missing value imputation in dataframe, DataScienceTribe">
+    <meta name="keywords" content="In PySpark how to filter dataframe column using unique values from another dataframe, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>some handy functions to group continous variables and missing value imputation in dataframe | DataScienceTribe</title>
+    <title>In PySpark how to filter dataframe column using unique values from another dataframe | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">some handy functions to group continous variables and missing value imputation in dataframe</h1>
+                    <h1 class="description center-align post-title">In PySpark how to filter dataframe column using unique values from another dataframe</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/spark/">
+                                <span class="chip bg-color">spark</span>
                             </a>
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
-                            <a href="/tags/pandas-tip/">
-                                <span class="chip bg-color">pandas tip</span>
+                            <a href="/tags/pyspark/">
+                                <span class="chip bg-color">pyspark</span>
                             </a>
                         
                     </div>
@@ -372,8 +368,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-15
+                    2023-01-22
                 </div>
                 
 
@@ -406,9 +402,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Following example shows how to group age variable into groups,<br>and some simple missing value imputaiton proecdures.</p>
-<p>There is also an example to transform timestamp variable to week day and hour infomation.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"># utility functions</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">def age_input(age):</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    if pd.isnull(age):</span><br><span class="line"></span><br><span class="line">        return &#x27;missing&#x27;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    age = int(age)</span><br><span class="line"></span><br><span class="line">    if age&lt;=20:</span><br><span class="line"></span><br><span class="line">        return &#x27;16-20&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=24:</span><br><span class="line"></span><br><span class="line">        return &#x27;21-24&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=34:</span><br><span class="line"></span><br><span class="line">        return &#x27;25-34&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=44:</span><br><span class="line"></span><br><span class="line">        return &#x27;35-44&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=54:</span><br><span class="line"></span><br><span class="line">        return &#x27;45-54&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=64:</span><br><span class="line"></span><br><span class="line">        return &#x27;55-64&#x27;</span><br><span class="line"></span><br><span class="line">    else:</span><br><span class="line"></span><br><span class="line">        return &#x27;65+&#x27;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"># missing value handelling or imputation in dataframe </span><br><span class="line"></span><br><span class="line">def missing_handle(df):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">    for col in df.columns:</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">        if df[col].dtype==object:</span><br><span class="line"></span><br><span class="line">            df[col] = df[col].fillna(&#x27;missing&#x27;)</span><br><span class="line"></span><br><span class="line">        elif df[col].dtype == bool:</span><br><span class="line"></span><br><span class="line">            df[col+&#x27;_null&#x27;] = df[col].apply(lambda x: 1 if pd.isnull(x) else 0)</span><br><span class="line"></span><br><span class="line">            df[col] = data[col].fillna(data[col].mode()[0])</span><br><span class="line"></span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line"></span><br><span class="line">            df[col] = df[col].fillna(-999)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    return df</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;sentat&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;sentat&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;sentat&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        # apply age group function here</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        X[&#x27;age_group&#x27;] = X[&#x27;age&#x27;].apply(age_input)</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;age&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        # apply missing handelling here</span><br><span class="line"></span><br><span class="line">        X = missing_handle(X)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"># define the transformer</span><br><span class="line">dayandhour_transformer = dayandhour_Transformer()</span><br><span class="line"></span><br><span class="line"># usage example</span><br><span class="line">df_new = dayandhour_transformer.transform(df)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>Here is one common task in PySpark: how to filter one dataframe column are from unique values from anther dataframe?</p>
+<h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>Say we have two dataframes df1 and df2, and we want to filter df1 by column called “id”, where its values need to be from<br>column “id” in df2. If the unique values of column “id” from df2 is not too big, we can do the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import col</span><br><span class="line"></span><br><span class="line"># Create the first DataFrame</span><br><span class="line">df1 = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Create the second DataFrame</span><br><span class="line">df2 = spark.createDataFrame([(1, &quot;x&quot;), (2, &quot;y&quot;)], [&quot;id&quot;, &quot;other_value&quot;])</span><br><span class="line"></span><br><span class="line"># Get the unique values of the second DataFrame&#x27;s column</span><br><span class="line">unique_values = df2.select(&quot;id&quot;).distinct().rdd.flatMap(lambda x: x).collect()</span><br><span class="line"></span><br><span class="line"># Filter the first DataFrame&#x27;s column based on the unique values</span><br><span class="line">filtered_df1 = df1.filter(col(&quot;id&quot;).isin(unique_values))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>In the above example, filtered_df1 will only contain the rows from df1 where the id column is in the list of unique values from df2’s id column.</p>
+<h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><p>However the above example using collect might be not optimal for large datasize.<br>in the example provided, the unique values of the second DataFrame’s column are collected using the .collect() method. This is necessary because the .isin() function that is used to filter the first DataFrame’s column takes in an iterable (e.g. a list, set, or tuple) of values to check against.<br>However, it’s worth mentioning that this may cause performance issues if the second DataFrame is very large and the unique values are a lot of, it’s better to use the join or subquery method to filter the first DataFrame based on the second Dataframe instead of collecting the unique values.</p>
+<p>For example, if you want to filter the first DataFrame based on the second DataFrame’s id column:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">filtered_df1 = df1.join(df2, df1.id == df2.id, &#x27;inner&#x27;).select(df1.columns)</span><br><span class="line">This will give you the same result of the previous example but without collecting the unique values.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Possible-error-if-two-dataframe-share-many-columns-names-that-are-the-same"><a href="#Possible-error-if-two-dataframe-share-many-columns-names-that-are-the-same" class="headerlink" title="Possible error if two dataframe share many columns names that are the same"></a>Possible error if two dataframe share many columns names that are the same</h2><p>how about df1 and df2 have column names that are the same? Then you will get error using code above.<br>But don’t worry, it’s easy to fix. We just need to rename the columns of one othe columns. </p>
+<p>If both DataFrames have columns with the same name, you will need to use the alias() function to assign a new name to one of the columns before performing the join.<br>For example, if both DataFrames have a column named “id”:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import col</span><br><span class="line"></span><br><span class="line"># Create the first DataFrame</span><br><span class="line">df1 = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Create the second DataFrame</span><br><span class="line">df2 = spark.createDataFrame([(1, &quot;x&quot;), (2, &quot;y&quot;)], [&quot;id&quot;, &quot;other_value&quot;])</span><br><span class="line"></span><br><span class="line"># Assign a new name to the second DataFrame&#x27;s &#x27;id&#x27; column</span><br><span class="line">df2 = df2.selectExpr(&quot;id as df2_id&quot;, &quot;other_value&quot;)</span><br><span class="line"></span><br><span class="line"># Perform the join</span><br><span class="line">filtered_df1 = df1.join(df2, df1.id == df2.df2_id, &#x27;inner&#x27;).select(df1.columns)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Replace-dataframe-columns-at-once"><a href="#Replace-dataframe-columns-at-once" class="headerlink" title="Replace dataframe columns at once"></a>Replace dataframe columns at once</h2><p>Another probably quicker method is to replace all the columns at once.<br>So in pyspark how to rename all of the dataframe columns by adding a prefix?</p>
+<p>In PySpark, you can use the selectExpr() function along with a list of string expressions to rename all of the DataFrame’s columns by adding a prefix.</p>
+<p>Here is an example of how you can add a prefix “prefix_” to all of the columns in a DataFrame:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import col</span><br><span class="line"></span><br><span class="line"># Create a DataFrame</span><br><span class="line">df = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Get the current column names</span><br><span class="line">old_columns = df.columns</span><br><span class="line"></span><br><span class="line"># Create a list of string expressions to rename the columns</span><br><span class="line">new_columns = [&quot;prefix_&quot; + col for col in old_columns]</span><br><span class="line"></span><br><span class="line"># Use the selectExpr() function to rename the columns</span><br><span class="line">df = df.selectExpr(*[f&quot;&#123;old&#125; as &#123;new&#125;&quot; for old, new in zip(old_columns, new_columns)])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>In this example, the selectExpr() function is used to rename all of the columns by adding the prefix “prefix_” to the original column name. It’s done by creating a list of string expressions that include the original column name and the new column name with the prefix “prefix_” using the list comprehension.</p>
+<p>Also, you can use the withColumnRenamed() method to rename all columns one by one.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for col in old_columns:</span><br><span class="line">    df = df.withColumnRenamed(col, f&quot;prefix_&#123;col&#125;&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>This method will rename all the columns one by one by passing the original column name and the new column name with the prefix “prefix_”</p>
+<h2 id="how-to-deep-copy-datafame-in-pyspark"><a href="#how-to-deep-copy-datafame-in-pyspark" class="headerlink" title="how to deep copy datafame in pyspark"></a>how to deep copy datafame in pyspark</h2><p>So if you don’t want to change the orignal columns of the dataframe, just operate on a copy.<br>In PySpark, you can create a deep copy of a DataFrame by using the .copy() method or by creating a new DataFrame from the original DataFrame’s data.</p>
+<p>Here is an example of how you can create a deep copy of a DataFrame using the .copy() method:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Create the original DataFrame</span><br><span class="line">df = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Create a deep copy of the original DataFrame</span><br><span class="line">df_copy = df.copy()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>In this example, the df_copy variable will contain a deep copy of the original DataFrame, which is independent of the original DataFrame and any modifications made to it will not affect the original DataFrame.</p>
+<p>Please note that .copy() method is not available in all versions of PySpark, so you can use the second method to create a deep copy of DataFrame.<br>So another way to create a deep copy of a DataFrame is by creating a new DataFrame from the original DataFrame’s data.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Create a new DataFrame from the original DataFrame&#x27;s data</span><br><span class="line">df_copy = spark.createDataFrame(df.rdd, df.schema)</span><br></pre></td></tr></table></figure>
+
+
+
+
                 
             </div>
             <hr/>
@@ -434,7 +458,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/15/2021-06-15-1/">https://datasciencebyexample.github.io/2021/06/15/2021-06-15-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/01/22/spark-dataframe-filter-by-column-from-another-dataframe/">https://datasciencebyexample.github.io/2023/01/22/spark-dataframe-filter-by-column-from-another-dataframe/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,16 +496,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/spark/">
+                                    <span class="chip bg-color">spark</span>
                                 </a>
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
-                                </a>
-                            
-                                <a href="/tags/pandas-tip/">
-                                    <span class="chip bg-color">pandas tip</span>
+                                <a href="/tags/pyspark/">
+                                    <span class="chip bg-color">pyspark</span>
                                 </a>
                             
                         </div>
@@ -527,17 +547,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/18/2021-06-18-1/">
+                <a href="/2023/01/22/spark-dataframe-filter-by-column-from-another-dataframe/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="handles feature order in training and online production stage to avoid inconsistent error">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="In PySpark how to filter dataframe column using unique values from another dataframe">
                         
-                        <span class="card-title">handles feature order in training and online production stage to avoid inconsistent error</span>
+                        <span class="card-title">In PySpark how to filter dataframe column using unique values from another dataframe</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -547,34 +568,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/spark/">
+                        <span class="chip bg-color">spark</span>
                     </a>
                     
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
-                    </a>
-                    
-                    <a href="/tags/machine-learning/">
-                        <span class="chip bg-color">machine learning</span>
+                    <a href="/tags/pyspark/">
+                        <span class="chip bg-color">pyspark</span>
                     </a>
                     
                 </div>
@@ -588,13 +606,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/14/2021-06-14-1/">
+                <a href="/2023/01/20/generate-access-token-in-databricks/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="How to generate access token in Databricks">
                         
-                        <span class="card-title">explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe</span>
+                        <span class="card-title">How to generate access token in Databricks</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -605,14 +623,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -622,16 +640,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
                     </a>
                     
                 </div>

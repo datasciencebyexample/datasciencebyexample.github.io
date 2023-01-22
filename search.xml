@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>In PySpark how to filter dataframe column using unique values from another dataframe</title>
+      <link href="2023/01/22/spark-dataframe-filter-by-column-from-another-dataframe/"/>
+      <url>2023/01/22/spark-dataframe-filter-by-column-from-another-dataframe/</url>
+      
+        <content type="html"><![CDATA[<p>Here is one common task in PySpark: how to filter one dataframe column are from unique values from anther dataframe?</p><h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>Say we have two dataframes df1 and df2, and we want to filter df1 by column called “id”, where its values need to be from<br>column “id” in df2. If the unique values of column “id” from df2 is not too big, we can do the following:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import col</span><br><span class="line"></span><br><span class="line"># Create the first DataFrame</span><br><span class="line">df1 = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Create the second DataFrame</span><br><span class="line">df2 = spark.createDataFrame([(1, &quot;x&quot;), (2, &quot;y&quot;)], [&quot;id&quot;, &quot;other_value&quot;])</span><br><span class="line"></span><br><span class="line"># Get the unique values of the second DataFrame&#x27;s column</span><br><span class="line">unique_values = df2.select(&quot;id&quot;).distinct().rdd.flatMap(lambda x: x).collect()</span><br><span class="line"></span><br><span class="line"># Filter the first DataFrame&#x27;s column based on the unique values</span><br><span class="line">filtered_df1 = df1.filter(col(&quot;id&quot;).isin(unique_values))</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In the above example, filtered_df1 will only contain the rows from df1 where the id column is in the list of unique values from df2’s id column.</p><h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><p>However the above example using collect might be not optimal for large datasize.<br>in the example provided, the unique values of the second DataFrame’s column are collected using the .collect() method. This is necessary because the .isin() function that is used to filter the first DataFrame’s column takes in an iterable (e.g. a list, set, or tuple) of values to check against.<br>However, it’s worth mentioning that this may cause performance issues if the second DataFrame is very large and the unique values are a lot of, it’s better to use the join or subquery method to filter the first DataFrame based on the second Dataframe instead of collecting the unique values.</p><p>For example, if you want to filter the first DataFrame based on the second DataFrame’s id column:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">filtered_df1 = df1.join(df2, df1.id == df2.id, &#x27;inner&#x27;).select(df1.columns)</span><br><span class="line">This will give you the same result of the previous example but without collecting the unique values.</span><br></pre></td></tr></table></figure><h2 id="Possible-error-if-two-dataframe-share-many-columns-names-that-are-the-same"><a href="#Possible-error-if-two-dataframe-share-many-columns-names-that-are-the-same" class="headerlink" title="Possible error if two dataframe share many columns names that are the same"></a>Possible error if two dataframe share many columns names that are the same</h2><p>how about df1 and df2 have column names that are the same? Then you will get error using code above.<br>But don’t worry, it’s easy to fix. We just need to rename the columns of one othe columns. </p><p>If both DataFrames have columns with the same name, you will need to use the alias() function to assign a new name to one of the columns before performing the join.<br>For example, if both DataFrames have a column named “id”:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import col</span><br><span class="line"></span><br><span class="line"># Create the first DataFrame</span><br><span class="line">df1 = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Create the second DataFrame</span><br><span class="line">df2 = spark.createDataFrame([(1, &quot;x&quot;), (2, &quot;y&quot;)], [&quot;id&quot;, &quot;other_value&quot;])</span><br><span class="line"></span><br><span class="line"># Assign a new name to the second DataFrame&#x27;s &#x27;id&#x27; column</span><br><span class="line">df2 = df2.selectExpr(&quot;id as df2_id&quot;, &quot;other_value&quot;)</span><br><span class="line"></span><br><span class="line"># Perform the join</span><br><span class="line">filtered_df1 = df1.join(df2, df1.id == df2.df2_id, &#x27;inner&#x27;).select(df1.columns)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Replace-dataframe-columns-at-once"><a href="#Replace-dataframe-columns-at-once" class="headerlink" title="Replace dataframe columns at once"></a>Replace dataframe columns at once</h2><p>Another probably quicker method is to replace all the columns at once.<br>So in pyspark how to rename all of the dataframe columns by adding a prefix?</p><p>In PySpark, you can use the selectExpr() function along with a list of string expressions to rename all of the DataFrame’s columns by adding a prefix.</p><p>Here is an example of how you can add a prefix “prefix_” to all of the columns in a DataFrame:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import col</span><br><span class="line"></span><br><span class="line"># Create a DataFrame</span><br><span class="line">df = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Get the current column names</span><br><span class="line">old_columns = df.columns</span><br><span class="line"></span><br><span class="line"># Create a list of string expressions to rename the columns</span><br><span class="line">new_columns = [&quot;prefix_&quot; + col for col in old_columns]</span><br><span class="line"></span><br><span class="line"># Use the selectExpr() function to rename the columns</span><br><span class="line">df = df.selectExpr(*[f&quot;&#123;old&#125; as &#123;new&#125;&quot; for old, new in zip(old_columns, new_columns)])</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, the selectExpr() function is used to rename all of the columns by adding the prefix “prefix_” to the original column name. It’s done by creating a list of string expressions that include the original column name and the new column name with the prefix “prefix_” using the list comprehension.</p><p>Also, you can use the withColumnRenamed() method to rename all columns one by one.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for col in old_columns:</span><br><span class="line">    df = df.withColumnRenamed(col, f&quot;prefix_&#123;col&#125;&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>This method will rename all the columns one by one by passing the original column name and the new column name with the prefix “prefix_”</p><h2 id="how-to-deep-copy-datafame-in-pyspark"><a href="#how-to-deep-copy-datafame-in-pyspark" class="headerlink" title="how to deep copy datafame in pyspark"></a>how to deep copy datafame in pyspark</h2><p>So if you don’t want to change the orignal columns of the dataframe, just operate on a copy.<br>In PySpark, you can create a deep copy of a DataFrame by using the .copy() method or by creating a new DataFrame from the original DataFrame’s data.</p><p>Here is an example of how you can create a deep copy of a DataFrame using the .copy() method:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Create the original DataFrame</span><br><span class="line">df = spark.createDataFrame([(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;), (4, &quot;d&quot;)], [&quot;id&quot;, &quot;value&quot;])</span><br><span class="line"></span><br><span class="line"># Create a deep copy of the original DataFrame</span><br><span class="line">df_copy = df.copy()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, the df_copy variable will contain a deep copy of the original DataFrame, which is independent of the original DataFrame and any modifications made to it will not affect the original DataFrame.</p><p>Please note that .copy() method is not available in all versions of PySpark, so you can use the second method to create a deep copy of DataFrame.<br>So another way to create a deep copy of a DataFrame is by creating a new DataFrame from the original DataFrame’s data.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Create a new DataFrame from the original DataFrame&#x27;s data</span><br><span class="line">df_copy = spark.createDataFrame(df.rdd, df.schema)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> spark </tag>
+            
+            <tag> pyspark </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to generate access token in Databricks</title>
       <link href="2023/01/20/generate-access-token-in-databricks/"/>
       <url>2023/01/20/generate-access-token-in-databricks/</url>
@@ -818,11 +845,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1822,9 +1849,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> python </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> pandas tip </tag>
             
@@ -1851,9 +1878,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> python </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> pandas tip </tag>
             
@@ -2023,11 +2050,11 @@
       
         <tags>
             
-            <tag> pandas </tag>
+            <tag> python </tag>
             
             <tag> preprocessing </tag>
             
-            <tag> python </tag>
+            <tag> pandas </tag>
             
         </tags>
       
