@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to define mulitple endpoints in one API using AWS API gateway</title>
+      <link href="2023/01/25/define-multi-endpoints-in-one-api-aws/"/>
+      <url>2023/01/25/define-multi-endpoints-in-one-api-aws/</url>
+      
+        <content type="html"><![CDATA[<p>By default, when we create API using the AWS API Gateway service, the default resource generated is the root path “/“.<br>And then two steps are needed:</p><ol><li>first, create a method under the “/“ resource, for example a POST method</li><li>deploy the API to a stage with any stage name you like,e.g. prod</li></ol><p>In this case, an API endpoint will be created in this format: url/stage_name.<br>For example, this is one valid endpoint: “mxxggeoyvj.execute-api.us-east-1.amazonaws.com/prod”</p><p>The above steps are shown in more detail here:<br><a href="/2022/09/02/2022-09-02-1/">Create API with API Gateway</a></p><p>Now, how to create multiple endpoints in the same API?</p><h2 id="step-1-create-a-new-resource-under-the-“-“-resource"><a href="#step-1-create-a-new-resource-under-the-“-“-resource" class="headerlink" title="step 1, create a new resource under the “/“ resource"></a>step 1, create a new resource under the “/“ resource</h2><p>Clicking the “/“ path, then click “Action” and choose “create resource” as the following screenshot:<br><img src="/content/images/2023-01-25-1.png"></p><p>This will lead to the details of creating the child resource as our first endpoint as the following screenshot:<br><img src="/content/images/2023-01-25-2.png"></p><p>so this will be our first endpoint. But we need to continue to create an actual method, such as a POST method for the first endpoint like this:<br><img src="/content/images/2023-01-25-3.png"><br>Creating method is similar as before, just hook up the mehod with a lamda function, for example.</p><h2 id="step-2-create-a-second-resource-under-the-“-“-resource"><a href="#step-2-create-a-second-resource-under-the-“-“-resource" class="headerlink" title="step 2, create a second resource under the “/“ resource"></a>step 2, create a second resource under the “/“ resource</h2><p>Clicking the “/“ path again, then click “Action” and choose “create resource” again, to create the second endpoint.<br>Notice that, we need to click back the “/“ path in order to create parallel endpoints under “/“ path,<br>such as “/endpoint1” and “/endpoint2”.</p><p>This also means, if needed, we could click the first endpoint path, and then create another resource, it will create an hierarchical path<br>like this “/endpoint1/endpoint2”.</p><p>After creating the second point, again, we need to create a POST method for the second endopint.</p><p>After all the above steps, the results of two parallel resources ad two endpoints are as the following:<br><img src="/content/images/2023-01-25-4.png"></p><h2 id="step-3-deploy-the-API-to-stage"><a href="#step-3-deploy-the-API-to-stage" class="headerlink" title="step 3, deploy the API to stage"></a>step 3, deploy the API to stage</h2><p>After we created two endopints as child resources, and each resources has a POST method, we are ready to deploy the<br>API to a stage, for example a stage named “prod”:</p><p><img src="/content/images/2023-01-25-5.png"><br><img src="/content/images/2023-01-25-6.png"></p><p>After the prod stage is deployed, we can check indvidual endpoint and its invoking url like this:<br><img src="/content/images/2023-01-25-7.png"></p><p>Great job done!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> aws </tag>
+            
+            <tag> api gateway </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>In PySpark how to filter dataframe column using unique values from another dataframe</title>
       <link href="2023/01/22/spark-dataframe-filter-by-column-from-another-dataframe/"/>
       <url>2023/01/22/spark-dataframe-filter-by-column-from-another-dataframe/</url>
@@ -128,9 +155,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> FAISS </tag>
-            
             <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
             
         </tags>
       
@@ -1907,9 +1934,9 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pipeline </tag>
             
             <tag> feature engineering </tag>
             
@@ -1936,15 +1963,15 @@
       
         <tags>
             
+            <tag> preprocessing </tag>
+            
             <tag> pipeline </tag>
             
-            <tag> preprocessing </tag>
+            <tag> feature engineering </tag>
             
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -2023,9 +2050,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -2052,9 +2079,9 @@
             
             <tag> python </tag>
             
-            <tag> preprocessing </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> preprocessing </tag>
             
         </tags>
       
