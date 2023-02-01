@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/02/01/collect-columns-into-lists-after-groupby-in-pyspark/</loc>
+        <lastmod>2023-02-01T22:59:06.070Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/01/25/define-multi-endpoints-in-one-api-aws/</loc>
         <lastmod>2023-01-26T00:53:21.846Z</lastmod>
         <changefreq>weekly</changefreq>

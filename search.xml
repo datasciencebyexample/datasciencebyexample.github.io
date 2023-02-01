@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Spark SQL - Collecting Columns into Lists after Groupby</title>
+      <link href="2023/02/01/collect-columns-into-lists-after-groupby-in-pyspark/"/>
+      <url>2023/02/01/collect-columns-into-lists-after-groupby-in-pyspark/</url>
+      
+        <content type="html"><![CDATA[<p>In Spark SQL, you may want to collect the values of one or more columns into lists after grouping the data by one or more columns. This can be accomplished using the collect_list aggregate function in Spark SQL.</p><h2 id="Collecting-a-Single-Column-into-a-List"><a href="#Collecting-a-Single-Column-into-a-List" class="headerlink" title="Collecting a Single Column into a List"></a>Collecting a Single Column into a List</h2><p>The following code shows an example of how to collect the values of a single column column3 into a list named list_column3 after grouping the data by columns column1 and column2:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import collect_list</span><br><span class="line"></span><br><span class="line">df.groupBy(&quot;column1&quot;, &quot;column2&quot;).agg(</span><br><span class="line">  collect_list(&quot;column3&quot;).alias(&quot;list_column3&quot;)</span><br><span class="line">).show()</span><br></pre></td></tr></table></figure><p>The result of this code will be a dataframe with three columns: column1, column2, and list_column3. The values of column column3 will be collected into a list named list_column3 for each unique combination of values in columns column1 and column2.</p><h2 id="Collecting-Multiple-Columns-into-Lists"><a href="#Collecting-Multiple-Columns-into-Lists" class="headerlink" title="Collecting Multiple Columns into Lists"></a>Collecting Multiple Columns into Lists</h2><p>You can collect the values of multiple columns into multiple lists after grouping the data by one or more columns, as shown in the following code:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pyspark.sql.functions import collect_list</span><br><span class="line"></span><br><span class="line">df.groupBy(&quot;column1&quot;, &quot;column2&quot;).agg(</span><br><span class="line">  collect_list(&quot;columnA&quot;).alias(&quot;listA&quot;),</span><br><span class="line">  collect_list(&quot;columnB&quot;).alias(&quot;listB&quot;)</span><br><span class="line">).show()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>The result of this code will be a dataframe with four columns: column1, column2, listA, and listB. The values of columns columnA and columnB will be collected into lists named listA and listB respectively, for each unique combination of values in columns column1 and column2.</p><h2 id="Collecting-Columns-into-Lists-using-Spark-SQL"><a href="#Collecting-Columns-into-Lists-using-Spark-SQL" class="headerlink" title="Collecting Columns into Lists using Spark SQL"></a>Collecting Columns into Lists using Spark SQL</h2><p>You can also collect the values of one or more columns into lists after grouping the data by one or more columns using Spark’s spark.sql method. The following code shows an example of how to do this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">df.createOrReplaceTempView(&quot;df_view&quot;)</span><br><span class="line"></span><br><span class="line">spark.sql(&quot;SELECT column1, column2, collect_list(column3) AS list_column3 FROM df_view GROUP BY column1, column2&quot;).show()</span><br></pre></td></tr></table></figure><p>This code first creates a temporary view df_view from the df dataframe, and then executes a Spark SQL query that groups the data by columns column1 and column2, and collects the values of column column3 into a list named list_column3. The result of the query will be displayed using the show method.</p><h2 id="Order-of-Elements-in-the-Lists"><a href="#Order-of-Elements-in-the-Lists" class="headerlink" title="Order of Elements in the Lists"></a>Order of Elements in the Lists</h2><p>It’s important to note that the order of elements in the lists collected by the collect_list function will be the same, as they are collected based on the same grouping conditions. For example, if you collect two columns columnA and columnB into two lists listA and listB respectively, the order of elements in listA and listB will correspond to each other for each group defined by the groupBy clause.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> spark </tag>
+            
+            <tag> pyspark </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to define mulitple endpoints in one API using AWS API gateway</title>
       <link href="2023/01/25/define-multi-endpoints-in-one-api-aws/"/>
       <url>2023/01/25/define-multi-endpoints-in-one-api-aws/</url>
@@ -155,9 +182,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> vector search </tag>
-            
             <tag> FAISS </tag>
+            
+            <tag> vector search </tag>
             
         </tags>
       
@@ -872,11 +899,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -1967,11 +1994,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
