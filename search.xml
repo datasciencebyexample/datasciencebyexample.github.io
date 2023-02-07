@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Logging metrics and tags of multiple models into one mlflow in Databricks</title>
+      <link href="2023/02/07/logging-multiple-models-in-one-mlflow-experiment-with-databricks/"/>
+      <url>2023/02/07/logging-multiple-models-in-one-mlflow-experiment-with-databricks/</url>
+      
+        <content type="html"><![CDATA[<p>There are situations where we need to run multiple notebooks or algorithms that are closely related. In this case, it makes sense to log all the information into one central place.</p><p>We can leverage MLflow with Databricks to achieve this goal.</p><p>First, let’s see what information we can log with MLflow?</p><h2 id="Information-to-log-in-MLflow"><a href="#Information-to-log-in-MLflow" class="headerlink" title="Information to log in MLflow"></a>Information to log in MLflow</h2><ul><li><p>mlflow.log_param() logs a single key-value param in the currently active run. The key and value are both strings. Use mlflow.log_params() to log multiple params at once.</p></li><li><p>mlflow.log_metric() logs a single key-value metric. The value must always be a number. MLflow remembers the history of values for each metric. Use mlflow.log_metrics() to log multiple metrics at once.</p></li><li><p>mlflow.set_tag() sets a single key-value tag in the currently active run. The key and value are both strings. Use mlflow.set_tags() to set multiple tags at once.</p></li><li><p>mlflow.log_artifact() logs a local file or directory as an artifact, optionally taking an artifact_path to place it in within the run’s artifact URI. Run artifacts can be organized into directories, so you can place the artifact in a directory this way.</p></li><li><p>mlflow.log_artifacts() logs all the files in a given directory as artifacts, again taking an optional artifact_path.</p></li></ul><p>To distinguish different algorithm names, we can use the mlflow.set_tag()function to log the algorithm name into the experiments.</p><h2 id="Example-code-to-use-in-Databricks-notebooks"><a href="#Example-code-to-use-in-Databricks-notebooks" class="headerlink" title="Example code to use in Databricks notebooks"></a>Example code to use in Databricks notebooks</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import mlflow</span><br><span class="line">import mlflow.sklearn</span><br><span class="line">from sklearn.ensemble import RandomForestRegressor</span><br><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Import the dataset from scikit-learn and create the training and test datasets. </span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.datasets import load_diabetes</span><br><span class="line"></span><br><span class="line">db = load_diabetes()</span><br><span class="line">X = db.data</span><br><span class="line">y = db.target</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y)</span><br><span class="line"></span><br><span class="line"># This run uses mlflow.set_experiment() to specify an experiment in the workspace where runs should be logged. </span><br><span class="line"># If the experiment specified by experiment_name does not exist in the workspace, MLflow creates it.</span><br><span class="line"># Access these runs using the experiment name in the workspace file tree. </span><br><span class="line"></span><br><span class="line">experiment_name = &quot;/xxxx/test-experiment&quot;  # pluging your path at Databricks, where the &quot;test-experiment&quot; is the  actual experiment name</span><br><span class="line">mlflow.set_experiment(experiment_name)</span><br><span class="line"></span><br><span class="line">with mlflow.start_run():</span><br><span class="line">  n_estimators = 100</span><br><span class="line">  max_depth = 6</span><br><span class="line">  max_features = 3</span><br><span class="line">  # Create and train model</span><br><span class="line">  rf = RandomForestRegressor(n_estimators = n_estimators, max_depth = max_depth, max_features = max_features)</span><br><span class="line">  rf.fit(X_train, y_train)</span><br><span class="line">  # Make predictions</span><br><span class="line">  predictions = rf.predict(X_test)</span><br><span class="line">  </span><br><span class="line">  # Log algorithm name</span><br><span class="line">  mlflow.set_tag(&quot;model_name&quot;, &quot;user_test1&quot;)</span><br><span class="line">    </span><br><span class="line">  # Log parameters</span><br><span class="line">  mlflow.log_param(&quot;num_trees&quot;, n_estimators)</span><br><span class="line">  mlflow.log_param(&quot;maxdepth&quot;, max_depth)</span><br><span class="line">  mlflow.log_param(&quot;max_feat&quot;, max_features)</span><br><span class="line">  </span><br><span class="line">  # Log model</span><br><span class="line">  mlflow.sklearn.log_model(rf, &quot;random-forest-model&quot;)</span><br><span class="line">  </span><br><span class="line">  # Create metrics</span><br><span class="line">  mse = mean_squared_error(y_test, predictions)</span><br><span class="line">    </span><br><span class="line">  # Log metrics</span><br><span class="line">  mlflow.log_metric(&quot;mse&quot;, mse)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Results-in-MLflow-experiment-dashboard"><a href="#Results-in-MLflow-experiment-dashboard" class="headerlink" title="Results in MLflow experiment dashboard"></a>Results in MLflow experiment dashboard</h2><p><img src="/content/images/2023-02-07-1.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> databricks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Difference between fit, transform, fit_transform, predict, and predict_proba in a sklearn pipeline</title>
       <link href="2023/02/02/operators-in-sklearn-pipeline/"/>
       <url>2023/02/02/operators-in-sklearn-pipeline/</url>
@@ -2021,11 +2046,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
