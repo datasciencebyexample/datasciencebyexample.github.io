@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="how to convert timestamp column of pandas dataframe into hour and day features using transformer, DataScienceTribe">
+    <meta name="keywords" content="Difference between &#39;python -m pip install&#39; and &#39;pip install&#39;, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>how to convert timestamp column of pandas dataframe into hour and day features using transformer | DataScienceTribe</title>
+    <title>Difference between &#39;python -m pip install&#39; and &#39;pip install&#39; | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</h1>
+                    <h1 class="description center-align post-title">Difference between &#39;python -m pip install&#39; and &#39;pip install&#39;</h1>
                 </div>
             </div>
         </div>
@@ -356,14 +356,6 @@
                                 <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
-                            </a>
-                        
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -372,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-04
+                    2023-02-08
                 </div>
                 
 
@@ -406,14 +398,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line">       return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;timestamp&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">dayandhour_transformer = dayandhour_Transformer() </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">df = dayandhour_transformer.transform(df)</span><br></pre></td></tr></table></figure>
+                <p>Installing packages in Python can be done using the package manager pip. There are two ways to run pip to install packages: python -m pip install and pip install. In this article, we’ll discuss the difference between the two.</p>
+<h2 id="python-m-pip-install"><a href="#python-m-pip-install" class="headerlink" title="python -m pip install"></a>python -m pip install</h2><p>The python -m pip install command runs the pip module as a script using the python executable. The -m option stands for “module” and it tells Python to run the specified module as a script. This allows you to specify which Python interpreter you want to use, even if you have multiple versions of Python installed on your system. For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 -m pip install &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
-<p>Suppose we have a dataframe df with a column “timestamp”.</p>
-<p>before apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(df[&#x27;timestamp&#x27;])</span><br><span class="line"></span><br><span class="line">0        2021-03-28 03:28:10.205000</span><br><span class="line"></span><br><span class="line">1        2021-03-28 21:31:43.290000</span><br><span class="line"></span><br><span class="line">2        2021-03-28 21:16:18.771000</span><br><span class="line"></span><br><span class="line">3        2021-03-28 18:39:13.344000</span><br><span class="line"></span><br><span class="line">4        2021-03-28 00:54:57.544000</span><br></pre></td></tr></table></figure>
+<p>This is a more flexible and portable way of installing packages, as it allows you to specify which Python interpreter you want to use, even if you have multiple versions of Python installed on your system. This can be useful if you want to install a package into a specific Python environment, or if you want to use a different version of Python than the default one on your system.</p>
+<h2 id="pip-install"><a href="#pip-install" class="headerlink" title="pip install"></a>pip install</h2><p>The pip install command assumes that pip is in your system’s PATH, and that it corresponds to the correct version of Python that you want to use. For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install &lt;package_name&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>after we apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print( df[[&#x27;hour&#x27;,&#x27;dayofweek&#x27;]])</span><br><span class="line"></span><br><span class="line">       hour  dayofweek</span><br><span class="line"></span><br><span class="line">0         3          6</span><br><span class="line"></span><br><span class="line">1        21          6</span><br><span class="line"></span><br><span class="line">2        21          6</span><br><span class="line"></span><br><span class="line">3        18          6</span><br><span class="line"></span><br><span class="line">4         0          6</span><br></pre></td></tr></table></figure>
+<p>This is a more convenient option, as it does not require you to specify the Python interpreter to use. However, if you have multiple versions of Python installed, or if the pip executable is not in your PATH, then pip install may not work as expected.</p>
+<p>In conclusion, both python -m pip install and pip install achieve the same result, but python -m pip install is a more flexible and portable option, while pip install is more convenient but may not work in all scenarios. It is important to understand the difference between the two to choose the right approach when installing packages in Python.</p>
 
                 
             </div>
@@ -440,7 +434,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/">https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/02/08/different-ways-to-install-python-packages-with-pip/">https://datasciencebyexample.github.io/2023/02/08/different-ways-to-install-python-packages-with-pip/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -480,14 +474,6 @@
                             
                                 <a href="/tags/python/">
                                     <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
-                                </a>
-                            
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
                                 </a>
                             
                         </div>
@@ -533,70 +519,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/05/2021-06-05-1/">
+                <a href="/2023/02/08/different-ways-to-install-python-packages-with-pip/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="boost exact phrase search results ranking in elasticsearch">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Difference between &#39;python -m pip install&#39; and &#39;pip install&#39;">
                         
-                        <span class="card-title">boost exact phrase search results ranking in elasticsearch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/search/" class="post-category">
-                                    search
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
-                        
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">Difference between &#39;python -m pip install&#39; and &#39;pip install&#39;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -607,14 +541,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -629,12 +563,53 @@
                         <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/02/07/logging-multiple-models-in-one-mlflow-experiment-with-databricks/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Logging metrics and tags of multiple models into one mlflow in Databricks">
+                        
+                        <span class="card-title">Logging metrics and tags of multiple models into one mlflow in Databricks</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
                     </a>
                     
                 </div>
