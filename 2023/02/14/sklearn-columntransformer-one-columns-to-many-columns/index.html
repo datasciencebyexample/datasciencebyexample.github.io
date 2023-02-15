@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="how to convert timestamp column of pandas dataframe into hour and day features using transformer, DataScienceTribe">
+    <meta name="keywords" content="Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>how to convert timestamp column of pandas dataframe into hour and day features using transformer | DataScienceTribe</title>
+    <title>Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</h1>
+                    <h1 class="description center-align post-title">Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/transformer/">
+                                <span class="chip bg-color">transformer</span>
                             </a>
                         
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
-                            </a>
-                        
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/scikit-learn/">
+                                <span class="chip bg-color">scikit-learn</span>
                             </a>
                         
                     </div>
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-04
+                    2023-02-14
                 </div>
                 
 
@@ -406,14 +402,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line">       return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;timestamp&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">dayandhour_transformer = dayandhour_Transformer() </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">df = dayandhour_transformer.transform(df)</span><br></pre></td></tr></table></figure>
+                <p>Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer</p>
+<p>When working with tabular data, it’s common to have to transform one or more columns to make them more amenable to analysis or modeling. In many cases, these transformations can be easily accomplished using the pandas library. However, when working with large datasets or building machine learning pipelines, it can be more efficient to use scikit-learn’s ColumnTransformer class to apply transformations to specific columns of the data.</p>
+<p>In this blog post, we’ll demonstrate how to use a custom transformer with scikit-learn’s <strong>ColumnTransformer</strong> to transform one or more columns of a Pandas DataFrame.</p>
+<h2 id="Example-1-Transforming-NumPy-arrays"><a href="#Example-1-Transforming-NumPy-arrays" class="headerlink" title="Example 1: Transforming NumPy arrays"></a>Example 1: Transforming NumPy arrays</h2><p>Let’s start with a simple example where we have a NumPy array with three columns, and we want to transform the first two columns into two new columns.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">from sklearn.compose import ColumnTransformer</span><br><span class="line">from sklearn.pipeline import Pipeline</span><br><span class="line"></span><br><span class="line">class CustomTransformer(BaseEstimator, TransformerMixin):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line">    </span><br><span class="line">    def transform(self, X):</span><br><span class="line">        # Here, X is a 2D numpy array or pandas DataFrame</span><br><span class="line">        # Transform columns 0 and 1 into multiple columns</span><br><span class="line">        transformed_cols = np.column_stack([X[:, 0]**2, np.sqrt(X[:, 1])])</span><br><span class="line">        # Return the transformed columns as a 2D numpy array</span><br><span class="line">        return transformed_cols</span><br><span class="line">    </span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line">        return self</span><br><span class="line">    </span><br><span class="line"># Example usage</span><br><span class="line">X = np.array([[1, 4, 7], [2, 9, 8], [3, 16, 9]])</span><br><span class="line">transformer = ColumnTransformer(</span><br><span class="line">    transformers=[(&#x27;custom&#x27;, CustomTransformer(), [0, 1])],</span><br><span class="line">    remainder=&#x27;passthrough&#x27;)</span><br><span class="line"># The &#x27;remainder&#x27; parameter preserves any columns not transformed</span><br><span class="line">transformed_X = transformer.fit_transform(X)</span><br><span class="line">print(transformed_X)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>Suppose we have a dataframe df with a column “timestamp”.</p>
-<p>before apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(df[&#x27;timestamp&#x27;])</span><br><span class="line"></span><br><span class="line">0        2021-03-28 03:28:10.205000</span><br><span class="line"></span><br><span class="line">1        2021-03-28 21:31:43.290000</span><br><span class="line"></span><br><span class="line">2        2021-03-28 21:16:18.771000</span><br><span class="line"></span><br><span class="line">3        2021-03-28 18:39:13.344000</span><br><span class="line"></span><br><span class="line">4        2021-03-28 00:54:57.544000</span><br></pre></td></tr></table></figure>
-
-<p>after we apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print( df[[&#x27;hour&#x27;,&#x27;dayofweek&#x27;]])</span><br><span class="line"></span><br><span class="line">       hour  dayofweek</span><br><span class="line"></span><br><span class="line">0         3          6</span><br><span class="line"></span><br><span class="line">1        21          6</span><br><span class="line"></span><br><span class="line">2        21          6</span><br><span class="line"></span><br><span class="line">3        18          6</span><br><span class="line"></span><br><span class="line">4         0          6</span><br></pre></td></tr></table></figure>
+<p>In this example, the CustomTransformer class takes two input columns and transforms them into two output columns. The ColumnTransformer applies this transformer to columns 0 and 1 of the input data, and preserves column 2. The “passthrough” option has been used to preserve the remaining column in its original form.</p>
+<h2 id="Example-2-Transforming-Pandas-DataFrames"><a href="#Example-2-Transforming-Pandas-DataFrames" class="headerlink" title="Example 2: Transforming Pandas DataFrames"></a>Example 2: Transforming Pandas DataFrames</h2><p>Now, let’s modify the previous example to work with a Pandas DataFrame instead of a NumPy array.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">from sklearn.compose import ColumnTransformer</span><br><span class="line">from sklearn.pipeline import Pipeline</span><br><span class="line"></span><br><span class="line">class CustomTransformer(BaseEstimator, TransformerMixin):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line">    </span><br><span class="line">    def transform(self, X):</span><br><span class="line">        # Here, X is a pandas DataFrame</span><br><span class="line">        # Transform columns &#x27;A&#x27; and &#x27;B&#x27; into multiple columns</span><br><span class="line">        transformed_cols = pd.DataFrame(&#123;&#x27;A_squared&#x27;: X[&#x27;A&#x27;]**2, </span><br><span class="line">                                         &#x27;B_sqrt&#x27;: X[&#x27;B&#x27;]**0.5&#125;)</span><br><span class="line">        # Return the transformed columns as a pandas DataFrame</span><br><span class="line">        return transformed_cols</span><br><span class="line">    </span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line">        return self</span><br><span class="line">    </span><br><span class="line"># Example usage</span><br><span class="line">df = pd.DataFrame(&#123;&#x27;A&#x27;: [1, 2, 3], &#x27;B&#x27;: [4, 9, 16], &#x27;C&#x27;: [7, 8, 9]&#125;)</span><br><span class="line">transformer = ColumnTransformer(</span><br><span class="line">    transformers=[(&#x27;custom&#x27;, CustomTransformer(), [&#x27;A&#x27;, &#x27;B&#x27;])], </span><br><span class="line">    remainder=&#x27;passthrough&#x27;)</span><br><span class="line"># The &#x27;remainder&#x27; parameter preserves any columns not transformed</span><br><span class="line">transformed_df = transformer.fit_transform(df)</span><br><span class="line">print(transformed_df)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>In this example, the CustomTransformer class takes two input columns (‘A’ and ‘B’) and transforms them into two output columns (‘A_squared’ and ‘B_sqrt’) in a pandas DataFrame. The ColumnTransformer applies this transformer to columns ‘A’ and ‘B’ of the input data, and preserves column ‘C’. The “passthrough” option has been used to preserve the remaining column ‘C’ in its original form.</p>
 
                 
             </div>
@@ -440,7 +438,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/">https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/02/14/sklearn-columntransformer-one-columns-to-many-columns/">https://datasciencebyexample.github.io/2023/02/14/sklearn-columntransformer-one-columns-to-many-columns/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -478,16 +476,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/transformer/">
+                                    <span class="chip bg-color">transformer</span>
                                 </a>
                             
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
-                                </a>
-                            
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/scikit-learn/">
+                                    <span class="chip bg-color">scikit-learn</span>
                                 </a>
                             
                         </div>
@@ -533,70 +527,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/05/2021-06-05-1/">
+                <a href="/2023/02/14/sklearn-columntransformer-one-columns-to-many-columns/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="boost exact phrase search results ranking in elasticsearch">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer">
                         
-                        <span class="card-title">boost exact phrase search results ranking in elasticsearch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/search/" class="post-category">
-                                    search
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
-                        
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -607,7 +549,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-14
                             </span>
                         <span class="publish-author">
                             
@@ -625,16 +567,65 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/transformer/">
+                        <span class="chip bg-color">transformer</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/scikit-learn/">
+                        <span class="chip bg-color">scikit-learn</span>
                     </a>
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/02/13/potential-risk-of-chatgpt/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Unveiling the Future Challenges for ChatGPT, Navigating the Risks Ahead">
+                        
+                        <span class="card-title">Unveiling the Future Challenges for ChatGPT, Navigating the Risks Ahead</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/gpt3/">
+                        <span class="chip bg-color">gpt3</span>
+                    </a>
+                    
+                    <a href="/tags/chatgpt/">
+                        <span class="chip bg-color">chatgpt</span>
                     </a>
                     
                 </div>

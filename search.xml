@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer</title>
+      <link href="2023/02/14/sklearn-columntransformer-one-columns-to-many-columns/"/>
+      <url>2023/02/14/sklearn-columntransformer-one-columns-to-many-columns/</url>
+      
+        <content type="html"><![CDATA[<p>Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer</p><p>When working with tabular data, it’s common to have to transform one or more columns to make them more amenable to analysis or modeling. In many cases, these transformations can be easily accomplished using the pandas library. However, when working with large datasets or building machine learning pipelines, it can be more efficient to use scikit-learn’s ColumnTransformer class to apply transformations to specific columns of the data.</p><p>In this blog post, we’ll demonstrate how to use a custom transformer with scikit-learn’s <strong>ColumnTransformer</strong> to transform one or more columns of a Pandas DataFrame.</p><h2 id="Example-1-Transforming-NumPy-arrays"><a href="#Example-1-Transforming-NumPy-arrays" class="headerlink" title="Example 1: Transforming NumPy arrays"></a>Example 1: Transforming NumPy arrays</h2><p>Let’s start with a simple example where we have a NumPy array with three columns, and we want to transform the first two columns into two new columns.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">from sklearn.compose import ColumnTransformer</span><br><span class="line">from sklearn.pipeline import Pipeline</span><br><span class="line"></span><br><span class="line">class CustomTransformer(BaseEstimator, TransformerMixin):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line">    </span><br><span class="line">    def transform(self, X):</span><br><span class="line">        # Here, X is a 2D numpy array or pandas DataFrame</span><br><span class="line">        # Transform columns 0 and 1 into multiple columns</span><br><span class="line">        transformed_cols = np.column_stack([X[:, 0]**2, np.sqrt(X[:, 1])])</span><br><span class="line">        # Return the transformed columns as a 2D numpy array</span><br><span class="line">        return transformed_cols</span><br><span class="line">    </span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line">        return self</span><br><span class="line">    </span><br><span class="line"># Example usage</span><br><span class="line">X = np.array([[1, 4, 7], [2, 9, 8], [3, 16, 9]])</span><br><span class="line">transformer = ColumnTransformer(</span><br><span class="line">    transformers=[(&#x27;custom&#x27;, CustomTransformer(), [0, 1])],</span><br><span class="line">    remainder=&#x27;passthrough&#x27;)</span><br><span class="line"># The &#x27;remainder&#x27; parameter preserves any columns not transformed</span><br><span class="line">transformed_X = transformer.fit_transform(X)</span><br><span class="line">print(transformed_X)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, the CustomTransformer class takes two input columns and transforms them into two output columns. The ColumnTransformer applies this transformer to columns 0 and 1 of the input data, and preserves column 2. The “passthrough” option has been used to preserve the remaining column in its original form.</p><h2 id="Example-2-Transforming-Pandas-DataFrames"><a href="#Example-2-Transforming-Pandas-DataFrames" class="headerlink" title="Example 2: Transforming Pandas DataFrames"></a>Example 2: Transforming Pandas DataFrames</h2><p>Now, let’s modify the previous example to work with a Pandas DataFrame instead of a NumPy array.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">from sklearn.compose import ColumnTransformer</span><br><span class="line">from sklearn.pipeline import Pipeline</span><br><span class="line"></span><br><span class="line">class CustomTransformer(BaseEstimator, TransformerMixin):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line">    </span><br><span class="line">    def transform(self, X):</span><br><span class="line">        # Here, X is a pandas DataFrame</span><br><span class="line">        # Transform columns &#x27;A&#x27; and &#x27;B&#x27; into multiple columns</span><br><span class="line">        transformed_cols = pd.DataFrame(&#123;&#x27;A_squared&#x27;: X[&#x27;A&#x27;]**2, </span><br><span class="line">                                         &#x27;B_sqrt&#x27;: X[&#x27;B&#x27;]**0.5&#125;)</span><br><span class="line">        # Return the transformed columns as a pandas DataFrame</span><br><span class="line">        return transformed_cols</span><br><span class="line">    </span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line">        return self</span><br><span class="line">    </span><br><span class="line"># Example usage</span><br><span class="line">df = pd.DataFrame(&#123;&#x27;A&#x27;: [1, 2, 3], &#x27;B&#x27;: [4, 9, 16], &#x27;C&#x27;: [7, 8, 9]&#125;)</span><br><span class="line">transformer = ColumnTransformer(</span><br><span class="line">    transformers=[(&#x27;custom&#x27;, CustomTransformer(), [&#x27;A&#x27;, &#x27;B&#x27;])], </span><br><span class="line">    remainder=&#x27;passthrough&#x27;)</span><br><span class="line"># The &#x27;remainder&#x27; parameter preserves any columns not transformed</span><br><span class="line">transformed_df = transformer.fit_transform(df)</span><br><span class="line">print(transformed_df)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, the CustomTransformer class takes two input columns (‘A’ and ‘B’) and transforms them into two output columns (‘A_squared’ and ‘B_sqrt’) in a pandas DataFrame. The ColumnTransformer applies this transformer to columns ‘A’ and ‘B’ of the input data, and preserves column ‘C’. The “passthrough” option has been used to preserve the remaining column ‘C’ in its original form.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> transformer </tag>
+            
+            <tag> scikit-learn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Unveiling the Future Challenges for ChatGPT, Navigating the Risks Ahead</title>
       <link href="2023/02/13/potential-risk-of-chatgpt/"/>
       <url>2023/02/13/potential-risk-of-chatgpt/</url>
@@ -286,9 +313,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> FAISS </tag>
-            
             <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
             
         </tags>
       
@@ -2098,11 +2125,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -2181,9 +2208,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
