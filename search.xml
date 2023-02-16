@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>AlphaGo and ChatGPT, The Similarities Between Two AI Titans</title>
+      <link href="2023/02/15/alphago-and-chatgpt/"/>
+      <url>2023/02/15/alphago-and-chatgpt/</url>
+      
+        <content type="html"><![CDATA[<p>AlphaGo and ChatGPT are two of the most famous and groundbreaking AI systems ever created.<br>While they were designed for different purposes, they share some important similarities, including the use of deep learning, neural networks, and a focus on achieving human-like performance.<br>And now, thanks to a recent announcement from DeepMind, we can add one more similarity to the list: the open-sourcing of AlphaGo’s Monte Carlo Tree Search algorithm.</p><p>Monte Carlo Tree Search is a search algorithm that solves for the best move in turn-based games by selecting, expanding, simulating, and updating the nodes in a strategy tree.<br>It is the heart of AlphaGo and AlphaZero, and it is arguably the most complex component of these AI systems.<br>Making it efficient is even more nontrivial. But with the release of the “mctx” repository on Github,<br>developers can now access JAX-native Monte Carlo Tree Search that runs on batches of inputs in parallel and blazing fast.</p><p>But what makes AlphaGo and ChatGPT so similar in the first place? </p><ul><li>Deep Learning: Both AlphaGo and ChatGPT use deep learning techniques to process and understand large amounts of data. AlphaGo was trained on thousands of human expert games, while ChatGPT was trained on a massive amount of text data from the internet.</li><li>Neural Networks: Both systems use neural networks to process data and make predictions. AlphaGo uses a combination of convolutional neural networks and recurrent neural networks to analyze the board state and predict the best moves, while ChatGPT uses a transformer-based neural network to generate human-like text.</li><li>Reinforcement Learning: AlphaGo uses reinforcement learning to train its neural network by playing millions of games against itself and learning from its mistakes. ChatGPT does not use reinforcement learning but instead uses unsupervised learning to train its neural network on a massive amount of text data.</li><li>Human-like performance: Both AlphaGo and ChatGPT are designed to achieve human-like performance in their respective domains. AlphaGo defeated the world champion Go player, Lee Sedol, in a historic match, while ChatGPT can generate text that is difficult to distinguish from that written by humans.</li><li>Groundbreaking achievements: AlphaGo and ChatGPT have both achieved groundbreaking achievements in their respective fields. AlphaGo was the first AI system to defeat a human world champion in Go, while ChatGPT is one of the most advanced natural language processing systems in the world.</li></ul><p>With the release of the “mctx” repository, developers can now explore the inner workings of AlphaGo and AlphaZero,<br>and build upon this groundbreaking research to create their own AI systems.<br>The open-sourcing of this code is a testament to the importance of collaboration and the power of open science.</p><p><strong>mctx</strong> <a href="https://github.com/deepmind/mctx">Link</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> alphago </tag>
+            
+            <tag> chatgpt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Transforming One or More Columns of a Pandas DataFrame using ColumnTransformer</title>
       <link href="2023/02/14/sklearn-columntransformer-one-columns-to-many-columns/"/>
       <url>2023/02/14/sklearn-columntransformer-one-columns-to-many-columns/</url>
@@ -313,9 +340,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> FAISS </tag>
-            
             <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
             
         </tags>
       
