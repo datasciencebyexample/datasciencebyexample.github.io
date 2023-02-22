@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/02/22/website-ad-ranking-general-rule/</loc>
+        <lastmod>2023-02-22T22:58:23.329Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/02/15/alphago-and-chatgpt/</loc>
         <lastmod>2023-02-16T03:12:45.733Z</lastmod>
         <changefreq>weekly</changefreq>
