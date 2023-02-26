@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>General Rule of Maximizing Ad Ranking, Balancing Relevance and Bid for Optimal Results</title>
-      <link href="2023/02/22/website-ad-ranking-general-rule/"/>
-      <url>2023/02/22/website-ad-ranking-general-rule/</url>
+      <title>How does two tower system work in the recommender system</title>
+      <link href="2023/02/26/two-tower-system-in-recommender-system/"/>
+      <url>2023/02/26/two-tower-system-in-recommender-system/</url>
       
-        <content type="html"><![CDATA[<p>Ad ranking is an essential aspect of online advertising that impacts both the website that displays the ads and the advertisers who create them. To optimize ad ranking, websites need to balance different factors, such as ad relevance and bid, to ensure that the most valuable and relevant ads are displayed to users.</p><p>One of the most important factors in ad ranking is ad relevance. Users are more likely to engage with ads that are relevant to their interests, needs, and search queries. Thus, websites need to evaluate the quality of ads and prioritize those that are most relevant to their users. This can be achieved by using algorithms that take into account several factors, such as click-through rate, ad quality score, and user demographics.</p><p>Another important factor to consider is bid. Advertisers typically bid on the cost per click (CPC) or cost per impression (CPM) for their ads. Websites can use this bid amount to determine the ad’s placement and frequency. However, simply selecting the highest bid could lead to irrelevant ads being shown to users, resulting in a poor user experience.</p><p>To balance ad relevance and bid, websites need to evaluate their algorithm and determine the best way to weigh these factors. This may involve regularly updating the algorithm, monitoring user behavior, and adjusting the weight given to different factors as needed. Additionally, websites can encourage advertisers to create high-quality, relevant ads by providing guidelines and resources.</p><p>A basic formula that can be used to determine ad ranking is the Ad Rank formula:</p><p><strong>Ad Rank = Bid x Quality Score</strong></p><p>This formula takes into account both the advertiser’s bid amount and the quality of the ad, with the quality score being a measure of the ad’s relevance and overall value to users.</p><p>When optimizing ad ranking, websites need to balance user experience, advertiser objectives, and revenue generation. By finding the right balance between ad relevance and bid, websites can provide a better user experience, attract high-quality advertisers, and maximize their revenue potential.</p><p>In conclusion, ad ranking is a complex process that involves balancing multiple factors, including ad relevance and bid. By using algorithms that take into account these factors and utilizing the Ad Rank formula, websites can optimize their ad ranking and provide the best user experience while generating revenue from advertising.</p>]]></content>
+        <content type="html"><![CDATA[<p>The two-tower recommendation system is a type of collaborative filtering algorithm used in recommendation systems. It is called a “two-tower” system because it consists of two neural networks or “towers” that work together to generate personalized recommendations for users.</p><h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work"></a>How does it work</h2><p>The first tower is called the “user tower.” It takes as input a user’s historical interactions with items, such as the products they have purchased or the movies they have watched, and converts this information into a fixed-length embedding vector that represents the user’s preferences. This embedding vector is then passed to the second tower.</p><p>The second tower is called the “item tower.” It takes as input the metadata of all items in the catalog, such as the title, description, genre, and other features. The item tower also converts this information into a fixed-length embedding vector that represents each item.</p><p>The two embedding vectors from the user and item towers are then compared using a similarity function, such as cosine similarity. The similarity score indicates how similar the user’s preferences are to each item in the catalog. The items with the highest similarity scores are recommended to the user.</p><p>The two-tower recommendation system is a popular approach to personalized recommendation because it can handle large-scale and sparse data sets, and can capture complex user-item interactions. It has been used in a variety of applications, such as e-commerce, streaming services, and social media platforms.</p><h2 id="How-training-is-done-using-deep-learning"><a href="#How-training-is-done-using-deep-learning" class="headerlink" title="How training is done using deep learning"></a>How training is done using deep learning</h2><p> In the two-tower recommendation system, the neural networks that generate the user and item embeddings need to be optimized in such a way that the dot product of user embeddings and item embeddings are higher for user purchased items and lower for not purchased items. This is typically achieved through a process called training, where the model is presented with a set of user-item interactions and learns to predict the likelihood of each user interacting with each item in the future.</p><p>During training, the model is optimized to minimize a loss function, which measures the difference between the predicted and actual user-item interactions. The most commonly used loss function in recommendation systems is the binary cross-entropy loss, which penalizes the model for making incorrect predictions.</p><p>To optimize the neural networks, backpropagation is used to compute the gradients of the loss with respect to the model parameters. The gradients are then used to update the model parameters using an optimization algorithm such as stochastic gradient descent (SGD) or Adam. The process of updating the model parameters is repeated for multiple epochs until the model converges to a set of optimal parameters.</p><p>By optimizing the neural networks in this way, the model learns to generate user and item embeddings that capture the underlying patterns and relationships in the data, and can make accurate predictions of user-item interactions. This allows the two-tower recommendation system to provide personalized recommendations that are tailored to the preferences of each individual user.</p><h2 id="Efficient-search-during-inference-time"><a href="#Efficient-search-during-inference-time" class="headerlink" title="Efficient search during inference time"></a>Efficient search during inference time</h2><p>When calculating the dot product of a user embedding with all the item embeddings in the item tower, there are several techniques that can be used to make the computation more efficient and faster. Here are a few approaches:</p><p>Use matrix multiplication: Rather than calculating the dot product between the user embedding and each item embedding one-by-one, it is more efficient to perform a matrix multiplication between the user embedding and the entire item embedding matrix. This can be done using the numpy or PyTorch library, which are optimized for matrix computations.</p><p>Use approximate nearest neighbor (ANN) search: When the number of items is very large, it can be computationally expensive to calculate the dot product between the user embedding and all the item embeddings. One approach to speed up the search is to use an approximate nearest neighbor search algorithm, such as locality-sensitive hashing (LSH) or k-d trees. These algorithms allow us to quickly identify a smaller set of candidate items that are most similar to the user’s preferences.</p><p>Use a cache: Since the user embedding is fixed during inference, we can cache the dot products between the user embedding and all item embeddings. This can be done ahead of time during training or on-the-fly during inference. By caching the dot products, we can avoid having to compute them every time a user requests recommendations, which can significantly speed up the recommendation process.</p><p>Use parallelization: If the hardware allows for it, we can parallelize the computation of the dot products between the user embedding and all item embeddings. This can be done using multi-threading or GPUs to perform the computation in parallel, which can further speed up the recommendation process.</p><p>By using these techniques, we can make the computation of the dot product between the user embedding and all item embeddings more efficient and faster, which can help to improve the performance of the recommendation system.</p>]]></content>
       
       
       <categories>
@@ -20,7 +20,9 @@
       
         <tags>
             
-            <tag> adranking </tag>
+            <tag> two tower system </tag>
+            
+            <tag> recommender system </tag>
             
         </tags>
       
@@ -102,6 +104,31 @@
             <tag> gpt3 </tag>
             
             <tag> chatgpt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>General Rule of Maximizing Ad Ranking, Balancing Relevance and Bid for Optimal Results</title>
+      <link href="2023/02/12/website-ad-ranking-general-rule/"/>
+      <url>2023/02/12/website-ad-ranking-general-rule/</url>
+      
+        <content type="html"><![CDATA[<p>Ad ranking is an essential aspect of online advertising that impacts both the website that displays the ads and the advertisers who create them. To optimize ad ranking, websites need to balance different factors, such as ad relevance and bid, to ensure that the most valuable and relevant ads are displayed to users.</p><p>One of the most important factors in ad ranking is ad relevance. Users are more likely to engage with ads that are relevant to their interests, needs, and search queries. Thus, websites need to evaluate the quality of ads and prioritize those that are most relevant to their users. This can be achieved by using algorithms that take into account several factors, such as click-through rate, ad quality score, and user demographics.</p><p>Another important factor to consider is bid. Advertisers typically bid on the cost per click (CPC) or cost per impression (CPM) for their ads. Websites can use this bid amount to determine the ad’s placement and frequency. However, simply selecting the highest bid could lead to irrelevant ads being shown to users, resulting in a poor user experience.</p><p>To balance ad relevance and bid, websites need to evaluate their algorithm and determine the best way to weigh these factors. This may involve regularly updating the algorithm, monitoring user behavior, and adjusting the weight given to different factors as needed. Additionally, websites can encourage advertisers to create high-quality, relevant ads by providing guidelines and resources.</p><p>A basic formula that can be used to determine ad ranking is the Ad Rank formula:</p><p><strong>Ad Rank = Bid x Quality Score</strong></p><p>This formula takes into account both the advertiser’s bid amount and the quality of the ad, with the quality score being a measure of the ad’s relevance and overall value to users.</p><p>When optimizing ad ranking, websites need to balance user experience, advertiser objectives, and revenue generation. By finding the right balance between ad relevance and bid, websites can provide a better user experience, attract high-quality advertisers, and maximize their revenue potential.</p><p>In conclusion, ad ranking is a complex process that involves balancing multiple factors, including ad relevance and bid. By using algorithms that take into account these factors and utilizing the Ad Rank formula, websites can optimize their ad ranking and provide the best user experience while generating revenue from advertising.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> adranking </tag>
             
         </tags>
       
@@ -1082,11 +1109,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2177,11 +2204,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       

@@ -9,8 +9,16 @@
 
 
     <url>
-        <loc>https://datasciencebyexample.github.io/2023/02/22/website-ad-ranking-general-rule/</loc>
-        <lastmod>2023-02-22T22:58:23.329Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/2023/02/26/two-tower-system-in-recommender-system/</loc>
+        <lastmod>2023-02-26T22:59:19.800Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2023/02/12/website-ad-ranking-general-rule/</loc>
+        <lastmod>2023-02-26T22:56:59.128Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
