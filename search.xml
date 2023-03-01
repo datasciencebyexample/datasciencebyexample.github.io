@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Python 3.7+, One-liner Code to Remove Duplicates in a List While Maintaining the Original Order of Elements</title>
+      <link href="2023/03/01/one-line-of-python-code-to-remove-duplicates-in-list-and-maintain-order/"/>
+      <url>2023/03/01/one-line-of-python-code-to-remove-duplicates-in-list-and-maintain-order/</url>
+      
+        <content type="html"><![CDATA[<p>Python is a popular programming language for its simplicity and ease of use. When working with lists in Python, you may encounter a scenario where you need to remove duplicates while maintaining the original order of the elements. In this blog post, we’ll explore how to achieve this using a one-liner Python code and why we can do it in Python 3.7 and above.</p><p>Consider the following list of integers:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">my_list = [1, 2, 3, 4, 2, 1, 5, 6, 7, 6]</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>If we want to remove the duplicates in this list, we can use the built-in set() function. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">new_list = list(set(my_list))</span><br></pre></td></tr></table></figure><p>This will create a new list that contains only the unique elements of my_list. However, this method does not maintain the original order of the elements. The order of the elements in the new list will be arbitrary.</p><p>To maintain the original order of the elements, we can use a one-liner Python code that uses the dict.fromkeys() method and the fact that dictionaries in Python 3.7 and above maintain the order of insertion. Here’s the code:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">new_list = list(dict.fromkeys(my_list))</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>This code creates a dictionary from the elements of my_list using dict.fromkeys(). Since dictionaries in Python 3.7 and above maintain the order of insertion, the order of the keys in the dictionary will be the same as the order of the elements in the original list. We then convert the dictionary keys back to a list using the built-in list() function. The resulting new_list will contain only the unique elements of my_list, while maintaining their original order.</p><p>This method is efficient and easy to use, making it a useful tool for working with lists in Python. The ability of dictionaries to maintain the order of insertion is a relatively new feature in Python, introduced in version 3.7. Prior to version 3.7, dictionaries were unordered, and this method would not have worked.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How does two tower system work in the recommender system</title>
       <link href="2023/02/26/two-tower-system-in-recommender-system/"/>
       <url>2023/02/26/two-tower-system-in-recommender-system/</url>
@@ -2204,11 +2229,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
