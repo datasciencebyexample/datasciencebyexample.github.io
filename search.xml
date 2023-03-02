@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>One-liner Code to Remove Duplicates in a List While Maintaining the Original Order of Elements</title>
+      <title>One-line Code to Remove Duplicates in a List While Maintaining the Original Order of Elements</title>
       <link href="2023/03/01/one-line-of-python-code-to-remove-duplicates-in-list-and-maintain-order/"/>
       <url>2023/03/01/one-line-of-python-code-to-remove-duplicates-in-list-and-maintain-order/</url>
       
@@ -417,9 +417,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> FAISS </tag>
-            
             <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
             
         </tags>
       
@@ -2229,11 +2229,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
