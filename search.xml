@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>What impact can we expect on the advertising market in light of the ChatGPT era?</title>
+      <link href="2023/03/05/how-chatgpt-affect-advertising-market/"/>
+      <url>2023/03/05/how-chatgpt-affect-advertising-market/</url>
+      
+        <content type="html"><![CDATA[<p>We know this formula:<br>Ads revenue = Traffic x Ad impressions x Effective cost per mille (eCPM)</p><p>Let’s first look at traffic.<br>Compared with search, products like ChatGPT that use natural language interaction can meet richer scenarios and more specific needs, and the multi-round interaction mode of dialogue will undoubtedly increase overall traffic. If these types of products are subsequently integrated into life scenarios such as smart speakers, their user value and frequency of use are expected to further increase.</p><p>Now let’s look at Impressions.<br>Compared with search and other internet advertising, dialogue is actually a more natural user interaction interface, and users’ tolerance for ads will naturally decrease. Users will definitely be resentful of forced or excessive ads.Therefore, there will be higher requirements for ad accuracy and native degree, which presents a practical challenge for new-generation ad product managers in designing ad products in the era of ChatGPT. One possible approach is that there will be multiple forms of ads.</p><p>For example, if a user asks for platform recommendations for a suitable car, then it is acceptable to directly insert car ads that meet the requirements. When users are engaged in a conversation about lifestyle, brand ads can be subtly embedded in the content.</p><p>Finally, let’s look at eCPM.<br>Undoubtedly, compared with search and other internet advertising, ads in the ChatGPT era will be better able to meet user needs and directly improve eCPM. Dialogue commands are intent inputs that are of higher dimensionality than search keywords and browsing behaviors.</p><p>This means that the platform can directly obtain user intent rather than relying on algorithmic prediction and calculation, making it more likely to match more suitable ads, which is the key to improving eCPM.</p><p>So in the end which direction do you think the ads revenues will go? Probably the key is how to get more personalized ads in the era of ChatGPT!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> chatgpt </tag>
+            
+            <tag> advertising </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>One-line Code to Remove Duplicates in a List While Maintaining the Original Order of Elements</title>
       <link href="2023/03/01/one-line-of-python-code-to-remove-duplicates-in-list-and-maintain-order/"/>
       <url>2023/03/01/one-line-of-python-code-to-remove-duplicates-in-list-and-maintain-order/</url>
