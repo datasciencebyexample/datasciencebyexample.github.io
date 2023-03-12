@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>How to Prettify and Visualize JSON Data in Python</title>
+      <link href="2023/03/11/how-to-prettify-and-visualize-json-data/"/>
+      <url>2023/03/11/how-to-prettify-and-visualize-json-data/</url>
+      
+        <content type="html"><![CDATA[<p>JSON (JavaScript Object Notation) is a lightweight data interchange format that is widely used in web applications and APIs. JSON data can be difficult to read and visualize, especially if it contains nested structures and arrays. In this blog post, we will learn how to use Python to prettify and visualize JSON data.</p><h2 id="Using-json-dumps"><a href="#Using-json-dumps" class="headerlink" title="Using json.dumps()"></a>Using <code>json.dumps()</code></h2><p>The easiest way to prettify and visualize JSON data in Python is to use the json.dumps() function. This function converts a Python data structure to a JSON string and applies indentation to make it more readable.</p><p>Here’s an example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line"># Define a JSON data structure</span><br><span class="line">data = &#123;</span><br><span class="line">    &quot;name&quot;: &quot;John&quot;,</span><br><span class="line">    &quot;age&quot;: 30,</span><br><span class="line">    &quot;city&quot;: &quot;New York&quot;,</span><br><span class="line">    &quot;pets&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Fluffy&quot;,</span><br><span class="line">            &quot;species&quot;: &quot;cat&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Buddy&quot;,</span><br><span class="line">            &quot;species&quot;: &quot;dog&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Use the json.dumps() function to prettify and visualize the data</span><br><span class="line">print(json.dumps(data, indent=4))</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>output</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;John&quot;,</span><br><span class="line">    &quot;age&quot;: 30,</span><br><span class="line">    &quot;city&quot;: &quot;New York&quot;,</span><br><span class="line">    &quot;pets&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Fluffy&quot;,</span><br><span class="line">            &quot;species&quot;: &quot;cat&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Buddy&quot;,</span><br><span class="line">            &quot;species&quot;: &quot;dog&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>As you can see, the json.dumps() function takes two arguments: the data structure to be prettified and the number of spaces to use for indentation. In this example, the indent argument is set to 4, which means that each level of nesting is indented by four spaces. This makes the data structure easier to read and visualize.</p><h2 id="Converting-a-JSON-String-to-a-Python-Data-Structure"><a href="#Converting-a-JSON-String-to-a-Python-Data-Structure" class="headerlink" title="Converting a JSON String to a Python Data Structure"></a>Converting a JSON String to a Python Data Structure</h2><p>If you have a JSON string instead of a Python data structure, you need to use the json.loads() function to convert it to a Python data structure before you can use json.dumps() to prettify and visualize it.</p><p>Here’s an example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line"># Define a JSON string</span><br><span class="line">json_string = &#x27;&#123;&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;city&quot;: &quot;New York&quot;, &quot;pets&quot;: [&#123;&quot;name&quot;: &quot;Fluffy&quot;, &quot;species&quot;: &quot;cat&quot;&#125;, &#123;&quot;name&quot;: &quot;Buddy&quot;, &quot;species&quot;: &quot;dog&quot;&#125;]&#125;&#x27;</span><br><span class="line"></span><br><span class="line"># Use json.loads() to convert the JSON string to a Python data structure</span><br><span class="line">data = json.loads(json_string)</span><br><span class="line"></span><br><span class="line"># Use json.dumps() to prettify and visualize the data</span><br><span class="line">print(json.dumps(data, indent=4))</span><br></pre></td></tr></table></figure><p>output</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;John&quot;,</span><br><span class="line">    &quot;age&quot;: 30,</span><br><span class="line">    &quot;city&quot;: &quot;New York&quot;,</span><br><span class="line">    &quot;pets&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Fluffy&quot;,</span><br><span class="line">            &quot;species&quot;: &quot;cat&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;Buddy&quot;,</span><br><span class="line">            &quot;species&quot;: &quot;dog&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, we first defined a JSON string json_string. We then used json.loads() to convert it to a Python data structure, which we stored in the variable data. Finally, we used json.dumps() to prettify and visualize the data variable.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> json data visualization </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>What impact can we expect on the advertising market in light of the ChatGPT era?</title>
       <link href="2023/03/05/how-chatgpt-affect-advertising-market/"/>
       <url>2023/03/05/how-chatgpt-affect-advertising-market/</url>
@@ -2256,11 +2281,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
