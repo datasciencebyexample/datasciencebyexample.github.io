@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Difference between `json` and `data` parameter of the HTTP POST Requests with JSON Data in Python using the Requests Library</title>
+      <link href="2023/03/12/using-json-or-data-parameter-in-requests-post/"/>
+      <url>2023/03/12/using-json-or-data-parameter-in-requests-post/</url>
+      
+        <content type="html"><![CDATA[<p>HTTP POST requests are a common way to send data to web servers from client applications. When sending JSON data as the body of a POST request, the requests library in Python provides two options: using the json parameter or manually converting the payload dictionary to a JSON string and using the data parameter. In this post, we’ll discuss both options and when to use each one.</p><h2 id="Using-the-json-Parameter"><a href="#Using-the-json-Parameter" class="headerlink" title="Using the json Parameter"></a>Using the json Parameter</h2><p>The json parameter is the easiest way to send JSON data as the body of a POST request using the requests library. Here’s an example code snippet:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &quot;https://example.com/api&quot;</span><br><span class="line">payload = &#123;&quot;key&quot;: &quot;value&quot;&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url, json=payload)</span><br><span class="line"></span><br><span class="line">print(response.status_code)</span><br><span class="line">print(response.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, we define a url variable that represents the endpoint where we want to send the POST request. We also define a payload variable that contains the JSON data we want to send. To send the POST request, we use the requests.post() method and pass the url and json parameters. The json parameter automatically sets the Content-Type header to application/json and serializes the payload dictionary to a JSON string. The response variable stores the server’s response, which we can then inspect using response.status_code and response.text.</p><p>Using the json parameter is the preferred way to send JSON data in a POST request because it’s more concise and Pythonic. It also automatically sets the Content-Type header to application/json, which is the recommended way to send JSON data in an HTTP POST request.</p><h2 id="Using-the-data-Parameter"><a href="#Using-the-data-Parameter" class="headerlink" title="Using the data Parameter"></a>Using the data Parameter</h2><p>The data parameter is an alternative way to send JSON data in a POST request using the requests library. Here’s an example code snippet:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line">url = &quot;https://example.com/api&quot;</span><br><span class="line">payload = &#123;&quot;key&quot;: &quot;value&quot;&#125;</span><br><span class="line"></span><br><span class="line">headers = &#123;&quot;Content-Type&quot;: &quot;application/json&quot;&#125;</span><br><span class="line">data = json.dumps(payload)</span><br><span class="line"></span><br><span class="line">response = requests.post(url, headers=headers, data=data)</span><br><span class="line"></span><br><span class="line">print(response.status_code)</span><br><span class="line">print(response.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, we define a headers dictionary that sets the Content-Type header to application/json. We also convert the payload dictionary to a JSON string using the json.dumps() method and store it in a data variable. To send the POST request, we use the requests.post() method and pass the url, headers, and data parameters. The data parameter expects a byte string, which is why we convert the JSON string to a byte string using json.dumps().</p><p>Using the data parameter gives you more control over the headers and payload of the POST request, but it’s less concise and requires more manual work than using the json parameter. You need to manually set the Content-Type header and serialize the payload dictionary to a JSON string using the json.dumps() method.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this post, we discussed two ways to send JSON data as the body of a POST request in Python using the requests library: using the json parameter and using the data parameter. Using the json parameter is the recommended way because it’s more concise, Pythonic, and sets the Content-Type header automatically. However, the data parameter gives you more control over the headers and payload of the POST request, which can be useful in certain scenarios.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> requests </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to Prettify and Visualize JSON Data in Python</title>
       <link href="2023/03/11/how-to-prettify-and-visualize-json-data/"/>
       <url>2023/03/11/how-to-prettify-and-visualize-json-data/</url>
