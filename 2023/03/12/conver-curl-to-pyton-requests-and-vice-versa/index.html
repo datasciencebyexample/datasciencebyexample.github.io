@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="how to convert timestamp column of pandas dataframe into hour and day features using transformer, DataScienceTribe">
+    <meta name="keywords" content="How to convert CURL to python requests and vice versa, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>how to convert timestamp column of pandas dataframe into hour and day features using transformer | DataScienceTribe</title>
+    <title>How to convert CURL to python requests and vice versa | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</h1>
+                    <h1 class="description center-align post-title">How to convert CURL to python requests and vice versa</h1>
                 </div>
             </div>
         </div>
@@ -356,12 +356,12 @@
                                 <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
+                            <a href="/tags/curl/">
+                                <span class="chip bg-color">curl</span>
                             </a>
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/requests/">
+                                <span class="chip bg-color">requests</span>
                             </a>
                         
                     </div>
@@ -372,8 +372,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +385,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-04
+                    2023-03-12
                 </div>
                 
 
@@ -406,14 +406,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line">       return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;timestamp&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">dayandhour_transformer = dayandhour_Transformer() </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">df = dayandhour_transformer.transform(df)</span><br></pre></td></tr></table></figure>
+                <p><code>curl</code> and Python <code>requests</code> are both powerful tools for sending HTTP requests. While curl is a command-line tool that allows you to send requests directly from your terminal, Python’s requests library provides a more programmatic way to send requests from within Python code. In this article, we’ll explore how to convert between curl and Python requests, so you can use the tool that makes the most sense for your workflow.</p>
+<h2 id="Converting-curl-to-Python-requests"><a href="#Converting-curl-to-Python-requests" class="headerlink" title="Converting curl to Python requests"></a>Converting <code>curl</code> to Python <code>requests</code></h2><p>The basic syntax of a curl command looks like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl [OPTIONS] URL</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>Suppose we have a dataframe df with a column “timestamp”.</p>
-<p>before apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(df[&#x27;timestamp&#x27;])</span><br><span class="line"></span><br><span class="line">0        2021-03-28 03:28:10.205000</span><br><span class="line"></span><br><span class="line">1        2021-03-28 21:31:43.290000</span><br><span class="line"></span><br><span class="line">2        2021-03-28 21:16:18.771000</span><br><span class="line"></span><br><span class="line">3        2021-03-28 18:39:13.344000</span><br><span class="line"></span><br><span class="line">4        2021-03-28 00:54:57.544000</span><br></pre></td></tr></table></figure>
+<p>When converting a curl command to Python requests, we need to translate the options and URL into Python code.</p>
+<p>Here’s an example curl command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -X POST https://example.com/api/v1/users \</span><br><span class="line">    -H &#x27;Content-Type: application/json&#x27; \</span><br><span class="line">    -H &#x27;Authorization: Bearer YOUR_API_KEY&#x27; \</span><br><span class="line">    -d &#x27;&#123;&quot;username&quot;: &quot;john_doe&quot;, &quot;email&quot;: &quot;john_doe@example.com&quot;&#125;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>after we apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print( df[[&#x27;hour&#x27;,&#x27;dayofweek&#x27;]])</span><br><span class="line"></span><br><span class="line">       hour  dayofweek</span><br><span class="line"></span><br><span class="line">0         3          6</span><br><span class="line"></span><br><span class="line">1        21          6</span><br><span class="line"></span><br><span class="line">2        21          6</span><br><span class="line"></span><br><span class="line">3        18          6</span><br><span class="line"></span><br><span class="line">4         0          6</span><br></pre></td></tr></table></figure>
+<p>To convert this curl command to Python requests, we can write the following code:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &#x27;https://example.com/api/v1/users&#x27;</span><br><span class="line">headers = &#123;</span><br><span class="line">    &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,</span><br><span class="line">    &#x27;Authorization&#x27;: &#x27;Bearer YOUR_API_KEY&#x27;</span><br><span class="line">&#125;</span><br><span class="line">data = &#123;</span><br><span class="line">    &#x27;username&#x27;: &#x27;john_doe&#x27;,</span><br><span class="line">    &#x27;email&#x27;: &#x27;john_doe@example.com&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url, headers=headers, json=data)</span><br><span class="line"></span><br><span class="line">print(response.status_code)</span><br><span class="line">print(response.json())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>In this example, we use the requests.post() method to send a POST request to the URL <code>https://example.com/api/v1/users</code> with the JSON payload <code>&#123;&quot;username&quot;: &quot;john_doe&quot;, &quot;email&quot;: &quot;john_doe@example.com&quot;&#125;</code>. We also include the Content-Type and Authorization headers.</p>
+<h2 id="Converting-Python-requests-to-curl"><a href="#Converting-Python-requests-to-curl" class="headerlink" title="Converting Python requests to curl"></a>Converting Python requests to curl</h2><p>Converting Python requests code to a curl command is a bit trickier, as there’s no direct equivalent for the requests library on the command line. However, we can use the –data or -d option to pass data to the curl command, and the -H option to set headers.</p>
+<p>Here’s an example Python GET requests script:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &#x27;https://example.com/api/v1/users&#x27;</span><br><span class="line">headers = &#123;</span><br><span class="line">    &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,</span><br><span class="line">    &#x27;Authorization&#x27;: &#x27;Bearer YOUR_API_KEY&#x27;</span><br><span class="line">&#125;</span><br><span class="line">params = &#123;</span><br><span class="line">    &#x27;username&#x27;: &#x27;john_doe&#x27;,</span><br><span class="line">    &#x27;sort&#x27;: &#x27;name&#x27;,</span><br><span class="line">    &#x27;order&#x27;: &#x27;asc&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url, headers=headers, params=params)</span><br><span class="line"></span><br><span class="line">print(response.status_code)</span><br><span class="line">print(response.json())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>To convert this Python requests code to a curl command, we can use the following command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -X GET &#x27;https://example.com/api/v1/users?username=john_doe&amp;sort=name&amp;order=asc&#x27; \</span><br><span class="line">    -H &#x27;Content-Type: application/json&#x27; \</span><br><span class="line">    -H &#x27;Authorization: Bearer YOUR_API_KEY&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>In this example, we use the -X GET option to specify that we’re sending a GET request, and we pass the URL and query parameters as a string. We also include the Content-Type and Authorization headers.</p>
 
                 
             </div>
@@ -440,7 +452,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/">https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/03/12/conver-curl-to-pyton-requests-and-vice-versa/">https://datasciencebyexample.github.io/2023/03/12/conver-curl-to-pyton-requests-and-vice-versa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -482,12 +494,12 @@
                                     <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
+                                <a href="/tags/curl/">
+                                    <span class="chip bg-color">curl</span>
                                 </a>
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/requests/">
+                                    <span class="chip bg-color">requests</span>
                                 </a>
                             
                         </div>
@@ -533,70 +545,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/05/2021-06-05-1/">
+                <a href="/2023/03/12/conver-curl-to-pyton-requests-and-vice-versa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="boost exact phrase search results ranking in elasticsearch">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="How to convert CURL to python requests and vice versa">
                         
-                        <span class="card-title">boost exact phrase search results ranking in elasticsearch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/search/" class="post-category">
-                                    search
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
-                        
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">How to convert CURL to python requests and vice versa</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -607,14 +567,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -629,12 +589,65 @@
                         <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/curl/">
+                        <span class="chip bg-color">curl</span>
                     </a>
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/requests/">
+                        <span class="chip bg-color">requests</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/03/12/using-json-or-data-parameter-in-requests-post/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Difference between `json` and `data` parameter of the HTTP POST Requests with JSON Data in Python using the Requests Library">
+                        
+                        <span class="card-title">Difference between `json` and `data` parameter of the HTTP POST Requests with JSON Data in Python using the Requests Library</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/requests/">
+                        <span class="chip bg-color">requests</span>
                     </a>
                     
                 </div>
