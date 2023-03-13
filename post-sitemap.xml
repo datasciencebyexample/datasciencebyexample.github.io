@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/03/13/parrallelizing-and-visualizing-tasks-with-pqdm/</loc>
+        <lastmod>2023-03-13T20:36:59.130Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/03/12/conver-curl-to-pyton-requests-and-vice-versa/</loc>
         <lastmod>2023-03-12T20:43:34.564Z</lastmod>
         <changefreq>weekly</changefreq>

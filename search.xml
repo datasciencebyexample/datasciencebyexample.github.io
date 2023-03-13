@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Adding progress bars and parallelize tasks in Python</title>
+      <link href="2023/03/13/parrallelizing-and-visualizing-tasks-with-pqdm/"/>
+      <url>2023/03/13/parrallelizing-and-visualizing-tasks-with-pqdm/</url>
+      
+        <content type="html"><![CDATA[<p>use tqdm and pqdm in Python to add progress bars to your code and parallelize tasks.</p><p>Projects in Python often involve long-running tasks like training models or processing large datasets. To make these tasks more manageable, it’s helpful to add progress bars to your code and parallelize tasks to take advantage of multiple CPU cores.</p><p>Two popular Python libraries for achieving these goals are <code>tqdm</code> and <code>pqdm</code>. tqdm provides a simple way to add progress bars to your code, while pqdm is a wrapper around tqdm and concurrent.futures that allows you to parallelize tasks while also showing a progress bar.</p><p>In this blog post, we’ll walk through how to use tqdm and pqdm in Python to add progress bars and parallelize tasks.</p><h2 id="Adding-Progress-Bars-with-tqdm"><a href="#Adding-Progress-Bars-with-tqdm" class="headerlink" title="Adding Progress Bars with tqdm"></a>Adding Progress Bars with tqdm</h2><p><code>tqdm</code> is a Python library that provides a simple way to add progress bars to your code. To use tqdm, you first need to install it using pip:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install tqdm</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Once you’ve installed tqdm, you can use it in your code like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from tqdm import tqdm</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">for i in tqdm(range(100)):</span><br><span class="line">    time.sleep(0.1) # simulate a longer-running task</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, we use tqdm to add a progress bar to a loop that runs 100 times. We also use the time.sleep function to simulate a longer-running task. When you run this code, you’ll see a progress bar that updates in real-time as the loop runs:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">100%|███████████████████████████████████████████████████| 100/100 [00:10&lt;00:00,  9.87it/s]</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>The progress bar shows you the percentage of the loop that’s completed, as well as an estimate of the time remaining to complete the loop. You can customize the appearance of the progress bar with different colors, styles, and other options to match your preferences and the needs of your project.</p><h2 id="Parallelizing-Tasks-with-pqdm"><a href="#Parallelizing-Tasks-with-pqdm" class="headerlink" title="Parallelizing Tasks with pqdm"></a>Parallelizing Tasks with pqdm</h2><p>pqdm is a Python library that builds on top of tqdm and concurrent.futures to provide a simple way to parallelize tasks while also showing a progress bar. To use pqdm, you first need to install it using pip:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install pqdm</span><br></pre></td></tr></table></figure><p>Once you’ve installed pqdm, you can use it in your code like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pqdm.processes import pqdm</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">def process_data(data):</span><br><span class="line">    time.sleep(0.1) # simulate a longer-running task</span><br><span class="line">    return data * 2</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    data = range(100)</span><br><span class="line">    processed_data = pqdm(data, process_data, n_jobs=4, desc=&#x27;Processing data&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>In this example, we define a function process_data that takes in a piece of data and returns a processed version of that data. We then use pqdm to apply this function to each piece of data in parallel, using four processes (n_jobs=4) and displaying a progress bar with the label “Processing data” (desc=’Processing data’).</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tqdm </tag>
+            
+            <tag> pqdm </tag>
+            
+            <tag> progress bars </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to convert CURL to python requests and vice versa</title>
       <link href="2023/03/12/conver-curl-to-pyton-requests-and-vice-versa/"/>
       <url>2023/03/12/conver-curl-to-pyton-requests-and-vice-versa/</url>
@@ -1242,11 +1271,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2420,9 +2449,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
