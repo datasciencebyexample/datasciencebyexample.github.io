@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="rare event encoding for categorical feature in machine learning in pandas dataframe, DataScienceTribe">
+    <meta name="keywords" content="Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>rare event encoding for categorical feature in machine learning in pandas dataframe | DataScienceTribe</title>
+    <title>Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">rare event encoding for categorical feature in machine learning in pandas dataframe</h1>
+                    <h1 class="description center-align post-title">Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/pandas/">
+                                <span class="chip bg-color">pandas</span>
                             </a>
                         
-                            <a href="/tags/pandas-tip/">
-                                <span class="chip bg-color">pandas tip</span>
-                            </a>
-                        
-                            <a href="/tags/machine-learning/">
-                                <span class="chip bg-color">machine learning</span>
+                            <a href="/tags/scikit-learn/">
+                                <span class="chip bg-color">scikit-learn</span>
                             </a>
                         
                     </div>
@@ -372,8 +368,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-23
+                    2023-03-15
                 </div>
                 
 
@@ -406,12 +402,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>If categorical features has too many values, it will generate too many features after encoding, such as one-hot encoding.<br>We could set the threshold, if certan value has percentage less than the threshold, we change the value to be ‘rare event’ or<br>something like that. By doing this, we make sure there are not too many levels for a categorical feature.</p>
-<p>The following code can be applied on a dataframe:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def cat_rare_event(df,threshold=0.005):</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    for col in df.columns:</span><br><span class="line"></span><br><span class="line">        #print(df[col].dtype)</span><br><span class="line"></span><br><span class="line">        if df[col].dtype ==&#x27;object&#x27;:</span><br><span class="line"></span><br><span class="line">            print(col)</span><br><span class="line"></span><br><span class="line">            df.loc[df[col].value_counts()[df[col]].values &lt; int(len(df)*threshold), col] = &quot;rare_value&quot;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    return df</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>Sometimes, you may find yourself working with a Pandas DataFrame that contains a column of arrays with the same length. In some cases, it may be more useful to “explode” this column of arrays into multiple columns, with one column for each value in the arrays. This can make it easier to perform analysis or modeling on the data.</p>
+<p>In this blog post, we’ll explore how to use Pandas to expand an array column into multiple columns, and how to encapsulate this functionality into a scikit-learn transformer for use in machine learning pipelines.</p>
+<h2 id="Expanding-an-Array-Column-with-Pandas"><a href="#Expanding-an-Array-Column-with-Pandas" class="headerlink" title="Expanding an Array Column with Pandas"></a>Expanding an Array Column with Pandas</h2><p>To illustrate how to expand an array column in a Pandas DataFrame, let’s start with an example DataFrame that contains a column of arrays:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;&#x27;array_col&#x27;: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>or we could put this step as a customized pipeline:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">class cat_rare_event_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def __init__(self,threshold=0.005):</span><br><span class="line"></span><br><span class="line">        self.threshold = threshold</span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = cat_rare_event(X,self.threshold)</span><br><span class="line"></span><br><span class="line">               </span><br><span class="line"></span><br><span class="line">        return X    </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>This DataFrame has a single column named array_col with three rows, each containing an array of three integers. To expand this column into multiple columns, we can use the apply method to apply a function to each row of the DataFrame. This function will return a new DataFrame with the values of the array column, which will be automatically assigned to new columns in the resulting DataFrame.</p>
+<p>Here’s an example of how to do this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def explode_array_column(row):</span><br><span class="line">    return pd.Series(row[&#x27;array_col&#x27;])</span><br><span class="line"></span><br><span class="line">expanded_cols = df.apply(explode_array_column, axis=1)</span><br><span class="line">expanded_cols.columns = [&#x27;col_&#123;&#125;&#x27;.format(i) for i in range(expanded_cols.shape[1])]</span><br><span class="line"></span><br><span class="line">df = pd.concat([df, expanded_cols], axis=1)</span><br><span class="line">df = df.drop(&#x27;array_col&#x27;, axis=1)</span><br><span class="line"></span><br><span class="line">print(df)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This will output a new DataFrame with three columns (col_0, col_1, and col_2) that contain the values from the original array column:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   col_0  col_1  col_2</span><br><span class="line">0      1      2      3</span><br><span class="line">1      4      5      6</span><br><span class="line">2      7      8      9</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating-a-Custom-Transformer-with-scikit-learn"><a href="#Creating-a-Custom-Transformer-with-scikit-learn" class="headerlink" title="Creating a Custom Transformer with scikit-learn"></a>Creating a Custom Transformer with scikit-learn</h2><p>While the above approach works well for a single DataFrame, it can be cumbersome to repeat the same steps for multiple DataFrames. One way to simplify this process is to encapsulate the functionality into a custom transformer that can be used in scikit-learn pipelines.</p>
+<p>Here’s an example implementation of a custom transformer that expands an array column into multiple columns:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line">class ArrayExpander(BaseEstimator, TransformerMixin):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line">        </span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line">        return self</span><br><span class="line">    </span><br><span class="line">    def transform(self, X):</span><br><span class="line">        def explode_array_column(row):</span><br><span class="line">            return pd.Series(row[&#x27;array_col&#x27;])</span><br><span class="line">        </span><br><span class="line">        df = X.copy()</span><br><span class="line">        expanded_cols = df.apply(explode_array_column, axis=1)</span><br><span class="line">        expanded_cols.columns = [&#x27;embed_col_&#123;&#125;&#x27;.format(i) for i in range(expanded_cols.shape[1])]</span><br><span class="line">        df = pd.concat([df, expanded_cols], axis=1)</span><br><span class="line">        df = df.drop(&#x27;array_col&#x27;, axis=1)</span><br><span class="line">        return df</span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">array_expander = ArrayExpander()</span><br><span class="line">df_transformed = array_expander.fit_transform(df)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -437,7 +442,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/23/2021-06-23-1/">https://datasciencebyexample.github.io/2021/06/23/2021-06-23-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/03/15/expand-array-column-in-pandas/">https://datasciencebyexample.github.io/2023/03/15/expand-array-column-in-pandas/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -475,16 +480,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/pandas/">
+                                    <span class="chip bg-color">pandas</span>
                                 </a>
                             
-                                <a href="/tags/pandas-tip/">
-                                    <span class="chip bg-color">pandas tip</span>
-                                </a>
-                            
-                                <a href="/tags/machine-learning/">
-                                    <span class="chip bg-color">machine learning</span>
+                                <a href="/tags/scikit-learn/">
+                                    <span class="chip bg-color">scikit-learn</span>
                                 </a>
                             
                         </div>
@@ -530,17 +531,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/07/01/2021-07-01-1/">
+                <a href="/2023/03/15/expand-array-column-in-pandas/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="multi line plot with seaborn">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer">
                         
-                        <span class="card-title">multi line plot with seaborn</span>
+                        <span class="card-title">Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -550,30 +552,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/visualization/">
-                        <span class="chip bg-color">visualization</span>
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
                     </a>
                     
-                    <a href="/tags/seaborn-tips/">
-                        <span class="chip bg-color">seaborn tips</span>
+                    <a href="/tags/scikit-learn/">
+                        <span class="chip bg-color">scikit-learn</span>
                     </a>
                     
                 </div>
@@ -587,13 +590,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/18/2021-06-18-1/">
+                <a href="/2023/03/14/takeaway-of-gpt4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="handles feature order in training and online production stage to avoid inconsistent error">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Longer and more, the one minute takeaways of GPT4 model">
                         
-                        <span class="card-title">handles feature order in training and online production stage to avoid inconsistent error</span>
+                        <span class="card-title">Longer and more, the one minute takeaways of GPT4 model</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -604,7 +607,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-14
                             </span>
                         <span class="publish-author">
                             
@@ -621,16 +624,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
-                    </a>
-                    
-                    <a href="/tags/machine-learning/">
-                        <span class="chip bg-color">machine learning</span>
+                    <a href="/tags/gp4/">
+                        <span class="chip bg-color">gp4</span>
                     </a>
                     
                 </div>

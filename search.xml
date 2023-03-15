@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer</title>
+      <link href="2023/03/15/expand-array-column-in-pandas/"/>
+      <url>2023/03/15/expand-array-column-in-pandas/</url>
+      
+        <content type="html"><![CDATA[<p>Sometimes, you may find yourself working with a Pandas DataFrame that contains a column of arrays with the same length. In some cases, it may be more useful to “explode” this column of arrays into multiple columns, with one column for each value in the arrays. This can make it easier to perform analysis or modeling on the data.</p><p>In this blog post, we’ll explore how to use Pandas to expand an array column into multiple columns, and how to encapsulate this functionality into a scikit-learn transformer for use in machine learning pipelines.</p><h2 id="Expanding-an-Array-Column-with-Pandas"><a href="#Expanding-an-Array-Column-with-Pandas" class="headerlink" title="Expanding an Array Column with Pandas"></a>Expanding an Array Column with Pandas</h2><p>To illustrate how to expand an array column in a Pandas DataFrame, let’s start with an example DataFrame that contains a column of arrays:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;&#x27;array_col&#x27;: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]&#125;)</span><br></pre></td></tr></table></figure><p>This DataFrame has a single column named array_col with three rows, each containing an array of three integers. To expand this column into multiple columns, we can use the apply method to apply a function to each row of the DataFrame. This function will return a new DataFrame with the values of the array column, which will be automatically assigned to new columns in the resulting DataFrame.</p><p>Here’s an example of how to do this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def explode_array_column(row):</span><br><span class="line">    return pd.Series(row[&#x27;array_col&#x27;])</span><br><span class="line"></span><br><span class="line">expanded_cols = df.apply(explode_array_column, axis=1)</span><br><span class="line">expanded_cols.columns = [&#x27;col_&#123;&#125;&#x27;.format(i) for i in range(expanded_cols.shape[1])]</span><br><span class="line"></span><br><span class="line">df = pd.concat([df, expanded_cols], axis=1)</span><br><span class="line">df = df.drop(&#x27;array_col&#x27;, axis=1)</span><br><span class="line"></span><br><span class="line">print(df)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>This will output a new DataFrame with three columns (col_0, col_1, and col_2) that contain the values from the original array column:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   col_0  col_1  col_2</span><br><span class="line">0      1      2      3</span><br><span class="line">1      4      5      6</span><br><span class="line">2      7      8      9</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Creating-a-Custom-Transformer-with-scikit-learn"><a href="#Creating-a-Custom-Transformer-with-scikit-learn" class="headerlink" title="Creating a Custom Transformer with scikit-learn"></a>Creating a Custom Transformer with scikit-learn</h2><p>While the above approach works well for a single DataFrame, it can be cumbersome to repeat the same steps for multiple DataFrames. One way to simplify this process is to encapsulate the functionality into a custom transformer that can be used in scikit-learn pipelines.</p><p>Here’s an example implementation of a custom transformer that expands an array column into multiple columns:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line">class ArrayExpander(BaseEstimator, TransformerMixin):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line">        </span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line">        return self</span><br><span class="line">    </span><br><span class="line">    def transform(self, X):</span><br><span class="line">        def explode_array_column(row):</span><br><span class="line">            return pd.Series(row[&#x27;array_col&#x27;])</span><br><span class="line">        </span><br><span class="line">        df = X.copy()</span><br><span class="line">        expanded_cols = df.apply(explode_array_column, axis=1)</span><br><span class="line">        expanded_cols.columns = [&#x27;embed_col_&#123;&#125;&#x27;.format(i) for i in range(expanded_cols.shape[1])]</span><br><span class="line">        df = pd.concat([df, expanded_cols], axis=1)</span><br><span class="line">        df = df.drop(&#x27;array_col&#x27;, axis=1)</span><br><span class="line">        return df</span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">array_expander = ArrayExpander()</span><br><span class="line">df_transformed = array_expander.fit_transform(df)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pandas </tag>
+            
+            <tag> scikit-learn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Longer and more, the one minute takeaways of GPT4 model</title>
       <link href="2023/03/14/takeaway-of-gpt4/"/>
       <url>2023/03/14/takeaway-of-gpt4/</url>
@@ -2188,9 +2215,9 @@
       
         <tags>
             
-            <tag> seaborn tips </tag>
-            
             <tag> visualization </tag>
+            
+            <tag> seaborn tips </tag>
             
         </tags>
       
@@ -2215,9 +2242,9 @@
       
         <tags>
             
-            <tag> seaborn tips </tag>
-            
             <tag> visualization </tag>
+            
+            <tag> seaborn tips </tag>
             
         </tags>
       
@@ -2474,9 +2501,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       

@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/scikit-learn/</loc>
+        <lastmod>2023-03-15T21:27:05.417Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
+        <lastmod>2023-03-15T21:27:05.417Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/gp4/</loc>
         <lastmod>2023-03-15T00:20:08.880Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -96,13 +110,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/alphago/</loc>
         <lastmod>2023-02-16T03:12:45.733Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/scikit-learn/</loc>
-        <lastmod>2023-02-15T02:57:47.286Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -236,13 +243,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/leetcode/</loc>
         <lastmod>2022-12-14T23:54:04.193Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
-        <lastmod>2022-12-12T23:13:40.933Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
