@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Longer and more, the one minute takeaways of GPT4 model</title>
+      <link href="2023/03/14/takeaway-of-gpt4/"/>
+      <url>2023/03/14/takeaway-of-gpt4/</url>
+      
+        <content type="html"><![CDATA[<p>Most impressive thing:<br>The token limits goes from 4K up to 32K tokens (or roughly 50 pages of texts).<br>Now we can use GPT4 to write long novel.</p><p>Other important takeaways of GPT4:</p><ol><li>GPT-4 is more reliable, creative, and capable of handling more nuanced instructions than GPT-3.5, especially for complex tasks.</li><li>GPT-4 can accept both text and image inputs and generate text outputs in various domains.</li><li>Steerability allows API users to customize their AI’s style and task by describing the directions in the “system” message.</li><li>GPT-4 still has limitations, including hallucinating facts and making reasoning errors, and language model outputs should be used with caution, especially in high-stakes contexts.</li><li>GPT-4 significantly reduces hallucinations compared to previous models and scores 40% higher than GPT-3.5 on internal adversarial factuality evaluations.</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gp4 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Adding progress bars and parallelize tasks in Python</title>
       <link href="2023/03/13/parrallelizing-and-visualizing-tasks-with-pqdm/"/>
       <url>2023/03/13/parrallelizing-and-visualizing-tasks-with-pqdm/</url>
@@ -1271,11 +1296,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2163,9 +2188,9 @@
       
         <tags>
             
-            <tag> visualization </tag>
-            
             <tag> seaborn tips </tag>
+            
+            <tag> visualization </tag>
             
         </tags>
       
@@ -2190,9 +2215,9 @@
       
         <tags>
             
-            <tag> visualization </tag>
-            
             <tag> seaborn tips </tag>
+            
+            <tag> visualization </tag>
             
         </tags>
       
@@ -2449,9 +2474,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
