@@ -31,6 +31,33 @@
     
     
     <entry>
+      <title>Decoding JSON String When There are Single Quotes</title>
+      <link href="2023/03/16/what-to-do-when-single-quotes-in-json-string/"/>
+      <url>2023/03/16/what-to-do-when-single-quotes-in-json-string/</url>
+      
+        <content type="html"><![CDATA[<p>JSON (JavaScript Object Notation) is a popular format used for transmitting data between applications. It’s a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. However, JSON data is typically enclosed in double quotes, which can be problematic when dealing with data that contains single quotes.</p><p>Consider the following JSON string:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;John&quot;,</span><br><span class="line">    &quot;age&quot;: 30,</span><br><span class="line">    &quot;hobbies&quot;: [&quot;reading&quot;, &quot;swimming&quot;, &quot;playing guitar&quot;],</span><br><span class="line">    &quot;address&quot;: &#123;</span><br><span class="line">        &quot;street&quot;: &quot;123 Main St&quot;,</span><br><span class="line">        &quot;city&quot;: &quot;New York&quot;,</span><br><span class="line">        &quot;state&quot;: &quot;NY&quot;,</span><br><span class="line">        &quot;zipcode&quot;: &quot;10001&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;description&quot;: &quot;John&#x27;s favorite quote is &#x27;Carpe diem.&#x27;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>This JSON string is perfectly valid and can be decoded using Python’s built-in json module with the <code>loads()</code> function:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line">json_str = &#x27;&#123;&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30, &quot;hobbies&quot;: [&quot;reading&quot;, &quot;swimming&quot;, &quot;playing guitar&quot;], &quot;address&quot;: &#123;&quot;street&quot;: &quot;123 Main St&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;state&quot;: &quot;NY&quot;, &quot;zipcode&quot;: &quot;10001&quot;&#125;, &quot;description&quot;: &quot;John\&#x27;s favorite quote is \&#x27;Carpe diem.\&#x27;&quot;&#125;&#x27;</span><br><span class="line"></span><br><span class="line">data = json.loads(json_str)</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>The output is:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;&#x27;name&#x27;: &#x27;John&#x27;, &#x27;age&#x27;: 30, &#x27;hobbies&#x27;: [&#x27;reading&#x27;, &#x27;swimming&#x27;, &#x27;playing guitar&#x27;], &#x27;address&#x27;: &#123;&#x27;street&#x27;: &#x27;123 Main St&#x27;, &#x27;city&#x27;: &#x27;New York&#x27;, &#x27;state&#x27;: &#x27;NY&#x27;, &#x27;zipcode&#x27;: &#x27;10001&#x27;&#125;, &#x27;description&#x27;: &quot;John&#x27;s favorite quote is &#x27;Carpe diem.&#x27;&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>However, if the JSON string uses single quotes instead of double quotes, the json module will raise a JSONDecodeError exception because the string is not valid JSON.</p><p>For example, consider the following JSON string:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &#x27;name&#x27;: &#x27;John&#x27;,</span><br><span class="line">    &#x27;age&#x27;: 30,</span><br><span class="line">    &#x27;hobbies&#x27;: [&#x27;reading&#x27;, &#x27;swimming&#x27;, &#x27;playing guitar&#x27;],</span><br><span class="line">    &#x27;address&#x27;: &#123;</span><br><span class="line">        &#x27;street&#x27;: &#x27;123 Main St&#x27;,</span><br><span class="line">        &#x27;city&#x27;: &#x27;New York&#x27;,</span><br><span class="line">        &#x27;state&#x27;: &#x27;NY&#x27;,</span><br><span class="line">        &#x27;zipcode&#x27;: &#x27;10001&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x27;description&#x27;: &#x27;John\&#x27;s favorite quote is &quot;Carpe diem.&quot;&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>If we try to decode this string using the json module, we will get a JSONDecodeError:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import json</span><br><span class="line"></span><br><span class="line">json_str = &quot;&#123;&#x27;name&#x27;: &#x27;John&#x27;, &#x27;age&#x27;: 30, &#x27;hobbies&#x27;: [&#x27;reading&#x27;, &#x27;swimming&#x27;, &#x27;playing guitar&#x27;], &#x27;address&#x27;: &#123;&#x27;street&#x27;: &#x27;123 Main St&#x27;, &#x27;city&#x27;: &#x27;New York&#x27;, &#x27;state&#x27;: &#x27;NY&#x27;, &#x27;zipcode&#x27;: &#x27;10001&#x27;&#125;, &#x27;description&#x27;: &#x27;John\\&#x27;s favorite quote is \&quot;Carpe diem.\&quot;&#x27;&#125;&quot;</span><br><span class="line"></span><br><span class="line">data = json.loads(json_str)</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>with error:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/usr/lib/python3.8/json/__init__.py&quot;, line 357, in loads</span><br><span class="line">    return _default_decoder.decode(s)</span><br><span class="line">  File &quot;/usr/lib/python3.8/json/decoder.py&quot;, line 337, in decode</span><br><span class="line">    obj, end = self.raw_decode(s, idx=_w(s, 0).end())</span><br><span class="line">  File &quot;/usr/lib/python3.</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Now the <code>ast</code> function come to rescue, if we do this instead:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import ast</span><br><span class="line"></span><br><span class="line"># A string with single quotes</span><br><span class="line">my_string = &quot;&#123;&#x27;name&#x27;: &#x27;John&#x27;, &#x27;age&#x27;: 30, &#x27;city&#x27;: &#x27;New York&#x27;&#125;&quot;</span><br><span class="line"></span><br><span class="line"># Use ast.literal_eval() to evaluate the string into a dictionary</span><br><span class="line">my_dict = ast.literal_eval(my_string)</span><br><span class="line"></span><br><span class="line"># Print the resulting dictionary</span><br><span class="line">print(my_dict[&#x27;name&#x27;])</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>it will work!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> json string decoding </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer</title>
       <link href="2023/03/15/expand-array-column-in-pandas/"/>
       <url>2023/03/15/expand-array-column-in-pandas/</url>
@@ -1350,11 +1377,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2445,11 +2472,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -2528,9 +2555,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
