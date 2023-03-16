@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings</title>
+      <link href="2023/03/16/carriage-return-in-string-python/"/>
+      <url>2023/03/16/carriage-return-in-string-python/</url>
+      
+        <content type="html"><![CDATA[<p>Have you ever encountered a situation where you printed a string in Python and found that it didn’t appear as expected? If you have, there’s a chance that the ‘\r’ character, also known as a carriage return, may be the culprit.</p><p>The ‘\r’ character is used to return the cursor to the beginning of the current line without advancing to the next line. This can be useful in certain situations, such as when updating progress bars or printing live output in the terminal. However, if you’re not aware of its presence in a string, it can cause confusion and unexpected results when printing.</p><p>Consider the following code snippet:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Define a string with &#x27;\r&#x27;</span><br><span class="line">my_string = &quot;Hello\rworld!&quot;</span><br><span class="line"></span><br><span class="line"># Print the string</span><br><span class="line">print(my_string)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>At first glance, you might expect the output to be “Hello world!”, but instead, you’ll see that only “world!” is printed to the console. This is because the ‘\r’ character causes the cursor to return to the beginning of the line after printing “Hello”, effectively overwriting it with “world!”.</p><p>To avoid unexpected behavior caused by ‘\r’, you can use the repr() function to print the string with escape characters visible:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Define a string with &#x27;\r&#x27;</span><br><span class="line">my_string = &quot;Hello\rworld!&quot;</span><br><span class="line"></span><br><span class="line"># Print the string with escape characters visible</span><br><span class="line">print(repr(my_string))</span><br></pre></td></tr></table></figure><p>This will output:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27;Hello\rworld!&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Now you can see that the string contains a ‘\r’ character.</p><p>So now your see when working with strings in Python, it’s important to be aware of the presence of ‘\r’ characters, especially when printing. If you encounter unexpected behavior, it’s worth checking for this character and understanding how it can affect your output. By being mindful of this potential issue, you can avoid scratching your head in confusion and ensure that your code behaves as expected.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> carriage return </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer</title>
       <link href="2023/03/15/expand-array-column-in-pandas/"/>
       <url>2023/03/15/expand-array-column-in-pandas/</url>
@@ -1323,11 +1350,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2418,11 +2445,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       

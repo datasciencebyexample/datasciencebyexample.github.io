@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer, DataScienceTribe">
+    <meta name="keywords" content="Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer | DataScienceTribe</title>
+    <title>Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer</h1>
+                    <h1 class="description center-align post-title">Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/scikit-learn/">
-                                <span class="chip bg-color">scikit-learn</span>
+                            <a href="/tags/carriage-return/">
+                                <span class="chip bg-color">carriage return</span>
                             </a>
                         
                     </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-03-15
+                    2023-03-16
                 </div>
                 
 
@@ -402,21 +402,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Sometimes, you may find yourself working with a Pandas DataFrame that contains a column of arrays with the same length. In some cases, it may be more useful to “explode” this column of arrays into multiple columns, with one column for each value in the arrays. This can make it easier to perform analysis or modeling on the data.</p>
-<p>In this blog post, we’ll explore how to use Pandas to expand an array column into multiple columns, and how to encapsulate this functionality into a scikit-learn transformer for use in machine learning pipelines.</p>
-<h2 id="Expanding-an-Array-Column-with-Pandas"><a href="#Expanding-an-Array-Column-with-Pandas" class="headerlink" title="Expanding an Array Column with Pandas"></a>Expanding an Array Column with Pandas</h2><p>To illustrate how to expand an array column in a Pandas DataFrame, let’s start with an example DataFrame that contains a column of arrays:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;&#x27;array_col&#x27;: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]&#125;)</span><br></pre></td></tr></table></figure>
+                <p>Have you ever encountered a situation where you printed a string in Python and found that it didn’t appear as expected? If you have, there’s a chance that the ‘\r’ character, also known as a carriage return, may be the culprit.</p>
+<p>The ‘\r’ character is used to return the cursor to the beginning of the current line without advancing to the next line. This can be useful in certain situations, such as when updating progress bars or printing live output in the terminal. However, if you’re not aware of its presence in a string, it can cause confusion and unexpected results when printing.</p>
+<p>Consider the following code snippet:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Define a string with &#x27;\r&#x27;</span><br><span class="line">my_string = &quot;Hello\rworld!&quot;</span><br><span class="line"></span><br><span class="line"># Print the string</span><br><span class="line">print(my_string)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>This DataFrame has a single column named array_col with three rows, each containing an array of three integers. To expand this column into multiple columns, we can use the apply method to apply a function to each row of the DataFrame. This function will return a new DataFrame with the values of the array column, which will be automatically assigned to new columns in the resulting DataFrame.</p>
-<p>Here’s an example of how to do this:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def explode_array_column(row):</span><br><span class="line">    return pd.Series(row[&#x27;array_col&#x27;])</span><br><span class="line"></span><br><span class="line">expanded_cols = df.apply(explode_array_column, axis=1)</span><br><span class="line">expanded_cols.columns = [&#x27;col_&#123;&#125;&#x27;.format(i) for i in range(expanded_cols.shape[1])]</span><br><span class="line"></span><br><span class="line">df = pd.concat([df, expanded_cols], axis=1)</span><br><span class="line">df = df.drop(&#x27;array_col&#x27;, axis=1)</span><br><span class="line"></span><br><span class="line">print(df)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>At first glance, you might expect the output to be “Hello world!”, but instead, you’ll see that only “world!” is printed to the console. This is because the ‘\r’ character causes the cursor to return to the beginning of the line after printing “Hello”, effectively overwriting it with “world!”.</p>
+<p>To avoid unexpected behavior caused by ‘\r’, you can use the repr() function to print the string with escape characters visible:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Define a string with &#x27;\r&#x27;</span><br><span class="line">my_string = &quot;Hello\rworld!&quot;</span><br><span class="line"></span><br><span class="line"># Print the string with escape characters visible</span><br><span class="line">print(repr(my_string))</span><br></pre></td></tr></table></figure>
 
-<p>This will output a new DataFrame with three columns (col_0, col_1, and col_2) that contain the values from the original array column:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   col_0  col_1  col_2</span><br><span class="line">0      1      2      3</span><br><span class="line">1      4      5      6</span><br><span class="line">2      7      8      9</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>This will output:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27;Hello\rworld!&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="Creating-a-Custom-Transformer-with-scikit-learn"><a href="#Creating-a-Custom-Transformer-with-scikit-learn" class="headerlink" title="Creating a Custom Transformer with scikit-learn"></a>Creating a Custom Transformer with scikit-learn</h2><p>While the above approach works well for a single DataFrame, it can be cumbersome to repeat the same steps for multiple DataFrames. One way to simplify this process is to encapsulate the functionality into a custom transformer that can be used in scikit-learn pipelines.</p>
-<p>Here’s an example implementation of a custom transformer that expands an array column into multiple columns:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line">class ArrayExpander(BaseEstimator, TransformerMixin):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        pass</span><br><span class="line">        </span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line">        return self</span><br><span class="line">    </span><br><span class="line">    def transform(self, X):</span><br><span class="line">        def explode_array_column(row):</span><br><span class="line">            return pd.Series(row[&#x27;array_col&#x27;])</span><br><span class="line">        </span><br><span class="line">        df = X.copy()</span><br><span class="line">        expanded_cols = df.apply(explode_array_column, axis=1)</span><br><span class="line">        expanded_cols.columns = [&#x27;embed_col_&#123;&#125;&#x27;.format(i) for i in range(expanded_cols.shape[1])]</span><br><span class="line">        df = pd.concat([df, expanded_cols], axis=1)</span><br><span class="line">        df = df.drop(&#x27;array_col&#x27;, axis=1)</span><br><span class="line">        return df</span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">array_expander = ArrayExpander()</span><br><span class="line">df_transformed = array_expander.fit_transform(df)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Now you can see that the string contains a ‘\r’ character.</p>
+<p>So now your see when working with strings in Python, it’s important to be aware of the presence of ‘\r’ characters, especially when printing. If you encounter unexpected behavior, it’s worth checking for this character and understanding how it can affect your output. By being mindful of this potential issue, you can avoid scratching your head in confusion and ensure that your code behaves as expected.</p>
+
                 
             </div>
             <hr/>
@@ -442,7 +442,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/03/15/expand-array-column-in-pandas/">https://datasciencebyexample.github.io/2023/03/15/expand-array-column-in-pandas/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/03/16/carriage-return-in-string-python/">https://datasciencebyexample.github.io/2023/03/16/carriage-return-in-string-python/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -480,12 +480,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/scikit-learn/">
-                                    <span class="chip bg-color">scikit-learn</span>
+                                <a href="/tags/carriage-return/">
+                                    <span class="chip bg-color">carriage return</span>
                                 </a>
                             
                         </div>
@@ -531,9 +531,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2023/03/16/carriage-return-in-string-python/">
                     <div class="card-image">
@@ -551,9 +552,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -566,6 +567,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -588,13 +590,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/14/takeaway-of-gpt4/">
+                <a href="/2023/03/15/expand-array-column-in-pandas/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Longer and more, the one minute takeaways of GPT4 model">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer">
                         
-                        <span class="card-title">Longer and more, the one minute takeaways of GPT4 model</span>
+                        <span class="card-title">Expanding Array Columns in Pandas DataFrames and wrap up in scikit-learn transformer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -605,14 +607,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -622,8 +624,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/gp4/">
-                        <span class="chip bg-color">gp4</span>
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
+                    </a>
+                    
+                    <a href="/tags/scikit-learn/">
+                        <span class="chip bg-color">scikit-learn</span>
                     </a>
                     
                 </div>

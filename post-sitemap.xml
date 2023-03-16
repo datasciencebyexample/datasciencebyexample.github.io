@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/03/16/carriage-return-in-string-python/</loc>
+        <lastmod>2023-03-16T21:47:38.142Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/03/15/expand-array-column-in-pandas/</loc>
         <lastmod>2023-03-15T21:27:05.417Z</lastmod>
         <changefreq>weekly</changefreq>
