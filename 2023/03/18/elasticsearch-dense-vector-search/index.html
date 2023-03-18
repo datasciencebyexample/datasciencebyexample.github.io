@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation, DataScienceTribe">
+    <meta name="keywords" content="vector search using Elastic Search,  index and search example using python requests library, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation | DataScienceTribe</title>
+    <title>vector search using Elastic Search,  index and search example using python requests library | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation</h1>
+                    <h1 class="description center-align post-title">vector search using Elastic Search,  index and search example using python requests library</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/chatGPT/">
-                                <span class="chip bg-color">chatGPT</span>
-                            </a>
-                        
-                            <a href="/tags/GPT4/">
-                                <span class="chip bg-color">GPT4</span>
+                            <a href="/tags/elasticsearch/">
+                                <span class="chip bg-color">elasticsearch</span>
                             </a>
                         
                     </div>
@@ -368,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-03-17
+                    2023-03-18
                 </div>
                 
 
@@ -402,32 +398,42 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li><p>What is ChatGPT and how does it work?<br>Answer: ChatGPT is a virtual assistant or chatbot that uses natural language processing (NLP) and generative AI to create human-like responses. It is a user interface for the GPT3 language model developed by OpenAI, which was trained using unsupervised learning on a massive dataset of 175 billion parameters.</p>
-</li>
-<li><p>How will jobs in marketing and advertising be affected by ChatGPT?<br>Answer: ChatGPT can be used to automate routine aspects of marketing work, such as creating lists, defining the structure of content marketing pieces, or generating product descriptions. However, it cannot replicate the authentic voice of a brand or the human connections that come with influencer marketing. Marketers who can apply truly human qualities should have nothing to fear.</p>
-</li>
-<li><p>What can marketers do to avoid becoming redundant due to AI?<br>Answer: Marketers can master using AI to augment their own creativity and human skills, such as creativity, strategic thinking, empathy, and emotional intelligence. They should also keep up-to-date with the latest developments in AI to ensure they remain effective and competitive in their roles.</p>
-</li>
-<li><p>Will AI make all jobs redundant?<br>Answer: Throughout history, new developments in technology have tended to create new jobs as quickly as they make old jobs redundant. The jobs that are created are often more technical, creative, or highly-skilled, meaning that they are higher paying and often more rewarding.</p>
-</li>
-<li><p>What are the limitations of ChatGPT and AI in general?<br>Answer: ChatGPT and AI in general are limited by their training data, which may contain bias, and their inability to replicate original thought or creativity in the same way as humans. However, as AI technology advances, it may be able to come closer to emulating some human qualities, so it is important to stay up-to-date with the latest developments.</p>
-</li>
-<li><p>What is the potential of ChatGPT in various professions?<br>Answer: ChatGPT can be used to augment professional skills in various professions, such as law, copywriting, journalism, computer programming, and human resources.</p>
-</li>
-<li><p>Can ChatGPT replace human educators?<br>Answer: No, human intangibles like patience, discipline skills, friendliness, and genuine concern for students’ well-being cannot be replaced by ChatGPT or other AI tools.</p>
-</li>
-<li><p>What are the risks of using ChatGPT in the legal profession?<br>Answer: ChatGPT may not consider the most recent cases and decisions, and it may sometimes get things wrong. It is also susceptible to dataset bias and less than 100% accuracy, making it unsuitable for rendering judgments.</p>
-</li>
-<li><p>Which jobs are more likely to be replaced by machines in the next few years or decades?<br>Answer: Receptionist, many customer service jobs, driving jobs including taxi drivers and truckers, and soldiers.</p>
-</li>
-<li><p>How can AI tools like ChatGPT be used in human resources?<br>Answer: ChatGPT can be used to write job descriptions, automate routine tasks, and conduct sentiment analytics, while HR professionals can focus on building a better understanding of the individuals that make up the company.</p>
-</li>
-<li><p>What are some uses of ChatGPT in different professions?<br>Answer: ChatGPT can be used to create reports and summaries for analysts, automate customer service inquiries, automate simple tasks for salespeople, automate lesson plans and quizzes for teachers, and create social media posts for PR professionals.</p>
-</li>
-<li><p>Are robots and AI technologies replacing human workers?<br>Answer: No, robots and AI technologies are changing how we work and what kinds of jobs exist. They are not necessarily eliminating jobs, but rather creating new ones.</p>
-</li>
-</ol>
+                <p>Vector search has becoming very useful in deep learning applications.</p>
+<p>To search dense vectors in Elasticsearch 8.6, you can use the “dense_vector” data type, which was introduced in Elasticsearch 7.10. This data type allows you to store dense vectors as a single field in your documents, which can then be searched using various similarity measures such as cosine similarity or euclidean distance.</p>
+<p>Here’s an example of how to search for similar vectors using cosine similarity:</p>
+<p>First, you need to create an index with a dense_vector field:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;properties&quot;: &#123;</span><br><span class="line">      &quot;my_vector&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;dense_vector&quot;,</span><br><span class="line">        &quot;dims&quot;: 3</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>In this example, we create an index called “my_index” with a dense_vector field called “my_vector” with three dimensions.</p>
+<p>Next, you can index some documents with vectors:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST my_index/_doc/1</span><br><span class="line">&#123;</span><br><span class="line">  &quot;my_vector&quot;: [0.2, 0.3, 0.4]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">POST my_index/_doc/2</span><br><span class="line">&#123;</span><br><span class="line">  &quot;my_vector&quot;: [0.1, 0.7, 0.2]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">POST my_index/_doc/3</span><br><span class="line">&#123;</span><br><span class="line">  &quot;my_vector&quot;: [0.8, 0.2, 0.1]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>In this example, we index three documents with dense vectors.</p>
+<p>Finally, you can search for documents that are similar to a given vector:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GET my_index/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;script_score&quot;: &#123;</span><br><span class="line">      &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match_all&quot;: &#123;&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;script&quot;: &#123;</span><br><span class="line">        &quot;source&quot;: &quot;cosineSimilarity(params.queryVector, &#x27;my_vector&#x27;) + 1.0&quot;,</span><br><span class="line">        &quot;params&quot;: &#123;</span><br><span class="line">          &quot;queryVector&quot;: [0.1, 0.5, 0.3]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p>putting all together, corresponding requests code in Python are:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"># Create an index with a dense_vector field</span><br><span class="line">url = &#x27;http://localhost:9200/my_index&#x27;</span><br><span class="line">data = &#123;</span><br><span class="line">    &quot;mappings&quot;: &#123;</span><br><span class="line">        &quot;properties&quot;: &#123;</span><br><span class="line">            &quot;my_vector&quot;: &#123;</span><br><span class="line">                &quot;type&quot;: &quot;dense_vector&quot;,</span><br><span class="line">                &quot;dims&quot;: 3</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;&#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;Authorization&#x27;: &#x27;Bearer YOUR_ACCESS_TOKEN&#x27;&#125;</span><br><span class="line">response = requests.put(url, data=json.dumps(data), headers=headers)</span><br><span class="line">print(response.json())</span><br><span class="line"></span><br><span class="line"># Index some documents with vectors</span><br><span class="line">data = &#123;&quot;my_vector&quot;: [0.2, 0.3, 0.4]&#125;</span><br><span class="line">headers = &#123;&#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;Authorization&#x27;: &#x27;Bearer YOUR_ACCESS_TOKEN&#x27;&#125;</span><br><span class="line">response = requests.post(url+&#x27;/_doc/1&#x27;, data=json.dumps(data), headers=headers)</span><br><span class="line">print(response.json())</span><br><span class="line"></span><br><span class="line">data = &#123;&quot;my_vector&quot;: [0.1, 0.7, 0.2]&#125;</span><br><span class="line">headers = &#123;&#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;Authorization&#x27;: &#x27;Bearer YOUR_ACCESS_TOKEN&#x27;&#125;</span><br><span class="line">response = requests.post(url+&#x27;/_doc/2&#x27;, data=json.dumps(data), headers=headers)</span><br><span class="line">print(response.json())</span><br><span class="line"></span><br><span class="line">data = &#123;&quot;my_vector&quot;: [0.8, 0.2, 0.1]&#125;</span><br><span class="line">headers = &#123;&#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;Authorization&#x27;: &#x27;Bearer YOUR_ACCESS_TOKEN&#x27;&#125;</span><br><span class="line">response = requests.post(url+&#x27;/_doc/3&#x27;, data=json.dumps(data), headers=headers)</span><br><span class="line">print(response.json())</span><br><span class="line"></span><br><span class="line"># Search for documents that are similar to a given vector</span><br><span class="line">data = &#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;script_score&quot;: &#123;</span><br><span class="line">            &quot;query&quot;: &#123;&quot;match_all&quot;: &#123;&#125;&#125;,</span><br><span class="line">            &quot;script&quot;: &#123;</span><br><span class="line">                &quot;source&quot;: &quot;cosineSimilarity(params.queryVector, &#x27;my_vector&#x27;) + 1.0&quot;,</span><br><span class="line">                &quot;params&quot;: &#123;&quot;queryVector&quot;: [0.1, 0.5, 0.3]&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;&#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;Authorization&#x27;: &#x27;Bearer YOUR_ACCESS_TOKEN&#x27;&#125;</span><br><span class="line">response = requests.get(url+&#x27;/_search&#x27;, data=json.dumps(data), headers=headers)</span><br><span class="line">print(response.json())</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Notice that in the cosineSimilarity function, we add 1.0 to the equation to avoid negative error from elastic search something like this:<br><code>Error: &#123;&quot;error&quot;:&#123;&quot;root_cause&quot;:[&#123;&quot;type&quot;:&quot;illegal_argument_exception&quot;,&quot;reason&quot;:&quot;script_score script returned an invalid score [-0.9679827] for doc [0]. Must be a non-negative score!&quot;&#125;]</code></p>
+<p>Another to notice is that, we are using cosineSimilarity to calcualte score. However if the vector is normalized or you simply want to calcuate the dot product<br>score of vectors, we switch to use <code>dotProduct</code>. Reason to use `dotProduct’ is becuase less computing and potential faster in elasticsearch. code is  for example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;script_score&quot;: &#123;</span><br><span class="line">            &quot;query&quot;: &#123;&quot;match_all&quot;: &#123;&#125;&#125;,</span><br><span class="line">            &quot;script&quot;: &#123;</span><br><span class="line">                &quot;source&quot;: &quot;dotProduct(params.queryVector, &#x27;my_vector&#x27;) + 1.0&quot;,</span><br><span class="line">                &quot;params&quot;: &#123;&quot;queryVector&quot;: [0.1, 0.5, 0.3]&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>One last thing, if you want to limit the number of records to return form search, add <code>size</code> in the query:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;script_score&quot;: &#123;</span><br><span class="line">            &quot;query&quot;: &#123;&quot;match_all&quot;: &#123;&#125;&#125;,</span><br><span class="line">            &quot;script&quot;: &#123;</span><br><span class="line">                &quot;source&quot;: &quot;dotProduct(params.queryVector, &#x27;my_vector&#x27;) + 1.0&quot;,</span><br><span class="line">                &quot;params&quot;: &#123;&quot;queryVector&quot;: [0.1, 0.5, 0.3]&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">	&quot;size&quot;: 5</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
 
                 
             </div>
@@ -454,7 +460,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/03/17/ai-and-future-job/">https://datasciencebyexample.github.io/2023/03/17/ai-and-future-job/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/03/18/elasticsearch-dense-vector-search/">https://datasciencebyexample.github.io/2023/03/18/elasticsearch-dense-vector-search/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -492,12 +498,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/chatGPT/">
-                                    <span class="chip bg-color">chatGPT</span>
-                                </a>
-                            
-                                <a href="/tags/GPT4/">
-                                    <span class="chip bg-color">GPT4</span>
+                                <a href="/tags/elasticsearch/">
+                                    <span class="chip bg-color">elasticsearch</span>
                                 </a>
                             
                         </div>
@@ -543,9 +545,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2023/03/18/elasticsearch-dense-vector-search/">
                     <div class="card-image">
@@ -563,9 +566,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -578,6 +581,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -596,13 +600,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/16/carriage-return-in-string-python/">
+                <a href="/2023/03/17/ai-and-future-job/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation">
                         
-                        <span class="card-title">Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings</span>
+                        <span class="card-title">AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -613,14 +617,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-engineering/" class="post-category">
-                                    data engineering
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
                                 </a>
                             
                             
@@ -630,12 +634,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/chatGPT/">
+                        <span class="chip bg-color">chatGPT</span>
                     </a>
                     
-                    <a href="/tags/carriage-return/">
-                        <span class="chip bg-color">carriage return</span>
+                    <a href="/tags/GPT4/">
+                        <span class="chip bg-color">GPT4</span>
                     </a>
                     
                 </div>
