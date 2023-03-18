@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/retry/</loc>
+        <lastmod>2023-03-18T23:34:13.595Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
+        <lastmod>2023-03-18T23:34:13.595Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/elasticsearch/</loc>
         <lastmod>2023-03-18T23:07:38.636Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,13 +39,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/json-string-decoding/</loc>
-        <lastmod>2023-03-16T21:59:25.015Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
         <lastmod>2023-03-16T21:59:25.015Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -535,13 +542,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
-        <lastmod>2021-06-23T20:44:04.817Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/pandas-tip/</loc>
         <lastmod>2021-06-23T20:44:04.817Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -549,8 +549,8 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
+        <lastmod>2021-06-23T20:44:04.817Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -564,6 +564,13 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
