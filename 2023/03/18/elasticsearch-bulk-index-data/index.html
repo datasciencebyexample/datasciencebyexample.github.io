@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART), DataScienceTribe">
+    <meta name="keywords" content="How to bulk index data with Elastic Search engine, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART) | DataScienceTribe</title>
+    <title>How to bulk index data with Elastic Search engine | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART)</h1>
+                    <h1 class="description center-align post-title">How to bulk index data with Elastic Search engine</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/DART/">
-                                <span class="chip bg-color">DART</span>
-                            </a>
-                        
-                            <a href="/tags/Asteroid/">
-                                <span class="chip bg-color">Asteroid</span>
+                            <a href="/tags/elasticsearch/">
+                                <span class="chip bg-color">elasticsearch</span>
                             </a>
                         
                     </div>
@@ -368,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/physics/" class="post-category">
-                                physics
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-28
+                    2023-03-18
                 </div>
                 
 
@@ -402,13 +398,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Dinosaurs would dream of getting this capability.</p>
-<p>In NASA’s “Double Asteroid Redirection Test (DART)”, an unmanned spacecraft launched from Earth successfully hit an asteroid,<br>which NASA says is the world’s first “planet” Defense” test. At the time of impact, they were relatively close to Earth—just under 11 million kilometers.</p>
-<p>Dimorphos is an asteroid moon orbiting the near-Earth asteroid Didymos, which astronomers discovered more than two decades ago, meaning “twin” in Greek.<br>Didymos is about 780 meters wide, and the Dimorphos running around it have a diameter of 160 meters, and its name means “two forms”<br><img src="/content/images/2022-09-28-1.png" alt="DART size comparison"></p>
-<p>Despite the small target chosen, the fast impact would change only 1% of the speed at which Dimorphos orbits Didymos, which doesn’t sound like much,<br>but it’s enough change to be seen through a telescope.</p>
-<p>According to its original orbit, Dimorphos circles Didymos every 11 hours and 55 minutes.<br>It is expected that the period may change to 11 hours and 45 minutes after the impact.<br>DART team members say it will take scientists about two months to determine whether the asteroid’s orbit has changed.</p>
-<p><img src="/content/images/2022-09-28-2.png" alt="orbit change expected for DART"></p>
+                <p>Previously, we have discussed how to index and query data using elasticsearch in Python<br><a target="_blank" rel="noopener" href="https://www.datasciencebyexample.com/2023/03/18/elasticsearch-dense-vector-search/">Here</a></p>
+<p>However, indexing large amounts of data in Elasticsearch can be a challenging task, especially if you need to index millions of documents or more. Fortunately, Elasticsearch provides a powerful API endpoint called _bulk that allows you to index multiple documents in a single request, which can greatly improve indexing performance.</p>
+<p>In this article, we’ll explore how to use the _bulk API endpoint in Elasticsearch to index large amounts of data efficiently. We’ll start by discussing the _bulk API endpoint and its requirements, and then we’ll provide some examples of how to use it in Python using the requests library.</p>
+<h2 id="What-is-the-bulk-API-endpoint"><a href="#What-is-the-bulk-API-endpoint" class="headerlink" title="What is the _bulk API endpoint?"></a>What is the _bulk API endpoint?</h2><p>The _bulk API endpoint in Elasticsearch allows you to index, update, or delete multiple documents in a single request. This can be much more efficient than sending individual requests for each document, especially when dealing with large amounts of data.</p>
+<p>The _bulk endpoint accepts a newline-delimited JSON (NDJSON) payload that specifies the operations to perform on each document. Each line in the payload represents a single operation, and each operation consists of a JSON object that specifies the index, update, or delete action to perform on a single document.</p>
+<p>Here’s an example of what a _bulk payload might look like:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST my_index/_bulk</span><br><span class="line">&#123;&quot;index&quot;:&#123;&quot;_id&quot;:1&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;John Doe&quot;,&quot;age&quot;:35,&quot;city&quot;:&quot;New York&quot;&#125;</span><br><span class="line">&#123;&quot;index&quot;:&#123;&quot;_id&quot;:2&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;Jane Doe&quot;,&quot;age&quot;:28,&quot;city&quot;:&quot;San Francisco&quot;&#125;</span><br><span class="line">&#123;&quot;index&quot;:&#123;&quot;_id&quot;:3&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;Bob Smith&quot;,&quot;age&quot;:42,&quot;city&quot;:&quot;Chicago&quot;&#125;</span><br></pre></td></tr></table></figure>
 
+<p>In this example, we’re indexing three documents in the my_index index. Each document is represented as a separate JSON object, and the index action is used to specify the operation type for each document. The _id field is also specified for each document using the index action.</p>
+<p>Note that each document is separated by a newline character (\n) and that the bulk request is wrapped in a single JSON object. You can include multiple index or delete actions in a single _bulk request, and Elasticsearch will process them all in one go.</p>
+<h2 id="Using-bulk-with-Python-and-requests"><a href="#Using-bulk-with-Python-and-requests" class="headerlink" title="Using _bulk with Python and requests"></a>Using _bulk with Python and requests</h2><p>Now that we understand the basics of the _bulk API endpoint, let’s look at how to use it in Python using the requests library.</p>
+<p>Suppose we have a list of data that we want to index in Elasticsearch. Here’s an example of how we might loop through the list of data and call the _bulk API endpoint using requests:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import json</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"># Example list of data to index</span><br><span class="line">data_list = [</span><br><span class="line">    &#123;&quot;name&quot;: &quot;John Doe&quot;, &quot;age&quot;: 35, &quot;city&quot;: &quot;New York&quot;&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;Jane Doe&quot;, &quot;age&quot;: 28, &quot;city&quot;: &quot;San Francisco&quot;&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;Bob Smith&quot;, &quot;age&quot;: 42, &quot;city&quot;: &quot;Chicago&quot;&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># Elasticsearch settings</span><br><span class="line">es_url = &quot;http://localhost:9200&quot;</span><br><span class="line">es_index = &quot;my_index&quot;</span><br><span class="line"></span><br><span class="line"># Bulk index the data</span><br><span class="line">bulk_data = &quot;&quot;</span><br><span class="line">for i, data in enumerate(data_list):</span><br><span class="line">    # Add the index action and ID for each document</span><br><span class="line">    bulk_data += json.dumps(&#123;&quot;index&quot;: &#123;&quot;_id&quot;: i+1&#125;&#125;) + &quot;\n&quot;</span><br><span class="line">    # Add the document data</span><br><span class="line">    bulk_data += json.dumps(data) + &quot;\n&quot;</span><br><span class="line"></span><br><span class="line">    # Send the bulk request every 1000 documents</span><br><span class="line">    if i &gt; 0 and i % 1000 == 0:</span><br><span class="line">        # Send the bulk request</span><br><span class="line">        response = requests.post(f&quot;&#123;es_url&#125;/&#123;es_index&#125;/_bulk&quot;, headers=&#123;&quot;Content-Type&quot;: &quot;application/json&quot;&#125;, data=bulk_data)</span><br><span class="line">        # Reset the bulk_data variable</span><br><span class="line">        bulk_data = &quot;&quot;</span><br><span class="line"></span><br><span class="line"># Send the final bulk request</span><br><span class="line">response = requests.post(f&quot;&#123;es_url&#125;/&#123;es_index&#125;/_bulk&quot;, headers=&#123;&quot;Content-Type&quot;: &quot;application/json&quot;&#125;, data=bulk_data)</span><br><span class="line"># Print the response content</span><br><span class="line">print(response.content)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -434,7 +436,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/09/28/2022-09-28-1/">https://datasciencebyexample.github.io/2022/09/28/2022-09-28-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/03/18/elasticsearch-bulk-index-data/">https://datasciencebyexample.github.io/2023/03/18/elasticsearch-bulk-index-data/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,12 +474,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/DART/">
-                                    <span class="chip bg-color">DART</span>
-                                </a>
-                            
-                                <a href="/tags/Asteroid/">
-                                    <span class="chip bg-color">Asteroid</span>
+                                <a href="/tags/elasticsearch/">
+                                    <span class="chip bg-color">elasticsearch</span>
                                 </a>
                             
                         </div>
@@ -523,17 +521,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/10/01/2022-10-01-1/">
+                <a href="/2023/03/18/elasticsearch-bulk-index-data/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="How to make AWS S3 buckets public through bucket policy">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="How to bulk index data with Elastic Search engine">
                         
-                        <span class="card-title">How to make AWS S3 buckets public through bucket policy</span>
+                        <span class="card-title">How to bulk index data with Elastic Search engine</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -543,9 +542,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-01
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/elasticsearch/">
+                        <span class="chip bg-color">elasticsearch</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/03/18/elasticsearch-dense-vector-search/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="vector search using Elastic Search,  index and search example using python requests library">
+                        
+                        <span class="card-title">vector search using Elastic Search,  index and search example using python requests library</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -561,69 +610,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/aws/">
-                        <span class="chip bg-color">aws</span>
-                    </a>
-                    
-                    <a href="/tags/s3/">
-                        <span class="chip bg-color">s3</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/09/19/2022-09-19-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="OpenCV and Pillow color code order difference, BGR vs RGB">
-                        
-                        <span class="card-title">OpenCV and Pillow color code order difference, BGR vs RGB</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/image-processing/" class="post-category">
-                                    image processing
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/PIL/">
-                        <span class="chip bg-color">PIL</span>
-                    </a>
-                    
-                    <a href="/tags/image-editing/">
-                        <span class="chip bg-color">image editing</span>
-                    </a>
-                    
-                    <a href="/tags/OpenCV/">
-                        <span class="chip bg-color">OpenCV</span>
+                    <a href="/tags/elasticsearch/">
+                        <span class="chip bg-color">elasticsearch</span>
                     </a>
                     
                 </div>

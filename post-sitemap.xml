@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/03/18/elasticsearch-bulk-index-data/</loc>
+        <lastmod>2023-03-18T23:07:38.636Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/03/18/elasticsearch-dense-vector-search/</loc>
         <lastmod>2023-03-18T20:52:20.579Z</lastmod>
         <changefreq>weekly</changefreq>

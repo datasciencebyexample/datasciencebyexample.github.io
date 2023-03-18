@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>How to bulk index data with Elastic Search engine</title>
+      <link href="2023/03/18/elasticsearch-bulk-index-data/"/>
+      <url>2023/03/18/elasticsearch-bulk-index-data/</url>
+      
+        <content type="html"><![CDATA[<p>Previously, we have discussed how to index and query data using elasticsearch in Python<br><a href="https://www.datasciencebyexample.com/2023/03/18/elasticsearch-dense-vector-search/">Here</a></p><p>However, indexing large amounts of data in Elasticsearch can be a challenging task, especially if you need to index millions of documents or more. Fortunately, Elasticsearch provides a powerful API endpoint called _bulk that allows you to index multiple documents in a single request, which can greatly improve indexing performance.</p><p>In this article, we’ll explore how to use the _bulk API endpoint in Elasticsearch to index large amounts of data efficiently. We’ll start by discussing the _bulk API endpoint and its requirements, and then we’ll provide some examples of how to use it in Python using the requests library.</p><h2 id="What-is-the-bulk-API-endpoint"><a href="#What-is-the-bulk-API-endpoint" class="headerlink" title="What is the _bulk API endpoint?"></a>What is the _bulk API endpoint?</h2><p>The _bulk API endpoint in Elasticsearch allows you to index, update, or delete multiple documents in a single request. This can be much more efficient than sending individual requests for each document, especially when dealing with large amounts of data.</p><p>The _bulk endpoint accepts a newline-delimited JSON (NDJSON) payload that specifies the operations to perform on each document. Each line in the payload represents a single operation, and each operation consists of a JSON object that specifies the index, update, or delete action to perform on a single document.</p><p>Here’s an example of what a _bulk payload might look like:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST my_index/_bulk</span><br><span class="line">&#123;&quot;index&quot;:&#123;&quot;_id&quot;:1&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;John Doe&quot;,&quot;age&quot;:35,&quot;city&quot;:&quot;New York&quot;&#125;</span><br><span class="line">&#123;&quot;index&quot;:&#123;&quot;_id&quot;:2&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;Jane Doe&quot;,&quot;age&quot;:28,&quot;city&quot;:&quot;San Francisco&quot;&#125;</span><br><span class="line">&#123;&quot;index&quot;:&#123;&quot;_id&quot;:3&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;Bob Smith&quot;,&quot;age&quot;:42,&quot;city&quot;:&quot;Chicago&quot;&#125;</span><br></pre></td></tr></table></figure><p>In this example, we’re indexing three documents in the my_index index. Each document is represented as a separate JSON object, and the index action is used to specify the operation type for each document. The _id field is also specified for each document using the index action.</p><p>Note that each document is separated by a newline character (\n) and that the bulk request is wrapped in a single JSON object. You can include multiple index or delete actions in a single _bulk request, and Elasticsearch will process them all in one go.</p><h2 id="Using-bulk-with-Python-and-requests"><a href="#Using-bulk-with-Python-and-requests" class="headerlink" title="Using _bulk with Python and requests"></a>Using _bulk with Python and requests</h2><p>Now that we understand the basics of the _bulk API endpoint, let’s look at how to use it in Python using the requests library.</p><p>Suppose we have a list of data that we want to index in Elasticsearch. Here’s an example of how we might loop through the list of data and call the _bulk API endpoint using requests:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import json</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"># Example list of data to index</span><br><span class="line">data_list = [</span><br><span class="line">    &#123;&quot;name&quot;: &quot;John Doe&quot;, &quot;age&quot;: 35, &quot;city&quot;: &quot;New York&quot;&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;Jane Doe&quot;, &quot;age&quot;: 28, &quot;city&quot;: &quot;San Francisco&quot;&#125;,</span><br><span class="line">    &#123;&quot;name&quot;: &quot;Bob Smith&quot;, &quot;age&quot;: 42, &quot;city&quot;: &quot;Chicago&quot;&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># Elasticsearch settings</span><br><span class="line">es_url = &quot;http://localhost:9200&quot;</span><br><span class="line">es_index = &quot;my_index&quot;</span><br><span class="line"></span><br><span class="line"># Bulk index the data</span><br><span class="line">bulk_data = &quot;&quot;</span><br><span class="line">for i, data in enumerate(data_list):</span><br><span class="line">    # Add the index action and ID for each document</span><br><span class="line">    bulk_data += json.dumps(&#123;&quot;index&quot;: &#123;&quot;_id&quot;: i+1&#125;&#125;) + &quot;\n&quot;</span><br><span class="line">    # Add the document data</span><br><span class="line">    bulk_data += json.dumps(data) + &quot;\n&quot;</span><br><span class="line"></span><br><span class="line">    # Send the bulk request every 1000 documents</span><br><span class="line">    if i &gt; 0 and i % 1000 == 0:</span><br><span class="line">        # Send the bulk request</span><br><span class="line">        response = requests.post(f&quot;&#123;es_url&#125;/&#123;es_index&#125;/_bulk&quot;, headers=&#123;&quot;Content-Type&quot;: &quot;application/json&quot;&#125;, data=bulk_data)</span><br><span class="line">        # Reset the bulk_data variable</span><br><span class="line">        bulk_data = &quot;&quot;</span><br><span class="line"></span><br><span class="line"># Send the final bulk request</span><br><span class="line">response = requests.post(f&quot;&#123;es_url&#125;/&#123;es_index&#125;/_bulk&quot;, headers=&#123;&quot;Content-Type&quot;: &quot;application/json&quot;&#125;, data=bulk_data)</span><br><span class="line"># Print the response content</span><br><span class="line">print(response.content)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vector search using Elastic Search,  index and search example using python requests library</title>
       <link href="2023/03/18/elasticsearch-dense-vector-search/"/>
       <url>2023/03/18/elasticsearch-dense-vector-search/</url>
@@ -1429,11 +1454,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2524,11 +2549,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
@@ -2634,9 +2659,9 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
+            
+            <tag> pandas </tag>
             
             <tag> preprocessing </tag>
             
