@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/streamlit/</loc>
+        <lastmod>2023-03-21T19:24:17.992Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/openAI/</loc>
         <lastmod>2023-03-21T01:59:45.882Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -570,13 +577,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/time-series/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -585,6 +585,13 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

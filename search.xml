@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>How to control work flow in Streamlit with session state</title>
+      <link href="2023/03/21/streamlit-work-flow-control-with-session-state/"/>
+      <url>2023/03/21/streamlit-work-flow-control-with-session-state/</url>
+      
+        <content type="html"><![CDATA[<p>Streamlit is super easy to use to build some demo quickly. Streamlit is an open-source Python library that allows developers to easily create interactive web applications for data science and machine learning projects. With Streamlit, you can create a web-based dashboard or application that lets users interact with your data, visualizations, and machine learning models without the need for extensive coding or web development knowledge</p><p>But if you want to more complex work flow controls, you might expect some unexpected behaviors.<br>For example, a nested buttons, where users click the first button, do something, then continue to click the second button, and do other things.<br>Such as the following picture shows:</p><p><img src="/content/images/2023-03-21-1.png"></p><p>As shown in the above picture, the goal we want to achieve is: First, user will clicks button1, then a random number got displayed, then the button2 showsup, and users continue to click button2, and should<br>see a new random generated.</p><p>You might think the streamlit code is as easy as the following:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import streamlit as st</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">button1 = st.button(&#x27;Step1&#x27;)</span><br><span class="line">if button1 == True:</span><br><span class="line">        </span><br><span class="line">    show_number1 = random.random()</span><br><span class="line">    st.write(&quot;random number generated from step 1: &#123;&#125;&quot;.format(show_number1))</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    button2 = st.button(&#x27;Step2&#x27;)</span><br><span class="line">    if button2 == True:</span><br><span class="line">        show_number2 = random.random()</span><br><span class="line">        st.write(&quot;random number generated from step 2: &#123;&#125;&quot;.format(show_number2))</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>For the above code,  when you click button1, it works as you would expect. But when you click button2, the page restarts, and you only see button1 again.<br>This is not a bug, but what’s supposed to work with Streamlit, probably for a good reason. </p><p>So if we want to achieve our original goal, we need to leverage session state to store some several things. One thing to notice, once we click the second button, the app will restart anyway,<br>we can’t really change that, we just need to cache some knowledge of what already happened, and use those information to guide the work flow.</p><p>So information we need to cache are:<br>(1) if each of the buttons are already clicked<br>(2) the random number generated after the first button click, so it doesn’t get regnerated again during the app restart.  </p><p>The new code is like the following:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import streamlit as st</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## init states</span><br><span class="line">if &#x27;button1_clicked&#x27; not in st.session_state:</span><br><span class="line">    st.session_state.button1_clicked = False</span><br><span class="line">    </span><br><span class="line">if &#x27;button2_clicked&#x27; not in st.session_state:</span><br><span class="line">    st.session_state.button2_clicked = False</span><br><span class="line">    </span><br><span class="line">if &#x27;show_number1&#x27; not in st.session_state:</span><br><span class="line">    st.session_state.show_number1 = 0</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">def callback1():</span><br><span class="line">    st.session_state.button1_clicked = True</span><br><span class="line">    </span><br><span class="line">def callback2():</span><br><span class="line">    st.session_state.button2_clicked = True</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">button1 = st.button(&#x27;Step1&#x27;,on_click=callback1)</span><br><span class="line">if button1 == True or st.session_state.button2_clicked == True:</span><br><span class="line">    </span><br><span class="line">    if button1 == False and st.session_state.button2_clicked  == True:</span><br><span class="line">        show_number1 = st.session_state.show_number1</span><br><span class="line">    else:</span><br><span class="line">        show_number1 = random.random()</span><br><span class="line">        </span><br><span class="line">    st.write(&quot;random number generated from step 1: &#123;&#125;&quot;.format(show_number1))</span><br><span class="line">    st.session_state.show_number1 = show_number1</span><br><span class="line"></span><br><span class="line">    button2 = st.button(&#x27;Step2&#x27;,on_click=callback2)</span><br><span class="line">    if button2 == True:</span><br><span class="line">        show_number2 = random.random()</span><br><span class="line">        st.write(&quot;random number generated from step 2: &#123;&#125;&quot;.format(show_number2))</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> streamlit </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>An Early Look at the Labor Market Impact Potential of Large Language Model such as GPT by OpenAI</title>
       <link href="2023/03/20/how-gpt-and-large-language-model-affect-job-market/"/>
       <url>2023/03/20/how-gpt-and-large-language-model-affect-job-market/</url>
@@ -2603,11 +2628,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
