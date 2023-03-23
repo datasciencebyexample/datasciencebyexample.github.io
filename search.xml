@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>how to use OpenAI to generate text completions and chat-style responses with GPT-3,chatGPT or GPT-4 through API</title>
+      <link href="2023/03/22/openai-api-requets-gpt3-vs-gpt4/"/>
+      <url>2023/03/22/openai-api-requets-gpt3-vs-gpt4/</url>
+      
+        <content type="html"><![CDATA[<p>OpenAI is a research organization that aims to build safe and beneficial artificial intelligence systems. One of their most popular products is the GPT (Generative Pre-trained Transformer) language model, which can be used to generate human-like text based on a given prompt. OpenAI provides a Python API that allows developers to easily access and use their language models. In this blog post, we’ll explore how to use OpenAI to generate text completions and chat-style responses using GPT-3 and GPT-4.</p><h2 id="install-openai-package"><a href="#install-openai-package" class="headerlink" title="install openai package"></a>install openai package</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install openai</span><br></pre></td></tr></table></figure><p>One thing to notice, if you want to use chatGPT API, make sure the openai version is greater than <code>0.27.0</code>.</p><h2 id="Generating-Text-Completions-with-GPT-3"><a href="#Generating-Text-Completions-with-GPT-3" class="headerlink" title="Generating Text Completions with GPT-3"></a>Generating Text Completions with GPT-3</h2><p>To generate text completions using GPT-3, we can use the openai.Completion.create method provided by the OpenAI Python API. Here’s an example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import openai</span><br><span class="line">openai.api_key = &quot;YOUR_API_KEY&quot;</span><br><span class="line"></span><br><span class="line">prompt = &quot;The quick brown fox&quot;</span><br><span class="line"></span><br><span class="line">response = openai.Completion.create(</span><br><span class="line">  engine=&quot;text-davinci-003&quot;,</span><br><span class="line">  prompt=prompt,</span><br><span class="line">  temperature=0.5,</span><br><span class="line">  max_tokens=20</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">result = response[&#x27;choices&#x27;][0][&#x27;text&#x27;].strip(&#x27;\n&#x27;).strip()</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure><p>In this example, we’re using text-davinci-003 as the engine to generate text completions based on the prompt “The quick brown fox”. We’re using a temperature of 0.5 and a max_tokens of 20 to control the length and diversity of the generated text. The resulting text completion is printed to the console.</p><h2 id="Generating-Chat-style-Responses-with-GPT-4"><a href="#Generating-Chat-style-Responses-with-GPT-4" class="headerlink" title="Generating Chat-style Responses with GPT-4"></a>Generating Chat-style Responses with GPT-4</h2><p>To generate chat-style responses using GPT-4, we can use the openai.ChatCompletion.create method provided by the OpenAI Python API. Here’s an example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import openai</span><br><span class="line">openai.api_key = &quot;YOUR_API_KEY&quot;</span><br><span class="line"></span><br><span class="line">messages=[</span><br><span class="line">  &#123;&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a good assistant.&quot;&#125;,</span><br><span class="line">  &#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;I&#x27;m looking for a new laptop. Can you recommend one?&quot;&#125;,</span><br><span class="line">  &#123;&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Sure, what&#x27;s your budget?&quot;&#125;,</span><br><span class="line">  &#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Not too much.&quot;&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">response = openai.ChatCompletion.create(</span><br><span class="line">  model=&quot;gpt-4&quot;,</span><br><span class="line">  messages=messages,</span><br><span class="line">  temperature=0.7,</span><br><span class="line">  max_tokens=50</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">result = response[&#x27;choices&#x27;][0][&#x27;message&#x27;][&#x27;content&#x27;].strip(&#x27;\n&#x27;).strip()</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Generating-Chat-style-Responses-with-chatGPT"><a href="#Generating-Chat-style-Responses-with-chatGPT" class="headerlink" title="Generating Chat-style Responses with chatGPT"></a>Generating Chat-style Responses with chatGPT</h2><p>It’s the same API to call as GPT-4, just switch the model to be “gpt-3.5-turbo”</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import openai</span><br><span class="line">openai.api_key = &quot;YOUR_API_KEY&quot;</span><br><span class="line"></span><br><span class="line">messages=[</span><br><span class="line">  &#123;&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a good assistant.&quot;&#125;,</span><br><span class="line">  &#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;I&#x27;m looking for a new laptop. Can you recommend one?&quot;&#125;,</span><br><span class="line">  &#123;&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Sure, what&#x27;s your budget?&quot;&#125;,</span><br><span class="line">  &#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Not too much.&quot;&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">response = openai.ChatCompletion.create(</span><br><span class="line">  model=&quot;gpt-3.5-turbo&quot;,</span><br><span class="line">  messages=messages,</span><br><span class="line">  temperature=0.7,</span><br><span class="line">  max_tokens=50</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">result = response[&#x27;choices&#x27;][0][&#x27;message&#x27;][&#x27;content&#x27;].strip(&#x27;\n&#x27;).strip()</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>OpenAI provides powerful language models that can be used to generate human-like text and chat-style responses. In this blog post, we explored how to use the OpenAI Python API to generate text completions using GPT-3 and chat-style responses using GPT-4. By leveraging these language models, developers can create innovative applications that can interact with users in natural and engaging ways.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gpt3 </tag>
+            
+            <tag> chatGPT </tag>
+            
+            <tag> openai </tag>
+            
+            <tag> gpt4 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to control work flow in Streamlit with session state</title>
       <link href="2023/03/21/streamlit-work-flow-control-with-session-state/"/>
       <url>2023/03/21/streamlit-work-flow-control-with-session-state/</url>
@@ -816,9 +847,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> vector search </tag>
-            
             <tag> FAISS </tag>
+            
+            <tag> vector search </tag>
             
         </tags>
       
@@ -2628,11 +2659,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
