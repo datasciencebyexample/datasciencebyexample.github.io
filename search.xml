@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>What is zero shot, few shot and fine tune in OpenAI GPT models</title>
+      <link href="2023/03/25/openai-GPT-zero-shot-to-few-shot-to-fine-tuning/"/>
+      <url>2023/03/25/openai-GPT-zero-shot-to-few-shot-to-fine-tuning/</url>
+      
+        <content type="html"><![CDATA[<p>When we say zero-shot or few-shot, it just the way we provide prompts when use GPT models, such as GPT3, GPT4 or chatGPT.</p><p>Performance wise, always start with zero-shot, then few-shot (example), neither of them worked, then fine-tune.</p><p>So what’s zero-shot prompt? Here is one example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Extract keywords from the below text.</span><br><span class="line"></span><br><span class="line">Text: &#123;text&#125;</span><br><span class="line"></span><br><span class="line">Keywords:</span><br></pre></td></tr></table></figure><p>If the performance is not good, try to add few examples in the prompt, this is so called few-shot learning.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Extract keywords from the corresponding texts below.</span><br><span class="line"></span><br><span class="line">Text 1: Stripe provides APIs that web developers can use to integrate payment processing into their websites and mobile applications.</span><br><span class="line">Keywords 1: Stripe, payment processing, APIs, web developers, websites, mobile applications</span><br><span class="line">##</span><br><span class="line">Text 2: OpenAI has trained cutting-edge language models that are very good at understanding and generating text. Our API provides access to these models and can be used to solve virtually any task that involves processing language.</span><br><span class="line">Keywords 2: OpenAI, language models, text processing, API.</span><br><span class="line">##</span><br><span class="line">Text 3: &#123;text&#125;</span><br><span class="line">Keywords 3:</span><br></pre></td></tr></table></figure><p>Sometimes even with few shot examples, performance might be still not what you expect, so try to use fine tuning.<br>But notice that, as the GPT model get more and more powerful, OpenAI will expect people to use the base model more and less fine tune, so support on the fine tune side might be less in the future.</p><p>The resource from OpenAI about how to do fine tune is here:<br><a href="https://platform.openai.com/docs/guides/fine-tuning">fine tune instruction</a><br><a href="https://github.com/openai/openai-cookbook/blob/main/examples/Fine-tuned_classification.ipynb">fine tune code example</a></p><p>For the model parameters, Generally, OpenAI recommend model and temperature are the most commonly used parameters to alter the model output.</p><p>model - Higher performance models are more expensive and have higher latency.</p><p>temperature - A measure of how often the model outputs a less likely token. The higher the temperature, the more random (and usually creative) the output. This, however, is not the same as “truthfulness”. For most factual use cases such as data extraction, and truthful Q&amp;A, the temperature of 0 is best.</p><p>max_tokens (maximum length) - Does not control the length of the output, but a hard cutoff limit for token generation. Ideally you won’t hit this limit often, as your model will stop either when it thinks it’s finished, or when it hits a stop sequence you defined.</p><p>stop (stop sequences) - A set of characters (tokens) that, when generated, will cause the text generation to stop.</p><p>More information about OpenAI API reference can be found here<br><a href="https://platform.openai.com/docs/api-reference/completions/create">OpenAI API reference</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> openai </tag>
+            
+            <tag> gpt </tag>
+            
+            <tag> zero shot </tag>
+            
+            <tag> few shot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>how to use OpenAI to generate text completions and chat-style responses with GPT-3,chatGPT or GPT-4 through API</title>
       <link href="2023/03/22/openai-api-requets-gpt3-vs-gpt4/"/>
       <url>2023/03/22/openai-api-requets-gpt3-vs-gpt4/</url>
@@ -847,9 +878,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> FAISS </tag>
-            
             <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
             
         </tags>
       
@@ -1564,11 +1595,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2659,11 +2690,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
