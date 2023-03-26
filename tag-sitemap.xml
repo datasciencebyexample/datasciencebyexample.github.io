@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/environment-variable-loading/</loc>
+        <lastmod>2023-03-26T01:48:28.232Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/github/</loc>
         <lastmod>2023-03-26T01:25:33.631Z</lastmod>
         <changefreq>weekly</changefreq>

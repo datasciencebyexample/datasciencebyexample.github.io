@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation, DataScienceTribe">
+    <meta name="keywords" content="Securely Loading Environment Variables in Python Using python-dotenv, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation | DataScienceTribe</title>
+    <title>Securely Loading Environment Variables in Python Using python-dotenv | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation</h1>
+                    <h1 class="description center-align post-title">Securely Loading Environment Variables in Python Using python-dotenv</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/chatGPT/">
-                                <span class="chip bg-color">chatGPT</span>
-                            </a>
-                        
-                            <a href="/tags/GPT4/">
-                                <span class="chip bg-color">GPT4</span>
+                            <a href="/tags/environment-variable-loading/">
+                                <span class="chip bg-color">environment variable loading</span>
                             </a>
                         
                     </div>
@@ -368,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-03-17
+                    2023-03-25
                 </div>
                 
 
@@ -402,32 +398,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li><p>What is ChatGPT and how does it work?<br>Answer: ChatGPT is a virtual assistant or chatbot that uses natural language processing (NLP) and generative AI to create human-like responses. It is a user interface for the GPT3 language model developed by OpenAI, which was trained using unsupervised learning on a massive dataset of 175 billion parameters.</p>
-</li>
-<li><p>How will jobs in marketing and advertising be affected by ChatGPT?<br>Answer: ChatGPT can be used to automate routine aspects of marketing work, such as creating lists, defining the structure of content marketing pieces, or generating product descriptions. However, it cannot replicate the authentic voice of a brand or the human connections that come with influencer marketing. Marketers who can apply truly human qualities should have nothing to fear.</p>
-</li>
-<li><p>What can marketers do to avoid becoming redundant due to AI?<br>Answer: Marketers can master using AI to augment their own creativity and human skills, such as creativity, strategic thinking, empathy, and emotional intelligence. They should also keep up-to-date with the latest developments in AI to ensure they remain effective and competitive in their roles.</p>
-</li>
-<li><p>Will AI make all jobs redundant?<br>Answer: Throughout history, new developments in technology have tended to create new jobs as quickly as they make old jobs redundant. The jobs that are created are often more technical, creative, or highly-skilled, meaning that they are higher paying and often more rewarding.</p>
-</li>
-<li><p>What are the limitations of ChatGPT and AI in general?<br>Answer: ChatGPT and AI in general are limited by their training data, which may contain bias, and their inability to replicate original thought or creativity in the same way as humans. However, as AI technology advances, it may be able to come closer to emulating some human qualities, so it is important to stay up-to-date with the latest developments.</p>
-</li>
-<li><p>What is the potential of ChatGPT in various professions?<br>Answer: ChatGPT can be used to augment professional skills in various professions, such as law, copywriting, journalism, computer programming, and human resources.</p>
-</li>
-<li><p>Can ChatGPT replace human educators?<br>Answer: No, human intangibles like patience, discipline skills, friendliness, and genuine concern for students’ well-being cannot be replaced by ChatGPT or other AI tools.</p>
-</li>
-<li><p>What are the risks of using ChatGPT in the legal profession?<br>Answer: ChatGPT may not consider the most recent cases and decisions, and it may sometimes get things wrong. It is also susceptible to dataset bias and less than 100% accuracy, making it unsuitable for rendering judgments.</p>
-</li>
-<li><p>Which jobs are more likely to be replaced by machines in the next few years or decades?<br>Answer: Receptionist, many customer service jobs, driving jobs including taxi drivers and truckers, and soldiers.</p>
-</li>
-<li><p>How can AI tools like ChatGPT be used in human resources?<br>Answer: ChatGPT can be used to write job descriptions, automate routine tasks, and conduct sentiment analytics, while HR professionals can focus on building a better understanding of the individuals that make up the company.</p>
-</li>
-<li><p>What are some uses of ChatGPT in different professions?<br>Answer: ChatGPT can be used to create reports and summaries for analysts, automate customer service inquiries, automate simple tasks for salespeople, automate lesson plans and quizzes for teachers, and create social media posts for PR professionals.</p>
-</li>
-<li><p>Are robots and AI technologies replacing human workers?<br>Answer: No, robots and AI technologies are changing how we work and what kinds of jobs exist. They are not necessarily eliminating jobs, but rather creating new ones.</p>
-</li>
-</ol>
+                <p>Loading environment variables in Python code is a common task that developers need to perform when building applications that require sensitive information such as API keys or database credentials. In this blog post, we will explore how to load environment variables using the python-dotenv package.</p>
+<p>The first step is to install the python-dotenv package. This can be done by running the following command in your terminal:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install python-dotenv</span><br></pre></td></tr></table></figure>
+<p>Once the package is installed, we can create a .env file in the root directory of our project and store our sensitive information inside. For example, let’s say we have an OpenAI API key that we want to access in our Python code. We can add the following line to our .env file:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OPENAI_API_KEY=&quot;2d9gggggggggggas&quot;</span><br></pre></td></tr></table></figure>
+<p>To use this API key in our Python code, we need to load the environment variables from the .env file. This can be done using the load_dotenv() function from the dotenv module. Here’s an example code snippet:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">from dotenv import load_dotenv</span><br><span class="line"></span><br><span class="line">load_dotenv()</span><br><span class="line"></span><br><span class="line">OPENAI_API_KEY = os.getenv(&#x27;OPENAI_API_KEY&#x27;)</span><br></pre></td></tr></table></figure>
+<p>In this code snippet, we first import the os and dotenv modules. We then call the load_dotenv() function, which loads the environment variables from the .env file. Finally, we use the os.getenv() function to retrieve the value of the OPENAI_API_KEY variable from the environment.</p>
+<p>One important reason to access sensitive information, such as an API key, using environment variables is to ensure security. By storing the sensitive information in an environment variable and loading it from a .env file, we can prevent the information from being hard-coded into our code and exposed in the event of a security breach.</p>
+<p>It is also crucial to make sure that the .env file is not pushed to GitHub or other public repositories. To achieve this, we can add the .env file to our .gitignore file. The .gitignore file specifies which files or directories Git should ignore when committing changes. This way, the .env file is kept private and safe.<br>How to add .gitignore file can be see <a target="_blank" rel="noopener" href="https://www.datasciencebyexample.com/2023/03/25/best-practice-of-creating-gitignore-file/">here</a></p>
+<p>In conclusion, loading environment variables in Python code is an essential step when building applications that require sensitive information such as API keys or database credentials. Using the python-dotenv package and loading the environment variables from a .env file helps to ensure security and prevent sensitive information from being exposed. Remember to always keep the .env file private and not push it to public repositories.</p>
 
                 
             </div>
@@ -454,7 +435,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/03/17/ai-and-future-job/">https://datasciencebyexample.github.io/2023/03/17/ai-and-future-job/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/03/25/load-environment-variable-to-Python-safe/">https://datasciencebyexample.github.io/2023/03/25/load-environment-variable-to-Python-safe/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -492,12 +473,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/chatGPT/">
-                                    <span class="chip bg-color">chatGPT</span>
-                                </a>
-                            
-                                <a href="/tags/GPT4/">
-                                    <span class="chip bg-color">GPT4</span>
+                                <a href="/tags/environment-variable-loading/">
+                                    <span class="chip bg-color">environment variable loading</span>
                                 </a>
                             
                         </div>
@@ -547,13 +524,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/03/18/elasticsearch-dense-vector-search/">
+                <a href="/2023/03/25/best-practice-of-creating-gitignore-file/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="vector search using Elastic Search,  index and search example using python requests library">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Best Practices for Creating a .gitignore File and how">
                         
-                        <span class="card-title">vector search using Elastic Search,  index and search example using python requests library</span>
+                        <span class="card-title">Best Practices for Creating a .gitignore File and how</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -564,7 +541,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-25
                         </span>
                         <span class="publish-author">
                             
@@ -581,8 +558,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/gitignore/">
+                        <span class="chip bg-color">gitignore</span>
+                    </a>
+                    
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
                     </a>
                     
                 </div>
@@ -596,13 +581,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/16/carriage-return-in-string-python/">
+                <a href="/2023/03/25/openai-GPT-zero-shot-to-few-shot-to-fine-tuning/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="What is zero shot, few shot and fine tune in OpenAI GPT models">
                         
-                        <span class="card-title">Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings</span>
+                        <span class="card-title">What is zero shot, few shot and fine tune in OpenAI GPT models</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -613,7 +598,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-25
                             </span>
                         <span class="publish-author">
                             
@@ -630,12 +615,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/openai/">
+                        <span class="chip bg-color">openai</span>
                     </a>
                     
-                    <a href="/tags/carriage-return/">
-                        <span class="chip bg-color">carriage return</span>
+                    <a href="/tags/gpt/">
+                        <span class="chip bg-color">gpt</span>
+                    </a>
+                    
+                    <a href="/tags/zero-shot/">
+                        <span class="chip bg-color">zero shot</span>
+                    </a>
+                    
+                    <a href="/tags/few-shot/">
+                        <span class="chip bg-color">few shot</span>
                     </a>
                     
                 </div>
