@@ -9,6 +9,30 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/03/28/fastpai-with-aws-cognito-for-user-authentication/</loc>
+        <lastmod>2023-03-28T21:09:01.425Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2023/03/28/include-curly-braces-in-python-format-strings/</loc>
+        <lastmod>2023-03-28T20:58:14.662Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2023/03/28/sample-rows-by-sample-in-dataframe/</loc>
+        <lastmod>2023-03-28T20:56:59.559Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/03/25/load-environment-variable-to-Python-safe/</loc>
         <lastmod>2023-03-26T01:48:28.232Z</lastmod>
         <changefreq>weekly</changefreq>
