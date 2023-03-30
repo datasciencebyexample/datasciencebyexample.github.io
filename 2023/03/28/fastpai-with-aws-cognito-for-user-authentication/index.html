@@ -404,7 +404,9 @@
             <div id="articleContent">
                 <p>Introduction:<br>In this tutorial, we will build a FastAPI webpage that uses AWS Cognito for user authentication. Once the user logs in, they will see a simple chatbot page. We will walk through the code step by step and explain the main sections.</p>
 <p>Before we start, make sure you have the following packages installed in your Python environment:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install fastapi</span><br><span class="line">pip install httpx</span><br><span class="line">pip install pyjwt</span><br><span class="line">pip install uvicorn</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install fastapi</span><br><span class="line">pip install httpx</span><br><span class="line">pip install pyjwt[crypto]</span><br><span class="line">pip install uvicorn</span><br></pre></td></tr></table></figure>
+<p>Notice that, the default pyjwt package won’t work, you might get erros such as <code>The JWK Set did not contain any usable keys</code> or <code>AttributeError: module &#39;jwt&#39; has no attribute &#39;JWTError&#39;</code>.<br>It has to be the package install like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install pyjwt[crypto]</span><br></pre></td></tr></table></figure>
 
 <p>Now, let’s dive into the code.</p>
 <ol>
