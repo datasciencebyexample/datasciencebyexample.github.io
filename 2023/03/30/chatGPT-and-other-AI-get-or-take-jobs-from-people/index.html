@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="some handy functions to group continous variables and missing value imputation in dataframe, DataScienceTribe">
+    <meta name="keywords" content="The Rise of ChatGPT, A Boon or a Threat to Jobs?, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>some handy functions to group continous variables and missing value imputation in dataframe | DataScienceTribe</title>
+    <title>The Rise of ChatGPT, A Boon or a Threat to Jobs? | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">some handy functions to group continous variables and missing value imputation in dataframe</h1>
+                    <h1 class="description center-align post-title">The Rise of ChatGPT, A Boon or a Threat to Jobs?</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/chatGPT/">
+                                <span class="chip bg-color">chatGPT</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/pandas-tip/">
-                                <span class="chip bg-color">pandas tip</span>
+                            <a href="/tags/GPT/">
+                                <span class="chip bg-color">GPT</span>
                             </a>
                         
                     </div>
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-15
+                    2023-03-30
                 </div>
                 
 
@@ -406,9 +402,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Following example shows how to group age variable into groups,<br>and some simple missing value imputaiton proecdures.</p>
-<p>There is also an example to transform timestamp variable to week day and hour infomation.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"># utility functions</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">def age_input(age):</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    if pd.isnull(age):</span><br><span class="line"></span><br><span class="line">        return &#x27;missing&#x27;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    age = int(age)</span><br><span class="line"></span><br><span class="line">    if age&lt;=20:</span><br><span class="line"></span><br><span class="line">        return &#x27;16-20&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=24:</span><br><span class="line"></span><br><span class="line">        return &#x27;21-24&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=34:</span><br><span class="line"></span><br><span class="line">        return &#x27;25-34&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=44:</span><br><span class="line"></span><br><span class="line">        return &#x27;35-44&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=54:</span><br><span class="line"></span><br><span class="line">        return &#x27;45-54&#x27;</span><br><span class="line"></span><br><span class="line">    elif age&lt;=64:</span><br><span class="line"></span><br><span class="line">        return &#x27;55-64&#x27;</span><br><span class="line"></span><br><span class="line">    else:</span><br><span class="line"></span><br><span class="line">        return &#x27;65+&#x27;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"># missing value handelling or imputation in dataframe </span><br><span class="line"></span><br><span class="line">def missing_handle(df):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">    for col in df.columns:</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">        if df[col].dtype==object:</span><br><span class="line"></span><br><span class="line">            df[col] = df[col].fillna(&#x27;missing&#x27;)</span><br><span class="line"></span><br><span class="line">        elif df[col].dtype == bool:</span><br><span class="line"></span><br><span class="line">            df[col+&#x27;_null&#x27;] = df[col].apply(lambda x: 1 if pd.isnull(x) else 0)</span><br><span class="line"></span><br><span class="line">            df[col] = data[col].fillna(data[col].mode()[0])</span><br><span class="line"></span><br><span class="line">          </span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line"></span><br><span class="line">            df[col] = df[col].fillna(-999)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    return df</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;sentat&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;sentat&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;sentat&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        # apply age group function here</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        X[&#x27;age_group&#x27;] = X[&#x27;age&#x27;].apply(age_input)</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;age&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        # apply missing handelling here</span><br><span class="line"></span><br><span class="line">        X = missing_handle(X)</span><br><span class="line"></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"># define the transformer</span><br><span class="line">dayandhour_transformer = dayandhour_Transformer()</span><br><span class="line"></span><br><span class="line"># usage example</span><br><span class="line">df_new = dayandhour_transformer.transform(df)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>The rapid development and adoption of ChatGPT, a conversational AI interface built on the GPT-3 large language model, has sparked debates on whether it will replace various jobs or simply augment human skills. While some fear the loss of jobs in fields like programming, journalism, and creative writing, others argue that AI-generated text will not replace human expertise but rather change the way we work.</p>
+<h2 id="Why-ChatGPT-Won’t-Take-Your-Job"><a href="#Why-ChatGPT-Won’t-Take-Your-Job" class="headerlink" title="Why ChatGPT Won’t Take Your Job"></a>Why ChatGPT Won’t Take Your Job</h2><p>Despite its impressive capabilities, ChatGPT is still limited and sometimes produces inaccurate or nonsensical responses. When faced with complex prompts, it tends to generate polished but ultimately incorrect or irrelevant answers. This is particularly evident in academic and technical domains, where the AI may fabricate references or provide misinformation.</p>
+<p>Moreover, past information technologies have rarely replaced human jobs; instead, they have impacted how we perform our jobs. For example, the internet has changed the way we communicate but has not eliminated the need for human interaction. Similarly, ChatGPT may change the way we write texts or content, but it is unlikely to replace human creativity and critical thinking.</p>
+<p>In fact, ChatGPT could be a valuable asset when used correctly. For instance, journalists could use it to generate multiple headlines for an article, while programmers could use it to solve straightforward problems. The key is to understand its limitations and use it as a partner in problem-solving or creative writing tasks.</p>
+<h2 id="Why-ChatGPT-Might-Replace-Your-Job"><a href="#Why-ChatGPT-Might-Replace-Your-Job" class="headerlink" title="Why ChatGPT Might Replace Your Job"></a>Why ChatGPT Might Replace Your Job</h2><p>On the other hand, ChatGPT’s ability to generate properly formatted, relevant code in multiple languages and refine requests over the course of a session has raised concerns about its potential impact on various professions. Here are some jobs where ChatGPT could make a significant difference:</p>
+<p>Lawyers: ChatGPT can assist lawyers by creating summaries of case notes, drafting documents, and reducing research time, allowing them to focus on client interactions and legal strategies.</p>
+<p>Copywriters: While original thought is still crucial for effective copywriting, ChatGPT can help generate ideas and suggest ways to make copy more engaging.</p>
+<p>Journalists: AI has already been used to create automated reports in journalism. ChatGPT can help create article outlines, summaries, headlines, and other features, allowing journalists to focus on original reporting and storytelling.</p>
+<p>Computer Programmers: ChatGPT can generate code in various languages, potentially replacing some programming tasks. However, it is currently unable to create complex software applications.</p>
+<p>Human Resources: HR professionals can use ChatGPT to write job descriptions, automate routine tasks, and create onboarding materials, freeing up time for more personal interactions with employees.</p>
+<p>Data Analysts: ChatGPT can help create reports, summarize data, and translate insights into words, allowing analysts to focus on more complex tasks and decision-making.</p>
+<p>Customer Services: ChatGPT can power chatbots to handle incoming customer inquiries, enabling customer service agents to focus on more challenging issues.</p>
+<p>Salespeople: ChatGPT can automate tasks such as entering information into CRM databases and writing introductory letters, allowing salespeople to concentrate on building relationships and developing sales strategies.</p>
+<p>Teachers: ChatGPT can help create lesson plans, summaries, quizzes, and other educational materials, allowing teachers to focus on student interactions and teaching strategies.</p>
+<p>Public Relations: PR professionals can use ChatGPT to create social media posts, monitor media mentions, and generate summarized reports, allowing them to focus on relationship-building and crisis management.</p>
+<h2 id="The-Bottom-Line"><a href="#The-Bottom-Line" class="headerlink" title="The Bottom Line"></a>The Bottom Line</h2><p>The rise of ChatGPT presents both opportunities and challenges for various professions. While it is unlikely to replace human expertise entirely, it will undoubtedly change the way we work and interact with technology. By understanding its limitations and potential, we can harness its power to augment our skills and improve our productivity. Ultimately, the key to success in the era of AI and automation lies in adapting to these changes and focusing on the human skills that machines cannot yet replicate.</p>
+
                 
             </div>
             <hr/>
@@ -434,7 +444,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/15/2021-06-15-1/">https://datasciencebyexample.github.io/2021/06/15/2021-06-15-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/03/30/chatGPT-and-other-AI-get-or-take-jobs-from-people/">https://datasciencebyexample.github.io/2023/03/30/chatGPT-and-other-AI-get-or-take-jobs-from-people/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,16 +482,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/chatGPT/">
+                                    <span class="chip bg-color">chatGPT</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/pandas-tip/">
-                                    <span class="chip bg-color">pandas tip</span>
+                                <a href="/tags/GPT/">
+                                    <span class="chip bg-color">GPT</span>
                                 </a>
                             
                         </div>
@@ -527,74 +533,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/18/2021-06-18-1/">
+                <a href="/2023/03/30/chatGPT-and-other-AI-get-or-take-jobs-from-people/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="handles feature order in training and online production stage to avoid inconsistent error">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="The Rise of ChatGPT, A Boon or a Threat to Jobs?">
                         
-                        <span class="card-title">handles feature order in training and online production stage to avoid inconsistent error</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
-                    </a>
-                    
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
-                    </a>
-                    
-                    <a href="/tags/machine-learning/">
-                        <span class="chip bg-color">machine learning</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/14/2021-06-14-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe">
-                        
-                        <span class="card-title">explode and expand rows to multiple rows or columns to multiple columns using pandas dataframe</span>
+                        <span class="card-title">The Rise of ChatGPT, A Boon or a Threat to Jobs?</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -605,7 +555,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-30
                             </span>
                         <span class="publish-author">
                             
@@ -619,19 +569,69 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/chatGPT/">
+                        <span class="chip bg-color">chatGPT</span>
                     </a>
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/GPT/">
+                        <span class="chip bg-color">GPT</span>
                     </a>
                     
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/03/29/select-multiple-cells-in-notebook/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="How to select multiple cells in Jupyter Notebook or Databricks Notebook and delete them">
+                        
+                        <span class="card-title">How to select multiple cells in Jupyter Notebook or Databricks Notebook and delete them</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/databricks/">
+                        <span class="chip bg-color">databricks</span>
+                    </a>
+                    
+                    <a href="/tags/jupyter-notebook/">
+                        <span class="chip bg-color">jupyter notebook</span>
                     </a>
                     
                 </div>
