@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Difference between git rebase and git merge clearly explained finally</title>
+      <link href="2023/03/31/git-base-vs-git-merge-finall-clearly-explained/"/>
+      <url>2023/03/31/git-base-vs-git-merge-finall-clearly-explained/</url>
+      
+        <content type="html"><![CDATA[<p>Git rebase and git merge are both used to integrate changes from one branch into another, but they do so in different ways.</p><h2 id="Git-Merge"><a href="#Git-Merge" class="headerlink" title="Git Merge:"></a>Git Merge:</h2><p>When you merge one branch into another, git takes the changes that were made in the source branch and applies them directly onto the destination branch. This creates a new commit on the destination branch that includes all of the changes from the source branch. Git merge preserves the entire history of both branches and creates a new commit that combines the two histories.</p><h2 id="Git-Rebase"><a href="#Git-Rebase" class="headerlink" title="Git Rebase:"></a>Git Rebase:</h2><p>Git rebase, on the other hand, rewrites the history of the source branch to make it look like it was based off the destination branch from the beginning. Instead of creating a new commit, git rebase takes the changes made in the source branch and reapplies them on top of the destination branch. This creates a linear history with a single branch, and it can make it easier to understand the flow of changes.</p><p>The key difference between git merge and git rebase is that git merge preserves the entire history of both branches, whereas git rebase rewrites the history of the source branch. Git merge is generally used for integrating long-lived feature branches into a stable branch, while git rebase is typically used for integrating short-lived feature branches into a stable branch.</p><p>Another difference between the two is that git merge creates a new commit, while git rebase changes the existing commits in the source branch. This can make it harder to revert changes made with git rebase, but it can also make the history easier to understand and maintain.</p><p>Overall, both git merge and git rebase are useful tools for integrating changes into a Git repository, and the choice between them depends on the specific needs of the project and the preferences of the development team.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>The Rise of ChatGPT, A Boon or a Threat to Jobs?</title>
       <link href="2023/03/30/chatGPT-and-other-AI-get-or-take-jobs-from-people/"/>
       <url>2023/03/30/chatGPT-and-other-AI-get-or-take-jobs-from-people/</url>
@@ -1782,11 +1809,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2786,9 +2813,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> python </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> pandas tip </tag>
             
@@ -2815,9 +2842,9 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> python </tag>
+            
+            <tag> preprocessing </tag>
             
             <tag> pandas tip </tag>
             
@@ -2844,9 +2871,9 @@
       
         <tags>
             
-            <tag> pipeline </tag>
-            
             <tag> preprocessing </tag>
+            
+            <tag> pipeline </tag>
             
             <tag> feature engineering </tag>
             
@@ -2873,15 +2900,15 @@
       
         <tags>
             
+            <tag> preprocessing </tag>
+            
             <tag> pipeline </tag>
             
-            <tag> preprocessing </tag>
+            <tag> feature engineering </tag>
             
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -2987,11 +3014,11 @@
       
         <tags>
             
-            <tag> preprocessing </tag>
-            
             <tag> python </tag>
             
             <tag> pandas </tag>
+            
+            <tag> preprocessing </tag>
             
         </tags>
       
