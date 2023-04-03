@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/stream/</loc>
+        <lastmod>2023-04-03T02:33:28.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/chatGPT/</loc>
+        <lastmod>2023-04-03T02:33:28.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/github/</loc>
         <lastmod>2023-04-01T03:28:28.919Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,13 +32,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/GPT/</loc>
-        <lastmod>2023-03-30T14:56:20.928Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/chatGPT/</loc>
         <lastmod>2023-03-30T14:56:20.928Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -451,14 +458,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -661,14 +668,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/pandas-tip/</loc>
         <lastmod>2021-06-23T20:44:04.817Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/pandas-tip/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
         <lastmod>2021-06-23T20:44:04.817Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

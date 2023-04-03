@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Make chatGPT API response faster, user more happy, by using streaming mode</title>
+      <link href="2023/04/02/speedup-chatgpt-and-do-streaming/"/>
+      <url>2023/04/02/speedup-chatgpt-and-do-streaming/</url>
+      
+        <content type="html"><![CDATA[<p>It’s actually not really making results coming from chatGPT API much faster, but making users feel things are moving much faster.<br>So the user experience is a lot better.</p><p>The key is to enable streamming mode when calling the chatGPT API.</p><p>Here is the example code:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Example of an OpenAI ChatCompletion request with stream=True</span><br><span class="line"># https://platform.openai.com/docs/guides/chat</span><br><span class="line"></span><br><span class="line"># a ChatCompletion request</span><br><span class="line">response = openai.ChatCompletion.create(</span><br><span class="line">    model=&#x27;gpt-3.5-turbo&#x27;,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;&#x27;role&#x27;: &#x27;user&#x27;, &#x27;content&#x27;: &quot;What&#x27;s 1+1? Answer in one word.&quot;&#125;</span><br><span class="line">    ],</span><br><span class="line">    temperature=0,</span><br><span class="line">    stream=True  # this time, we set stream=True</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">for chunk in response:</span><br><span class="line">    print(chunk)</span><br></pre></td></tr></table></figure><p>As you can see, the key is to add one more parameter as <code>stream=True</code>.<br>And here is the result from the above code:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;</span><br><span class="line">        &quot;role&quot;: &quot;assistant&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;finish_reason&quot;: null,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;</span><br><span class="line">        &quot;content&quot;: &quot;\n\n&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;finish_reason&quot;: null,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;</span><br><span class="line">        &quot;content&quot;: &quot;2&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;finish_reason&quot;: null,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;&#125;,</span><br><span class="line">      &quot;finish_reason&quot;: &quot;stop&quot;,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> chatGPT </tag>
+            
+            <tag> stream </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Difference between git rebase and git merge clearly explained finally</title>
       <link href="2023/03/31/git-base-vs-git-merge-finall-clearly-explained/"/>
       <url>2023/03/31/git-base-vs-git-merge-finall-clearly-explained/</url>
@@ -1119,9 +1146,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> FAISS </tag>
-            
             <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
             
         </tags>
       
@@ -1836,11 +1863,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -2784,9 +2811,9 @@
             
             <tag> preprocessing </tag>
             
-            <tag> pandas tip </tag>
-            
             <tag> machine learning </tag>
+            
+            <tag> pandas tip </tag>
             
         </tags>
       
@@ -2813,9 +2840,9 @@
             
             <tag> preprocessing </tag>
             
-            <tag> pandas tip </tag>
-            
             <tag> machine learning </tag>
+            
+            <tag> pandas tip </tag>
             
         </tags>
       
@@ -3014,9 +3041,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -3041,9 +3068,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pandas </tag>
+            
+            <tag> python </tag>
             
             <tag> preprocessing </tag>
             
