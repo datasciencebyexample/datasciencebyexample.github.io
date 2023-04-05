@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/04/03/ai-book-echoes-of-atlantis/</loc>
+        <lastmod>2023-04-05T21:30:00.903Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/04/04/run-python-app-in-background-with-nohub-and-how-to-kill-it/</loc>
         <lastmod>2023-04-05T01:47:54.896Z</lastmod>
         <changefreq>weekly</changefreq>
