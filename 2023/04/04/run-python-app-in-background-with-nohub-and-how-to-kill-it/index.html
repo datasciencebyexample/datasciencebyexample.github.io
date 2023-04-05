@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Make chatGPT API response faster, user more happy, by using streaming mode, DataScienceTribe">
+    <meta name="keywords" content="Running a Python File in the Background with nohup and how to kill it, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Make chatGPT API response faster, user more happy, by using streaming mode | DataScienceTribe</title>
+    <title>Running a Python File in the Background with nohup and how to kill it | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Make chatGPT API response faster, user more happy, by using streaming mode</h1>
+                    <h1 class="description center-align post-title">Running a Python File in the Background with nohup and how to kill it</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/chatGPT/">
-                                <span class="chip bg-color">chatGPT</span>
-                            </a>
-                        
-                            <a href="/tags/stream/">
-                                <span class="chip bg-color">stream</span>
+                            <a href="/tags/nohup/">
+                                <span class="chip bg-color">nohup</span>
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-04-02
+                    2023-04-04
                 </div>
                 
 
@@ -402,13 +398,38 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>It’s actually not really making results coming from chatGPT API much faster, but making users feel things are moving much faster.<br>So the user experience is a lot better.</p>
-<p>The key is to enable streamming mode when calling the chatGPT API.</p>
-<p>Here is the example code:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Example of an OpenAI ChatCompletion request with stream=True</span><br><span class="line"># https://platform.openai.com/docs/guides/chat</span><br><span class="line"></span><br><span class="line"># a ChatCompletion request</span><br><span class="line">response = openai.ChatCompletion.create(</span><br><span class="line">    model=&#x27;gpt-3.5-turbo&#x27;,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;&#x27;role&#x27;: &#x27;user&#x27;, &#x27;content&#x27;: &quot;What&#x27;s 1+1? Answer in one word.&quot;&#125;</span><br><span class="line">    ],</span><br><span class="line">    temperature=0,</span><br><span class="line">    stream=True  # this time, we set stream=True</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">for chunk in response:</span><br><span class="line">    print(chunk)</span><br></pre></td></tr></table></figure>
-<p>As you can see, the key is to add one more parameter as <code>stream=True</code>.<br>And here is the result from the above code:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;</span><br><span class="line">        &quot;role&quot;: &quot;assistant&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;finish_reason&quot;: null,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;</span><br><span class="line">        &quot;content&quot;: &quot;\n\n&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;finish_reason&quot;: null,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;</span><br><span class="line">        &quot;content&quot;: &quot;2&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;finish_reason&quot;: null,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;delta&quot;: &#123;&#125;,</span><br><span class="line">      &quot;finish_reason&quot;: &quot;stop&quot;,</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;created&quot;: 1677825464,</span><br><span class="line">  &quot;id&quot;: &quot;chatcmpl-6ptKyqKOGXZT6iQnqiXAH8adNLUzD&quot;,</span><br><span class="line">  &quot;model&quot;: &quot;gpt-3.5-turbo-0301&quot;,</span><br><span class="line">  &quot;object&quot;: &quot;chat.completion.chunk&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h2 id="Running-a-Python-File-in-the-Background-with-nohup"><a href="#Running-a-Python-File-in-the-Background-with-nohup" class="headerlink" title="Running a Python File in the Background with nohup"></a>Running a Python File in the Background with nohup</h2><p>When running a Python file on the backend, such as a Flask or FastAPI application, it’s often necessary to keep the process running in the background even after the user logs out. One way to do this is by using the nohup command.</p>
+<p>The nohup command stands for “no hangup”, and it allows you to run a command or script that continues running even after you log out of the terminal. This is useful for running long-running processes like a web server or a machine learning training script.</p>
+<p>Here’s how to use nohup to run a Python file in the background:</p>
+<ol>
+<li>Create a log file to capture any output from the script. You can do this using the touch command:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch nohup.out</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>This will create an empty file called nohup.out in the current directory.</p>
+<ol start="2">
+<li>Run the Python file using the nohup command, followed by the &amp; symbol to run the command in the background:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nohup python3 app.py &amp;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>This will start the app.py file in the background, and any output from the script will be redirected to the nohup.out file.</p>
+<ol start="3">
+<li>If you want to monitor the output of the script in real-time, you can use the tail command to follow the nohup.out file:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tail -f nohup.out</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>This will display the last few lines of the file, and any new output will be added to the display as it becomes available.</p>
+<h2 id="Killing-a-Process-Started-with-nohup"><a href="#Killing-a-Process-Started-with-nohup" class="headerlink" title="Killing a Process Started with nohup"></a>Killing a Process Started with nohup</h2><p>If you need to stop the Python process that you started with nohup, you’ll need to find the process ID (PID) and kill the process. Here’s how to do it:</p>
+<ol>
+<li>Use the ps command to find the PID of the Python process:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ps -ef | grep app.py | grep -v grep</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>This will display a list of all running processes that match the name app.py. The grep -v grep option is used to exclude the grep command itself from the output.</p>
+<ol start="2">
+<li>Once you’ve identified the PID of the process, you can use the kill command to send a signal to the process to stop:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kill PID</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>Replace PID with the actual process ID. This will send a SIGTERM signal to the process, allowing it to do any cleanup work before terminating.</p>
+<ol start="3">
+<li>If the process does not terminate after a few seconds, you can try sending a SIGKILL signal instead:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kill -9 PID</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>This will force the process to terminate immediately, without giving it a chance to do any cleanup work.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Using nohup to run a Python file in the background is a useful technique for running long-running processes on a server. By redirecting output to a log file, you can monitor the progress of the process and troubleshoot any issues that may arise.</p>
+<p>If you need to stop the process, you can use the ps and kill commands to find and terminate the process. By using these commands carefully, you can ensure that your system remains stable and secure.</p>
 
                 
             </div>
@@ -435,7 +456,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/04/02/speedup-chatgpt-and-do-streaming/">https://datasciencebyexample.github.io/2023/04/02/speedup-chatgpt-and-do-streaming/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/04/04/run-python-app-in-background-with-nohub-and-how-to-kill-it/">https://datasciencebyexample.github.io/2023/04/04/run-python-app-in-background-with-nohub-and-how-to-kill-it/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -473,12 +494,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/chatGPT/">
-                                    <span class="chip bg-color">chatGPT</span>
-                                </a>
-                            
-                                <a href="/tags/stream/">
-                                    <span class="chip bg-color">stream</span>
+                                <a href="/tags/nohup/">
+                                    <span class="chip bg-color">nohup</span>
                                 </a>
                             
                         </div>
@@ -524,9 +541,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2023/04/04/run-python-app-in-background-with-nohub-and-how-to-kill-it/">
                     <div class="card-image">
@@ -544,9 +562,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -559,6 +577,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -577,13 +596,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/31/git-base-vs-git-merge-finall-clearly-explained/">
+                <a href="/2023/04/02/speedup-chatgpt-and-do-streaming/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Difference between git rebase and git merge clearly explained finally">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Make chatGPT API response faster, user more happy, by using streaming mode">
                         
-                        <span class="card-title">Difference between git rebase and git merge clearly explained finally</span>
+                        <span class="card-title">Make chatGPT API response faster, user more happy, by using streaming mode</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -594,7 +613,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-02
                             </span>
                         <span class="publish-author">
                             
@@ -611,12 +630,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/chatGPT/">
+                        <span class="chip bg-color">chatGPT</span>
                     </a>
                     
-                    <a href="/tags/github/">
-                        <span class="chip bg-color">github</span>
+                    <a href="/tags/stream/">
+                        <span class="chip bg-color">stream</span>
                     </a>
                     
                 </div>
