@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>Comparing Python&#39;s HTTP Libraries HTTPX vs Requests</title>
+      <link href="2023/04/06/httpx-vs-requsts-in-pyton/"/>
+      <url>2023/04/06/httpx-vs-requsts-in-pyton/</url>
+      
+        <content type="html"><![CDATA[<p>When working with Python, you’ll often need to make HTTP requests to interact with APIs, download files, or scrape web content. Two popular libraries for making HTTP requests in Python are <code>httpx</code> and <code>requests</code>. In this blog post, we’ll compare these two libraries and discuss their key differences to help you decide which one is right for your project.</p><h2 id="1-Async-Support"><a href="#1-Async-Support" class="headerlink" title="1. Async Support"></a>1. Async Support</h2><p>One of the main advantages of <code>httpx</code> over <code>requests</code> is its built-in support for asynchronous programming using Python’s <code>asyncio</code> library. This allows you to make non-blocking HTTP requests, which can lead to significant performance improvements, especially when dealing with multiple requests concurrently.</p><p><code>requests</code>, on the other hand, does not have native async support. If you need asynchronous behavior with <code>requests</code>, you’ll need to use a separate library or workaround, which can be more cumbersome.</p><h2 id="2-HTTP-2-Support"><a href="#2-HTTP-2-Support" class="headerlink" title="2. HTTP/2 Support"></a>2. HTTP/2 Support</h2><p><code>httpx</code> supports HTTP/2, a newer version of the HTTP protocol that can provide performance improvements and more efficient connections when interacting with servers that support it. In contrast, <code>requests</code> only supports HTTP/1.1. If you’re working with an API or server that supports HTTP/2, using <code>httpx</code> can give you a performance edge.</p><h2 id="3-Connection-Pooling-and-Keep-Alive"><a href="#3-Connection-Pooling-and-Keep-Alive" class="headerlink" title="3. Connection Pooling and Keep-Alive"></a>3. Connection Pooling and Keep-Alive</h2><p>Both <code>httpx</code> and <code>requests</code> support connection pooling and keep-alive, which can help reduce the overhead of establishing new connections for each request. However, <code>httpx</code> has a more advanced connection management system that can handle multiple concurrent connections better. This can be particularly useful when working with async requests or when making many requests in a short period.</p><h2 id="4-Request-and-Response-Streaming"><a href="#4-Request-and-Response-Streaming" class="headerlink" title="4. Request and Response Streaming"></a>4. Request and Response Streaming</h2><p><code>httpx</code> supports request and response streaming, allowing you to work with large files or streaming APIs more efficiently. While <code>requests</code> also supports streaming, its implementation is more limited and may not be suitable for all use cases.</p><h2 id="5-API-Similarity"><a href="#5-API-Similarity" class="headerlink" title="5. API Similarity"></a>5. API Similarity</h2><p><code>httpx</code> has a very similar API to <code>requests</code>, making it relatively easy to switch between the two libraries. However, there may be some minor differences in behavior or function signatures, so it’s essential to thoroughly test your code when migrating from one library to the other.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In summary, if you need async support, HTTP/2, or more advanced connection management, <code>httpx</code> is the better choice for your Python project. If you don’t need these features and are already familiar with <code>requests</code>, it may be more convenient to stick with <code>requests</code>. Ultimately, the choice between these two libraries will depend on your specific use case and requirements.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> requests </tag>
+            
+            <tag> httpx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
+      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
+      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
+      
+        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> timeout </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pip list vs pip freeze, and other ways to check installed packages in Python environment</title>
       <link href="2023/04/06/ways-to-check-installed-packages-in-python/"/>
       <url>2023/04/06/ways-to-check-installed-packages-in-python/</url>
@@ -3116,9 +3168,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       

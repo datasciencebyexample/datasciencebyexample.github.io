@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/04/06/httpx-vs-requsts-in-pyton/</loc>
+        <lastmod>2023-04-06T18:49:26.106Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2023/04/06/how-to-setup-server-side-and-client-side-timeout/</loc>
+        <lastmod>2023-04-06T18:45:37.540Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/04/06/ways-to-check-installed-packages-in-python/</loc>
         <lastmod>2023-04-06T16:18:03.338Z</lastmod>
         <changefreq>weekly</changefreq>

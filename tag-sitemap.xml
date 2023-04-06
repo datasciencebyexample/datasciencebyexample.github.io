@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/httpx/</loc>
+        <lastmod>2023-04-06T18:49:26.106Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/requests/</loc>
+        <lastmod>2023-04-06T18:49:26.106Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/timeout/</loc>
+        <lastmod>2023-04-06T18:45:37.540Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/GPT4/</loc>
         <lastmod>2023-04-06T16:18:03.338Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -236,13 +257,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tqdm/</loc>
         <lastmod>2023-03-13T20:36:59.130Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/requests/</loc>
-        <lastmod>2023-03-12T20:43:34.564Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
