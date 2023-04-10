@@ -3,14 +3,28 @@
 
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/bayes-theorem/</loc>
-        <lastmod>2023-04-07T03:06:33.270Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
+        <lastmod>2023-04-10T22:22:53.224Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/token-limit/</loc>
+        <lastmod>2023-04-10T22:22:53.224Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/chatGPT/</loc>
+        <lastmod>2023-04-10T22:22:53.224Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/bayes-theorem/</loc>
         <lastmod>2023-04-07T03:06:33.270Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -158,13 +172,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/gpt/</loc>
-        <lastmod>2023-03-25T05:24:15.005Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2023-03-25T05:24:15.005Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

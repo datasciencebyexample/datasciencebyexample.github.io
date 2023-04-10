@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation, DataScienceTribe">
+    <meta name="keywords" content="How to count tokens precisely when using openAI GPT models, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation | DataScienceTribe</title>
+    <title>How to count tokens precisely when using openAI GPT models | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">AI and the Future of Jobs, Questions and Answers on ChatGPT and Automation</h1>
+                    <h1 class="description center-align post-title">How to count tokens precisely when using openAI GPT models</h1>
                 </div>
             </div>
         </div>
@@ -356,8 +356,12 @@
                                 <span class="chip bg-color">chatGPT</span>
                             </a>
                         
-                            <a href="/tags/GPT4/">
-                                <span class="chip bg-color">GPT4</span>
+                            <a href="/tags/token-limit/">
+                                <span class="chip bg-color">token limit</span>
+                            </a>
+                        
+                            <a href="/tags/openai/">
+                                <span class="chip bg-color">openai</span>
                             </a>
                         
                     </div>
@@ -368,8 +372,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -381,7 +385,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-03-17
+                    2023-04-10
                 </div>
                 
 
@@ -402,32 +406,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li><p>What is ChatGPT and how does it work?<br>Answer: ChatGPT is a virtual assistant or chatbot that uses natural language processing (NLP) and generative AI to create human-like responses. It is a user interface for the GPT3 language model developed by OpenAI, which was trained using unsupervised learning on a massive dataset of 175 billion parameters.</p>
-</li>
-<li><p>How will jobs in marketing and advertising be affected by ChatGPT?<br>Answer: ChatGPT can be used to automate routine aspects of marketing work, such as creating lists, defining the structure of content marketing pieces, or generating product descriptions. However, it cannot replicate the authentic voice of a brand or the human connections that come with influencer marketing. Marketers who can apply truly human qualities should have nothing to fear.</p>
-</li>
-<li><p>What can marketers do to avoid becoming redundant due to AI?<br>Answer: Marketers can master using AI to augment their own creativity and human skills, such as creativity, strategic thinking, empathy, and emotional intelligence. They should also keep up-to-date with the latest developments in AI to ensure they remain effective and competitive in their roles.</p>
-</li>
-<li><p>Will AI make all jobs redundant?<br>Answer: Throughout history, new developments in technology have tended to create new jobs as quickly as they make old jobs redundant. The jobs that are created are often more technical, creative, or highly-skilled, meaning that they are higher paying and often more rewarding.</p>
-</li>
-<li><p>What are the limitations of ChatGPT and AI in general?<br>Answer: ChatGPT and AI in general are limited by their training data, which may contain bias, and their inability to replicate original thought or creativity in the same way as humans. However, as AI technology advances, it may be able to come closer to emulating some human qualities, so it is important to stay up-to-date with the latest developments.</p>
-</li>
-<li><p>What is the potential of ChatGPT in various professions?<br>Answer: ChatGPT can be used to augment professional skills in various professions, such as law, copywriting, journalism, computer programming, and human resources.</p>
-</li>
-<li><p>Can ChatGPT replace human educators?<br>Answer: No, human intangibles like patience, discipline skills, friendliness, and genuine concern for students’ well-being cannot be replaced by ChatGPT or other AI tools.</p>
-</li>
-<li><p>What are the risks of using ChatGPT in the legal profession?<br>Answer: ChatGPT may not consider the most recent cases and decisions, and it may sometimes get things wrong. It is also susceptible to dataset bias and less than 100% accuracy, making it unsuitable for rendering judgments.</p>
-</li>
-<li><p>Which jobs are more likely to be replaced by machines in the next few years or decades?<br>Answer: Receptionist, many customer service jobs, driving jobs including taxi drivers and truckers, and soldiers.</p>
-</li>
-<li><p>How can AI tools like ChatGPT be used in human resources?<br>Answer: ChatGPT can be used to write job descriptions, automate routine tasks, and conduct sentiment analytics, while HR professionals can focus on building a better understanding of the individuals that make up the company.</p>
-</li>
-<li><p>What are some uses of ChatGPT in different professions?<br>Answer: ChatGPT can be used to create reports and summaries for analysts, automate customer service inquiries, automate simple tasks for salespeople, automate lesson plans and quizzes for teachers, and create social media posts for PR professionals.</p>
-</li>
-<li><p>Are robots and AI technologies replacing human workers?<br>Answer: No, robots and AI technologies are changing how we work and what kinds of jobs exist. They are not necessarily eliminating jobs, but rather creating new ones.</p>
-</li>
-</ol>
+                <p>If you are working with GPT models, it is essential to keep track of the number of tokens in your input text. OpenAI’s GPT models have a token limit, and exceeding this limit will result in a token limit error. To avoid this, you need to precisely count the number of tokens in your input text before sending it to OpenAI.</p>
+<p>In this blog, we will show you how to count tokens accurately using the tiktoken Python package.</p>
+<p>To begin, you will need to install the tiktoken package by running the following command:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install --upgrade tiktoken</span><br></pre></td></tr></table></figure>
+<p>Notice that Requiretment:  Python versoin &gt;=3.8</p>
+<p>Once you have installed the package, you can use the following code to count the number of tokens in your input text:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import tiktoken</span><br><span class="line"></span><br><span class="line">#Use tiktoken.encoding_for_model() to automatically load the correct encoding for a given model name.</span><br><span class="line"># for gpt4 just swtich &quot;gpt-3.5-turbo&quot; with &quot;gpt-4&quot;</span><br><span class="line">encoding = tiktoken.encoding_for_model(&quot;gpt-3.5-turbo&quot;)</span><br><span class="line"></span><br><span class="line">text = ”how are you doing&quot;</span><br><span class="line"></span><br><span class="line"># calculuate the number of tokens </span><br><span class="line">num_token = len(encoding.encode(text))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>In this code, we first load the encoding for the GPT-3.5-turbo model using the tiktoken.encoding_for_model() method. This method automatically loads the correct encoding for a given model name.</p>
+<p>Next, we define our input text and calculate the number of tokens using the len() function on the encoded text.</p>
+<p>Finally, we print the number of tokens to the console.</p>
+<p>By using the tiktoken package to count the number of tokens in your input text, you can avoid token limit errors when sending requests to OpenAI’s GPT models.</p>
 
                 
             </div>
@@ -454,7 +444,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/03/17/ai-and-future-job/">https://datasciencebyexample.github.io/2023/03/17/ai-and-future-job/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/04/10/count-tokens-in-gpt-models-accurately/">https://datasciencebyexample.github.io/2023/04/10/count-tokens-in-gpt-models-accurately/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -496,8 +486,12 @@
                                     <span class="chip bg-color">chatGPT</span>
                                 </a>
                             
-                                <a href="/tags/GPT4/">
-                                    <span class="chip bg-color">GPT4</span>
+                                <a href="/tags/token-limit/">
+                                    <span class="chip bg-color">token limit</span>
+                                </a>
+                            
+                                <a href="/tags/openai/">
+                                    <span class="chip bg-color">openai</span>
                                 </a>
                             
                         </div>
@@ -543,17 +537,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/03/18/elasticsearch-dense-vector-search/">
+                <a href="/2023/04/10/count-tokens-in-gpt-models-accurately/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="vector search using Elastic Search,  index and search example using python requests library">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="How to count tokens precisely when using openAI GPT models">
                         
-                        <span class="card-title">vector search using Elastic Search,  index and search example using python requests library</span>
+                        <span class="card-title">How to count tokens precisely when using openAI GPT models</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -563,9 +558,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -578,11 +573,20 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
+                    <a href="/tags/chatGPT/">
+                        <span class="chip bg-color">chatGPT</span>
+                    </a>
+                    
+                    <a href="/tags/token-limit/">
+                        <span class="chip bg-color">token limit</span>
+                    </a>
+                    
+                    <a href="/tags/openai/">
+                        <span class="chip bg-color">openai</span>
                     </a>
                     
                 </div>
@@ -596,13 +600,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/16/carriage-return-in-string-python/">
+                <a href="/2023/04/06/how-to-setup-server-side-and-client-side-timeout/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Understanding Server-side and Client-side Timeouts and How to Set Them Up">
                         
-                        <span class="card-title">Scratch Your Head? Be Careful with \r or Carriage Return when Printing Strings</span>
+                        <span class="card-title">Understanding Server-side and Client-side Timeouts and How to Set Them Up</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -613,7 +617,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
                             </span>
                         <span class="publish-author">
                             
@@ -630,12 +634,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/carriage-return/">
-                        <span class="chip bg-color">carriage return</span>
+                    <a href="/tags/timeout/">
+                        <span class="chip bg-color">timeout</span>
                     </a>
                     
                 </div>
