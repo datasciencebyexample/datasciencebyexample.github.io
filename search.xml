@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>How to Efficiently Chunk Text for OpenAI API Calls</title>
+      <link href="2023/04/11/chunk-text-for-openai-api-calls/"/>
+      <url>2023/04/11/chunk-text-for-openai-api-calls/</url>
+      
+        <content type="html"><![CDATA[<p>When working with the OpenAI API, it’s essential to manage the text input efficiently, especially when dealing with large amounts of text. The API has a token limit, which means you need to break your text into smaller chunks before making API calls. In this blog post, we will discuss two methods to wrap the text into chunks and ensure you stay within the token limits.</p><h2 id="Method-1-Using-the-textwrap-Library"><a href="#Method-1-Using-the-textwrap-Library" class="headerlink" title="Method 1: Using the textwrap Library"></a>Method 1: Using the textwrap Library</h2><p>The first method involves using the <code>textwrap</code> library, which is a built-in Python library that provides a simple way to wrap text into lines of a specified width. This method is a rough estimate, as it chunks texts by character size rather than actual token size. However, it can still be useful for quick and easy text wrapping.</p><p>Here’s how to use the <code>textwrap</code> library to wrap your text into chunks:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> textwrap</span><br><span class="line"></span><br><span class="line"><span class="comment"># Wraps the single paragraph in text (a string) so every line is at most width characters long. Returns a list of output lines, without final newlines.</span></span><br><span class="line"></span><br><span class="line">article = <span class="string">&quot;how are you .....&quot;</span></span><br><span class="line">chunks = textwrap.wrap(article, <span class="number">10</span>, replace_whitespace=<span class="literal">False</span>)</span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> chunks:</span><br><span class="line">    <span class="built_in">print</span>(chunk)</span><br><span class="line">    <span class="comment"># call openai api</span></span><br></pre></td></tr></table></figure><p>results:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">how are</span><br><span class="line">you .....</span><br></pre></td></tr></table></figure><h2 id="Method-2-Using-a-Custom-Class-with-Tiktoken"><a href="#Method-2-Using-a-Custom-Class-with-Tiktoken" class="headerlink" title="Method 2: Using a Custom Class with Tiktoken"></a>Method 2: Using a Custom Class with Tiktoken</h2><p>The second method is more precise, as it chunks texts by actual token size using the <code>tiktoken</code> library. This library allows you to count tokens in a text string without making an API call, ensuring that you stay within the token limits.<br>Packages to install</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install tiktoken</span><br><span class="line">pip install langchain</span><br></pre></td></tr></table></figure><p>Here’s how to create a custom class that uses <code>tiktoken</code> to chunk your text:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tiktoken</span><br><span class="line"><span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter</span><br><span class="line"></span><br><span class="line">encoding = tiktoken.encoding_for_model(<span class="string">&quot;text-davinci-003&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">count_token</span>(<span class="params">self, text</span>):</span></span><br><span class="line">        num_token = <span class="built_in">len</span>(encoding.encode(text))</span><br><span class="line">        <span class="keyword">return</span> num_token</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_article</span>(<span class="params">self, article</span>):</span></span><br><span class="line">        splitter = RecursiveCharacterTextSplitter(chunk_size=<span class="number">10</span>, length_function=self.count_token,</span><br><span class="line">                                                  separators=[<span class="string">&#x27;\n\n&#x27;</span>, <span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;&#x27;</span>],</span><br><span class="line">                                                  chunk_overlap=<span class="number">2</span>)</span><br><span class="line">        chunks = splitter.split_text(article)</span><br><span class="line">        <span class="keyword">return</span> chunks</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">article = <span class="string">&#x27;&#x27;&#x27;how are you doing? great, see you soon.&#x27;&#x27;&#x27;</span></span><br><span class="line">my_instance = MyClass()</span><br><span class="line"></span><br><span class="line">chunks = my_instance.process_article(article)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> chunks:</span><br><span class="line">    <span class="built_in">print</span>(chunk)</span><br><span class="line">    <span class="comment"># call openai API</span></span><br></pre></td></tr></table></figure><p>results:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">how are you doing?</span><br><span class="line">doing? great, see you</span><br><span class="line">you soon.</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In summary, when working with the OpenAI API, it’s crucial to manage your text input efficiently to stay within the token limits. The two methods discussed in this blog post provide different ways to wrap your text into chunks, with the first method using the <code>textwrap</code> library for a rough estimate and the second method using a custom class with <code>tiktoken</code> for a more precise token count. Choose the method that best suits your needs and ensure a smooth experience when making API calls.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GPT </tag>
+            
+            <tag> chunk text </tag>
+            
+            <tag> openai </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to count tokens precisely when using openAI GPT models</title>
       <link href="2023/04/10/count-tokens-in-gpt-models-accurately/"/>
       <url>2023/04/10/count-tokens-in-gpt-models-accurately/</url>
@@ -22,9 +51,9 @@
             
             <tag> chatGPT </tag>
             
-            <tag> token limit </tag>
-            
             <tag> openai </tag>
+            
+            <tag> token limit </tag>
             
         </tags>
       
@@ -2046,11 +2075,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -3224,9 +3253,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
