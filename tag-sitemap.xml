@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/github/</loc>
+        <lastmod>2023-04-13T17:07:18.348Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/git/</loc>
+        <lastmod>2023-04-13T17:07:18.348Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2023-04-12T00:23:06.631Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -82,20 +96,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/stream/</loc>
         <lastmod>2023-04-03T02:33:28.176Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/github/</loc>
-        <lastmod>2023-04-01T03:28:28.919Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/git/</loc>
-        <lastmod>2023-04-01T03:28:28.919Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

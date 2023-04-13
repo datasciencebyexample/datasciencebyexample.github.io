@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Efficiently Reverting a Single File to a Specific Commit in Git and GitHub</title>
+      <link href="2023/04/13/how-to-revert-and-restore-file-in-github-repo/"/>
+      <url>2023/04/13/how-to-revert-and-restore-file-in-github-repo/</url>
+      
+        <content type="html"><![CDATA[<p>Git and GitHub serve the purpose of storing your old code, allowing you to roll back in case of issues and safely restore previous and accurate code.</p><p>When collaborating with other developers, it also becomes essential to know how to revert a single file to a specific commit. This is because, while working on a feature, you might need to modify unrelated files to test it. Manually changing each line of code in those files and creating a new commit can result in a cluttered commit history. Reverting the file is a much cleaner approach.</p><h2 id="Finding-the-Commit-ID"><a href="#Finding-the-Commit-ID" class="headerlink" title="Finding the Commit ID"></a>Finding the Commit ID</h2><p>First, navigate to the shared repository on GitHub and locate the file you want to revert. Just above the file, you should see a 7-digit commit ID and a date, indicating the most recent commit in which the file was modified. Note down or copy this commit ID, such as the one shown below:<br><img src="/content/images/2023-04-13-01.png"></p><p>Now how to check the actual file for different commits? First click the “history” and expand, you will see all the commits related to this file:<br><img src="/content/images/2023-04-13-02.png"></p><p>Now choose any commit ID you want to revert, then click the ‘…’ button, and choose the “view file”, and check the actual file:<br><img src="/content/images/2023-04-13-03.png"></p><h2 id="Locating-the-File-Path"><a href="#Locating-the-File-Path" class="headerlink" title="Locating the File Path"></a>Locating the File Path</h2><p>Next, you need the path to the file from the working directory. This can be found on the same GitHub screen where you discovered the commit ID for the file. Make sure to only copy the path without the working directory name, as it will be the directory you’re in when using this file path.<br><img src="/content/images/2023-04-13-04.png"></p><h2 id="Reverting-the-File"><a href="#Reverting-the-File" class="headerlink" title="Reverting the File"></a>Reverting the File</h2><p>With the terminal open and the working directory set, use the git checkout command to revert the file. The format of the git command should look like this:</p><p><code>git checkout [commit ID] -- path/to/file</code><br>or this specific case, it will be：<br><code>git checkout 4a023a6 -- gpt4-novel/readme</code></p><h2 id="Committing-the-Change"><a href="#Committing-the-Change" class="headerlink" title="Committing the Change"></a>Committing the Change</h2><p>After reverting the file, it’s necessary to commit the change, which, in this case, is a revert of a single file. This can be done using the standard commit command:</p><p><code>git commit -m &#39;commit message&#39;</code></p><p>Finally, push the commit to the remote repository so that the GitHub version of your branch matches your local version.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to Efficiently Chunk Text for OpenAI API Calls</title>
       <link href="2023/04/11/chunk-text-for-openai-api-calls/"/>
       <url>2023/04/11/chunk-text-for-openai-api-calls/</url>
@@ -3253,9 +3280,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
