@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Efficiently Reverting a Single File to a Specific Commit in Git and GitHub, DataScienceTribe">
+    <meta name="keywords" content="How to Upload an Existing Folder to GitHub, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Efficiently Reverting a Single File to a Specific Commit in Git and GitHub | DataScienceTribe</title>
+    <title>How to Upload an Existing Folder to GitHub | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Efficiently Reverting a Single File to a Specific Commit in Git and GitHub</h1>
+                    <h1 class="description center-align post-title">How to Upload an Existing Folder to GitHub</h1>
                 </div>
             </div>
         </div>
@@ -402,17 +402,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Git and GitHub serve the purpose of storing your old code, allowing you to roll back in case of issues and safely restore previous and accurate code.</p>
-<p>When collaborating with other developers, it also becomes essential to know how to revert a single file to a specific commit. This is because, while working on a feature, you might need to modify unrelated files to test it. Manually changing each line of code in those files and creating a new commit can result in a cluttered commit history. Reverting the file is a much cleaner approach.</p>
-<h2 id="Finding-the-Commit-ID"><a href="#Finding-the-Commit-ID" class="headerlink" title="Finding the Commit ID"></a>Finding the Commit ID</h2><p>First, navigate to the shared repository on GitHub and locate the file you want to revert. Just above the file, you should see a 7-digit commit ID and a date, indicating the most recent commit in which the file was modified. Note down or copy this commit ID, such as the one shown below:<br><img src="/content/images/2023-04-13-01.png"></p>
-<p>Now how to check the actual file for different commits? First click the “history” and expand, you will see all the commits related to this file:<br><img src="/content/images/2023-04-13-02.png"></p>
-<p>Now choose any commit ID you want to revert, then click the ‘…’ button, and choose the “view file”, and check the actual file:<br><img src="/content/images/2023-04-13-03.png"></p>
-<h2 id="Locating-the-File-Path"><a href="#Locating-the-File-Path" class="headerlink" title="Locating the File Path"></a>Locating the File Path</h2><p>Next, you need the path to the file from the working directory. This can be found on the same GitHub screen where you discovered the commit ID for the file. Make sure to only copy the path without the working directory name, as it will be the directory you’re in when using this file path.<br><img src="/content/images/2023-04-13-04.png"></p>
-<h2 id="Reverting-the-File"><a href="#Reverting-the-File" class="headerlink" title="Reverting the File"></a>Reverting the File</h2><p>With the terminal open and the working directory set, use the git checkout command to revert the file. The format of the git command should look like this:</p>
-<p><code>git checkout [commit ID] -- path/to/file</code><br>or this specific case, it will be：<br><code>git checkout 4a023a6 -- gpt4-novel/readme</code></p>
-<h2 id="Committing-the-Change"><a href="#Committing-the-Change" class="headerlink" title="Committing the Change"></a>Committing the Change</h2><p>After reverting the file, it’s necessary to commit the change, which, in this case, is a revert of a single file. This can be done using the standard commit command:</p>
-<p><code>git commit -m &#39;commit message&#39;</code></p>
-<p>Finally, push the commit to the remote repository so that the GitHub version of your branch matches your local version.</p>
+                <p>We may already have an existing directory where we were devloping code, then we want to upload it to Github. In this tutorial, we’ll walk you through the steps to get your folder uploaded to GitHub.</p>
+<h2 id="Step-1-Create-a-New-Repository-on-GitHub"><a href="#Step-1-Create-a-New-Repository-on-GitHub" class="headerlink" title="Step 1: Create a New Repository on GitHub"></a>Step 1: Create a New Repository on GitHub</h2><p>The first step is to create a new repository on GitHub where you can store your code. To do this, log in to your GitHub account and click on the “New Repository” button on the main dashboard.</p>
+<p>Next, give your repository a name, description (optional), and select any other desired settings for your repository. Make sure to select the “Initialize this repository with a README” option to create an initial README.md file in your repository.</p>
+<p>Once you’ve entered all the required details, click on the “Create Repository” button to create your new repository.</p>
+<h2 id="Step-2-Initialize-a-Local-Git-Repository"><a href="#Step-2-Initialize-a-Local-Git-Repository" class="headerlink" title="Step 2: Initialize a Local Git Repository"></a>Step 2: Initialize a Local Git Repository</h2><p>Now that you have a repository set up on GitHub, it’s time to create a local Git repository on your computer. To do this, open a terminal window on your computer and navigate to the folder that you want to upload to GitHub.</p>
+<p>Once you’re in the folder, run the following command to initialize a new Git repository:<br><code>git init</code></p>
+<p>This command will create a new .git folder in your folder, which will store all the necessary Git metadata and tracking information.</p>
+<h2 id="Step-3-Add-and-Commit-Your-Files"><a href="#Step-3-Add-and-Commit-Your-Files" class="headerlink" title="Step 3: Add and Commit Your Files"></a>Step 3: Add and Commit Your Files</h2><p>With your local Git repository set up, you can now add and commit your files to it. To add all the files in your folder to the repository, run the following command:</p>
+<p><code>git add .</code><br>This command will stage all the files in your folder for committing. To commit the changes, run the following command:</p>
+<p><code>git commit -m &quot;Initial commit&quot;</code><br>This command will commit your changes to the local repository with a message “Initial commit”.</p>
+<h2 id="Step-4-Connect-Your-Local-Repository-to-the-Remote-Repository-on-GitHub"><a href="#Step-4-Connect-Your-Local-Repository-to-the-Remote-Repository-on-GitHub" class="headerlink" title="Step 4: Connect Your Local Repository to the Remote Repository on GitHub"></a>Step 4: Connect Your Local Repository to the Remote Repository on GitHub</h2><p>Now that you have a local Git repository set up and have committed your changes, it’s time to connect your local repository to the remote repository on GitHub. To do this, you’ll need to get the remote repository URL from GitHub.</p>
+<p>To get the remote repository URL, go to the repository you created on GitHub and click on the “Clone or download” button.</p>
+<p>Next, copy the HTTPS or SSH URL for your repository.</p>
+<p>With the remote repository URL in hand, you can now connect your local repository to the remote repository on GitHub. To do this, run the following command:<br><code>git remote add origin &lt;remote_repository_url&gt;</code><br>This command will add a new remote named “origin” to your local repository and connect it to the remote repository on GitHub.</p>
+<h2 id="Step-5-Push-Your-Changes-to-GitHub"><a href="#Step-5-Push-Your-Changes-to-GitHub" class="headerlink" title="Step 5: Push Your Changes to GitHub"></a>Step 5: Push Your Changes to GitHub</h2><p>With your local and remote repositories connected, you can now push your changes to GitHub. However, before doing so, it’s important to make sure that you’re pushing to the correct branch on the remote repository.</p>
+<p>By default, GitHub creates a “main” branch in your repository. However, some older repositories may still use the “master” branch. To check which branch your remote repository is using, run the following command:<br><code>git branch -r</code><br>This command will list all the remote branches in your repository. The branch with an asterisk next to it is the currently checked out branch.</p>
+<p>If the remote repository is using the “main” branch, you can push your changes to GitHub by running the following command:<br><code>git push -u origin main</code><br>This command will push your changes to the “main” branch on the remote repository and set the upstream branch to track the remote branch with the same name.</p>
+<p>If the remote repository is using the “master” branch, replace “main” with “master” in the above command.</p>
+<p>Once the command has finished executing, your code will be available on GitHub for others to view and collaborate on.</p>
+<p>One thing to notice is that:<br>When you run <code>git push -u origin main</code>, Git will prompt you to confirm that you want to set the upstream branch and provide you with a suggested command to do so if you choose to proceed.</p>
+<p>The suggested command will look something like this:<br><code>git push --set-upstream origin main</code><br>This command tells Git to push your changes to the “main” branch on the “origin” repository and set the upstream branch to track the remote branch with the same name.</p>
+<p>By setting the upstream branch, you can use shorthand Git commands like git push and git pull without having to specify the remote branch name each time.</p>
+<p>If you choose to proceed with the suggested command, Git will push your changes and set the upstream branch for you.</p>
 
                 
             </div>
@@ -439,7 +451,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/04/13/how-to-revert-and-restore-file-in-github-repo/">https://datasciencebyexample.github.io/2023/04/13/how-to-revert-and-restore-file-in-github-repo/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/04/13/upload-existing-folder-to-github/">https://datasciencebyexample.github.io/2023/04/13/upload-existing-folder-to-github/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -528,10 +540,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
                 <a href="/2023/04/13/how-to-revert-and-restore-file-in-github-repo/">
                     <div class="card-image">
@@ -549,9 +560,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -564,7 +575,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -587,13 +597,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/04/13/upload-existing-folder-to-github/">
+                <a href="/2023/04/11/chunk-text-for-openai-api-calls/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="How to Upload an Existing Folder to GitHub">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="How to Efficiently Chunk Text for OpenAI API Calls">
                         
-                        <span class="card-title">How to Upload an Existing Folder to GitHub</span>
+                        <span class="card-title">How to Efficiently Chunk Text for OpenAI API Calls</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -604,7 +614,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-11
                             </span>
                         <span class="publish-author">
                             
@@ -621,12 +631,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/GPT/">
+                        <span class="chip bg-color">GPT</span>
                     </a>
                     
-                    <a href="/tags/github/">
-                        <span class="chip bg-color">github</span>
+                    <a href="/tags/chunk-text/">
+                        <span class="chip bg-color">chunk text</span>
+                    </a>
+                    
+                    <a href="/tags/openai/">
+                        <span class="chip bg-color">openai</span>
                     </a>
                     
                 </div>
