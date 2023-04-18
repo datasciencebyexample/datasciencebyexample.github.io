@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/venv/</loc>
+        <lastmod>2023-04-18T01:13:44.817Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/dataframe/</loc>
         <lastmod>2023-04-16T05:10:04.099Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -731,6 +738,13 @@
     </url>
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/time-series/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -739,13 +753,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

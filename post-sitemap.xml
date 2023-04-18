@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/04/17/how-to-install-virtual-env-with-specific-pyton-versions/</loc>
+        <lastmod>2023-04-18T01:13:44.817Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/04/16/dataframe-groupby-and-join-rows-by-comma/</loc>
         <lastmod>2023-04-16T05:10:04.099Z</lastmod>
         <changefreq>weekly</changefreq>
