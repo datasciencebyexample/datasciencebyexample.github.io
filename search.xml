@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Accessing and Searching CloudWatch Logs Insights from AWS Lambda using Python</title>
+      <link href="2023/04/19/access-cloudwach-log-and-loginsights-with-lambda-in-aws/"/>
+      <url>2023/04/19/access-cloudwach-log-and-loginsights-with-lambda-in-aws/</url>
+      
+        <content type="html"><![CDATA[<p>AWS Lambda is a serverless compute service that allows you to run your code without provisioning or managing servers. AWS CloudWatch Logs Insights is a fully managed service that helps you analyze, visualize, and gain insights from your log data. In this blog post, we will discuss how to access and search CloudWatch Logs Insights from an AWS Lambda function using Python and the Boto3 library.</p><p>Prerequisites:</p><ul><li>An AWS account</li><li>Basic knowledge of AWS Lambda and CloudWatch Logs Insights</li><li>Python and Boto3 library installed</li></ul><h2 id="Step-1-Set-up-the-IAM-role-for-your-Lambda-function"><a href="#Step-1-Set-up-the-IAM-role-for-your-Lambda-function" class="headerlink" title="Step 1: Set up the IAM role for your Lambda function"></a>Step 1: Set up the IAM role for your Lambda function</h2><p>To access CloudWatch Logs Insights from your Lambda function, you need to create an IAM role with the necessary permissions. Attach the following policy to the role:</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;Version&quot;</span>: <span class="string">&quot;2012-10-17&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;Statement&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;Effect&quot;</span>: <span class="string">&quot;Allow&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;Action&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;logs:StartQuery&quot;</span>,</span><br><span class="line">                <span class="string">&quot;logs:GetQueryResults&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;Resource&quot;</span>: <span class="string">&quot;*&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>You can also first create the lambda function with some default IAM roles, and then come back to modify the existing policy attched to the current role in the lambda function, then just insert the json in the “statement” block to the existing policy.<br>To modify policy with the existing role, click “cofiguration” on the top of the lamda function page, then click “permissions” on the left pannel, and click the role attached to the lambda function.<br>Further click the role, you will see polices attached to that role, and click the policy to make any updates.</p><h2 id="Step-2-Create-a-Lambda-function-with-the-IAM-role"><a href="#Step-2-Create-a-Lambda-function-with-the-IAM-role" class="headerlink" title="Step 2: Create a Lambda function with the IAM role"></a>Step 2: Create a Lambda function with the IAM role</h2><p>Create a new Lambda function using the AWS Management Console, AWS CLI, or any other method you prefer. Make sure to assign the IAM role you created in Step 1 to the Lambda function.</p><h2 id="Step-3-Access-CloudWatch-Logs-Insights-from-your-Lambda-function"><a href="#Step-3-Access-CloudWatch-Logs-Insights-from-your-Lambda-function" class="headerlink" title="Step 3: Access CloudWatch Logs Insights from your Lambda function"></a>Step 3: Access CloudWatch Logs Insights from your Lambda function</h2><p>In your Lambda function, import the Boto3 library and create a CloudWatch Logs client:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> boto3</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">cloudwatch_logs = boto3.client(<span class="string">&#x27;logs&#x27;</span>)</span><br></pre></td></tr></table></figure><p>Define a function to execute a CloudWatch Logs Insights query and get the results:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_insights_query</span>(<span class="params">log_group_name, query, start_time, end_time</span>):</span></span><br><span class="line">    response = cloudwatch_logs.start_query(</span><br><span class="line">        logGroupName=log_group_name,</span><br><span class="line">        startTime=<span class="built_in">int</span>((time.time() - start_time) * <span class="number">1000</span>),</span><br><span class="line">        endTime=<span class="built_in">int</span>((time.time() - end_time) * <span class="number">1000</span>),</span><br><span class="line">        queryString=query</span><br><span class="line">    )</span><br><span class="line">    query_id = response[<span class="string">&#x27;queryId&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        response = cloudwatch_logs.get_query_results(</span><br><span class="line">            queryId=query_id</span><br><span class="line">        )</span><br><span class="line">        status = response[<span class="string">&#x27;status&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> status == <span class="string">&#x27;Complete&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> response[<span class="string">&#x27;results&#x27;</span>]</span><br><span class="line">        <span class="keyword">elif</span> status == <span class="string">&#x27;Failed&#x27;</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&#x27;Query failed&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>Use the <code>run_insights_query()</code> function to execute a CloudWatch Logs Insights query and get the results:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log_group_name = <span class="string">&#x27;your-log-group-name&#x27;</span></span><br><span class="line">query = <span class="string">&#x27;fields @timestamp, @message | sort @timestamp desc | limit 20&#x27;</span></span><br><span class="line">start_time = <span class="number">60</span> * <span class="number">60</span>  <span class="comment"># 1 hour ago</span></span><br><span class="line">end_time = <span class="number">0</span>  <span class="comment"># Now</span></span><br><span class="line"></span><br><span class="line">results = run_insights_query(log_group_name, query, start_time, end_time)</span><br><span class="line"><span class="built_in">print</span>(results)</span><br></pre></td></tr></table></figure><p>Replace <code>&#39;your-log-group-name&#39;</code> with the appropriate value for your Log Insight group, and adjust the <code>query</code>, <code>start_time</code>, and <code>end_time</code> variables as needed.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion:"></a>Conclusion:</h2><p>In this blog post, we demonstrated how to access and search CloudWatch Logs Insights from an AWS Lambda function using Python and the Boto3 library. This allows you to analyze and visualize your log data directly from your Lambda function, enabling you to build powerful serverless applications that can react to log data in real-time.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> aws </tag>
+            
+            <tag> lambda </tag>
+            
+            <tag> cloudwatch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to install virtual environment with specific python versions</title>
       <link href="2023/04/17/how-to-install-virtual-env-with-specific-pyton-versions/"/>
       <url>2023/04/17/how-to-install-virtual-env-with-specific-pyton-versions/</url>
@@ -3388,9 +3417,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
