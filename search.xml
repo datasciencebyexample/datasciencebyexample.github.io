@@ -33,6 +33,33 @@
     
     
     <entry>
+      <title>Selecting the Optimal Probability Threshold for a Classification Model，ROC Curve Analysis and KS Score</title>
+      <link href="2023/04/19/choose-thresold-for-classification-model-with-ROC-analysis/"/>
+      <url>2023/04/19/choose-thresold-for-classification-model-with-ROC-analysis/</url>
+      
+        <content type="html"><![CDATA[<p>Title: Selecting the Optimal Probability Threshold for a Classification Model: ROC Curve Analysis and KS Score</p><p>In binary classification problems, a model predicts the probability of an instance belonging to the positive class. To make a final decision, we need to set a threshold on the predicted probability. Instances with probabilities above the threshold are classified as positive, while those below the threshold are classified as negative. Choosing the right threshold is crucial for the performance of the classification model. In this blog post, we will discuss two methods for selecting the optimal probability threshold: ROC curve analysis and the Kolmogorov-Smirnov (KS) score.</p><p>A Receiver Operating Characteristic (ROC) curve is a graphical representation of the trade-off between the true positive rate (sensitivity) and the false positive rate (1-specificity) for a classification model at various threshold settings. The area under the ROC curve (AUC) is a measure of the model’s performance. To choose a good threshold of probability value for a classification model using the ROC curve, follow these steps:</p><ol><li><p>Plot the ROC curve: First, plot the ROC curve for your classification model. The x-axis represents the false positive rate (1-specificity), and the y-axis represents the true positive rate (sensitivity).</p></li><li><p>Calculate the AUC: Calculate the area under the ROC curve (AUC). The AUC ranges from 0 to 1, with 1 indicating a perfect classifier and 0.5 indicating a random classifier. A higher AUC indicates better model performance.</p></li><li><p>Identify the optimal threshold: The optimal threshold is the point on the ROC curve that maximizes the true positive rate while minimizing the false positive rate. This point is often close to the top-left corner of the plot, where the curve bends. One common method to find the optimal threshold is to choose the point on the ROC curve that is closest to the point (0,1), which represents perfect classification. You can calculate the Euclidean distance between each point on the ROC curve and the point (0,1) and choose the threshold corresponding to the point with the smallest distance.</p></li></ol><p>Kolmogorov-Smirnov (KS) Score</p><p>The KS score is a measure of the separation between the cumulative distribution functions of the true positive and false positive rates. It is calculated as the maximum difference between the cumulative true positive rate (sensitivity) and the cumulative false positive rate (1-specificity) across all possible thresholds. The optimal threshold is the one that corresponds to the maximum KS score. In other words, the KS score helps to identify the threshold where the separation between the two distributions (positive and negative classes) is the largest.</p><p>Python Code to Find the Optimal Threshold</p><p>Here’s the Python code to find the optimal threshold using both methods, assuming you have already trained a classification model and obtained the predicted probabilities for the positive class:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"></span><br><span class="line"><span class="comment"># Assuming y_true is the true labels and y_pred_prob is the predicted probabilities for the positive class</span></span><br><span class="line">y_true = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">y_pred_prob = np.array([<span class="number">0.1</span>, <span class="number">0.7</span>, <span class="number">0.8</span>, <span class="number">0.2</span>, <span class="number">0.6</span>, <span class="number">0.3</span>, <span class="number">0.9</span>, <span class="number">0.8</span>, <span class="number">0.4</span>, <span class="number">0.7</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate the ROC curve</span></span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_true, y_pred_prob)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Method 1: Optimal threshold using ROC curve (point 3)</span></span><br><span class="line">optimal_idx = np.argmin(np.sqrt(np.square(<span class="number">1</span>-tpr) + np.square(fpr)))</span><br><span class="line">optimal_threshold_roc = thresholds[optimal_idx]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Optimal threshold using ROC curve:&quot;</span>, optimal_threshold_roc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Method 2: Optimal threshold using KS score</span></span><br><span class="line">ks_score = tpr - fpr</span><br><span class="line">optimal_idx_ks = np.argmax(ks_score)</span><br><span class="line">optimal_threshold_ks = thresholds[optimal_idx_ks]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Optimal threshold using KS score:&quot;</span>, optimal_threshold_ks)</span><br></pre></td></tr></table></figure><p>This code snippet calculates the optimal threshold using both the ROC curve method and the KS score method. Replace <code>y_true</code> and <code>y_pred_prob</code> with your actual true labels and predicted probabilities, respectively. The optimal thresholds will be printed at the end.</p><ol start="4"><li><p>Consider the cost of misclassification: Depending on the specific problem you are trying to solve, you may want to adjust the threshold based on the cost of false positives and false negatives. For example, if the cost of a false positive is much higher than the cost of a false negative, you may want to choose a higher threshold to minimize false positives, even if it means sacrificing some true positives.</p></li><li><p>Test the threshold: Once you have chosen a threshold, test it on a validation dataset to ensure that it generalizes well to new data. If the performance is not satisfactory, you may need to adjust the threshold or retrain the model with different parameters.</p></li><li><p>Apply the threshold: Finally, apply the chosen threshold to your classification model to make predictions. This will allow you to classify new instances based on their predicted probability of belonging to the positive class.</p></li></ol><p>Conclusion</p><p>Both ROC curve analysis and the KS score can be useful for choosing the optimal threshold for a classification model. Depending on the specific problem and the characteristics of the data, these methods may yield different results. It is essential to test the chosen threshold on a validation dataset to ensure that it generalizes well to new data. By selecting the appropriate threshold, you can improve the performance of your classification model and make more accurate predictions.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ROC </tag>
+            
+            <tag> KS score </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to install virtual environment with specific python versions</title>
       <link href="2023/04/17/how-to-install-virtual-env-with-specific-pyton-versions/"/>
       <url>2023/04/17/how-to-install-virtual-env-with-specific-pyton-versions/</url>
@@ -226,31 +253,6 @@
     
     
     <entry>
-      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
-      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
-      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
-      
-        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> timeout </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Comparing Python&#39;s HTTP Libraries HTTPX vs Requests</title>
       <link href="2023/04/06/httpx-vs-requsts-in-pyton/"/>
       <url>2023/04/06/httpx-vs-requsts-in-pyton/</url>
@@ -270,6 +272,31 @@
             <tag> requests </tag>
             
             <tag> httpx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
+      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
+      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
+      
+        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> timeout </tag>
             
         </tags>
       
@@ -2239,11 +2266,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -3417,9 +3444,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       

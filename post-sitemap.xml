@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/04/19/choose-thresold-for-classification-model-with-ROC-analysis/</loc>
+        <lastmod>2023-04-19T16:27:57.418Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/04/19/access-cloudwach-log-and-loginsights-with-lambda-in-aws/</loc>
         <lastmod>2023-04-19T15:52:57.191Z</lastmod>
         <changefreq>weekly</changefreq>
