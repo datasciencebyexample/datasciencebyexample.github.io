@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Organizing Text Content with Python, Splitting Continuous Headings with various subheadings into Lists</title>
+      <link href="2023/04/21/how-to-split-continuous-heading-patterns-with-various-subheadings/"/>
+      <url>2023/04/21/how-to-split-continuous-heading-patterns-with-various-subheadings/</url>
+      
+        <content type="html"><![CDATA[<p>Title: Organizing Text Content with Python: Splitting Continuous Headings into Lists</p><p>Introduction:</p><p>When working with text data, it’s often necessary to organize and structure the content in a way that makes it easier to process and analyze. One common task is to split a continuous block of text into separate sections based on specific patterns or headings. In this blog post, we’ll demonstrate how to use Python to split a text outline with continuous headings into separate lists. This can be useful for various applications, such as organizing content for a website or processing data for analysis.</p><p>Example:</p><p>Consider the following code, which defines a function called <code>split_outline</code> that takes a text input and splits it into separate sections based on the presence of <code>[H2]</code> headings:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_outline</span>(<span class="params">text</span>):</span></span><br><span class="line">    lines = text.split(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    result = []</span><br><span class="line">    current_list = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        line = line.strip()</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(line) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> line.startswith(<span class="string">&#x27;[H2]&#x27;</span>):</span><br><span class="line">            <span class="keyword">if</span> current_list:</span><br><span class="line">                result.append(<span class="string">&#x27;\n&#x27;</span>.join(current_list))</span><br><span class="line">                current_list = []</span><br><span class="line">            current_list.append(line)</span><br><span class="line">        <span class="keyword">elif</span> <span class="keyword">not</span> line.startswith(<span class="string">&#x27;[H2]&#x27;</span>):</span><br><span class="line">            current_list.append(line)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> current_list:</span><br><span class="line">        result.append(<span class="string">&#x27;\n&#x27;</span>.join(current_list))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>This code will output a list of strings, where each string represents a section of the text that starts with an <code>[H2]</code> heading and includes all subsequent lines until the next <code>[H2]</code> heading is encountered.</p><p>Example:</p><p>Now, let’s consider an example where we have a text outline for a blog post about different programming languages:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">text = <span class="string">&#x27;[H2] Introduction to Programming Languages\n[H3] What is a programming language?\n[H3] Why are there so many programming languages?\n[H2] Popular Programming Languages\n[H3] Python\n[H3] JavaScript\n[H3] Java\n[H3] C#\n[H3] Ruby\n[H2] Choosing the Right Programming Language\n[H3] Factors to consider\n[H3] Language popularity and community support\n[H3] Ease of learning\n[H3] Performance and scalability\n[H2] Conclusion&#x27;</span></span><br></pre></td></tr></table></figure><p>Before splitting, the text looks like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[H2] Introduction to Programming Languages</span><br><span class="line">[H3] What is a programming language?</span><br><span class="line">[H3] Why are there so many programming languages?</span><br><span class="line">[H2] Popular Programming Languages</span><br><span class="line">[H3] Python</span><br><span class="line">[H3] JavaScript</span><br><span class="line">[H3] Java</span><br><span class="line">[H3] C#</span><br><span class="line">[H3] Ruby</span><br><span class="line">[H2] Choosing the Right Programming Language</span><br><span class="line">[H3] Factors to consider</span><br><span class="line">[H3] Language popularity and community support</span><br><span class="line">[H3] Ease of learning</span><br><span class="line">[H3] Performance and scalability</span><br><span class="line">[H2] Conclusion</span><br></pre></td></tr></table></figure><p>We can use the <code>split_outline</code> function to split this text into separate sections based on the <code>[H2]</code> headings:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sections = split_outline(text)</span><br><span class="line"><span class="keyword">for</span> section <span class="keyword">in</span> sections:</span><br><span class="line">    <span class="built_in">print</span>(section)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;\n---\n&quot;</span>)</span><br></pre></td></tr></table></figure><p>This will output the following:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[H2] Introduction to Programming Languages</span><br><span class="line">[H3] What is a programming language?</span><br><span class="line">[H3] Why are there so many programming languages?</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">[H2] Popular Programming Languages</span><br><span class="line">[H3] Python</span><br><span class="line">[H3] JavaScript</span><br><span class="line">[H3] Java</span><br><span class="line">[H3] C#</span><br><span class="line">[H3] Ruby</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">[H2] Choosing the Right Programming Language</span><br><span class="line">[H3] Factors to consider</span><br><span class="line">[H3] Language popularity and community support</span><br><span class="line">[H3] Ease of learning</span><br><span class="line">[H3] Performance and scalability</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">[H2] Conclusion</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>As you can see, the <code>split_outline</code> function has successfully split the text into separate sections based on the <code>[H2]</code> headings.</p><p>Conclusion:</p><p>In this blog post, we demonstrated how to use Python to split a text outline with continuous headings into separate lists. This technique can be useful for organizing and structuring text data for various applications, such as content management or data analysis. By modifying the <code>split_outline</code> function, you can easily adapt this approach to handle different heading patterns or other text formatting requirements.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Accessing and Searching CloudWatch Logs Insights from AWS Lambda using Python</title>
       <link href="2023/04/19/access-cloudwach-log-and-loginsights-with-lambda-in-aws/"/>
       <url>2023/04/19/access-cloudwach-log-and-loginsights-with-lambda-in-aws/</url>
@@ -253,6 +278,31 @@
     
     
     <entry>
+      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
+      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
+      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
+      
+        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> timeout </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Comparing Python&#39;s HTTP Libraries HTTPX vs Requests</title>
       <link href="2023/04/06/httpx-vs-requsts-in-pyton/"/>
       <url>2023/04/06/httpx-vs-requsts-in-pyton/</url>
@@ -272,31 +322,6 @@
             <tag> requests </tag>
             
             <tag> httpx </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
-      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
-      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
-      
-        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> timeout </tag>
             
         </tags>
       
@@ -2266,11 +2291,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -3444,9 +3469,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
