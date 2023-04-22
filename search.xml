@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Understanding the CORS Error and How to Fix It</title>
+      <link href="2023/04/22/undersand-the-CORS-error-and-solution-to-fix-it-including-local-test/"/>
+      <url>2023/04/22/undersand-the-CORS-error-and-solution-to-fix-it-including-local-test/</url>
+      
+        <content type="html"><![CDATA[<p>If you’ve ever tried to make an AJAX request from a web page to a server hosted on a different domain, you may have encountered a frustrating error message that says something like “Access to XMLHttpRequest at ht<span>tp://</span>example.com/api/data from origin ‘null’ has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource.” This error message is known as the CORS error, and it is a common issue that web developers face when working with cross-origin requests.</p><p>In this blog post, we’ll take a closer look at what the CORS error is, what causes it, and some solutions to fix it.</p><h2 id="What-is-the-CORS-Error"><a href="#What-is-the-CORS-Error" class="headerlink" title="What is the CORS Error?"></a>What is the CORS Error?</h2><p>The CORS error is a security feature implemented by web browsers that prevents web pages from making requests to a different domain than the one the page came from. This security feature is called the Same-Origin Policy, and it is designed to prevent malicious websites from stealing sensitive information from other sites.</p><p>The CORS error occurs when a web page tries to make an AJAX request to a server hosted on a different domain than the one the page came from, and the server does not send the required ‘Access-Control-Allow-Origin’ header in its response. This header tells the browser which domains are allowed to access the resource, and if it is missing, the browser will block the request and show the CORS error message.</p><h2 id="What-Causes-the-CORS-Error"><a href="#What-Causes-the-CORS-Error" class="headerlink" title="What Causes the CORS Error?"></a>What Causes the CORS Error?</h2><p>The CORS error can occur in a variety of situations, but it usually happens when you try to make an AJAX request from an HTML file that is opened locally in your browser (i.e., using the “file://“ protocol) to a server that is hosted on a different domain or on the internet (i.e., using the “http://“ or “https://“ protocol). This is because the Same-Origin Policy enforced by web browsers prevents web pages from making requests to a different domain than the one the page came from.</p><h2 id="Solutions-to-Fix-the-CORS-Error"><a href="#Solutions-to-Fix-the-CORS-Error" class="headerlink" title="Solutions to Fix the CORS Error"></a>Solutions to Fix the CORS Error</h2><p>There are several solutions you can use to fix the CORS error, depending on the situation:</p><ol><li><p>Host the HTML file and the server on the same domain: If you are developing a web application and have control over the server hosting the API, you can host the HTML file and the server on the same domain. This way, they will have the same origin, and you won’t encounter the CORS error.</p></li><li><p>Use a web server to serve the HTML file: If you are only testing and don’t need to actually make requests to a server, you can use a web server to serve the HTML file instead of opening it directly in your browser. This will allow you to make requests to other domains using AJAX without triggering the Same-Origin Policy.</p></li><li><p>Disable the Same-Origin Policy in your browser: If you need to test something quickly and don’t want to set up a web server, you can disable the Same-Origin Policy in your browser by running it with the “–disable-web-security” flag (this is not recommended for general browsing, as it removes an important security feature of the browser).</p></li><li><p>Use JSONP (JSON with Padding) instead of AJAX: JSONP is a way of getting data from a server in a different domain that circumvents the Same-Origin Policy by wrapping the response in a JavaScript function call. This approach has some security implications, but it can be a useful workaround in some cases.</p></li><li><p>Use a proxy server to forward your requests: If you cannot modify the server’s CORS settings or use JSONP, you can use a proxy server to forward your requests. A proxy server is a server that sits between your browser and the server you are trying to make requests to, and forwards the requests for you, adding the necessary headers to avoid the CORS error.</p></li><li><p>On your local development, simply use <code>python -m http.server</code> to set up a local web server that serves your HTML file from the current directory. By accessing the HTML file at ht<span>tp://</span>localhost:8000, you can avoid the CORS error and make requests to other domains using AJAX. This approach is useful when you are developing and testing locally and don’t need to deploy your code to a remote server yet.</p></li></ol><p>Conclusion</p><p>The CORS error can be a frustrating issue to deal with, but understanding its causes and using the appropriate solution can help you resolve it. Whether you choose to host your HTML file and server on the same domain, use a web server to serve your HTML file, disable the Same-Origin Policy in your browser, use JSONP, use a proxy server, or set up a local web server using <code>python -m http.server</code>, you can avoid the CORS error and make cross-origin requests successfully.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> CORS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Organizing Text Content with Python, Splitting Continuous Headings with various subheadings into Lists</title>
       <link href="2023/04/21/how-to-split-continuous-heading-patterns-with-various-subheadings/"/>
       <url>2023/04/21/how-to-split-continuous-heading-patterns-with-various-subheadings/</url>
@@ -278,31 +305,6 @@
     
     
     <entry>
-      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
-      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
-      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
-      
-        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> timeout </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Comparing Python&#39;s HTTP Libraries HTTPX vs Requests</title>
       <link href="2023/04/06/httpx-vs-requsts-in-pyton/"/>
       <url>2023/04/06/httpx-vs-requsts-in-pyton/</url>
@@ -322,6 +324,31 @@
             <tag> requests </tag>
             
             <tag> httpx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
+      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
+      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
+      
+        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> timeout </tag>
             
         </tags>
       
@@ -2291,11 +2318,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       

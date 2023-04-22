@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="pip list vs pip freeze, and other ways to check installed packages in Python environment, DataScienceTribe">
+    <meta name="keywords" content="Understanding the CORS Error and How to Fix It, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>pip list vs pip freeze, and other ways to check installed packages in Python environment | DataScienceTribe</title>
+    <title>Understanding the CORS Error and How to Fix It | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">pip list vs pip freeze, and other ways to check installed packages in Python environment</h1>
+                    <h1 class="description center-align post-title">Understanding the CORS Error and How to Fix It</h1>
                 </div>
             </div>
         </div>
@@ -352,8 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/GPT4/">
-                                <span class="chip bg-color">GPT4</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/CORS/">
+                                <span class="chip bg-color">CORS</span>
                             </a>
                         
                     </div>
@@ -377,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-04-06
+                    2023-04-22
                 </div>
                 
 
@@ -398,40 +402,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>n this blog post, we’ll explore different ways to check the installed packages in a Python environment using various commands and tools.</p>
-<h2 id="Using-pip-list"><a href="#Using-pip-list" class="headerlink" title="Using pip list"></a>Using pip list</h2><p>The pip list command is the most commonly used command to check the installed packages in a Python environment. It displays all the packages installed in the environment along with their version numbers in a tabular format.</p>
-<p>To use pip list, open a command prompt or terminal and type:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>This will display a list of all the installed packages in the environment.</p>
-<p>The output of pip list includes additional information such as whether the package is installed globally or locally, and whether it is a dependency of any other package.</p>
-<h2 id="Using-pip-freeze"><a href="#Using-pip-freeze" class="headerlink" title="Using pip freeze"></a>Using pip freeze</h2><p>The pip freeze command is another useful command to check the installed packages in a Python environment. It lists all the installed packages along with their version numbers, but it displays them in a different format compared to pip list.</p>
-<p>The output of pip freeze is useful for replicating the environment because it lists the packages in a format that can be directly used in a requirements file.</p>
-<p>To use pip freeze, open a command prompt or terminal and type:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip freeze</span><br></pre></td></tr></table></figure>
-<p>This will display a list of all the installed packages in the environment in the format used for requirements files.</p>
-<p>However, it’s important to note that pip freeze only lists packages that were installed using pip. It does not include packages that were installed using other package managers like conda, easy_install, or manually installed packages.</p>
-<p>To install packages from a requirements.txt file using pip, you can use the following command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>This command installs all the packages listed in the requirements.txt file. The -r option specifies that the packages should be installed from a requirements file.</p>
-<p>The requirements.txt file should list all the required packages along with their version numbers, separated by new lines. Here’s an example requirements.txt file:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">numpy==1.19.3</span><br><span class="line">pandas==1.1.5</span><br><span class="line">matplotlib==3.3.3</span><br></pre></td></tr></table></figure>
-<p>This file lists the numpy, pandas, and matplotlib packages with their respective version numbers.</p>
-<p>To install the packages listed in the requirements.txt file, save the file to your working directory and run the following command:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>This will install all the packages listed in the requirements.txt file.</p>
-<h2 id="Using-conda-list"><a href="#Using-conda-list" class="headerlink" title="Using conda list"></a>Using conda list</h2><p>If you’re working with Python using the conda package manager, you can use the conda list command to check the installed packages.</p>
-<p>To use conda list, open a command prompt or terminal and type:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
-<p>This will display a list of all the installed packages in the conda environment.</p>
-<h2 id="Using-easy-install-–list"><a href="#Using-easy-install-–list" class="headerlink" title="Using easy_install –list"></a>Using easy_install –list</h2><p>If you’ve installed packages using easy_install, you can use the easy_install –list command to check the installed packages.</p>
-<p>To use easy_install –list, open a command prompt or terminal and type:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">easy_install --list</span><br></pre></td></tr></table></figure>
-<p>This will display a list of all the installed packages using easy_install.</p>
-<h2 id="Manually-installed-packages"><a href="#Manually-installed-packages" class="headerlink" title="Manually installed packages"></a>Manually installed packages</h2><p>If you’ve installed packages manually, i.e., not using any package manager, you can use the package manager specific to your operating system to check the installed packages.</p>
-<p>For example, on a Linux system, you can use the dpkg command to list all the manually installed packages:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dpkg --get-selections | grep -v deinstall</span><br></pre></td></tr></table></figure>
-<p>On a macOS system, you can use the brew command to list all the manually installed packages:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew list</span><br></pre></td></tr></table></figure>
+                <p>If you’ve ever tried to make an AJAX request from a web page to a server hosted on a different domain, you may have encountered a frustrating error message that says something like “Access to XMLHttpRequest at ht<span>tp://</span>example.com/api/data from origin ‘null’ has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource.” This error message is known as the CORS error, and it is a common issue that web developers face when working with cross-origin requests.</p>
+<p>In this blog post, we’ll take a closer look at what the CORS error is, what causes it, and some solutions to fix it.</p>
+<h2 id="What-is-the-CORS-Error"><a href="#What-is-the-CORS-Error" class="headerlink" title="What is the CORS Error?"></a>What is the CORS Error?</h2><p>The CORS error is a security feature implemented by web browsers that prevents web pages from making requests to a different domain than the one the page came from. This security feature is called the Same-Origin Policy, and it is designed to prevent malicious websites from stealing sensitive information from other sites.</p>
+<p>The CORS error occurs when a web page tries to make an AJAX request to a server hosted on a different domain than the one the page came from, and the server does not send the required ‘Access-Control-Allow-Origin’ header in its response. This header tells the browser which domains are allowed to access the resource, and if it is missing, the browser will block the request and show the CORS error message.</p>
+<h2 id="What-Causes-the-CORS-Error"><a href="#What-Causes-the-CORS-Error" class="headerlink" title="What Causes the CORS Error?"></a>What Causes the CORS Error?</h2><p>The CORS error can occur in a variety of situations, but it usually happens when you try to make an AJAX request from an HTML file that is opened locally in your browser (i.e., using the “file://“ protocol) to a server that is hosted on a different domain or on the internet (i.e., using the “http://“ or “https://“ protocol). This is because the Same-Origin Policy enforced by web browsers prevents web pages from making requests to a different domain than the one the page came from.</p>
+<h2 id="Solutions-to-Fix-the-CORS-Error"><a href="#Solutions-to-Fix-the-CORS-Error" class="headerlink" title="Solutions to Fix the CORS Error"></a>Solutions to Fix the CORS Error</h2><p>There are several solutions you can use to fix the CORS error, depending on the situation:</p>
+<ol>
+<li><p>Host the HTML file and the server on the same domain: If you are developing a web application and have control over the server hosting the API, you can host the HTML file and the server on the same domain. This way, they will have the same origin, and you won’t encounter the CORS error.</p>
+</li>
+<li><p>Use a web server to serve the HTML file: If you are only testing and don’t need to actually make requests to a server, you can use a web server to serve the HTML file instead of opening it directly in your browser. This will allow you to make requests to other domains using AJAX without triggering the Same-Origin Policy.</p>
+</li>
+<li><p>Disable the Same-Origin Policy in your browser: If you need to test something quickly and don’t want to set up a web server, you can disable the Same-Origin Policy in your browser by running it with the “–disable-web-security” flag (this is not recommended for general browsing, as it removes an important security feature of the browser).</p>
+</li>
+<li><p>Use JSONP (JSON with Padding) instead of AJAX: JSONP is a way of getting data from a server in a different domain that circumvents the Same-Origin Policy by wrapping the response in a JavaScript function call. This approach has some security implications, but it can be a useful workaround in some cases.</p>
+</li>
+<li><p>Use a proxy server to forward your requests: If you cannot modify the server’s CORS settings or use JSONP, you can use a proxy server to forward your requests. A proxy server is a server that sits between your browser and the server you are trying to make requests to, and forwards the requests for you, adding the necessary headers to avoid the CORS error.</p>
+</li>
+<li><p>On your local development, simply use <code>python -m http.server</code> to set up a local web server that serves your HTML file from the current directory. By accessing the HTML file at ht<span>tp://</span>localhost:8000, you can avoid the CORS error and make requests to other domains using AJAX. This approach is useful when you are developing and testing locally and don’t need to deploy your code to a remote server yet.</p>
+</li>
+</ol>
+<p>Conclusion</p>
+<p>The CORS error can be a frustrating issue to deal with, but understanding its causes and using the appropriate solution can help you resolve it. Whether you choose to host your HTML file and server on the same domain, use a web server to serve your HTML file, disable the Same-Origin Policy in your browser, use JSONP, use a proxy server, or set up a local web server using <code>python -m http.server</code>, you can avoid the CORS error and make cross-origin requests successfully.</p>
+
                 
             </div>
             <hr/>
@@ -457,7 +450,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/04/06/ways-to-check-installed-packages-in-python/">https://datasciencebyexample.github.io/2023/04/06/ways-to-check-installed-packages-in-python/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/04/22/undersand-the-CORS-error-and-solution-to-fix-it-including-local-test/">https://datasciencebyexample.github.io/2023/04/22/undersand-the-CORS-error-and-solution-to-fix-it-including-local-test/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -495,8 +488,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/GPT4/">
-                                    <span class="chip bg-color">GPT4</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/CORS/">
+                                    <span class="chip bg-color">CORS</span>
                                 </a>
                             
                         </div>
@@ -542,17 +539,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/04/06/how-to-setup-server-side-and-client-side-timeout/">
+                <a href="/2023/04/22/undersand-the-CORS-error-and-solution-to-fix-it-including-local-test/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Understanding Server-side and Client-side Timeouts and How to Set Them Up">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Understanding the CORS Error and How to Fix It">
                         
-                        <span class="card-title">Understanding Server-side and Client-side Timeouts and How to Set Them Up</span>
+                        <span class="card-title">Understanding the CORS Error and How to Fix It</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -562,9 +560,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -577,11 +575,16 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/timeout/">
-                        <span class="chip bg-color">timeout</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/CORS/">
+                        <span class="chip bg-color">CORS</span>
                     </a>
                     
                 </div>
@@ -595,13 +598,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/04/06/chatgpt-and-probablity-theory-and-bayes-theorem/">
+                <a href="/2023/04/21/how-to-split-continuous-heading-patterns-with-various-subheadings/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="The victory of ChatGPT is the victory of probability theory and the victory of Bayes Theorem">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Organizing Text Content with Python, Splitting Continuous Headings with various subheadings into Lists">
                         
-                        <span class="card-title">The victory of ChatGPT is the victory of probability theory and the victory of Bayes Theorem</span>
+                        <span class="card-title">Organizing Text Content with Python, Splitting Continuous Headings with various subheadings into Lists</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -612,7 +615,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-21
                             </span>
                         <span class="publish-author">
                             
@@ -629,12 +632,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/chatGPT/">
-                        <span class="chip bg-color">chatGPT</span>
-                    </a>
-                    
-                    <a href="/tags/bayes-theorem/">
-                        <span class="chip bg-color">bayes theorem</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
