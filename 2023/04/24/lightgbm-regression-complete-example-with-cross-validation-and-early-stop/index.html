@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="how to convert timestamp column of pandas dataframe into hour and day features using transformer, DataScienceTribe">
+    <meta name="keywords" content="LightGBM regression example with cross validation and early stop run, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>how to convert timestamp column of pandas dataframe into hour and day features using transformer | DataScienceTribe</title>
+    <title>LightGBM regression example with cross validation and early stop run | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</h1>
+                    <h1 class="description center-align post-title">LightGBM regression example with cross validation and early stop run</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
-                            </a>
-                        
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/lightgbm/">
+                                <span class="chip bg-color">lightgbm</span>
                             </a>
                         
                     </div>
@@ -385,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-04
+                    2023-04-24
                 </div>
                 
 
@@ -406,14 +398,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line">       return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;timestamp&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">dayandhour_transformer = dayandhour_Transformer() </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">df = dayandhour_transformer.transform(df)</span><br></pre></td></tr></table></figure>
+                <p>In this blog post, we will walk through a complete example of using LightGBM, a gradient boosting framework, for regression tasks. We will generate a random dataset, split it into training and testing sets, train a LightGBM regression model, and evaluate its performance using mean squared error (MSE) and a scatter plot of predicted vs expected values.</p>
+<h2 id="What-is-LightGBM"><a href="#What-is-LightGBM" class="headerlink" title="What is LightGBM?"></a>What is LightGBM?</h2><p>LightGBM is a gradient boosting framework that uses tree-based learning algorithms. It is designed to be efficient and scalable, making it suitable for large datasets and high-performance tasks. LightGBM is particularly popular for its speed and accuracy, outperforming many other machine learning algorithms in various benchmarks.</p>
+<h2 id="Generating-a-Random-Dataset"><a href="#Generating-a-Random-Dataset" class="headerlink" title="Generating a Random Dataset"></a>Generating a Random Dataset</h2><p>For this example, we will generate a random dataset using the <code>make_regression</code> function from scikit-learn. This function creates a dataset with a specified number of samples, features, and noise level. We will generate a dataset with 1000 samples, 10 features, and a noise level of 0.1.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_regression</span><br><span class="line"></span><br><span class="line">X, y = make_regression(n_samples=<span class="number">1000</span>, n_features=<span class="number">10</span>, noise=<span class="number">0.1</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
 
-<p>Suppose we have a dataframe df with a column “timestamp”.</p>
-<p>before apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(df[&#x27;timestamp&#x27;])</span><br><span class="line"></span><br><span class="line">0        2021-03-28 03:28:10.205000</span><br><span class="line"></span><br><span class="line">1        2021-03-28 21:31:43.290000</span><br><span class="line"></span><br><span class="line">2        2021-03-28 21:16:18.771000</span><br><span class="line"></span><br><span class="line">3        2021-03-28 18:39:13.344000</span><br><span class="line"></span><br><span class="line">4        2021-03-28 00:54:57.544000</span><br></pre></td></tr></table></figure>
+<p>Next, we will convert the generated data to a pandas DataFrame for easier manipulation.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(X, columns=[<span class="string">f&quot;feature_<span class="subst">&#123;i&#125;</span>&quot;</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(X.shape[<span class="number">1</span>])])</span><br><span class="line">df[<span class="string">&quot;target&quot;</span>] = y</span><br></pre></td></tr></table></figure>
 
-<p>after we apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print( df[[&#x27;hour&#x27;,&#x27;dayofweek&#x27;]])</span><br><span class="line"></span><br><span class="line">       hour  dayofweek</span><br><span class="line"></span><br><span class="line">0         3          6</span><br><span class="line"></span><br><span class="line">1        21          6</span><br><span class="line"></span><br><span class="line">2        21          6</span><br><span class="line"></span><br><span class="line">3        18          6</span><br><span class="line"></span><br><span class="line">4         0          6</span><br></pre></td></tr></table></figure>
+<h2 id="Preparing-the-Data"><a href="#Preparing-the-Data" class="headerlink" title="Preparing the Data"></a>Preparing the Data</h2><p>Before training the model, we need to split the data into training and testing sets. We will use 80% of the data for training and 20% for testing.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X = df.drop(<span class="string">&quot;target&quot;</span>, axis=<span class="number">1</span>)</span><br><span class="line">y = df[<span class="string">&quot;target&quot;</span>]</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Training-the-LightGBM-Regression-Model"><a href="#Training-the-LightGBM-Regression-Model" class="headerlink" title="Training the LightGBM Regression Model"></a>Training the LightGBM Regression Model</h2><p>Now that we have prepared the data, we can train the LightGBM regression model. First, we need to create a LightGBM dataset from our training data.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb</span><br><span class="line"></span><br><span class="line">train_data = lgb.Dataset(X_train, label=y_train)</span><br></pre></td></tr></table></figure>
+
+<p>Next, we will set up the parameters for the LightGBM model. In this example, we will use the default parameters for a regression task.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&quot;objective&quot;</span>: <span class="string">&quot;regression&quot;</span>,</span><br><span class="line">    <span class="string">&quot;metric&quot;</span>: <span class="string">&quot;mse&quot;</span>,</span><br><span class="line">    <span class="string">&quot;boosting_type&quot;</span>: <span class="string">&quot;gbdt&quot;</span>,</span><br><span class="line">    <span class="string">&quot;num_leaves&quot;</span>: <span class="number">31</span>,</span><br><span class="line">    <span class="string">&quot;learning_rate&quot;</span>: <span class="number">0.05</span>,</span><br><span class="line">    <span class="string">&quot;feature_fraction&quot;</span>: <span class="number">0.9</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>We will train the model using cross-validation with early stopping to prevent overfitting. The <code>lgb.cv</code> function performs cross-validation and returns the results for each round. We will use the best number of rounds to train the final model.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num_round = <span class="number">1000</span></span><br><span class="line">cv_results = lgb.cv(</span><br><span class="line">    params,</span><br><span class="line">    train_data,</span><br><span class="line">    num_boost_round=num_round,</span><br><span class="line">    nfold=<span class="number">5</span>,</span><br><span class="line">    early_stopping_rounds=<span class="number">10</span>,</span><br><span class="line">    stratified=<span class="literal">False</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">best_round = <span class="built_in">len</span>(cv_results[<span class="string">&quot;l2-mean&quot;</span>])</span><br><span class="line">model = lgb.train(params, train_data, num_boost_round=best_round)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Evaluating-the-Model"><a href="#Evaluating-the-Model" class="headerlink" title="Evaluating the Model"></a>Evaluating the Model</h2><p>Now that we have trained the model, we can evaluate its performance on the test set. We will use the mean squared error (MSE) as our evaluation metric.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line">y_pred = model.predict(X_test)</span><br><span class="line">mse = mean_squared_error(y_test, y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Mean Squared Error:&quot;</span>, mse)</span><br></pre></td></tr></table></figure>
+
+<p>Finally, we will plot a scatter plot of the predicted vs expected values to visualize the model’s performance.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.scatter(y_test, y_pred)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Expected&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Predicted&quot;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;Predicted vs Expected&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we have demonstrated a complete example of using LightGBM for regression tasks with a randomly generated dataset. We have shown how to prepare the data, train the model, and evaluate its performance using mean squared error and a scatter plot. LightGBM is a powerful and efficient gradient boosting framework that can be used for various machine learning tasks, including regression, classification, and ranking.</p>
+<h2 id="code-link"><a href="#code-link" class="headerlink" title="code link"></a>code link</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/blob/main/lightgbm-regression-with-cross-validation-and-early-stop/2023-04-24-lightgbm%20regression%20example.ipynb">github link</a></p>
 
                 
             </div>
@@ -440,7 +452,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/">https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/04/24/lightgbm-regression-complete-example-with-cross-validation-and-early-stop/">https://datasciencebyexample.github.io/2023/04/24/lightgbm-regression-complete-example-with-cross-validation-and-early-stop/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -478,16 +490,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
-                                </a>
-                            
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/lightgbm/">
+                                    <span class="chip bg-color">lightgbm</span>
                                 </a>
                             
                         </div>
@@ -533,70 +537,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/05/2021-06-05-1/">
+                <a href="/2023/04/24/lightgbm-regression-complete-example-with-cross-validation-and-early-stop/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="boost exact phrase search results ranking in elasticsearch">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="LightGBM regression example with cross validation and early stop run">
                         
-                        <span class="card-title">boost exact phrase search results ranking in elasticsearch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/search/" class="post-category">
-                                    search
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
-                        
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">LightGBM regression example with cross validation and early stop run</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -607,7 +559,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-24
                             </span>
                         <span class="publish-author">
                             
@@ -625,16 +577,57 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/lightgbm/">
+                        <span class="chip bg-color">lightgbm</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
-                    </a>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/04/24/what-is-lightgbm-no-further-splits-warning/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="What is the lightGBM no further splits warning?">
+                        
+                        <span class="card-title">What is the lightGBM no further splits warning?</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/lightgbm/">
+                        <span class="chip bg-color">lightgbm</span>
                     </a>
                     
                 </div>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>LightGBM regression example with cross validation and early stop run</title>
+      <link href="2023/04/24/lightgbm-regression-complete-example-with-cross-validation-and-early-stop/"/>
+      <url>2023/04/24/lightgbm-regression-complete-example-with-cross-validation-and-early-stop/</url>
+      
+        <content type="html"><![CDATA[<p>In this blog post, we will walk through a complete example of using LightGBM, a gradient boosting framework, for regression tasks. We will generate a random dataset, split it into training and testing sets, train a LightGBM regression model, and evaluate its performance using mean squared error (MSE) and a scatter plot of predicted vs expected values.</p><h2 id="What-is-LightGBM"><a href="#What-is-LightGBM" class="headerlink" title="What is LightGBM?"></a>What is LightGBM?</h2><p>LightGBM is a gradient boosting framework that uses tree-based learning algorithms. It is designed to be efficient and scalable, making it suitable for large datasets and high-performance tasks. LightGBM is particularly popular for its speed and accuracy, outperforming many other machine learning algorithms in various benchmarks.</p><h2 id="Generating-a-Random-Dataset"><a href="#Generating-a-Random-Dataset" class="headerlink" title="Generating a Random Dataset"></a>Generating a Random Dataset</h2><p>For this example, we will generate a random dataset using the <code>make_regression</code> function from scikit-learn. This function creates a dataset with a specified number of samples, features, and noise level. We will generate a dataset with 1000 samples, 10 features, and a noise level of 0.1.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_regression</span><br><span class="line"></span><br><span class="line">X, y = make_regression(n_samples=<span class="number">1000</span>, n_features=<span class="number">10</span>, noise=<span class="number">0.1</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><p>Next, we will convert the generated data to a pandas DataFrame for easier manipulation.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(X, columns=[<span class="string">f&quot;feature_<span class="subst">&#123;i&#125;</span>&quot;</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(X.shape[<span class="number">1</span>])])</span><br><span class="line">df[<span class="string">&quot;target&quot;</span>] = y</span><br></pre></td></tr></table></figure><h2 id="Preparing-the-Data"><a href="#Preparing-the-Data" class="headerlink" title="Preparing the Data"></a>Preparing the Data</h2><p>Before training the model, we need to split the data into training and testing sets. We will use 80% of the data for training and 20% for testing.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X = df.drop(<span class="string">&quot;target&quot;</span>, axis=<span class="number">1</span>)</span><br><span class="line">y = df[<span class="string">&quot;target&quot;</span>]</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><h2 id="Training-the-LightGBM-Regression-Model"><a href="#Training-the-LightGBM-Regression-Model" class="headerlink" title="Training the LightGBM Regression Model"></a>Training the LightGBM Regression Model</h2><p>Now that we have prepared the data, we can train the LightGBM regression model. First, we need to create a LightGBM dataset from our training data.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb</span><br><span class="line"></span><br><span class="line">train_data = lgb.Dataset(X_train, label=y_train)</span><br></pre></td></tr></table></figure><p>Next, we will set up the parameters for the LightGBM model. In this example, we will use the default parameters for a regression task.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&quot;objective&quot;</span>: <span class="string">&quot;regression&quot;</span>,</span><br><span class="line">    <span class="string">&quot;metric&quot;</span>: <span class="string">&quot;mse&quot;</span>,</span><br><span class="line">    <span class="string">&quot;boosting_type&quot;</span>: <span class="string">&quot;gbdt&quot;</span>,</span><br><span class="line">    <span class="string">&quot;num_leaves&quot;</span>: <span class="number">31</span>,</span><br><span class="line">    <span class="string">&quot;learning_rate&quot;</span>: <span class="number">0.05</span>,</span><br><span class="line">    <span class="string">&quot;feature_fraction&quot;</span>: <span class="number">0.9</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>We will train the model using cross-validation with early stopping to prevent overfitting. The <code>lgb.cv</code> function performs cross-validation and returns the results for each round. We will use the best number of rounds to train the final model.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num_round = <span class="number">1000</span></span><br><span class="line">cv_results = lgb.cv(</span><br><span class="line">    params,</span><br><span class="line">    train_data,</span><br><span class="line">    num_boost_round=num_round,</span><br><span class="line">    nfold=<span class="number">5</span>,</span><br><span class="line">    early_stopping_rounds=<span class="number">10</span>,</span><br><span class="line">    stratified=<span class="literal">False</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">best_round = <span class="built_in">len</span>(cv_results[<span class="string">&quot;l2-mean&quot;</span>])</span><br><span class="line">model = lgb.train(params, train_data, num_boost_round=best_round)</span><br></pre></td></tr></table></figure><h2 id="Evaluating-the-Model"><a href="#Evaluating-the-Model" class="headerlink" title="Evaluating the Model"></a>Evaluating the Model</h2><p>Now that we have trained the model, we can evaluate its performance on the test set. We will use the mean squared error (MSE) as our evaluation metric.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line">y_pred = model.predict(X_test)</span><br><span class="line">mse = mean_squared_error(y_test, y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Mean Squared Error:&quot;</span>, mse)</span><br></pre></td></tr></table></figure><p>Finally, we will plot a scatter plot of the predicted vs expected values to visualize the model’s performance.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.scatter(y_test, y_pred)</span><br><span class="line">plt.xlabel(<span class="string">&quot;Expected&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Predicted&quot;</span>)</span><br><span class="line">plt.title(<span class="string">&quot;Predicted vs Expected&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we have demonstrated a complete example of using LightGBM for regression tasks with a randomly generated dataset. We have shown how to prepare the data, train the model, and evaluate its performance using mean squared error and a scatter plot. LightGBM is a powerful and efficient gradient boosting framework that can be used for various machine learning tasks, including regression, classification, and ranking.</p><h2 id="code-link"><a href="#code-link" class="headerlink" title="code link"></a>code link</h2><p><a href="https://github.com/robotlearner001/blog/blob/main/lightgbm-regression-with-cross-validation-and-early-stop/2023-04-24-lightgbm%20regression%20example.ipynb">github link</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> lightgbm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>What is the lightGBM no further splits warning?</title>
       <link href="2023/04/24/what-is-lightgbm-no-further-splits-warning/"/>
       <url>2023/04/24/what-is-lightgbm-no-further-splits-warning/</url>
@@ -3438,11 +3463,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -3521,9 +3546,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
