@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>What is the lightGBM no further splits warning?</title>
+      <link href="2023/04/24/what-is-lightgbm-no-further-splits-warning/"/>
+      <url>2023/04/24/what-is-lightgbm-no-further-splits-warning/</url>
+      
+        <content type="html"><![CDATA[<p>When running lightgbm model, you might see this warning:<br><code> [LightGBM] [Warning] No further splits with positive gain, best gain: -inf</code></p><p>So what is this? should I get concerned? and if not, how to turn it off.</p><h1 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h1><p>This warning message from LightGBM indicates that during the training process, the algorithm could not find any further splits in the decision tree that would result in a positive gain (i.e., an improvement in the model’s performance). The “best gain” being <code>-inf</code> means that no split was found that would improve the model.</p><p>This can happen when the model has already learned the patterns in the data well enough, or when the data is noisy, and further splits would only lead to overfitting. It can also occur when the model’s hyperparameters are not well-tuned for the given dataset.</p><p>In most cases, this warning can be safely ignored, as it simply means that the model has reached a point where further splits are not beneficial. However, if you see this warning frequently and the model’s performance is not satisfactory, you may want to consider tuning the hyperparameters or preprocessing the data differently to improve the model’s performance.</p><h2 id="How-to-suppress-the-warning"><a href="#How-to-suppress-the-warning" class="headerlink" title="How to suppress the warning"></a>How to suppress the warning</h2><p>for sklearn interface, you can set verbose=-1 when defining the model (not in fit).<br>for lgb.train interface, you can set verbose=-1 in param dict.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> lightgbm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Understanding the CORS Error and How to Fix It</title>
       <link href="2023/04/22/undersand-the-CORS-error-and-solution-to-fix-it-including-local-test/"/>
       <url>2023/04/22/undersand-the-CORS-error-and-solution-to-fix-it-including-local-test/</url>
@@ -305,6 +330,31 @@
     
     
     <entry>
+      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
+      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
+      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
+      
+        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> timeout </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Comparing Python&#39;s HTTP Libraries HTTPX vs Requests</title>
       <link href="2023/04/06/httpx-vs-requsts-in-pyton/"/>
       <url>2023/04/06/httpx-vs-requsts-in-pyton/</url>
@@ -324,31 +374,6 @@
             <tag> requests </tag>
             
             <tag> httpx </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Understanding Server-side and Client-side Timeouts and How to Set Them Up</title>
-      <link href="2023/04/06/how-to-setup-server-side-and-client-side-timeout/"/>
-      <url>2023/04/06/how-to-setup-server-side-and-client-side-timeout/</url>
-      
-        <content type="html"><![CDATA[<p>When working with web applications, it’s essential to understand the concept of timeouts and how they can impact the performance and user experience of your application. Timeouts can occur on both the server-side and client-side, and it’s crucial to know the differences between them and how to set them up correctly. In this blog post, we will discuss server-side and client-side timeouts, their differences, and how to set them up using FastAPI, Gunicorn, and the Requests library.</p><h2 id="Server-side-Timeout"><a href="#Server-side-Timeout" class="headerlink" title="Server-side Timeout"></a>Server-side Timeout</h2><p>A server-side timeout occurs when the server takes too long to process a request or send a response. This can happen due to various reasons, such as slow processing, high server load, or network latency. When a server-side timeout occurs, the server may terminate the connection, resulting in an error or incomplete response sent to the client.</p><p>To manage server-side timeouts, you can use a reverse proxy like Gunicorn with your FastAPI application. Gunicorn allows you to set a worker timeout, which is the maximum time a worker process can take to complete a request. If a worker does not complete the request within the specified timeout, it will be killed, and a new worker will be spawned.</p><p>Here’s an example of how to use Gunicorn with Uvicorn workers to set a timeout:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunicorn -w 4 -k uvicorn.workers.UvicornWorker -t 60 main:app</span><br></pre></td></tr></table></figure><p>In this command:</p><ul><li><code>-w 4</code>: Sets the number of worker processes to 4.</li><li><code>-k uvicorn.workers.UvicornWorker</code>: Specifies the worker class to be UvicornWorker.</li><li><code>-t 60</code>: Sets the worker timeout to 60 seconds.</li><li><code>main:app</code>: Points to your FastAPI application instance.</li></ul><h2 id="Client-side-Timeout"><a href="#Client-side-Timeout" class="headerlink" title="Client-side Timeout"></a>Client-side Timeout</h2><p>A client-side timeout occurs when the client (e.g., a web browser or an API client) takes too long to receive a response from the server. This can happen due to various reasons, such as slow server processing, network latency, or client-side processing delays. When a client-side timeout occurs, the client may terminate the connection, resulting in an error or incomplete response.</p><p>To manage client-side timeouts, you can use an HTTP client library that allows you to set timeout values, such as the Requests library in Python.</p><p>Here’s an example of how to set a timeout when making a request using the Requests library:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://your-fastapi-app.com/endpoint&quot;</span></span><br><span class="line">timeout = <span class="number">5.0</span>  <span class="comment"># Timeout in seconds</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url, timeout=timeout)</span><br></pre></td></tr></table></figure><p>In this example, the request will time out if it takes longer than 5 seconds to complete.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Understanding the differences between server-side and client-side timeouts is crucial for building reliable and performant web applications. By using tools like Gunicorn and the Requests library, you can effectively manage timeouts and ensure a better user experience for your FastAPI application. Remember to monitor your application’s performance and adjust timeout settings as needed to find the optimal balance between responsiveness and resource usage.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> timeout </tag>
             
         </tags>
       
@@ -2318,11 +2343,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -3496,9 +3521,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
