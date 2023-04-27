@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/partilce-swarm-optimization/</loc>
+        <lastmod>2023-04-27T00:44:59.892Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/lightgbm/</loc>
         <lastmod>2023-04-24T20:32:18.864Z</lastmod>
         <changefreq>weekly</changefreq>
