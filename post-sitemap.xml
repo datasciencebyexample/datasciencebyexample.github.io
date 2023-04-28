@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/04/28/how-to-remove-file-and-directory-from-git-repo/</loc>
+        <lastmod>2023-04-28T15:07:18.982Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/04/26/particle-swarms-optimization-implementation-in-python/</loc>
         <lastmod>2023-04-27T00:44:59.892Z</lastmod>
         <changefreq>weekly</changefreq>
