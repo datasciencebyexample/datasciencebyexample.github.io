@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Understanding Pooling in Transformer Architecture, Aggregating Outputs for Downstream Tasks</title>
+      <link href="2023/04/30/what-is-pooling-in-transformer-model/"/>
+      <url>2023/04/30/what-is-pooling-in-transformer-model/</url>
+      
+        <content type="html"><![CDATA[<p>In the context of transformers, pooling refers to the process of summarizing the outputs of the transformer layers into a fixed-size vector, often used for downstream tasks such as classification.</p><p>In a transformer architecture, the input sequence is processed by a series of self-attention and feedforward layers. Each layer produces a sequence of output vectors, which encode the input sequence in a higher-level representation. Pooling involves taking the output vectors from one or more of these layers and aggregating them into a single vector.</p><p>There are different types of pooling mechanisms used in transformer architectures, including:</p><ol><li><p>Max Pooling: where the maximum value across the sequence of output vectors is selected as the summary representation.</p></li><li><p>Mean Pooling: where the average of the output vectors is taken as the summary representation.</p></li><li><p>Last Hidden State: where the final output vector of the transformer is used as the summary representation.</p></li><li><p>Self-Attention Pooling: where a weighted sum of the output vectors is computed, with the weights determined by a learned attention mechanism.</p></li></ol><p>Overall, pooling is an important component of transformer architectures, as it allows for the extraction of a fixed-size representation of the input sequence, which can be used for a variety of downstream tasks.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> transformer </tag>
+            
+            <tag> pooling </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to not indexing fields in elasticsearch</title>
       <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
       <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>

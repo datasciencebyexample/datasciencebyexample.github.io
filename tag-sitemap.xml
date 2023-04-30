@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/pooling/</loc>
+        <lastmod>2023-04-30T19:52:09.293Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
+        <lastmod>2023-04-30T19:52:09.293Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/elasticsearch/</loc>
         <lastmod>2023-04-29T00:34:13.246Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -404,13 +418,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/alphago/</loc>
         <lastmod>2023-02-16T03:12:45.733Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
-        <lastmod>2023-02-15T02:57:47.286Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
