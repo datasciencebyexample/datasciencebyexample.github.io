@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Difference between import file and from file import * in Python</title>
+      <link href="2023/05/02/dIfference-between-import-file-and-from-file-import-in-python/"/>
+      <url>2023/05/02/dIfference-between-import-file-and-from-file-import-in-python/</url>
+      
+        <content type="html"><![CDATA[<p>In python, it’s common to import functions from another file.<br>So what’s the difference of the these two cases.</p><p>The <code>import src.myfile</code> statement and <code>from src.myfile import *</code> statement are used for different purposes and have different effects on how the module’s functions and variables are imported.</p><p>The <code>import src.myfile</code> statement imports the <code>src/myfile.py</code> module as a whole, without making any of its functions or variables directly accessible in your code. Instead, you have to prefix any function or variable you want to use with the module name. For example, if <code>src/myfile.py</code> contains a function named myfunc, you can call it using the following code:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import src.myfile</span><br><span class="line">result = src.myfile.myfunc(arg1, arg2, ...)</span><br></pre></td></tr></table></figure><p>On the other hand, the <code>from src.myfile import *</code> statement imports all functions and variables defined in the <code>src/myfile.py</code> module into your current namespace. This means that you can use them directly in your code without prefixing them with the module name. For example, if <code>src/myfile.py</code> contains a function named myfunc, you can call it using the following code:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from src.myfile import *</span><br><span class="line">result = myfunc(arg1, arg2, ...)</span><br></pre></td></tr></table></figure><p>However, also notice that using <code>import *</code> is generally not recommended, as it can create naming conflicts and make it harder to read and understand your code. It’s usually better to use the import module_name syntax and prefix any functions or variables you use with the module name, or to use the from module_name import function_name, variable_name syntax to import only the specific functions or variables you need.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Understanding Pooling in Transformer Architecture, Aggregating Outputs for Downstream Tasks</title>
       <link href="2023/04/30/what-is-pooling-in-transformer-model/"/>
       <url>2023/04/30/what-is-pooling-in-transformer-model/</url>
