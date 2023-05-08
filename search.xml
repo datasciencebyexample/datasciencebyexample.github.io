@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Matrix muliplication operator `@` in python</title>
+      <link href="2023/05/07/matrix-multiplication-operator-in-python/"/>
+      <url>2023/05/07/matrix-multiplication-operator-in-python/</url>
+      
+        <content type="html"><![CDATA[<p>In Python, the <code>@</code> operator is used to perform matrix multiplication between two arrays when using the NumPy library. Matrix multiplication is an important operation in linear algebra, and it has many applications in machine learning, deep learning, data science, and other fields.</p><p>To perform matrix multiplication in NumPy, we can use the <code>@</code> operator between two NumPy arrays. For example, suppose we have two NumPy arrays <code>a</code> and <code>b</code>:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">a = np.array([[1, 2], [3, 4]])</span><br><span class="line">b = np.array([[5, 6], [7, 8]])</span><br></pre></td></tr></table></figure><p>To perform matrix multiplication between a and b, we can use the <code>@</code> operator:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c = a @ b</span><br></pre></td></tr></table></figure><p>This will result in a new NumPy array <code>c</code>, which is the result of multiplying a and b using matrix multiplication.</p><p>Before <code>Python 3.5</code>, matrix multiplication was performed using the np.dot() function instead of the <code>@</code> operator. However, the <code>@</code> operator was introduced in Python 3.5 to make matrix multiplication more readable and intuitive.</p><p>In summary, the <code>@</code> operator in Python is a useful tool for performing matrix multiplication with NumPy arrays. Its introduction in Python 3.5 has made it easier to work with matrices in Python and has simplified the code needed to perform this important mathematical operation.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> matrix muliplication operator </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>The Open-Source Threat to Google and OpenAI, Why They Should Embrace Community-Driven AI Innovations</title>
       <link href="2023/05/07/open-source-threat-to-google-and-openai/"/>
       <url>2023/05/07/open-source-threat-to-google-and-openai/</url>
@@ -106,6 +133,31 @@
     
     
     <entry>
+      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
+      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
+      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
+      
+        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hyperparameter optimization </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</title>
       <link href="2023/05/03/overview-of-hyperprameter-optimization-2/"/>
       <url>2023/05/03/overview-of-hyperprameter-optimization-2/</url>
@@ -127,31 +179,6 @@
             <tag> grid search </tag>
             
             <tag> random search </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
-      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
-      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
-      
-        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data science </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hyperparameter optimization </tag>
             
         </tags>
       
@@ -297,31 +324,6 @@
     
     
     <entry>
-      <title>How to delete file and folder from git repo</title>
-      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
-      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
-      
-        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>How to not indexing fields in elasticsearch</title>
       <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
       <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>
@@ -339,6 +341,31 @@
         <tags>
             
             <tag> elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to delete file and folder from git repo</title>
+      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
+      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
+      
+        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -3831,11 +3858,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
@@ -3914,9 +3941,9 @@
       
         <tags>
             
-            <tag> elasticsearch </tag>
-            
             <tag> python </tag>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
