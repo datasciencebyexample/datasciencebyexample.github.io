@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/authentication-secrets-generation/</loc>
+        <lastmod>2023-05-12T19:22:09.376Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/oAuth2-0/</loc>
         <lastmod>2023-05-12T01:48:26.379Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -857,13 +864,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
-        <lastmod>2021-06-23T20:44:04.817Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/pandas-tip/</loc>
         <lastmod>2021-06-23T20:44:04.817Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -871,8 +871,8 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
+        <lastmod>2021-06-23T20:44:04.817Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -886,6 +886,13 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
