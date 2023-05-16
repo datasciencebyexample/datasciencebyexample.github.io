@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="rare event encoding for categorical feature in machine learning in pandas dataframe, DataScienceTribe">
+    <meta name="keywords" content="Predicting Stock Prices with PyTorch Transformer, a demo of using dummy data, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>rare event encoding for categorical feature in machine learning in pandas dataframe | DataScienceTribe</title>
+    <title>Predicting Stock Prices with PyTorch Transformer, a demo of using dummy data | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">rare event encoding for categorical feature in machine learning in pandas dataframe</h1>
+                    <h1 class="description center-align post-title">Predicting Stock Prices with PyTorch Transformer, a demo of using dummy data</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/pytorch/">
+                                <span class="chip bg-color">pytorch</span>
                             </a>
                         
-                            <a href="/tags/pandas-tip/">
-                                <span class="chip bg-color">pandas tip</span>
-                            </a>
-                        
-                            <a href="/tags/machine-learning/">
-                                <span class="chip bg-color">machine learning</span>
+                            <a href="/tags/transformer/">
+                                <span class="chip bg-color">transformer</span>
                             </a>
                         
                     </div>
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-23
+                    2023-05-15
                 </div>
                 
 
@@ -406,12 +402,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>If categorical features has too many values, it will generate too many features after encoding, such as one-hot encoding.<br>We could set the threshold, if certan value has percentage less than the threshold, we change the value to be ‘rare event’ or<br>something like that. By doing this, we make sure there are not too many levels for a categorical feature.</p>
-<p>The following code can be applied on a dataframe:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def cat_rare_event(df,threshold=0.005):</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    for col in df.columns:</span><br><span class="line"></span><br><span class="line">        #print(df[col].dtype)</span><br><span class="line"></span><br><span class="line">        if df[col].dtype ==&#x27;object&#x27;:</span><br><span class="line"></span><br><span class="line">            print(col)</span><br><span class="line"></span><br><span class="line">            df.loc[df[col].value_counts()[df[col]].values &lt; int(len(df)*threshold), col] = &quot;rare_value&quot;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">    return df</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <p>Predicting stock prices is a challenging task that has attracted the attention of researchers and practitioners alike. With the advent of deep learning techniques, many models have been proposed to tackle this problem. One such model is the Transformer, which has achieved state-of-the-art results in many natural language processing tasks. In this blog post, we will walk you through an example of using a PyTorch Transformer to predict the next 5 days of stock prices given the previous 10 days.</p>
+<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>First, let’s import the necessary libraries:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
 
-<p>or we could put this step as a customized pipeline:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">class cat_rare_event_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def __init__(self,threshold=0.005):</span><br><span class="line"></span><br><span class="line">        self.threshold = threshold</span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">        X = cat_rare_event(X,self.threshold)</span><br><span class="line"></span><br><span class="line">               </span><br><span class="line"></span><br><span class="line">        return X    </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Generating-Dummy-Stock-Price-Data"><a href="#Generating-Dummy-Stock-Price-Data" class="headerlink" title="Generating Dummy Stock Price Data"></a>Generating Dummy Stock Price Data</h2><p>For this example, we will generate some dummy stock price data:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">num_days = <span class="number">200</span></span><br><span class="line">stock_prices = np.random.rand(num_days) * <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Preprocessing-the-Data"><a href="#Preprocessing-the-Data" class="headerlink" title="Preprocessing the Data"></a>Preprocessing the Data</h2><p>We will prepare the input and target sequences for our model:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">input_seq_len = <span class="number">10</span></span><br><span class="line">output_seq_len = <span class="number">5</span></span><br><span class="line">num_samples = num_days - input_seq_len - output_seq_len + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">src_data = torch.tensor([stock_prices[i:i+input_seq_len] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_samples)]).unsqueeze(-<span class="number">1</span>).<span class="built_in">float</span>()</span><br><span class="line">tgt_data = torch.tensor([stock_prices[i+input_seq_len:i+input_seq_len+output_seq_len] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_samples)]).unsqueeze(-<span class="number">1</span>).<span class="built_in">float</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating-a-Custom-Transformer-Model"><a href="#Creating-a-Custom-Transformer-Model" class="headerlink" title="Creating a Custom Transformer Model"></a>Creating a Custom Transformer Model</h2><p>We will create a custom Transformer model for stock price prediction:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StockPriceTransformer</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, d_model, nhead, num_layers, dropout</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(StockPriceTransformer, self).__init__()</span><br><span class="line">        self.input_linear = nn.Linear(<span class="number">1</span>, d_model)</span><br><span class="line">        self.transformer = nn.Transformer(d_model, nhead, num_layers, dropout=dropout)</span><br><span class="line">        self.output_linear = nn.Linear(d_model, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, src, tgt</span>):</span></span><br><span class="line">        src = self.input_linear(src)</span><br><span class="line">        tgt = self.input_linear(tgt)</span><br><span class="line">        output = self.transformer(src, tgt)</span><br><span class="line">        output = self.output_linear(output)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">d_model = <span class="number">64</span></span><br><span class="line">nhead = <span class="number">4</span></span><br><span class="line">num_layers = <span class="number">2</span></span><br><span class="line">dropout = <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line">model = StockPriceTransformer(d_model, nhead, num_layers, dropout=dropout)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Training-the-Model"><a href="#Training-the-Model" class="headerlink" title="Training the Model"></a>Training the Model</h2><p>We will set up the training parameters, loss function, and optimizer:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">epochs = <span class="number">100</span></span><br><span class="line">lr = <span class="number">0.001</span></span><br><span class="line">batch_size = <span class="number">16</span></span><br><span class="line"></span><br><span class="line">criterion = nn.MSELoss()</span><br><span class="line">optimizer = optim.Adam(model.parameters(), lr=lr)</span><br></pre></td></tr></table></figure>
+
+<p>Now, we will train the model with a training loop:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(epochs):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num_samples, batch_size):</span><br><span class="line">        src_batch = src_data[i:i+batch_size].transpose(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">        tgt_batch = tgt_data[i:i+batch_size].transpose(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        output = model(src_batch, tgt_batch[:-<span class="number">1</span>])</span><br><span class="line">        loss = criterion(output, tgt_batch[<span class="number">1</span>:])</span><br><span class="line">        loss.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Epoch <span class="subst">&#123;epoch+<span class="number">1</span>&#125;</span>/<span class="subst">&#123;epochs&#125;</span>, Loss: <span class="subst">&#123;loss.item()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Predicting-the-Next-5-Days-of-Stock-Prices"><a href="#Predicting-the-Next-5-Days-of-Stock-Prices" class="headerlink" title="Predicting the Next 5 Days of Stock Prices"></a>Predicting the Next 5 Days of Stock Prices</h2><p>Finally, we will predict the next 5 days of stock prices using the trained model:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">src = torch.tensor(stock_prices[-input_seq_len:]).unsqueeze(-<span class="number">1</span>).unsqueeze(<span class="number">1</span>).<span class="built_in">float</span>()</span><br><span class="line">tgt = torch.zeros(output_seq_len, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(output_seq_len):</span><br><span class="line">        prediction = model(src, tgt[:i+<span class="number">1</span>])</span><br><span class="line">        tgt[i] = prediction[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">output = tgt.squeeze().tolist()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Next 5 days of stock prices:&quot;</span>, output)</span><br></pre></td></tr></table></figure>
+
+<p>In this prediction loop, we use the autoregressive decoding approach (<code>model(src, tgt[:i+1])</code>) to generate the output sequence step by step, as the output at each step depends on the previous outputs.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we demonstrated how to predict stock prices using a PyTorch Transformer model. We generated dummy stock price data, preprocessed it, created a custom Transformer model, trained the model, and predicted the next 5 days of stock prices. This example serves as a starting point for developing more sophisticated stock price prediction models using deep learning techniques.</p>
+<h2 id="code-link"><a href="#code-link" class="headerlink" title="code link"></a>code link</h2><p><a target="_blank" rel="noopener" href="https://github.com/robotlearner001/blog/blob/main/stock-price-prediction-using-transformer-toy-example/2023-05-15-stock%20price%20prediction%20using%20transformer%20in%20pytorch.ipynb">github link</a></p>
+
                 
             </div>
             <hr/>
@@ -437,7 +453,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/23/2021-06-23-1/">https://datasciencebyexample.github.io/2021/06/23/2021-06-23-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/05/15/stock-price-prediction-using-transformer-in-pytorch/">https://datasciencebyexample.github.io/2023/05/15/stock-price-prediction-using-transformer-in-pytorch/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -475,16 +491,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/pytorch/">
+                                    <span class="chip bg-color">pytorch</span>
                                 </a>
                             
-                                <a href="/tags/pandas-tip/">
-                                    <span class="chip bg-color">pandas tip</span>
-                                </a>
-                            
-                                <a href="/tags/machine-learning/">
-                                    <span class="chip bg-color">machine learning</span>
+                                <a href="/tags/transformer/">
+                                    <span class="chip bg-color">transformer</span>
                                 </a>
                             
                         </div>
@@ -530,70 +542,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/07/01/2021-07-01-1/">
+                <a href="/2023/05/15/stock-price-prediction-using-transformer-in-pytorch/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="multi line plot with seaborn">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Predicting Stock Prices with PyTorch Transformer, a demo of using dummy data">
                         
-                        <span class="card-title">multi line plot with seaborn</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/visualization/">
-                        <span class="chip bg-color">visualization</span>
-                    </a>
-                    
-                    <a href="/tags/seaborn-tips/">
-                        <span class="chip bg-color">seaborn tips</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/18/2021-06-18-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="handles feature order in training and online production stage to avoid inconsistent error">
-                        
-                        <span class="card-title">handles feature order in training and online production stage to avoid inconsistent error</span>
+                        <span class="card-title">Predicting Stock Prices with PyTorch Transformer, a demo of using dummy data</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -604,7 +564,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-15
                             </span>
                         <span class="publish-author">
                             
@@ -618,19 +578,65 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/pytorch/">
+                        <span class="chip bg-color">pytorch</span>
                     </a>
                     
-                    <a href="/tags/pandas-tip/">
-                        <span class="chip bg-color">pandas tip</span>
+                    <a href="/tags/transformer/">
+                        <span class="chip bg-color">transformer</span>
                     </a>
                     
-                    <a href="/tags/machine-learning/">
-                        <span class="chip bg-color">machine learning</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/05/12/generate-authentication-secrets-in-python/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="How to generate authentication secrets using python">
+                        
+                        <span class="card-title">How to generate authentication secrets using python</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/authentication-secrets-generation/">
+                        <span class="chip bg-color">authentication secrets generation</span>
                     </a>
                     
                 </div>
