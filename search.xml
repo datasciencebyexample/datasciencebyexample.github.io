@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to setup a simple proxy server using fastapi</title>
+      <link href="2023/05/17/simple-proxy-server-using-fastapi/"/>
+      <url>2023/05/17/simple-proxy-server-using-fastapi/</url>
+      
+        <content type="html"><![CDATA[<p>Following code shows how to set up a simple proxy server using fastapi.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import FastAPI, Request</span><br><span class="line">from fastapi.responses import HTMLResponse</span><br><span class="line">import httpx</span><br><span class="line">import uvicorn</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">@app.get(&quot;/&#123;path:path&#125;&quot;)</span><br><span class="line">async def proxy(request: Request, path: str, scheme: str = &quot;http&quot;):</span><br><span class="line">    url = f&quot;&#123;scheme&#125;://&#123;path&#125;&quot;</span><br><span class="line">    async with httpx.AsyncClient() as client:</span><br><span class="line">        response = await client.get(url, headers=request.headers, params=request.query_params)</span><br><span class="line">    return HTMLResponse(content=response.text, status_code=response.status_code)</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    uvicorn.run(&quot;app:app&quot;, host=&quot;0.0.0.0&quot;, port=8000, log_level=&quot;info&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Put that code into a python file, such as <code>app.py</code>, launch the app on your server, for example, if locally just do:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python app.py</span><br></pre></td></tr></table></figure><p>Once the fastapi is turned on, one can browse websites like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://localhost:8000/bing.com?scheme=https</span><br></pre></td></tr></table></figure><p>However, Notice that, this basic example will not work correctly for websites like google.com, as it does not handle cookies, JavaScript, and other dynamic content. Implementing a full-featured proxy server that can handle such websites is beyond the scope of a simple answer, but you can explore existing proxy server projects like <a href="https://mitmproxy.org/">mitmproxy</a> or <a href="https://github.com/tinyproxy/tinyproxy">Tinyproxy</a> for inspiration and guidance.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> fastapi </tag>
+            
+            <tag> proxy server </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Predicting Stock Prices with PyTorch Transformer, a demo of using dummy data</title>
       <link href="2023/05/15/stock-price-prediction-using-transformer-in-pytorch/"/>
       <url>2023/05/15/stock-price-prediction-using-transformer-in-pytorch/</url>
@@ -2125,9 +2152,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> vector search </tag>
-            
             <tag> FAISS </tag>
+            
+            <tag> vector search </tag>
             
         </tags>
       
@@ -2842,11 +2869,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       

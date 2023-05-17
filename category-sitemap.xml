@@ -9,15 +9,15 @@
 
 
     <url>
-        <loc>https://datasciencebyexample.github.io/categories/data-science/</loc>
-        <lastmod>2023-05-16T01:22:19.274Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/categories/data-engineering/</loc>
+        <lastmod>2023-05-17T20:25:22.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/categories/data-engineering/</loc>
-        <lastmod>2023-05-12T19:22:09.376Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/categories/data-science/</loc>
+        <lastmod>2023-05-16T01:22:19.274Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
