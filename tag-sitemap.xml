@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
+        <lastmod>2023-05-18T01:01:40.931Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/pytorch/</loc>
+        <lastmod>2023-05-18T01:01:40.931Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/proxy-server/</loc>
         <lastmod>2023-05-17T20:25:22.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,20 +26,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/fastapi/</loc>
         <lastmod>2023-05-17T20:25:22.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
-        <lastmod>2023-05-16T01:22:19.274Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/pytorch/</loc>
-        <lastmod>2023-05-16T01:22:19.274Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -80,6 +80,13 @@
     </url>
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
+        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/hyperopt/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -88,13 +95,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/optuna/</loc>
-        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -885,13 +885,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/time-series/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -900,6 +893,13 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
