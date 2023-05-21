@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/05/21/install-docker-and-docker-compose-on-ubuntu/</loc>
+        <lastmod>2023-05-21T17:56:14.112Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/05/19/squeeze-and-unsqueeze-in-pytorch/</loc>
         <lastmod>2023-05-20T01:49:37.476Z</lastmod>
         <changefreq>weekly</changefreq>
