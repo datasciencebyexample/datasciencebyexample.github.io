@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/pandasai/</loc>
+        <lastmod>2023-05-22T16:34:41.289Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/docker-compose/</loc>
         <lastmod>2023-05-21T17:56:14.112Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -108,6 +115,13 @@
     </url>
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
+        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/hyperopt/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -116,13 +130,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/optuna/</loc>
-        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -703,14 +710,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
