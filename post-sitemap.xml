@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/05/22/handle-long-running-tasks-with-fastapi-endpoints/</loc>
+        <lastmod>2023-05-22T21:15:41.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/05/22/use-chatgpt-with-pandas/</loc>
         <lastmod>2023-05-22T16:34:41.289Z</lastmod>
         <changefreq>weekly</changefreq>
