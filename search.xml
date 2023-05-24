@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Introducing Pynecone, A Full-Stack Python Web Framework</title>
+      <link href="2023/05/24/build-web-app-using-pynecone-in-python/"/>
+      <url>2023/05/24/build-web-app-using-pynecone-in-python/</url>
+      
+        <content type="html"><![CDATA[<p>Pynecone is a comprehensive Python web framework that simplifies web app development from front-end to back-end and deployment. To get started, simply ensure you have Python 3.7+ and Node.js 12.22.0+ installed on your system, then use the pip command to install Pynecone:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install pynecone</span><br></pre></td></tr></table></figure><p>Create a new project folder, initialize a new Pynecone project, and run the development web server using the provided commands:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ mkdir pynecode01</span><br><span class="line">$ <span class="built_in">cd</span> pynecode01</span><br><span class="line">$ pc init</span><br><span class="line">$ pc run</span><br></pre></td></tr></table></figure><p>Pynecone’s development server features live reloading capabilities, streamlining the development process.</p><p>The framework offers a wide range of components that can be easily implemented and customized to suit your web application needs. In this tutorial, a sample Pynecone todo application is demonstrated. Start by deleting the default code inside pynecode01.py and adding the following import statement:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pynecone <span class="keyword">as</span> pc</span><br></pre></td></tr></table></figure><p>Implement the application’s state by creating a <code>State</code> class that inherits from <code>pc.State</code>:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">State</span>(<span class="params">pc.State</span>):</span></span><br><span class="line">    items = [<span class="string">&quot;Learn Python&quot;</span>, <span class="string">&quot;Learn Pynecone&quot;</span>, <span class="string">&quot;Have Fun&quot;</span>]</span><br><span class="line">    new_item: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_item</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.items += [self.new_item]</span><br><span class="line">        self.new_item = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">finish_item</span>(<span class="params">self, item</span>):</span></span><br><span class="line">        self.items = [i <span class="keyword">for</span> i <span class="keyword">in</span> self.items <span class="keyword">if</span> i != item]</span><br></pre></td></tr></table></figure><p>Next, implement the <code>render_item</code> function to generate a single todo item:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_item</span>(<span class="params">item</span>):</span></span><br><span class="line">    <span class="keyword">return</span> pc.list_item(</span><br><span class="line">        pc.hstack(</span><br><span class="line">            pc.text(item, font_size=<span class="string">&quot;1.5em&quot;</span>),</span><br><span class="line">            pc.button(</span><br><span class="line">                <span class="string">&quot;X&quot;</span>,</span><br><span class="line">                color_scheme=<span class="string">&quot;red&quot;</span>,</span><br><span class="line">                size=<span class="string">&quot;sm&quot;</span>,</span><br><span class="line">                on_click=<span class="keyword">lambda</span>: State.finish_item(item),</span><br><span class="line">            ),</span><br><span class="line">            justify_content=<span class="string">&quot;space-between&quot;</span>,</span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure><p>Create the <code>todo_list</code> function that generates the remaining parts of the UI:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">todo_list</span>():</span></span><br><span class="line">    <span class="keyword">return</span> pc.container(</span><br><span class="line">        pc.vstack(</span><br><span class="line">            pc.heading(<span class="string">&quot;Todos&quot;</span>),</span><br><span class="line">            pc.<span class="built_in">input</span>(</span><br><span class="line">                on_blur=State.set_new_item,</span><br><span class="line">                placeholder=<span class="string">&quot;Add a todo...&quot;</span>,</span><br><span class="line">                bg=<span class="string">&quot;white&quot;</span>,</span><br><span class="line">            ),</span><br><span class="line">            pc.button(<span class="string">&quot;Add&quot;</span>, on_click=State.add_item, bg=<span class="string">&quot;green&quot;</span>, color=<span class="string">&quot;white&quot;</span>),</span><br><span class="line">            pc.divider(),</span><br><span class="line">            pc.ordered_list(</span><br><span class="line">                pc.foreach(State.items, <span class="keyword">lambda</span> item: render_item(item)),</span><br><span class="line">            ),</span><br><span class="line">            bg=<span class="string">&quot;#ededed&quot;</span>,</span><br><span class="line">            margin=<span class="string">&quot;5em&quot;</span>,</span><br><span class="line">            padding=<span class="string">&quot;1em&quot;</span>,</span><br><span class="line">            border_radius=<span class="string">&quot;0.5em&quot;</span>,</span><br><span class="line">            shadow=<span class="string">&quot;lg&quot;</span>,</span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure><p>Finally, create the application instance, add the routes, and initiate the compilation of the Pynecone web app:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app = pc.App(state=State)</span><br><span class="line">app.add_page(todo_list, path=<span class="string">&quot;/&quot;</span>)</span><br><span class="line">app.<span class="built_in">compile</span>()</span><br></pre></td></tr></table></figure><p>In conclusion, Pynecone simplifies the process of building and deploying web apps with Python. Its full-stack framework caters to both beginners and experienced developers, making it an ideal choice for leveraging the power and simplicity of Python in web development. Give Pynecone a try and enhance your web app creations with ease.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> pynecone </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Protecting Your API Endpoint in Frontend Applications</title>
       <link href="2023/05/23/strategies%20-to-portect-api-in-frontend/"/>
       <url>2023/05/23/strategies%20-to-portect-api-in-frontend/</url>
@@ -1427,9 +1454,9 @@
       
         <tags>
             
-            <tag> gpt </tag>
-            
             <tag> openai </tag>
+            
+            <tag> gpt </tag>
             
             <tag> zero shot </tag>
             
@@ -3002,11 +3029,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -4207,9 +4234,9 @@
       
         <tags>
             
-            <tag> pandas </tag>
-            
             <tag> python </tag>
+            
+            <tag> pandas </tag>
             
             <tag> preprocessing </tag>
             
