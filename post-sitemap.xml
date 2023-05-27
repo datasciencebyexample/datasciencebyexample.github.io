@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/05/27/understanding-langchain-chains-and-agents/</loc>
+        <lastmod>2023-05-27T04:59:07.868Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/05/25/python-class-paramter-vs-instance-attribute/</loc>
         <lastmod>2023-05-26T01:36:37.494Z</lastmod>
         <changefreq>weekly</changefreq>
