@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Demystifying the Black Box, Tools and Methods for Model Explainability in Machine Learning</title>
+      <link href="2023/05/29/model-explainability-in-machine-learning/"/>
+      <url>2023/05/29/model-explainability-in-machine-learning/</url>
+      
+        <content type="html"><![CDATA[<p>Model explainability refers to the ability to understand and interpret the decisions made by machine learning models. It is important because many modern machine learning algorithms, such as deep neural networks, are often considered “black boxes” due to their complexity. Model explainability tools and methods aim to shed light on the internal workings of these models, providing insights into how they arrive at their predictions or decisions. Here are some common tools and methods used for model explainability in machine learning:</p><ol><li><p>Feature Importance: This method helps identify the most influential features in a model’s decision-making process. Techniques like permutation importance, feature importance from tree-based models, or coefficients from linear models can provide insights into which features have the most impact on the model’s predictions.</p></li><li><p>Partial Dependence Plots (PDPs): PDPs visualize the relationship between a specific feature and the model’s predicted outcome while holding other features at fixed values. They show how the model’s predictions change with variations in the selected feature, helping understand the feature’s effect on the model’s decisions.</p></li><li><p>SHAP Values: SHAP (SHapley Additive exPlanations) values provide a unified measure of feature importance. They are based on cooperative game theory and assign each feature an importance score indicating its contribution to the prediction. SHAP values can be used to explain individual predictions or provide an overall understanding of feature importance.</p></li><li><p>LIME (Local Interpretable Model-Agnostic Explanations): LIME is a technique that explains individual predictions by approximating the model’s behavior locally. It creates a simpler, interpretable model around the instance of interest and explains the predictions based on this local model.</p></li><li><p>Model Surrogates: Surrogate models are simpler, interpretable models that approximate the behavior of complex models. They can be used to provide insights into the decision-making process of the black box model. Surrogate models can be trained on the same data or on synthetic data generated specifically for the purpose of interpretability.</p></li><li><p>Integrated Gradients: Integrated gradients is a method that assigns feature attributions to each input feature. It measures how much each feature contributes to the difference between a baseline input and the current input. It provides a way to quantify feature importance and explain model predictions.</p></li><li><p>Decision Trees: Decision trees are inherently interpretable models. They can be used as a means of explaining complex models by approximating their decision boundaries. Decision trees provide a clear path of decisions and feature splits, allowing for intuitive explanations.</p></li><li><p>Model-Agnostic Methods: Several model-agnostic techniques, such as rule-based explanations, surrogate models, and layer-wise relevance propagation (LRP), aim to explain the decisions of any black box model without relying on its internal architecture or parameters.</p></li><li><p>Visualizations: Visualizing the learned representations of models or the intermediate layers in deep neural networks can provide insights into the model’s decision-making process. Techniques like activation maximization or saliency maps can highlight the important regions or patterns in the input data that influence the model’s predictions.</p></li></ol><p>It’s worth noting that the choice of tool or method for model explainability depends on the specific use case, the type of model being analyzed, and the interpretability requirements of the stakeholders. Different tools and methods have their strengths and limitations, and a combination of approaches may be necessary to gain a comprehensive understanding of model behavior.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> model explainability </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to have good prompt engeering with OpenAI, summary from Andrew NG&#39;s course</title>
       <link href="2023/05/28/how-to-build-effective-prompts-with-openai/"/>
       <url>2023/05/28/how-to-build-effective-prompts-with-openai/</url>
@@ -667,31 +692,6 @@
     
     
     <entry>
-      <title>How to delete file and folder from git repo</title>
-      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
-      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
-      
-        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>How to not indexing fields in elasticsearch</title>
       <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
       <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>
@@ -709,6 +709,31 @@
         <tags>
             
             <tag> elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to delete file and folder from git repo</title>
+      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
+      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
+      
+        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -1531,9 +1556,9 @@
       
         <tags>
             
-            <tag> gpt </tag>
-            
             <tag> openai </tag>
+            
+            <tag> gpt </tag>
             
             <tag> zero shot </tag>
             

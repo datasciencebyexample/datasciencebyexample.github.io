@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/05/29/model-explainability-in-machine-learning/</loc>
+        <lastmod>2023-05-29T17:55:10.258Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/05/28/how-to-build-effective-prompts-with-openai/</loc>
         <lastmod>2023-05-29T01:02:02.328Z</lastmod>
         <changefreq>weekly</changefreq>

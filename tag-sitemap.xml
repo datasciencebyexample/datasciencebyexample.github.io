@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/model-explainability/</loc>
+        <lastmod>2023-05-29T17:55:10.258Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/prompt-engeering/</loc>
         <lastmod>2023-05-29T01:02:02.328Z</lastmod>
         <changefreq>weekly</changefreq>
