@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/prompt-engeering/</loc>
+        <lastmod>2023-05-29T01:02:02.328Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
+        <lastmod>2023-05-29T01:02:02.328Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/langchain/</loc>
         <lastmod>2023-05-27T04:59:07.868Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -313,13 +327,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/github/</loc>
         <lastmod>2023-04-14T00:10:12.478Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
-        <lastmod>2023-04-12T00:23:06.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

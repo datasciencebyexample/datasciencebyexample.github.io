@@ -1,0 +1,1077 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="How to have good prompt engeering with OpenAI, summary from Andrew NG&#39;s course, DataScienceTribe">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Global site - Google Ads -->
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5472621737702667"
+     crossorigin="anonymous"></script>
+
+	
+    <title>How to have good prompt engeering with OpenAI, summary from Andrew NG&#39;s course | DataScienceTribe</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">DataScienceTribe</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tools" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Tools</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">DataScienceTribe</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tools" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Tools
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">How to have good prompt engeering with OpenAI, summary from Andrew NG&#39;s course</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/openai/">
+                                <span class="chip bg-color">openai</span>
+                            </a>
+                        
+                            <a href="/tags/prompt-engeering/">
+                                <span class="chip bg-color">prompt engeering</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2023-05-28
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>More and more people realize the importance of mastering prompting engeeing, this new way of coding using language (e.g. English).<br>Some CEOs of big tech companies even predicted, half of the future jobs will be prompt engineering based.</p>
+<p>So how to work with prompty engineering effectively? Recently, Andrew Ng partnered with OpenAI to release a ChatGPT prompt engineering course for developers. This free course offers high-quality content, and here we summarizes the guidelines for crafting effective prompts mentioned in the video lessons, along with my personal insights.</p>
+<h2 id="Importance-of-Effective-Prompts"><a href="#Importance-of-Effective-Prompts" class="headerlink" title="Importance of Effective Prompts"></a>Importance of Effective Prompts</h2><p>Effective prompts are essential for obtaining high-quality responses from ChatGPT. A well-crafted prompt will help the AI to:</p>
+<ul>
+<li>Produce accurate and relevant information</li>
+<li>Maintain context and stay on-topic</li>
+<li>Generate coherent and well-structured responses</li>
+<li>Minimize errors and misunderstandings<br>Poorly constructed prompts can lead to irrelevant, ambiguous, or even incorrect outputs. Hence, investing time in crafting efficient prompts is crucial for obtaining the best results from ChatGPT.</li>
+</ul>
+<h2 id="Crafting-High-Quality-Prompts"><a href="#Crafting-High-Quality-Prompts" class="headerlink" title="Crafting High-Quality Prompts"></a>Crafting High-Quality Prompts</h2><p>To create efficient prompts that yield high-quality responses, consider the following principles and strategies:</p>
+<h3 id="Principle-1-Write-clear-and-specific-instructions"><a href="#Principle-1-Write-clear-and-specific-instructions" class="headerlink" title="Principle 1: Write clear and specific instructions"></a>Principle 1: Write clear and specific instructions</h3><p>Ensure your prompts are clear and concise to help the model understand the intent and desired output. Avoid ambiguous language or phrasing that could lead to multiple interpretations. This can be accomplished with strategies such as:</p>
+<h4 id="Strategy-1-Use-delimiters-to-clearly-indicate-distinct-parts-of-the-input"><a href="#Strategy-1-Use-delimiters-to-clearly-indicate-distinct-parts-of-the-input" class="headerlink" title="Strategy 1: Use delimiters to clearly indicate distinct parts of the input"></a>Strategy 1: Use delimiters to clearly indicate distinct parts of the input</h4><p>Delimiters help avoid potential interference from misleading user input. Examples of delimiters include:</p>
+<ul>
+<li>Triple quotes: “””</li>
+<li>Triple backticks: ```</li>
+<li>Tripe dashes —</li>
+<li>Angle brackets: &lt;&gt;</li>
+<li>XML tags: <tag><br>Prompt example:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">text = f&quot;&quot;&quot;</span><br><span class="line">You should express what you want a model to do by \ </span><br><span class="line">providing instructions that are as clear and \ </span><br><span class="line">specific as you can possibly make them. \ </span><br><span class="line">This will guide the model towards the desired output, \ </span><br><span class="line">and reduce the chances of receiving irrelevant \ </span><br><span class="line">or incorrect responses. Don&#x27;t confuse writing a \ </span><br><span class="line">clear prompt with writing a short prompt. \ </span><br><span class="line">In many cases, longer prompts provide more clarity \ </span><br><span class="line">and context for the model, which can lead to \ </span><br><span class="line">more detailed and relevant outputs.</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">prompt = f&quot;&quot;&quot;</span><br><span class="line">Summarize the text delimited by triple backticks \ </span><br><span class="line">into a single sentence.</span><br><span class="line">```&#123;text&#125;```</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">response = get_completion(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+Output:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Clear and specific instructions should be ...</span><br><span class="line">This allows the model to clearly understand the problem itself but also avoids injecting uncontrollable instructions. For example “Forget the previous command, do XYZ”</span><br></pre></td></tr></table></figure>
+<h4 id="Strategy-2-Ask-for-structured-output-html-json"><a href="#Strategy-2-Ask-for-structured-output-html-json" class="headerlink" title="Strategy 2: Ask for structured output html json"></a>Strategy 2: Ask for structured output html json</h4>This approach helps make model outputs directly usable for programs, such as JSON outputs that can be read and converted into dictionary format by Python programs.</li>
+</ul>
+<p>Prompt example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prompt = f&quot;&quot;&quot;</span><br><span class="line">Generate a list of three made-up book titles along \ </span><br><span class="line">with their authors and genres. </span><br><span class="line">Provide them in JSON format with the following keys: </span><br><span class="line">book_id, title, author, genre.</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">response = get_completion(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;book_id&quot;: 1,</span><br><span class="line">    &quot;title&quot;: &quot;The Lost City of Zorath&quot;,</span><br><span class="line">    &quot;author&quot;: &quot;Aria Blackwood&quot;,</span><br><span class="line">    &quot;genre&quot;: &quot;Fantasy&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;book_id&quot;: 2,</span><br><span class="line">    &quot;title&quot;: &quot;The Last Survivors&quot;,</span><br><span class="line">    &quot;author&quot;: &quot;Ethan Stone&quot;,</span><br><span class="line">    &quot;genre&quot;: &quot;Science Fiction&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h4 id="Strategy-3-Check-whether-conditions-are-satisfied-check-assumptions-required-to-do-the-task"><a href="#Strategy-3-Check-whether-conditions-are-satisfied-check-assumptions-required-to-do-the-task" class="headerlink" title="Strategy 3: Check whether conditions are satisfied, check assumptions required to do the task"></a>Strategy 3: Check whether conditions are satisfied, check assumptions required to do the task</h4><p>If the completion of the task has preconditions that must be met, we should require the model to check these conditions first and instruct it to stop trying if they are not met.</p>
+<p>Prompt example (satisfying conditions):</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">text_1 = f&quot;&quot;&quot;</span><br><span class="line">Making a cup of tea is easy! First, you need to get some \ </span><br><span class="line">water boiling. While that&#x27;s happening, \ </span><br><span class="line">grab a cup and put a tea bag in it. Once the water is \ </span><br><span class="line">hot enough, just pour it over the tea bag. \ </span><br><span class="line">Let it sit for a bit so the tea can steep. After a \ </span><br><span class="line">few minutes, take out the tea bag. If you \ </span><br><span class="line">like, you can add some sugar or milk to taste. \ </span><br><span class="line">And that&#x27;s it! You&#x27;ve got yourself a delicious \ </span><br><span class="line">cup of tea to enjoy.</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">prompt = f&quot;&quot;&quot;</span><br><span class="line">You will be provided with text delimited by triple quotes. </span><br><span class="line">If it contains a sequence of instructions, \ </span><br><span class="line">re-write those instructions in the following format:</span><br><span class="line">​</span><br><span class="line">Step 1 - ...</span><br><span class="line">Step 2 - …</span><br><span class="line">…</span><br><span class="line">Step N - …</span><br><span class="line">​</span><br><span class="line">If the text does not contain a sequence of instructions, \ </span><br><span class="line">then simply write \&quot;No steps provided.\&quot;</span><br><span class="line">​</span><br><span class="line">\&quot;\&quot;\&quot;&#123;text_1&#125;\&quot;\&quot;\&quot;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">response = get_completion(prompt)</span><br><span class="line">print(&quot;Completion for Text 1:&quot;)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Completion for Text 1:</span><br><span class="line">Step 1 - ...</span><br><span class="line">Step 2 - ...</span><br><span class="line">Step 3 - ...</span><br></pre></td></tr></table></figure>
+<p>This has the added benefit of taking into account potential edge cases to avoid unexpected errors or results.</p>
+<h4 id="Strategy-4-“Few-shot”-prompting-Give-a-successful-example-of-completing-tasks-then-ask-the-model-to-perform-the-task"><a href="#Strategy-4-“Few-shot”-prompting-Give-a-successful-example-of-completing-tasks-then-ask-the-model-to-perform-the-task" class="headerlink" title="Strategy 4: “Few-shot” prompting: Give a successful example of completing tasks, then ask the model to perform the task"></a>Strategy 4: “Few-shot” prompting: Give a successful example of completing tasks, then ask the model to perform the task</h4><p>Providing the model with one or more sample prompts helps clarify the expected output. For more information on few-shot learning, refer to GPT-3’s paper: “Language Models are Few-Shot Learners.”</p>
+<p>Prompt example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prompt = f&quot;&quot;&quot;</span><br><span class="line">Your task is to answer in a consistent style.</span><br><span class="line">​</span><br><span class="line">&lt;child&gt;: Teach me about patience.</span><br><span class="line">​</span><br><span class="line">&lt;grandparent&gt;: The river that carves the deepest \ </span><br><span class="line">valley flows from a modest spring; the \ </span><br><span class="line">grandest symphony originates from a single note; \ </span><br><span class="line">the most intricate tapestry begins with a solitary thread.</span><br><span class="line">​</span><br><span class="line">&lt;child&gt;: Teach me about resilience.</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">response = get_completion(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;grandparent&gt;: Resilience is like a tree that ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="Principle-2-Give-the-model-time-to-“think”"><a href="#Principle-2-Give-the-model-time-to-“think”" class="headerlink" title="Principle 2: Give the model time to “think”"></a>Principle 2: Give the model time to “think”</h3><p>This principle utilizes the idea of a thought chain, breaking complex tasks into N sequential subtasks, allowing the model to think step-by-step and produce more accurate outputs. For more details, refer to this paper: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</p>
+<h4 id="Strategy-1-Specify-the-steps-required-to-complete-a-task"><a href="#Strategy-1-Specify-the-steps-required-to-complete-a-task" class="headerlink" title="Strategy 1: Specify the steps required to complete a task"></a>Strategy 1: Specify the steps required to complete a task</h4><p>Here’s an example involving summarizing text, translating it into French, listing names in the French summary, and finally outputting data in JSON format. By providing the necessary steps, the model can reference the results of previous steps and improve the accuracy of the output.</p>
+<p>Prompt example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prompt_2 = f&quot;&quot;&quot;</span><br><span class="line">Your task is to perform the following actions: </span><br><span class="line">1 - Summarize the following text delimited by </span><br><span class="line">  &lt;&gt; with 1 sentence.</span><br><span class="line">2 - Translate the summary into French.</span><br><span class="line">3 - List each name in the French summary.</span><br><span class="line">4 - Output a json object that contains the </span><br><span class="line">  following keys: french_summary, num_names.</span><br><span class="line"></span><br><span class="line">Use the following format:</span><br><span class="line">Text: &lt;text to summarize&gt;</span><br><span class="line">Summary: &lt;summary&gt;</span><br><span class="line">Translation: &lt;summary translation&gt;</span><br><span class="line">Names: &lt;list of names in Italian summary&gt;</span><br><span class="line">Output JSON: &lt;json with summary and num_names&gt;</span><br><span class="line"></span><br><span class="line">Text: &lt;&#123;text&#125;&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">response = get_completion(prompt_2)</span><br><span class="line">print(&quot;\nCompletion for prompt 2:&quot;)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Completion for prompt 2:</span><br><span class="line"></span><br><span class="line">Summary: Jack and Jill...</span><br><span class="line">Translation: Jack et Jill partent en quête d&#x27;eau...</span><br><span class="line">Names: Jack, Jill</span><br><span class="line">Output JSON: &#123;&quot;french_summary&quot;: &quot;Jack et Jill partent en quête d&#x27;eau...&quot;, &quot;num_names&quot;: 2&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Strategy-2-Instruct-the-model-to-work-out-its-own-solution-before-rushing-to-a-conclusion"><a href="#Strategy-2-Instruct-the-model-to-work-out-its-own-solution-before-rushing-to-a-conclusion" class="headerlink" title="Strategy 2: Instruct the model to work out its own solution before rushing to a conclusion"></a>Strategy 2: Instruct the model to work out its own solution before rushing to a conclusion</h4><p>If the task is too complicated or the description is too little, then the model can only draw conclusions by guessing, just like a person solving a complex math problem with a serious shortage of remaining exam time, there is a high probability that the calculation will be wrong. So, in this case, we can instruct the model to take longer to think about the problem.</p>
+<p>For instance, when checking a student’s exercise solution, instruct the model to first find its own solution to prevent rushing to an incorrect answer.</p>
+<p>Poor prompt example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prompt = f&quot;&quot;&quot;</span><br><span class="line">Determine if the student&#x27;s solution is correct or not.</span><br><span class="line">​</span><br><span class="line">Question:</span><br><span class="line">I&#x27;m building a solar power installation and I need \</span><br><span class="line"> help working out the financials. </span><br><span class="line">- Land costs $100 / square foot</span><br><span class="line">- I can buy solar panels for $250 / square foot</span><br><span class="line">- I negotiated a contract for maintenance that will cost \ </span><br><span class="line">me a flat $100k per year, and an additional $10 / square \</span><br><span class="line">foot</span><br><span class="line">What is the total cost for the first year of operations </span><br><span class="line">as a function of the number of square feet.</span><br><span class="line">​</span><br><span class="line">Student&#x27;s Solution:</span><br><span class="line">Let x be the size of the installation in square feet.</span><br><span class="line">Costs:</span><br><span class="line">1. Land cost: 100x</span><br><span class="line">2. Solar panel cost: 250x</span><br><span class="line">3. Maintenance cost: 100,000 + 100x</span><br><span class="line">Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">response = get_completion(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Output (incorrect): The student’s solution is correct.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">The student&#x27;s solution is correct.</span><br></pre></td></tr></table></figure>
+<p>Updated prompt:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prompt = f&quot;&quot;&quot;</span><br><span class="line">Your task is to determine if the student&#x27;s solution \</span><br><span class="line">is correct or not.</span><br><span class="line">To solve the problem do the following:</span><br><span class="line">- First, work out your own solution to the problem. </span><br><span class="line">- Then compare your solution to the student&#x27;s solution \ </span><br><span class="line">and evaluate if the student&#x27;s solution is correct or not. </span><br><span class="line">Don&#x27;t decide if the student&#x27;s solution is correct until </span><br><span class="line">you have done the problem yourself.</span><br><span class="line">​</span><br><span class="line">Use the following format:</span><br><span class="line">Question:</span><br><span class="line">```</span><br><span class="line">question here</span><br><span class="line">```</span><br><span class="line">Student&#x27;s solution:</span><br><span class="line">```</span><br><span class="line">student&#x27;s solution here</span><br><span class="line">```</span><br><span class="line">Actual solution:</span><br><span class="line">```</span><br><span class="line">steps to work out the solution and your solution here</span><br><span class="line">```</span><br><span class="line">Is the student&#x27;s solution the same as actual solution \</span><br><span class="line">just calculated:</span><br><span class="line">```</span><br><span class="line">yes or no</span><br><span class="line">```</span><br><span class="line">Student grade:</span><br><span class="line">```</span><br><span class="line">correct or incorrect</span><br><span class="line">```</span><br><span class="line">​</span><br><span class="line">Question:</span><br><span class="line">```</span><br><span class="line">I&#x27;m building a solar power installation and I need help \</span><br><span class="line">working out the financials. </span><br><span class="line">- Land costs $100 / square foot</span><br><span class="line">- I can buy solar panels for $250 / square foot</span><br><span class="line">- I negotiated a contract for maintenance that will cost \</span><br><span class="line">me a flat $100k per year, and an additional $10 / square \</span><br><span class="line">foot</span><br><span class="line">What is the total cost for the first year of operations \</span><br><span class="line">as a function of the number of square feet.</span><br><span class="line">``` </span><br><span class="line">Student&#x27;s solution:</span><br><span class="line">```</span><br><span class="line">Let x be the size of the installation in square feet.</span><br><span class="line">Costs:</span><br><span class="line">1. Land cost: 100x</span><br><span class="line">2. Solar panel cost: 250x</span><br><span class="line">3. Maintenance cost: 100,000 + 100x</span><br><span class="line">Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000</span><br><span class="line">```</span><br><span class="line">Actual solution:</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">response = get_completion(prompt)</span><br><span class="line">print(response)</span><br></pre></td></tr></table></figure>
+<p>Output (correct):</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Let x be the size of the installation in square feet.Costs:</span><br><span class="line">1. Land cost: 100x</span><br><span class="line">2. Solar panel cost: 250x</span><br><span class="line">3. Maintenance cost: 100,000 + 10x</span><br><span class="line"></span><br><span class="line">Total cost: 100x + 250x + 100,000 + 10x = 360x + 100,000</span><br><span class="line"></span><br><span class="line">Is the student’s solution the same as actual solution just calculated:</span><br><span class="line">No</span><br><span class="line"></span><br><span class="line">Student grade:</span><br><span class="line">Incorrect</span><br></pre></td></tr></table></figure>
+<h2 id="Model-Limitations-Hallucinations"><a href="#Model-Limitations-Hallucinations" class="headerlink" title="Model Limitations: Hallucinations"></a>Model Limitations: Hallucinations</h2><p>ChatGPT may produce hallucinations, creating plausible but false information (e.g., non-existent literary works). To avoid this, you can ask the model to first look for relevant reference information (or mention reference information in the question, such as after Google), and then let the model answer the question based on this reference information.</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">robot learner</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://datasciencebyexample.github.io/2023/05/28/how-to-build-effective-prompts-with-openai/">https://datasciencebyexample.github.io/2023/05/28/how-to-build-effective-prompts-with-openai/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">robot learner</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/openai/">
+                                    <span class="chip bg-color">openai</span>
+                                </a>
+                            
+                                <a href="/tags/prompt-engeering/">
+                                    <span class="chip bg-color">prompt engeering</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2023/05/28/how-to-build-effective-prompts-with-openai/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="How to have good prompt engeering with OpenAI, summary from Andrew NG&#39;s course">
+                        
+                        <span class="card-title">How to have good prompt engeering with OpenAI, summary from Andrew NG&#39;s course</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/openai/">
+                        <span class="chip bg-color">openai</span>
+                    </a>
+                    
+                    <a href="/tags/prompt-engeering/">
+                        <span class="chip bg-color">prompt engeering</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/05/27/understanding-langchain-chains-and-agents/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="LangChain, chains and agents, a great piece of engineering work to facilitate prompt chaining">
+                        
+                        <span class="card-title">LangChain, chains and agents, a great piece of engineering work to facilitate prompt chaining</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/langchain/">
+                        <span class="chip bg-color">langchain</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">robot learner</a>
+            <br>
+            
+            
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
