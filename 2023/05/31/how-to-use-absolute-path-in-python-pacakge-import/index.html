@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Organizing Your Python Project with Relative Imports, DataScienceTribe">
+    <meta name="keywords" content="How to use absolute import path in python package, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Organizing Your Python Project with Relative Imports | DataScienceTribe</title>
+    <title>How to use absolute import path in python package | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Organizing Your Python Project with Relative Imports</h1>
+                    <h1 class="description center-align post-title">How to use absolute import path in python package</h1>
                 </div>
             </div>
         </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-05-30
+                    2023-05-31
                 </div>
                 
 
@@ -402,46 +402,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Organizing a Python project with different levels and subdirectories can be tedious if absolute imports are used everywhere. In this blog, we will explore how you can make use of relative imports to improve code organization and modularity in your Python projects.</p>
-<h2 id="1-Understanding-Relative-Imports-with-Multiple-Dots"><a href="#1-Understanding-Relative-Imports-with-Multiple-Dots" class="headerlink" title="1. Understanding Relative Imports with Multiple Dots"></a>1. Understanding Relative Imports with Multiple Dots</h2><p>Relative imports use multiple dots to indicate the relative path of a module within a package. The number of dots indicates how many levels up the directory structure to go before accessing the desired module. This way, even if the package structure changes or your code is moved to a new location, the imports will still work as long as the relative paths remain the same. Let’s dive into an example to see how this works in practice.</p>
-<p>Consider the following directory structure:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mypackage</span><br><span class="line">├── dirA</span><br><span class="line">│   ├── dirB</span><br><span class="line">│   │   ├── dirC</span><br><span class="line">│   │   │   ├── __init__.py</span><br><span class="line">│   │   │   └── file1.py</span><br><span class="line">│   │   └── __init__.py</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   └── file2.py</span><br><span class="line">└── __init__.py</span><br></pre></td></tr></table></figure>
-
-<p>In this example, we have a package named <code>mypackage</code> with the subdirectory <code>dirA</code>, which contains another directory called <code>dirB</code>. Inside <code>dirB</code>, there is a further subdirectory named <code>dirC</code>. We want to import a function called <code>function_name</code> from <code>file2.py</code> inside <code>file1.py</code>.</p>
-<p>To achieve this, we can use the following relative import in <code>file1.py</code>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ...file2 <span class="keyword">import</span> function_name</span><br></pre></td></tr></table></figure>
-
-<p>The three dots (<code>...</code>) indicate going up three levels in the directory structure:</p>
+                <p>In another <a href="/2023/05/30/understand-relative-imports-in-python-packages/">blog</a>, we discussed how to use relative import path as a better practice.<br>However sometimes if we want to use absolute import path when developing packages, here is how it can be done.</p>
+<p>To ensure that absolute imports work correctly in a normal Python package, follow these steps:</p>
 <ol>
-<li>From <code>dirC</code> to <code>dirB</code></li>
-<li>From <code>dirB</code> to <code>dirA</code></li>
-<li>From <code>dirA</code> to the top of the package (<code>mypackage</code>)</li>
+<li>Organize your package structure:</li>
 </ol>
-<p>Now that we have successfully imported <code>function_name</code> from <code>file2.py</code>, we can use it in our code inside <code>file1.py</code>. This illustrates the power and flexibility of using multiple dots for relative imports in Python projects.</p>
-<h2 id="2-Developing-Modules-with-Different-Levels-and-Subdirectories"><a href="#2-Developing-Modules-with-Different-Levels-and-Subdirectories" class="headerlink" title="2. Developing Modules with Different Levels and Subdirectories"></a>2. Developing Modules with Different Levels and Subdirectories</h2><p>When developing a Python project, it’s common to have modules that are organized into a hierarchy of directories. Using <code>__init__.py</code> files and relative imports helps in organizing and structuring your code more efficiently.</p>
-<p>Here’s a step-by-step guide on how to develop modules with different levels and subdirectories:</p>
-<ol>
-<li><p>If not already, convert your project into a package by creating an <code>__init__.py</code> file in your top-level directory (<code>mypackage</code> in our example). This file can be empty, but it signals Python that your directory should be treated as a package.</p>
-</li>
-<li><p>In each subdirectory, create an <code>__init__.py</code> file, which could be empty as well. Its presence signals Python that the directory is a part of a package and allows relative imports between modules in the package.</p>
-</li>
-<li><p>When importing a module or a specific function from a module located in an upper-level directory, use relative imports denoted by multiple dots. The number of dots indicates how many levels up the directory structure your import should be.</p>
-</li>
-</ol>
-<p>For example, let’s say you have the following directory structure:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mypackage</span><br><span class="line">├── dirA</span><br><span class="line">│   ├── dirB</span><br><span class="line">│   │   ├── __init__.py</span><br><span class="line">│   │   └── file1.py</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   └── file2.py</span><br><span class="line">└── __init__.py</span><br></pre></td></tr></table></figure>
+<p>Make sure your package has a well-organized structure with <code>__init__.py</code> files in each directory. This allows Python to recognize the directories as packages. For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mypackage/</span><br><span class="line">    __init__.py</span><br><span class="line">    main.py</span><br><span class="line">    subpackage1/</span><br><span class="line">        __init__.py</span><br><span class="line">        module1.py</span><br><span class="line">    subpackage2/</span><br><span class="line">        __init__.py</span><br><span class="line">        module2.py</span><br></pre></td></tr></table></figure>
 
-<p>In this case, you can import <code>function_name</code> from <code>file2.py</code> into <code>file1.py</code> using:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> ..file2 <span class="keyword">import</span> function_name</span><br></pre></td></tr></table></figure>
-
-<p>The two dots (<code>..</code>) indicate going up two levels in the directory structure:</p>
-<ol>
-<li>From <code>dirB</code> to <code>dirA</code></li>
-<li>From <code>dirA</code> to the top of the package (<code>mypackage</code>)</li>
+<ol start="2">
+<li>Set up your <code>PYTHONPATH</code>:</li>
 </ol>
-<p>By using relative imports and following these steps, you can create a robust and modular Python project with various levels and subdirectories. This will make your code more maintainable and scalable in the long term.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog, we have discussed how you can use multiple dots to indicate relative paths in Python imports and showcased this concept with examples. Additionally, we have demonstrated how to develop modules with different levels and subdirectories, making your Python projects more efficient, maintainable, and scalable.</p>
-<p>Keep these concepts in mind while working on your Python projects, and you’ll find your code is much easier to manage and understand.</p>
+<p>Ensure that the top-level directory containing your package is included in the <code>PYTHONPATH</code> environment variable. This allows Python to find your package when using absolute imports.</p>
+<p>You can add the top-level directory to the <code>PYTHONPATH</code> by running the following command in your terminal:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PYTHONPATH=<span class="string">&quot;/path/to/top-level-directory:<span class="variable">$PYTHONPATH</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Replace <code>/path/to/top-level-directory</code> with the actual path to the directory containing your package.</p>
+<p>Or in your python code, simply add system path like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path.append(&#x27;/path/to/top-level-directory&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Use absolute imports:</li>
+</ol>
+<p>Now you can use absolute imports in your package files. For example, in <code>module1.py</code>, you can import <code>module2.py</code> using an absolute import:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> mypackage.subpackage2 <span class="keyword">import</span> module2</span><br></pre></td></tr></table></figure>
+
+<p>By following these steps, you can ensure that absolute imports work correctly in your Python package, even for files in subdirectories.</p>
 
                 
             </div>
@@ -468,7 +454,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/05/30/understand-relative-imports-in-python-packages/">https://datasciencebyexample.github.io/2023/05/30/understand-relative-imports-in-python-packages/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/05/31/how-to-use-absolute-path-in-python-pacakge-import/">https://datasciencebyexample.github.io/2023/05/31/how-to-use-absolute-path-in-python-pacakge-import/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -557,9 +543,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2023/05/31/how-to-use-absolute-path-in-python-pacakge-import/">
                     <div class="card-image">
@@ -577,9 +564,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -592,6 +579,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -614,13 +602,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/05/29/model-explainability-in-machine-learning/">
+                <a href="/2023/05/30/understand-relative-imports-in-python-packages/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Demystifying the Black Box, Tools and Methods for Model Explainability in Machine Learning">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Organizing Your Python Project with Relative Imports">
                         
-                        <span class="card-title">Demystifying the Black Box, Tools and Methods for Model Explainability in Machine Learning</span>
+                        <span class="card-title">Organizing Your Python Project with Relative Imports</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -631,14 +619,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -648,8 +636,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/model-explainability/">
-                        <span class="chip bg-color">model explainability</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/import/">
+                        <span class="chip bg-color">import</span>
                     </a>
                     
                 </div>
