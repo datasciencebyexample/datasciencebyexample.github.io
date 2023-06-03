@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/pivot/</loc>
+        <lastmod>2023-06-03T21:40:27.494Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/melt/</loc>
+        <lastmod>2023-06-03T21:40:27.494Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
+        <lastmod>2023-06-03T21:40:27.494Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/chatgpt/</loc>
         <lastmod>2023-06-02T16:39:54.498Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -312,13 +333,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/dataframe/</loc>
-        <lastmod>2023-04-16T05:10:04.099Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
         <lastmod>2023-04-16T05:10:04.099Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -752,14 +766,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
