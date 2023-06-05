@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/05/prompt-engineering-tricks-under-langchain/</loc>
+        <lastmod>2023-06-05T22:29:05.834Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/03/correct-way-to-install-lightgbm-on-macbook-macos/</loc>
         <lastmod>2023-06-05T00:52:07.537Z</lastmod>
         <changefreq>weekly</changefreq>
