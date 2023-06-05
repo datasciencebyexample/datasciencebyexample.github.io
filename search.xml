@@ -8,7 +8,7 @@
       <link href="2023/06/03/correct-way-to-install-lightgbm-on-macbook-macos/"/>
       <url>2023/06/03/correct-way-to-install-lightgbm-on-macbook-macos/</url>
       
-        <content type="html"><![CDATA[<p>While installing lightgbm  on macbook, i.e., try to do this “python3 -m pip install lightgbm”,<br>I encounted the two following errors one at a time:<br>(1)  subprocess.CalledProcessError: Command ‘[‘make’,’_lightgbm’ … ] some error related to cmake<br>(2)  fatal error: ‘omp.h’ file not found</p><p>Solutions to install lightgbm on macOS are:</p><h2 id="first-solution-simply-do"><a href="#first-solution-simply-do" class="headerlink" title="first solution, simply do"></a>first solution, simply do</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install lightgbm</span><br></pre></td></tr></table></figure><h2 id="using-pip-install"><a href="#using-pip-install" class="headerlink" title="using pip install"></a>using pip install</h2><ol><li>Install CMake (3.16 or higher):<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install cmake</span><br></pre></td></tr></table></figure></li><li>Install OpenMP:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install libomp</span><br></pre></td></tr></table></figure></li><li>insall lightgbm using pip<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 -m pip install lightgbm</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>While installing lightgbm  on macbook, i.e., try to do this “python3 -m pip install lightgbm”,<br>I encounted the two following errors one at a time:<br>(1)  subprocess.CalledProcessError: Command ‘[‘make’,’_lightgbm’ … ] some error related to cmake<br>(2)  fatal error: ‘omp.h’ file not found</p><p>Solutions to install lightgbm on macOS are:</p><h2 id="first-solution-simply-do"><a href="#first-solution-simply-do" class="headerlink" title="first solution, simply do"></a>first solution, simply do</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install lightgbm</span><br></pre></td></tr></table></figure><h2 id="second-solution-using-pip-install"><a href="#second-solution-using-pip-install" class="headerlink" title="second solution, using pip install"></a>second solution, using pip install</h2><ol><li>Install CMake (3.16 or higher):<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install cmake</span><br></pre></td></tr></table></figure></li><li>Install OpenMP:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install libomp</span><br></pre></td></tr></table></figure></li><li>insall lightgbm using pip<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 -m pip install lightgbm</span><br></pre></td></tr></table></figure></li></ol>]]></content>
       
       
       <categories>
@@ -825,31 +825,6 @@
     
     
     <entry>
-      <title>How to delete file and folder from git repo</title>
-      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
-      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
-      
-        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>How to not indexing fields in elasticsearch</title>
       <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
       <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>
@@ -867,6 +842,31 @@
         <tags>
             
             <tag> elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to delete file and folder from git repo</title>
+      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
+      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
+      
+        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -4359,11 +4359,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
