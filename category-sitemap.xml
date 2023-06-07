@@ -9,6 +9,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/categories/VR/</loc>
+        <lastmod>2023-06-07T20:36:11.003Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/categories/data-engineering/</loc>
         <lastmod>2023-06-06T12:48:51.874Z</lastmod>
         <changefreq>weekly</changefreq>
