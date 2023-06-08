@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="how to convert timestamp column of pandas dataframe into hour and day features using transformer, DataScienceTribe">
+    <meta name="keywords" content="AWS Lambda Warm-Up Strategies, Reserved vs. Provisioned Concurrency, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>how to convert timestamp column of pandas dataframe into hour and day features using transformer | DataScienceTribe</title>
+    <title>AWS Lambda Warm-Up Strategies, Reserved vs. Provisioned Concurrency | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</h1>
+                    <h1 class="description center-align post-title">AWS Lambda Warm-Up Strategies, Reserved vs. Provisioned Concurrency</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
-                            </a>
-                        
-                            <a href="/tags/preprocessing/">
-                                <span class="chip bg-color">preprocessing</span>
+                            <a href="/tags/AWS/">
+                                <span class="chip bg-color">AWS</span>
                             </a>
                         
                     </div>
@@ -372,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-04
+                    2023-06-08
                 </div>
                 
 
@@ -406,14 +398,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from sklearn.base import BaseEstimator, TransformerMixin</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">class dayandhour_Transformer(BaseEstimator, TransformerMixin):</span><br><span class="line"></span><br><span class="line">    # Class Constructor</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line"></span><br><span class="line">        print(&#x27;initialized&#x27;)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    # Return self, nothing else to do here</span><br><span class="line"></span><br><span class="line">    def fit(self, X, y=None):</span><br><span class="line"></span><br><span class="line">       return self</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # Customized transformer method</span><br><span class="line"></span><br><span class="line">    def transform(self, X_, y=None):</span><br><span class="line"></span><br><span class="line">        X = X_.copy()</span><br><span class="line"></span><br><span class="line">        X[&#x27;dayofweek&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.dayofweek</span><br><span class="line"></span><br><span class="line">        X[&#x27;hour&#x27;]=pd.to_datetime(X[&#x27;timestamp&#x27;]).dt.hour</span><br><span class="line"></span><br><span class="line">        X = X.drop(&#x27;timestamp&#x27;,axis=1)</span><br><span class="line"></span><br><span class="line">        return X</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">dayandhour_transformer = dayandhour_Transformer() </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">df = dayandhour_transformer.transform(df)</span><br></pre></td></tr></table></figure>
-
-<p>Suppose we have a dataframe df with a column “timestamp”.</p>
-<p>before apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(df[&#x27;timestamp&#x27;])</span><br><span class="line"></span><br><span class="line">0        2021-03-28 03:28:10.205000</span><br><span class="line"></span><br><span class="line">1        2021-03-28 21:31:43.290000</span><br><span class="line"></span><br><span class="line">2        2021-03-28 21:16:18.771000</span><br><span class="line"></span><br><span class="line">3        2021-03-28 18:39:13.344000</span><br><span class="line"></span><br><span class="line">4        2021-03-28 00:54:57.544000</span><br></pre></td></tr></table></figure>
-
-<p>after we apply the code, we have:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print( df[[&#x27;hour&#x27;,&#x27;dayofweek&#x27;]])</span><br><span class="line"></span><br><span class="line">       hour  dayofweek</span><br><span class="line"></span><br><span class="line">0         3          6</span><br><span class="line"></span><br><span class="line">1        21          6</span><br><span class="line"></span><br><span class="line">2        21          6</span><br><span class="line"></span><br><span class="line">3        18          6</span><br><span class="line"></span><br><span class="line">4         0          6</span><br></pre></td></tr></table></figure>
+                <p>AWS Lambda is an excellent service for running serverless applications, allowing you to build highly scalable and cost-effective solutions. However, one common concern with Lambda is the cold start issue that occurs when a function has been idle for a while and needs to handle an incoming request. Cold starts can lead to increased latency, which can negatively impact the performance of your application. </p>
+<p>In this blog post, we’re going to discuss two concurrency control mechanisms available in AWS Lambda, Reserved Concurrency and Provisioned Concurrency, and how they can help in warming up your Lambda functions. We’ll also compare their differences and highlight which strategy could be the right solution for your application needs.</p>
+<h2 id="Reserved-Concurrency"><a href="#Reserved-Concurrency" class="headerlink" title="Reserved Concurrency"></a>Reserved Concurrency</h2><p>Reserved concurrency allows you to reserve a certain number of concurrent executions for a specific Lambda function. By setting a reserved concurrency value, you are guaranteeing that a designated number of concurrent instances are always available for that function, up to the specified limit.</p>
+<p>Benefits of Reserved Concurrency:</p>
+<ol>
+<li>Prevents ‘noisy neighbor’ issues</li>
+<li>Guarantees available execution capacity for critical functions</li>
+</ol>
+<p>However, it’s essential to note that reserved concurrency on its own does not reduce cold start times. Cold starts may still be experienced when a function with reserved concurrency has to instantiate new instances, but the reservation helps ensure that the desired instances can start without interference from other functions.</p>
+<h2 id="Provisioned-Concurrency"><a href="#Provisioned-Concurrency" class="headerlink" title="Provisioned Concurrency"></a>Provisioned Concurrency</h2><p>Provisioned Concurrency is a feature that directly addresses the cold start issue. It allows you to pre-warm a specific number of function instances, so they are ready to respond immediately to incoming requests. With provisioned concurrency, you can maintain fast and consistent response times, regardless of the function’s previous utilization.</p>
+<p>Benefits of Provisioned Concurrency:</p>
+<ol>
+<li>Reduces cold start latency</li>
+<li>Ensures consistent performance</li>
+</ol>
+<p>Note that enabling provisioned concurrency incurs additional costs based on the number of instances configured and their duration of operation.</p>
+<h2 id="Solution-How-to-Keep-Your-Lambda-Function-Warm"><a href="#Solution-How-to-Keep-Your-Lambda-Function-Warm" class="headerlink" title="Solution: How to Keep Your Lambda Function Warm"></a>Solution: How to Keep Your Lambda Function Warm</h2><p>If you want to eliminate cold starts from your application altogether, using Provisioned Concurrency is the recommended approach. Pre-warming instances directly tackle the cold start issue by keeping them ready for immediate execution.</p>
+<p>Here’s how to set up Provisioned Concurrency:</p>
+<ol>
+<li>Open the AWS Lambda console</li>
+<li>Select the function you want to configure the concurrency</li>
+<li>Go to the Configuration tab and adjust the settings</li>
+<li>Enter a value for provisioned concurrency</li>
+<li>Configure auto-scaling policy (optional)</li>
+<li>Save the settings</li>
+</ol>
+<p>Reserved Concurrency can be a complementary solution to Provisioned Concurrency if you want to manage the overall concurrency usage across your Lambda functions effectively. It becomes particularly helpful when you have multiple functions sharing the available concurrency limit and want to allocate a specific number of concurrent executions to critical or latency-sensitive functions.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>AWS Lambda’s concurrency control mechanisms, Reserved Concurrency and Provisioned Concurrency, provide different ways to address the cold start problem and manage your Lambda function’s performance. While reserved concurrency ensures availability, provisioned concurrency tackles cold starts head-on, pre-warming instances and enabling consistent response times.</p>
+<p>Choosing the right warm-up strategy for your Lambda function depends on your specific application requirements, its critical nature, and your budget for AWS resources. In many cases, using a combination of both reserved and provisioned concurrency can optimize your serverless application’s performance and cost-effectiveness.</p>
 
                 
             </div>
@@ -440,7 +453,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/">https://datasciencebyexample.github.io/2021/06/04/2021-06-04-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/06/08/aws-lambda-warm-up-through-provisioned-concurrency/">https://datasciencebyexample.github.io/2023/06/08/aws-lambda-warm-up-through-provisioned-concurrency/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -478,16 +491,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
-                                </a>
-                            
-                                <a href="/tags/preprocessing/">
-                                    <span class="chip bg-color">preprocessing</span>
+                                <a href="/tags/AWS/">
+                                    <span class="chip bg-color">AWS</span>
                                 </a>
                             
                         </div>
@@ -533,70 +538,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/05/2021-06-05-1/">
+                <a href="/2023/06/08/aws-lambda-warm-up-through-provisioned-concurrency/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="boost exact phrase search results ranking in elasticsearch">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="AWS Lambda Warm-Up Strategies, Reserved vs. Provisioned Concurrency">
                         
-                        <span class="card-title">boost exact phrase search results ranking in elasticsearch</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/search/" class="post-category">
-                                    search
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/04/2021-06-04-1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="how to convert timestamp column of pandas dataframe into hour and day features using transformer">
-                        
-                        <span class="card-title">how to convert timestamp column of pandas dataframe into hour and day features using transformer</span>
+                        <span class="card-title">AWS Lambda Warm-Up Strategies, Reserved vs. Provisioned Concurrency</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -607,14 +560,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -625,16 +578,61 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/AWS/">
+                        <span class="chip bg-color">AWS</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/07/apple-vision-pro-vr/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Apple&#39;s Vision Pro, An Immersive Leap into the Future of Personal Computing">
+                        
+                        <span class="card-title">Apple&#39;s Vision Pro, An Immersive Leap into the Future of Personal Computing</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/VR/" class="post-category">
+                                    VR
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Apple/">
+                        <span class="chip bg-color">Apple</span>
                     </a>
                     
-                    <a href="/tags/preprocessing/">
-                        <span class="chip bg-color">preprocessing</span>
+                    <a href="/tags/VR/">
+                        <span class="chip bg-color">VR</span>
                     </a>
                     
                 </div>

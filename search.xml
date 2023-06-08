@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>AWS Lambda Warm-Up Strategies, Reserved vs. Provisioned Concurrency</title>
+      <link href="2023/06/08/aws-lambda-warm-up-through-provisioned-concurrency/"/>
+      <url>2023/06/08/aws-lambda-warm-up-through-provisioned-concurrency/</url>
+      
+        <content type="html"><![CDATA[<p>AWS Lambda is an excellent service for running serverless applications, allowing you to build highly scalable and cost-effective solutions. However, one common concern with Lambda is the cold start issue that occurs when a function has been idle for a while and needs to handle an incoming request. Cold starts can lead to increased latency, which can negatively impact the performance of your application. </p><p>In this blog post, we’re going to discuss two concurrency control mechanisms available in AWS Lambda, Reserved Concurrency and Provisioned Concurrency, and how they can help in warming up your Lambda functions. We’ll also compare their differences and highlight which strategy could be the right solution for your application needs.</p><h2 id="Reserved-Concurrency"><a href="#Reserved-Concurrency" class="headerlink" title="Reserved Concurrency"></a>Reserved Concurrency</h2><p>Reserved concurrency allows you to reserve a certain number of concurrent executions for a specific Lambda function. By setting a reserved concurrency value, you are guaranteeing that a designated number of concurrent instances are always available for that function, up to the specified limit.</p><p>Benefits of Reserved Concurrency:</p><ol><li>Prevents ‘noisy neighbor’ issues</li><li>Guarantees available execution capacity for critical functions</li></ol><p>However, it’s essential to note that reserved concurrency on its own does not reduce cold start times. Cold starts may still be experienced when a function with reserved concurrency has to instantiate new instances, but the reservation helps ensure that the desired instances can start without interference from other functions.</p><h2 id="Provisioned-Concurrency"><a href="#Provisioned-Concurrency" class="headerlink" title="Provisioned Concurrency"></a>Provisioned Concurrency</h2><p>Provisioned Concurrency is a feature that directly addresses the cold start issue. It allows you to pre-warm a specific number of function instances, so they are ready to respond immediately to incoming requests. With provisioned concurrency, you can maintain fast and consistent response times, regardless of the function’s previous utilization.</p><p>Benefits of Provisioned Concurrency:</p><ol><li>Reduces cold start latency</li><li>Ensures consistent performance</li></ol><p>Note that enabling provisioned concurrency incurs additional costs based on the number of instances configured and their duration of operation.</p><h2 id="Solution-How-to-Keep-Your-Lambda-Function-Warm"><a href="#Solution-How-to-Keep-Your-Lambda-Function-Warm" class="headerlink" title="Solution: How to Keep Your Lambda Function Warm"></a>Solution: How to Keep Your Lambda Function Warm</h2><p>If you want to eliminate cold starts from your application altogether, using Provisioned Concurrency is the recommended approach. Pre-warming instances directly tackle the cold start issue by keeping them ready for immediate execution.</p><p>Here’s how to set up Provisioned Concurrency:</p><ol><li>Open the AWS Lambda console</li><li>Select the function you want to configure the concurrency</li><li>Go to the Configuration tab and adjust the settings</li><li>Enter a value for provisioned concurrency</li><li>Configure auto-scaling policy (optional)</li><li>Save the settings</li></ol><p>Reserved Concurrency can be a complementary solution to Provisioned Concurrency if you want to manage the overall concurrency usage across your Lambda functions effectively. It becomes particularly helpful when you have multiple functions sharing the available concurrency limit and want to allocate a specific number of concurrent executions to critical or latency-sensitive functions.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>AWS Lambda’s concurrency control mechanisms, Reserved Concurrency and Provisioned Concurrency, provide different ways to address the cold start problem and manage your Lambda function’s performance. While reserved concurrency ensures availability, provisioned concurrency tackles cold starts head-on, pre-warming instances and enabling consistent response times.</p><p>Choosing the right warm-up strategy for your Lambda function depends on your specific application requirements, its critical nature, and your budget for AWS resources. In many cases, using a combination of both reserved and provisioned concurrency can optimize your serverless application’s performance and cost-effectiveness.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AWS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Apple&#39;s Vision Pro, An Immersive Leap into the Future of Personal Computing</title>
       <link href="2023/06/07/apple-vision-pro-vr/"/>
       <url>2023/06/07/apple-vision-pro-vr/</url>
@@ -3318,11 +3343,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -4496,9 +4521,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       

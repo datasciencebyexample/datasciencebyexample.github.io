@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/08/aws-lambda-warm-up-through-provisioned-concurrency/</loc>
+        <lastmod>2023-06-08T17:09:24.183Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/07/apple-vision-pro-vr/</loc>
         <lastmod>2023-06-07T20:36:11.003Z</lastmod>
         <changefreq>weekly</changefreq>
