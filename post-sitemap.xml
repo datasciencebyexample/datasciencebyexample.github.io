@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/08/get-run-info-from-databricks-using-mlflow/</loc>
+        <lastmod>2023-06-08T20:12:49.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/08/aws-lambda-warm-up-through-provisioned-concurrency/</loc>
         <lastmod>2023-06-08T17:09:24.183Z</lastmod>
         <changefreq>weekly</changefreq>
