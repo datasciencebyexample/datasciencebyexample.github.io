@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/09/binary-classification-vs-multi-class-classification-vs-multi-label-classification/</loc>
+        <lastmod>2023-06-10T03:33:20.351Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/08/get-run-info-from-databricks-using-mlflow/</loc>
         <lastmod>2023-06-08T20:12:49.244Z</lastmod>
         <changefreq>weekly</changefreq>
