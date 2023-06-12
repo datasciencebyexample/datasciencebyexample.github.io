@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART), DataScienceTribe">
+    <meta name="keywords" content="Handling Data Type Mismatch between NumPy Arrays and PyTorch Tensors, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART) | DataScienceTribe</title>
+    <title>Handling Data Type Mismatch between NumPy Arrays and PyTorch Tensors | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Human&#39;s first asteroid impact experiment, NASA Double Asteroid Redirection Test (DART)</h1>
+                    <h1 class="description center-align post-title">Handling Data Type Mismatch between NumPy Arrays and PyTorch Tensors</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/DART/">
-                                <span class="chip bg-color">DART</span>
-                            </a>
-                        
-                            <a href="/tags/Asteroid/">
-                                <span class="chip bg-color">Asteroid</span>
+                            <a href="/tags/pytorch/">
+                                <span class="chip bg-color">pytorch</span>
                             </a>
                         
                     </div>
@@ -368,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/physics/" class="post-category">
-                                physics
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-28
+                    2023-06-12
                 </div>
                 
 
@@ -402,12 +398,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Dinosaurs would dream of getting this capability.</p>
-<p>In NASA’s “Double Asteroid Redirection Test (DART)”, an unmanned spacecraft launched from Earth successfully hit an asteroid,<br>which NASA says is the world’s first “planet” Defense” test. At the time of impact, they were relatively close to Earth—just under 11 million kilometers.</p>
-<p>Dimorphos is an asteroid moon orbiting the near-Earth asteroid Didymos, which astronomers discovered more than two decades ago, meaning “twin” in Greek.<br>Didymos is about 780 meters wide, and the Dimorphos running around it have a diameter of 160 meters, and its name means “two forms”<br><img src="/content/images/2022-09-28-1.png" alt="DART size comparison"></p>
-<p>Despite the small target chosen, the fast impact would change only 1% of the speed at which Dimorphos orbits Didymos, which doesn’t sound like much,<br>but it’s enough change to be seen through a telescope.</p>
-<p>According to its original orbit, Dimorphos circles Didymos every 11 hours and 55 minutes.<br>It is expected that the period may change to 11 hours and 45 minutes after the impact.<br>DART team members say it will take scientists about two months to determine whether the asteroid’s orbit has changed.</p>
-<p><img src="/content/images/2022-09-28-2.png" alt="orbit change expected for DART"></p>
+                <p>In NumPy, the default float data type is float64, also known as double precision. In PyTorch, the default float data type is float32, also known as single precision. When we convert a NumPy array to a PyTorch tensor without explicitly specifying the data type, the original data type of the NumPy array is used, which might be different from the PyTorch default. This can cause issues when performing operations between tensors, such as matrix multiplication, which requires the same data types for all involved tensors.</p>
+<p>Here’s an example to demonstrate this issue:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a NumPy array with float64 data type (default float data type in NumPy)</span></span><br><span class="line">input_example_np = np.array([<span class="number">1.2</span>, <span class="number">2.3</span>, <span class="number">3.4</span>, <span class="number">4.5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Convert the NumPy array to a PyTorch tensor without specifying the data type</span></span><br><span class="line">input_example = torch.tensor(input_example_np)</span><br><span class="line"><span class="built_in">print</span>(input_example.dtype)  <span class="comment"># torch.float64</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create another tensor with default data type in PyTorch (float32)</span></span><br><span class="line">another_tensor = torch.tensor([<span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>])</span><br><span class="line"><span class="built_in">print</span>(another_tensor.dtype)  <span class="comment"># torch.float32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Now try to perform matrix multiplication, which will raise an error due to different data types</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    result = torch.matmul(input_example, another_tensor)</span><br><span class="line"><span class="keyword">except</span> RuntimeError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Error:&quot;</span>, e)  <span class="comment"># Error: mat1 and mat2 must have the same dtype</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># To fix this issue, specify the desired data type when converting the NumPy array:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Convert the NumPy array to a PyTorch tensor with float32 data type</span></span><br><span class="line">input_example = torch.tensor(input_example_np, dtype=torch.<span class="built_in">float</span>)</span><br><span class="line"><span class="built_in">print</span>(input_example.dtype)  <span class="comment"># torch.float32</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Now we can successfully perform matrix multiplication</span></span><br><span class="line">result = torch.matmul(input_example, another_tensor)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<p>By explicitly specifying the <code>dtype</code> parameter when converting the NumPy array to a PyTorch tensor, we can avoid the “mat1 and mat2 must have the same dtype” error or “expected both vectors to have same dtype, but found Double and Float” error,  and ensure that the tensors are compatible for mathematical operations.</p>
 
                 
             </div>
@@ -434,7 +429,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2022/09/28/2022-09-28-1/">https://datasciencebyexample.github.io/2022/09/28/2022-09-28-1/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/06/12/handle-data-type-mismatch-between-numpy-and-pytorch/">https://datasciencebyexample.github.io/2023/06/12/handle-data-type-mismatch-between-numpy-and-pytorch/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,12 +467,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/DART/">
-                                    <span class="chip bg-color">DART</span>
-                                </a>
-                            
-                                <a href="/tags/Asteroid/">
-                                    <span class="chip bg-color">Asteroid</span>
+                                <a href="/tags/pytorch/">
+                                    <span class="chip bg-color">pytorch</span>
                                 </a>
                             
                         </div>
@@ -523,17 +514,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/10/01/2022-10-01-1/">
+                <a href="/2023/06/12/handle-data-type-mismatch-between-numpy-and-pytorch/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="How to make AWS S3 buckets public through bucket policy">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Handling Data Type Mismatch between NumPy Arrays and PyTorch Tensors">
                         
-                        <span class="card-title">How to make AWS S3 buckets public through bucket policy</span>
+                        <span class="card-title">Handling Data Type Mismatch between NumPy Arrays and PyTorch Tensors</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -543,9 +535,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -558,15 +550,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/aws/">
-                        <span class="chip bg-color">aws</span>
-                    </a>
-                    
-                    <a href="/tags/s3/">
-                        <span class="chip bg-color">s3</span>
+                    <a href="/tags/pytorch/">
+                        <span class="chip bg-color">pytorch</span>
                     </a>
                     
                 </div>
@@ -580,13 +569,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/19/2022-09-19-1/">
+                <a href="/2023/06/11/input-dimension-in-pytorch-transformer/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="OpenCV and Pillow color code order difference, BGR vs RGB">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Input dimension for pytorch transformer when the sequence length is one">
                         
-                        <span class="card-title">OpenCV and Pillow color code order difference, BGR vs RGB</span>
+                        <span class="card-title">Input dimension for pytorch transformer when the sequence length is one</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -597,14 +586,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/image-processing/" class="post-category">
-                                    image processing
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
                                 </a>
                             
                             
@@ -614,16 +603,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PIL/">
-                        <span class="chip bg-color">PIL</span>
+                    <a href="/tags/pytorch/">
+                        <span class="chip bg-color">pytorch</span>
                     </a>
                     
-                    <a href="/tags/image-editing/">
-                        <span class="chip bg-color">image editing</span>
-                    </a>
-                    
-                    <a href="/tags/OpenCV/">
-                        <span class="chip bg-color">OpenCV</span>
+                    <a href="/tags/transformer/">
+                        <span class="chip bg-color">transformer</span>
                     </a>
                     
                 </div>

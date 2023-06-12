@@ -3,14 +3,14 @@
 
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
-        <lastmod>2023-06-12T01:50:28.732Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/tags/pytorch/</loc>
+        <lastmod>2023-06-12T20:21:52.548Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/pytorch/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
         <lastmod>2023-06-12T01:50:28.732Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -815,14 +815,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
