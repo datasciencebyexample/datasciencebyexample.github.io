@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/11/input-dimension-in-pytorch-transformer/</loc>
+        <lastmod>2023-06-12T01:50:28.732Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/11/should-we-normalize-data-when-using-transformer/</loc>
+        <lastmod>2023-06-12T01:49:09.970Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/09/binary-classification-vs-multi-class-classification-vs-multi-label-classification/</loc>
         <lastmod>2023-06-10T03:33:20.351Z</lastmod>
         <changefreq>weekly</changefreq>
