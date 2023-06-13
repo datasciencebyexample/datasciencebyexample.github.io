@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/13/short-history-of-open-source-large-language-model-so-far/</loc>
+        <lastmod>2023-06-13T23:55:44.791Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/12/handle-data-type-mismatch-between-numpy-and-pytorch/</loc>
         <lastmod>2023-06-12T20:21:52.548Z</lastmod>
         <changefreq>weekly</changefreq>
