@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/gpt4/</loc>
+        <lastmod>2023-06-15T19:48:26.669Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
+        <lastmod>2023-06-15T19:48:26.669Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/chatgpt/</loc>
+        <lastmod>2023-06-15T19:48:26.669Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/large-language-model/</loc>
         <lastmod>2023-06-13T23:55:44.791Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -115,13 +136,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/chatgpt/</loc>
-        <lastmod>2023-06-02T16:39:54.498Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/import/</loc>
         <lastmod>2023-05-31T18:34:19.610Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -144,13 +158,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/prompt-engeering/</loc>
-        <lastmod>2023-05-29T01:02:02.328Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2023-05-29T01:02:02.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -537,13 +544,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/zero-shot/</loc>
         <lastmod>2023-03-25T05:24:15.005Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/gpt4/</loc>
-        <lastmod>2023-03-23T00:10:08.502Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
