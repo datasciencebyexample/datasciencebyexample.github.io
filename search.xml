@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Constraining Prediction ranges in Deep Learning Regression Models</title>
+      <link href="2023/06/16/how-to-control-regression-prediction-ranges-in-deep-learning/"/>
+      <url>2023/06/16/how-to-control-regression-prediction-ranges-in-deep-learning/</url>
+      
+        <content type="html"><![CDATA[<p>Deep learning is widely used for various regression analysis tasks. However, sometimes we need to apply certain constraints on the predicted values produced by the regression models. These constraints could be ensuring that the predicted values are always positive or limiting the predictions to lie within a specific range.</p><p>In this blog post, we will discuss different approaches to address these challenges in deep learning and how to apply them to a neural network using an output layer with specific activation functions.</p><h2 id="Section-1-Ensuring-Positive-Predictions"><a href="#Section-1-Ensuring-Positive-Predictions" class="headerlink" title="Section 1: Ensuring Positive Predictions"></a>Section 1: Ensuring Positive Predictions</h2><p>To make sure that the deep learning model’s predictions are always positive, you can apply the following approaches:</p><ol><li><p>ReLU activation: The Rectified Linear Unit (ReLU) activation function is defined as max(x, 0) and will produce non-negative values. By using ReLU in the output layer of your neural network, you can ensure that the model predictions stay positive.</p></li><li><p>Exponential activation: Using exponential activation, the output layer computes the exponential of the input values. Since the exponential of any value is positive, this approach guarantees that the predicted results will be positive.</p></li><li><p>Softplus activation: The Softplus activation function is similar to ReLU but provides a smooth and differentiable approximation. By using Softplus in the output layer, you can enforce the model to predict non-negative values.</p></li><li><p>Log-transform: You can apply a log-transform to your target values before training the regression model. This will change the problem into a log-scale regression. Then, in the output layer, apply the exponential activation function to get back values in the original positive scale.</p></li><li><p>Custom loss function: Define a custom loss function that penalizes negative predictions more heavily than positive predictions. This can encourage the model to produce positive predictions. Asymmetric loss functions, like asymmetric mean squared error (MSE) or asymmetric mean absolute error (MAE), can be used, giving higher weight to negative errors compared to positive errors.</p></li><li><p>Constrain weights: Constrain the weights of your neural network to favor positive predictions using regularization techniques like L1 or L2 regularization. This method can maintain a balance that encourages positive predictions.</p></li><li><p>Post-processing: After obtaining the predictions, replace any negative predicted values with a small positive value (e.g., a small threshold value or the absolute value of the negative prediction).</p></li></ol><h2 id="Section-2-Constraining-Predictions-to-a-Range-min-value-max-value"><a href="#Section-2-Constraining-Predictions-to-a-Range-min-value-max-value" class="headerlink" title="Section 2: Constraining Predictions to a Range [min_value, max_value]"></a>Section 2: Constraining Predictions to a Range [min_value, max_value]</h2><p>If you want to limit the predictions of your deep learning model to within a given range [min_value, max_value], you can use the following techniques:</p><ol><li><p>Sigmoid scaling: Normalize your target values to be within the range of 0 and 1 using min-max scaling. Then, use a sigmoid activation function in the output layer of your neural network, which outputs values between 0 and 1. After obtaining predictions, scale them back to the original [min_value, max_value] range.</p></li><li><p>Tanh scaling: Normalize your target values to be within the range of -1 and 1. Now, use a tanh function in the output layer of your neural network, which will output predictions in the range between -1 and 1. Then, scale them back to your original min and max range.</p></li><li><p>Custom activation: Alternatively, you can create a custom activation function that directly scales the output to the desired range, such as a rescaled sigmoid function. Implement this activation function within the output layer of your neural network.</p></li></ol><p>Conclusion:</p><p>Applying constraints to the predictions of deep learning regression models is a common requirement in many applications. By using these suggested techniques, you can ensure that your model provides predictions within the desired bounds. Remember to experiment with different methods, validate your model using appropriate evaluation metrics, and consider the specific context and data patterns of your dataset. By doing so, you will achieve better model performance without compromising other essential aspects of your deep learning model.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> deep learning </tag>
+            
+            <tag> regression </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>New Function role added to GPT3.5 and GPT4 to give model to use API or functions as tools</title>
       <link href="2023/06/15/new-function-role-to-use-as-tool-in-gpt-similar-as-langchain/"/>
       <url>2023/06/15/new-function-role-to-use-as-tool-in-gpt-similar-as-langchain/</url>
