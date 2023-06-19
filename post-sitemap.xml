@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/19/non-parametric-way-to-map-x-and-y-using-decistrion-regressor/</loc>
+        <lastmod>2023-06-19T19:50:21.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/17/how-does-rlhf-work-and-difference-with-finetuning/</loc>
         <lastmod>2023-06-17T18:40:17.124Z</lastmod>
         <changefreq>weekly</changefreq>
