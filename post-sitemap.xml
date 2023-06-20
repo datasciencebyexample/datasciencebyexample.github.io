@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/19/understand-arallelism-in-python-thread-process-concurrent-future/</loc>
+        <lastmod>2023-06-20T00:52:45.623Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2023/06/19/start-vs-join-in-multprocessing-in-python/</loc>
+        <lastmod>2023-06-20T00:52:39.470Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/06/19/non-parametric-way-to-map-x-and-y-using-decistrion-regressor/</loc>
         <lastmod>2023-06-19T19:50:21.176Z</lastmod>
         <changefreq>weekly</changefreq>

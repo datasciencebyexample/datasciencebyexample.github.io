@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/multiprocessing/</loc>
+        <lastmod>2023-06-20T00:52:45.623Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/descion-tree/</loc>
         <lastmod>2023-06-19T19:50:21.176Z</lastmod>
         <changefreq>weekly</changefreq>
