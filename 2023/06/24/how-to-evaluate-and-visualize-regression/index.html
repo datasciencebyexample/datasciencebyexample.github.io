@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Understanding Pooling in Transformer Architecture, Aggregating Outputs for Downstream Tasks, DataScienceTribe">
+    <meta name="keywords" content="How to evaluate and visualize regression results, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Understanding Pooling in Transformer Architecture, Aggregating Outputs for Downstream Tasks | DataScienceTribe</title>
+    <title>How to evaluate and visualize regression results | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Understanding Pooling in Transformer Architecture, Aggregating Outputs for Downstream Tasks</h1>
+                    <h1 class="description center-align post-title">How to evaluate and visualize regression results</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/transformer/">
-                                <span class="chip bg-color">transformer</span>
-                            </a>
-                        
-                            <a href="/tags/pooling/">
-                                <span class="chip bg-color">pooling</span>
+                            <a href="/tags/regression/">
+                                <span class="chip bg-color">regression</span>
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-04-30
+                    2023-06-24
                 </div>
                 
 
@@ -402,20 +398,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>In the context of transformers, pooling refers to the process of summarizing the outputs of the transformer layers into a fixed-size vector, often used for downstream tasks such as classification.</p>
-<p>In a transformer architecture, the input sequence is processed by a series of self-attention and feedforward layers. Each layer produces a sequence of output vectors, which encode the input sequence in a higher-level representation. Pooling involves taking the output vectors from one or more of these layers and aggregating them into a single vector.</p>
-<p>There are different types of pooling mechanisms used in transformer architectures, including:</p>
-<ol>
-<li><p>Max Pooling: where the maximum value across the sequence of output vectors is selected as the summary representation.</p>
+                <p>When evaluating regression models, there are several metrics you can use to assess their performance beyond just Mean Squared Error (MSE) or Root Mean Squared Error (RMSE). Here are some commonly used evaluation metrics for regression:</p>
+<ul>
+<li><p>Mean Absolute Error (MAE): This metric measures the average absolute difference between the predicted and actual values. It provides a measure of the model’s average prediction error.</p>
 </li>
-<li><p>Mean Pooling: where the average of the output vectors is taken as the summary representation.</p>
+<li><p>R-squared (R²) or Coefficient of Determination: R-squared indicates the proportion of the variance in the dependent variable (target) that is predictable from the independent variables (features). It ranges from 0 to 1, where 1 indicates a perfect fit.</p>
 </li>
-<li><p>Last Hidden State: where the final output vector of the transformer is used as the summary representation.</p>
+<li><p>Mean Squared Logarithmic Error (MSLE): MSLE measures the average logarithmic error between the predicted and actual values. It can be useful when the target variable has exponential growth.</p>
 </li>
-<li><p>Self-Attention Pooling: where a weighted sum of the output vectors is computed, with the weights determined by a learned attention mechanism.</p>
+<li><p>Explained Variance Score: This score measures the proportion of variance explained by the model. It ranges from 0 to 1, where 1 indicates a perfect fit.</p>
 </li>
-</ol>
-<p>Overall, pooling is an important component of transformer architectures, as it allows for the extraction of a fixed-size representation of the input sequence, which can be used for a variety of downstream tasks.</p>
+<li><p>Median Absolute Error (MedAE): Similar to MAE, this metric calculates the median absolute difference between the predicted and actual values. It is less sensitive to outliers compared to MAE.</p>
+</li>
+<li><p>R-squared Adjusted (Adjusted R²): Adjusted R-squared takes into account the number of predictors in the model. It penalizes the addition of unnecessary variables and helps avoid overfitting.</p>
+</li>
+<li><p>Mean Percentage Error (MPE): This metric calculates the average percentage difference between the predicted and actual values. It is useful when you want to understand the relative error of the model’s predictions.</p>
+</li>
+<li><p>Mean Absolute Percentage Error (MAPE): MAPE calculates the average percentage difference between the predicted and actual values, similar to MPE. It is commonly used in time series forecasting.</p>
+</li>
+<li><p>Quantile Loss: Quantile loss measures the accuracy of predicting specific quantiles of the target variable. It provides information about the model’s performance across different levels of uncertainty.</p>
+</li>
+</ul>
+<p>Visualization techniques for regression evaluation can include:</p>
+<ul>
+<li><p>Scatter plots: Plotting the predicted values against the actual values can help visualize the overall performance of the model. Ideally, the points should lie close to a diagonal line.</p>
+</li>
+<li><p>Residual plots: Residuals are the differences between the predicted and actual values. Plotting the residuals against the predicted values or the independent variables can help identify patterns or heteroscedasticity (unequal variance).</p>
+</li>
+<li><p>Distribution plots: Comparing the distribution of predicted values with the actual values can provide insights into the model’s accuracy and whether it is capturing the underlying data distribution.</p>
+</li>
+<li><p>Regression line plot: Visualizing the regression line along with the data points can help understand the relationship between the independent and dependent variables.</p>
+</li>
+</ul>
+<p>Following code shows some example:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score</span><br><span class="line"></span><br><span class="line"># Generate some random data for demonstration</span><br><span class="line">np.random.seed(42)</span><br><span class="line">X = np.random.rand(100, 1)  # Independent variable</span><br><span class="line">y = 2 + 3 * X + np.random.randn(100, 1)  # Dependent variable with some noise</span><br><span class="line"></span><br><span class="line"># Split the data into training and test sets</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span><br><span class="line"></span><br><span class="line"># Fit the regression model</span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"># Make predictions on the test set</span><br><span class="line">y_pred = model.predict(X_test)</span><br><span class="line"></span><br><span class="line"># Evaluate the model using different metrics</span><br><span class="line">mse = mean_squared_error(y_test, y_pred)</span><br><span class="line">mae = mean_absolute_error(y_test, y_pred)</span><br><span class="line">r2 = r2_score(y_test, y_pred)</span><br><span class="line"></span><br><span class="line"># Calculate adjusted R-squared</span><br><span class="line">n = X_test.shape[0]  # Number of samples</span><br><span class="line">p = X_test.shape[1]  # Number of predictors</span><br><span class="line">adjusted_r2 = 1 - ((1 - r2) * (n - 1) / (n - p - 1))</span><br><span class="line"></span><br><span class="line"># Scatter plot of actual vs predicted values</span><br><span class="line">plt.scatter(y_test, y_pred)</span><br><span class="line">plt.xlabel(&#x27;Actual Values&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Predicted Values&#x27;)</span><br><span class="line">plt.title(&#x27;Actual vs Predicted Values&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># Residual plot</span><br><span class="line">residuals = y_test - y_pred</span><br><span class="line">plt.scatter(y_pred, residuals)</span><br><span class="line">plt.xlabel(&#x27;Predicted Values&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Residuals&#x27;)</span><br><span class="line">plt.title(&#x27;Residual Plot&#x27;)</span><br><span class="line">plt.axhline(y=0, color=&#x27;r&#x27;, linestyle=&#x27;-&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">print(&quot;Mean Squared Error (MSE):&quot;, mse)</span><br><span class="line">print(&quot;Mean Absolute Error (MAE):&quot;, mae)</span><br><span class="line">print(&quot;R-squared (R²):&quot;, r2)</span><br><span class="line">print(&quot;Adjusted R-squared:&quot;, adjusted_r2)</span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -442,7 +459,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/04/30/what-is-pooling-in-transformer-model/">https://datasciencebyexample.github.io/2023/04/30/what-is-pooling-in-transformer-model/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/06/24/how-to-evaluate-and-visualize-regression/">https://datasciencebyexample.github.io/2023/06/24/how-to-evaluate-and-visualize-regression/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -480,12 +497,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/transformer/">
-                                    <span class="chip bg-color">transformer</span>
-                                </a>
-                            
-                                <a href="/tags/pooling/">
-                                    <span class="chip bg-color">pooling</span>
+                                <a href="/tags/regression/">
+                                    <span class="chip bg-color">regression</span>
                                 </a>
                             
                         </div>
@@ -531,17 +544,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/05/02/dIfference-between-import-file-and-from-file-import-in-python/">
+                <a href="/2023/06/24/how-to-evaluate-and-visualize-regression/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Difference between import file and from file import * in Python">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="How to evaluate and visualize regression results">
                         
-                        <span class="card-title">Difference between import file and from file import * in Python</span>
+                        <span class="card-title">How to evaluate and visualize regression results</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -551,26 +565,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-engineering/" class="post-category">
-                                    data engineering
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/regression/">
+                        <span class="chip bg-color">regression</span>
                     </a>
                     
                 </div>
@@ -584,13 +599,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/04/28/how-to-not-index-field-in-elasticsearch/">
+                <a href="/2023/06/22/common-loss-function-and-how-does-backpropgation-work-in-pytorch/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="How to not indexing fields in elasticsearch">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Understanding Loss Functions, Backpropagation, and the PyTorch Transformer">
                         
-                        <span class="card-title">How to not indexing fields in elasticsearch</span>
+                        <span class="card-title">Understanding Loss Functions, Backpropagation, and the PyTorch Transformer</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -601,14 +616,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-engineering/" class="post-category">
-                                    data engineering
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
                                 </a>
                             
                             
@@ -618,8 +633,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/elasticsearch/">
-                        <span class="chip bg-color">elasticsearch</span>
+                    <a href="/tags/deep-learning/">
+                        <span class="chip bg-color">deep learning</span>
+                    </a>
+                    
+                    <a href="/tags/loss-function/">
+                        <span class="chip bg-color">loss function</span>
+                    </a>
+                    
+                    <a href="/tags/backpropagation/">
+                        <span class="chip bg-color">backpropagation</span>
                     </a>
                     
                 </div>
