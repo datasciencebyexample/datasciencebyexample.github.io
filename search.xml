@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>A Beginner&#39;s Guide to Tuning Hyperparameters of Popular Machine Learning Algorithms</title>
+      <link href="2023/07/02/beginner-guide-how-to-set-hyper-prameters-for-popular-machine-learning-algorithms/"/>
+      <url>2023/07/02/beginner-guide-how-to-set-hyper-prameters-for-popular-machine-learning-algorithms/</url>
+      
+        <content type="html"><![CDATA[<p>Machine Learning is a rapidly evolving field with algorithms that often require hyperparameters fine-tuning to improve model performance. Understanding the red lines and rules of thumb for tuning these hyperparameters is essential. Let’s explore some popular machine learning algorithms and the hyperparameters that govern them.</p><ol><li><p><strong>Random Forest</strong></p><ul><li><p><strong>n_estimators</strong>: This represents the number of trees in the forest. Generally, a higher number improves the model and makes the predictions stronger and more stable, but a very high number can result in longer computational time. Starting point can be 100.</p></li><li><p><strong>max_features</strong>: It represents the number of features to consider when looking for the best split. Good starting points can be ‘auto’, ‘sqrt’ or ‘log2’.</p></li><li><p><strong>max_depth</strong>: The maximum depth of the tree. You can leave this value as None resulting in full expansion of trees.</p></li></ul></li><li><p><strong>Boosting Algorithms (XGBoost, LightGBM, CatBoost)</strong></p><ul><li><p>All the three boosting variants share some common hyperparameters like,</p></li><li><p><strong>n_estimators</strong>: The number of boosting stages to perform. Gradient boosting is fairly robust to over-fitting so a large number usually results in better performance. A reasonable starting point could be 100.</p></li><li><p><strong>learning_rate (or eta)</strong>: It makes the model more robust by shrinking the weights on each step. A smaller value might require higher number of boosting rounds hence, increased computation. You can start with values like 0.1, 0.01 or so on.</p></li><li><p><strong>max_depth</strong>: The maximum tree depth for boosting models. Starting points could be 6 to 10.</p></li><li><p><strong>subsample</strong>: The fraction of observations to be randomly selected for each tree. Lower values make the algorithm conservative and prevents overfitting. Usually set at 0.8 to 1.</p></li></ul></li></ol><p>3.<strong>Transformer Models</strong></p><p>   Transformers rely more on architecture selection than hyperparameter tuning. You may however tune the following:</p><ul><li><strong>Learning Rate</strong>: Choose this too large and optimization might overshoot and diverge - too small, and it might never reach the minimum. 0.0001 could be a reasonable start.</li><li><strong>Batch Size</strong>: Influences the noise in the gradient estimate, and the computational requirements of the algorithm. Try powers of 2 that fit into memory (e.g., 32, 64, 128).</li><li><strong>Number of Layers (for architectures like BERT, etc)</strong>: Depending on the complexity of the task, increasing the number of layers may increase model understanding but beware of overfitting.</li></ul><p>Hyperparameter tuning can be a bit of an art and may require a bit of trial and error. Remember, as a rule of thumb, changing one hyperparameter can affect the behavior of the algorithm, so we should consider the interaction of parameters to achieve the best results.</p><p>Machine learning libraries like Scikit-learn provide handy tools like GridSearch and RandomizedSearch for hyperparameters optimization. AutoML, Bayesian Optimization, and Genetic Algorithms are also gaining popularity for hyperparameter tuning.</p><p>We hope this beginner-friendly guide serves as a useful starting point for your machine learning journey.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hyperparameter </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Importing and Calling Class Functions in Python</title>
       <link href="2023/06/29/how-to-import-python-class-functions-from-another-folder/"/>
       <url>2023/06/29/how-to-import-python-class-functions-from-another-folder/</url>
@@ -1241,35 +1266,6 @@
     
     
     <entry>
-      <title>Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</title>
-      <link href="2023/05/03/overview-of-hyperprameter-optimization-2/"/>
-      <url>2023/05/03/overview-of-hyperprameter-optimization-2/</url>
-      
-        <content type="html"><![CDATA[<p>In the <a href="/2023/05/03/overview-of-hyperprameter-optimization-1/">previous blog post</a>, we introduced the concept of hyperparameter optimization and its importance in machine learning. In this post, we will explore two popular techniques for hyperparameter tuning: Grid Search and Random Search. We will discuss their advantages and disadvantages and provide practical examples using Python and Scikit-learn.</p><h2 id="Grid-Search"><a href="#Grid-Search" class="headerlink" title="Grid Search"></a>Grid Search</h2><p>Grid search is a simple and widely used method for hyperparameter tuning. It involves exhaustively searching through a predefined set of hyperparameter values and selecting the combination that results in the best model performance. The main advantage of grid search is that it is guaranteed to find the optimal set of hyperparameters within the search space. However, it can be computationally expensive, especially when dealing with a large number of hyperparameters or large datasets.</p><h2 id="Random-Search"><a href="#Random-Search" class="headerlink" title="Random Search"></a>Random Search</h2><p>Random search is an alternative to grid search that involves randomly sampling hyperparameter values from a predefined search space. Instead of exhaustively searching through all possible combinations, random search only evaluates a subset of them. This can significantly reduce the computational cost of hyperparameter tuning. Although random search is not guaranteed to find the optimal set of hyperparameters, it has been shown to be effective in practice, especially when the search space is large or the optimal hyperparameters are not uniformly distributed.</p><h2 id="Example-Grid-Search-vs-Random-Search-in-Python"><a href="#Example-Grid-Search-vs-Random-Search-in-Python" class="headerlink" title="Example: Grid Search vs. Random Search in Python"></a>Example: Grid Search vs. Random Search in Python</h2><p>In this example, we will compare grid search and random search for hyperparameter tuning using the Support Vector Machine (SVM) algorithm on the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV, RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Perform hyperparameter optimization using RandomizedSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">random_search = RandomizedSearchCV(SVC(), param_grid, n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, verbose=<span class="number">2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">random_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="6"><li>Compare the results of Grid Search and Random Search:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_grid_model = grid_search.best_estimator_</span><br><span class="line">best_random_model = random_search.best_estimator_</span><br><span class="line"></span><br><span class="line">y_pred_grid = best_grid_model.predict(X_test)</span><br><span class="line">y_pred_random = best_random_model.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Grid Search Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_grid))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Random Search Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_random))</span><br></pre></td></tr></table></figure><p>Conclusion</p><p>In this blog post, we explored two popular techniques for hyperparameter tuning: Grid Search and Random Search. We discussed their advantages and disadvantages and provided a practical example using Python and Scikit-learn. In the next blog post, we will dive into more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-3/">Automated Hyperparameter Tuning with Python Libraries, Optuna, Hyperopt, and Scikit-Optimize</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data science </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hyperparameter optimization </tag>
-            
-            <tag> grid search </tag>
-            
-            <tag> random search </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hyperparameter Optimization 3 - Automated Hyperparameter Tuning with Python Libraries, Optuna, Hyperopt, and Scikit-Optimize</title>
       <link href="2023/05/03/overview-of-hyperprameter-optimization-3/"/>
       <url>2023/05/03/overview-of-hyperprameter-optimization-3/</url>
@@ -1291,6 +1287,35 @@
             <tag> optuna </tag>
             
             <tag> hyperopt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</title>
+      <link href="2023/05/03/overview-of-hyperprameter-optimization-2/"/>
+      <url>2023/05/03/overview-of-hyperprameter-optimization-2/</url>
+      
+        <content type="html"><![CDATA[<p>In the <a href="/2023/05/03/overview-of-hyperprameter-optimization-1/">previous blog post</a>, we introduced the concept of hyperparameter optimization and its importance in machine learning. In this post, we will explore two popular techniques for hyperparameter tuning: Grid Search and Random Search. We will discuss their advantages and disadvantages and provide practical examples using Python and Scikit-learn.</p><h2 id="Grid-Search"><a href="#Grid-Search" class="headerlink" title="Grid Search"></a>Grid Search</h2><p>Grid search is a simple and widely used method for hyperparameter tuning. It involves exhaustively searching through a predefined set of hyperparameter values and selecting the combination that results in the best model performance. The main advantage of grid search is that it is guaranteed to find the optimal set of hyperparameters within the search space. However, it can be computationally expensive, especially when dealing with a large number of hyperparameters or large datasets.</p><h2 id="Random-Search"><a href="#Random-Search" class="headerlink" title="Random Search"></a>Random Search</h2><p>Random search is an alternative to grid search that involves randomly sampling hyperparameter values from a predefined search space. Instead of exhaustively searching through all possible combinations, random search only evaluates a subset of them. This can significantly reduce the computational cost of hyperparameter tuning. Although random search is not guaranteed to find the optimal set of hyperparameters, it has been shown to be effective in practice, especially when the search space is large or the optimal hyperparameters are not uniformly distributed.</p><h2 id="Example-Grid-Search-vs-Random-Search-in-Python"><a href="#Example-Grid-Search-vs-Random-Search-in-Python" class="headerlink" title="Example: Grid Search vs. Random Search in Python"></a>Example: Grid Search vs. Random Search in Python</h2><p>In this example, we will compare grid search and random search for hyperparameter tuning using the Support Vector Machine (SVM) algorithm on the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV, RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Perform hyperparameter optimization using RandomizedSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">random_search = RandomizedSearchCV(SVC(), param_grid, n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, verbose=<span class="number">2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">random_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="6"><li>Compare the results of Grid Search and Random Search:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_grid_model = grid_search.best_estimator_</span><br><span class="line">best_random_model = random_search.best_estimator_</span><br><span class="line"></span><br><span class="line">y_pred_grid = best_grid_model.predict(X_test)</span><br><span class="line">y_pred_random = best_random_model.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Grid Search Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_grid))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Random Search Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_random))</span><br></pre></td></tr></table></figure><p>Conclusion</p><p>In this blog post, we explored two popular techniques for hyperparameter tuning: Grid Search and Random Search. We discussed their advantages and disadvantages and provided a practical example using Python and Scikit-learn. In the next blog post, we will dive into more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-3/">Automated Hyperparameter Tuning with Python Libraries, Optuna, Hyperopt, and Scikit-Optimize</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hyperparameter optimization </tag>
+            
+            <tag> grid search </tag>
+            
+            <tag> random search </tag>
             
         </tags>
       
@@ -1407,31 +1432,6 @@
     
     
     <entry>
-      <title>How to delete file and folder from git repo</title>
-      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
-      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
-      
-        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>How to not indexing fields in elasticsearch</title>
       <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
       <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>
@@ -1449,6 +1449,31 @@
         <tags>
             
             <tag> elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to delete file and folder from git repo</title>
+      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
+      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
+      
+        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -3846,11 +3871,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       

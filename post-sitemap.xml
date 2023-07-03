@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/07/02/beginner-guide-how-to-set-hyper-prameters-for-popular-machine-learning-algorithms/</loc>
+        <lastmod>2023-07-03T03:03:17.348Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/04/04/run-python-app-in-background-with-nohub-and-how-to-kill-it/</loc>
         <lastmod>2023-07-01T03:14:53.511Z</lastmod>
         <changefreq>weekly</changefreq>
