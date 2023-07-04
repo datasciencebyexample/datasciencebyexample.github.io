@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>the Water Thirst of AI, The Environmental Cost of Large Language Models</title>
+      <link href="2023/07/04/ai-is-thirsty-one-conversation-with-chatgpt-equals-one-bottle-of-water/"/>
+      <url>2023/07/04/ai-is-thirsty-one-conversation-with-chatgpt-equals-one-bottle-of-water/</url>
+      
+        <content type="html"><![CDATA[<p>Large language models such as OpenAI’s ChatGPT and Google’s Bard are known for their power and versatility. However, these models come at a significant cost in terms of energy consumption and water usage. Recent research reveals that training the GPT-3 model alone required 185,000 gallons (700,000 liters) of water, equivalent to filling a nuclear reactor’s cooling tower. This raises concerns about the impact on water supplies, particularly during times of drought and environmental uncertainty in the US.</p><p>A study conducted by the University of California Riverside and the University of Texas Arlington sheds light on the water consumption of AI models. It highlights the distinction between water “withdrawal” and “consumption.” While withdrawal refers to physically taking water from sources like rivers or lakes, consumption refers to the evaporation of water in data centers, which cannot be recycled.</p><p>To keep server rooms cool, data centers rely on cooling towers that consume substantial amounts of water. Approximately one gallon of water is consumed for every kilowatt-hour expended in an average data center. Freshwater is necessary to prevent corrosion and ensure humidity control. Moreover, the electricity consumed by data centers contributes to off-site indirect water consumption.</p><p>The water consumption issue is not limited to OpenAI and AI models. In 2019, Google requested over 2.3 billion gallons of water for its data centers in three states. Google’s LaMDA and Bard models, which are even larger than GPT-3, may require millions of liters of water for training. Additionally, the energy requirements of these large language models are staggering, with GPT-3 alone releasing 502 metric tons of carbon during training.</p><p>The concern over water usage is amplified by climate change and worsening droughts. The World Economic Forum estimates that millions of US residents lack access to water and adequate water systems. Climate change and population growth are expected to exacerbate water scarcity issues. Rising temperatures and severe droughts in the American West have already had a significant impact on freshwater supplies.</p><p>To address these concerns, AI companies and data centers can take steps to improve water efficiency. Training AI models at cooler times or in more water-efficient data centers could help reduce water usage. Chatbot users could also engage with the models during “water-efficient hours.” However, achieving these changes requires greater transparency from tech companies regarding where and when the models are trained.</p><p>In conclusion, the water footprint of AI models is a pressing issue that needs to be addressed. Transparency, efficient data center practices, and user awareness can contribute to mitigating the impact on water resources, especially as AI becomes more pervasive across various sectors.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> chatgpt </tag>
+            
+            <tag> large language model </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to access multiple github accounts from one computer</title>
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#117;&#x72;&#x2d;&#101;&#109;&#x61;&#105;&#108;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;">&#121;&#111;&#117;&#x72;&#x2d;&#101;&#109;&#x61;&#105;&#108;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#111;&#x75;&#x72;&#45;&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#x6d;">&#x79;&#111;&#x75;&#x72;&#45;&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -3181,9 +3208,9 @@
             
             <tag> semantic search </tag>
             
-            <tag> FAISS </tag>
-            
             <tag> vector search </tag>
+            
+            <tag> FAISS </tag>
             
         </tags>
       
@@ -3898,11 +3925,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -5076,9 +5103,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
