@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
+        <lastmod>2023-07-07T00:39:04.598Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/vector-embedding/</loc>
         <lastmod>2023-07-05T22:58:13.878Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1097,13 +1104,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/preprocessing/</loc>
         <lastmod>2021-07-26T23:20:02.967Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
-        <lastmod>2021-06-23T20:44:04.817Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
