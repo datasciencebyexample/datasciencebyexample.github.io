@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/openAI/</loc>
+        <lastmod>2023-07-09T02:14:10.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/machine-learning/</loc>
         <lastmod>2023-07-07T00:39:04.598Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -670,13 +677,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/streamlit/</loc>
         <lastmod>2023-03-21T19:24:17.992Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/openAI/</loc>
-        <lastmod>2023-03-21T01:59:45.882Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
