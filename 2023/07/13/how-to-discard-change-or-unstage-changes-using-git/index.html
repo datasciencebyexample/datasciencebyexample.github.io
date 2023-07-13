@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python, DataScienceTribe">
+    <meta name="keywords" content="How to discard changes or unstage file when using git and github, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python | DataScienceTribe</title>
+    <title>How to discard changes or unstage file when using git and github | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</h1>
+                    <h1 class="description center-align post-title">How to discard changes or unstage file when using git and github</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hyperparameter-optimization/">
-                                <span class="chip bg-color">hyperparameter optimization</span>
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
                             </a>
                         
-                            <a href="/tags/grid-search/">
-                                <span class="chip bg-color">grid search</span>
-                            </a>
-                        
-                            <a href="/tags/random-search/">
-                                <span class="chip bg-color">random search</span>
+                            <a href="/tags/github/">
+                                <span class="chip bg-color">github</span>
                             </a>
                         
                     </div>
@@ -385,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-05-03
+                    2023-07-13
                 </div>
                 
 
@@ -406,42 +402,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>In the <a href="/2023/05/03/overview-of-hyperprameter-optimization-1/">previous blog post</a>, we introduced the concept of hyperparameter optimization and its importance in machine learning. In this post, we will explore two popular techniques for hyperparameter tuning: Grid Search and Random Search. We will discuss their advantages and disadvantages and provide practical examples using Python and Scikit-learn.</p>
-<h2 id="Grid-Search"><a href="#Grid-Search" class="headerlink" title="Grid Search"></a>Grid Search</h2><p>Grid search is a simple and widely used method for hyperparameter tuning. It involves exhaustively searching through a predefined set of hyperparameter values and selecting the combination that results in the best model performance. The main advantage of grid search is that it is guaranteed to find the optimal set of hyperparameters within the search space. However, it can be computationally expensive, especially when dealing with a large number of hyperparameters or large datasets.</p>
-<h2 id="Random-Search"><a href="#Random-Search" class="headerlink" title="Random Search"></a>Random Search</h2><p>Random search is an alternative to grid search that involves randomly sampling hyperparameter values from a predefined search space. Instead of exhaustively searching through all possible combinations, random search only evaluates a subset of them. This can significantly reduce the computational cost of hyperparameter tuning. Although random search is not guaranteed to find the optimal set of hyperparameters, it has been shown to be effective in practice, especially when the search space is large or the optimal hyperparameters are not uniformly distributed.</p>
-<h2 id="Example-Grid-Search-vs-Random-Search-in-Python"><a href="#Example-Grid-Search-vs-Random-Search-in-Python" class="headerlink" title="Example: Grid Search vs. Random Search in Python"></a>Example: Grid Search vs. Random Search in Python</h2><p>In this example, we will compare grid search and random search for hyperparameter tuning using the Support Vector Machine (SVM) algorithm on the famous Iris dataset.</p>
-<ol>
-<li>Import necessary libraries and load the dataset:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV, RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Split the dataset into training and testing sets:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>Define the hyperparameter search space:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>Perform hyperparameter optimization using GridSearchCV:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>Perform hyperparameter optimization using RandomizedSearchCV:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">random_search = RandomizedSearchCV(SVC(), param_grid, n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, verbose=<span class="number">2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">random_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>Compare the results of Grid Search and Random Search:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_grid_model = grid_search.best_estimator_</span><br><span class="line">best_random_model = random_search.best_estimator_</span><br><span class="line"></span><br><span class="line">y_pred_grid = best_grid_model.predict(X_test)</span><br><span class="line">y_pred_random = best_random_model.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Grid Search Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_grid))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Random Search Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_random))</span><br></pre></td></tr></table></figure>
-
-<p>Conclusion</p>
-<p>In this blog post, we explored two popular techniques for hyperparameter tuning: Grid Search and Random Search. We discussed their advantages and disadvantages and provided a practical example using Python and Scikit-learn. In the next blog post, we will dive into more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-3/">Automated Hyperparameter Tuning with Python Libraries, Optuna, Hyperopt, and Scikit-Optimize</a></p>
+                <p>The normal workflow of working with git and github are:</p>
+<ul>
+<li><code>git add</code>: Select specific files or changes to include in the commit.</li>
+<li><code>git commit</code>: Create a snapshot of the selected changes with a descriptive commit message.</li>
+<li><code>git push</code>: Push the committed changes to a remote repository for sharing and collaboration.</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li><code>git add file1.txt</code>: Select file1.txt to be included in the commit.</li>
+<li><code>git commit -m &quot;Updated file1.txt&quot;</code>: Create a snapshot of the changes made to file1.txt with a descriptive commit message.</li>
+<li><code>git push origin main</code>: Push the committed changes to the remote repository named origin in the main branch.</li>
+</ul>
+<p>However, how about if something doesn’t work out smoothly, and we need to back up a little bit.<br>For example</p>
+<h2 id="discard-the-changes-to-some-file-in-the-current-directory"><a href="#discard-the-changes-to-some-file-in-the-current-directory" class="headerlink" title="discard the changes to some file in the current directory"></a>discard the changes to some file in the current directory</h2><p>The anwer is:<br>use <code>git restore &lt;file-with-full-path&gt; </code> to discard changes in working directory</p>
+<p>for example:<br><code>git restore dir1/file1.txt</code></p>
+<h2 id="I-staged-the-file-by-using-git-add-but-now-I-want-to-unstage"><a href="#I-staged-the-file-by-using-git-add-but-now-I-want-to-unstage" class="headerlink" title="I staged the file by using git add, but now I want to unstage"></a>I staged the file by using <code>git add</code>, but now I want to unstage</h2><p>the answer is:<br>use <code>git restore --staged &lt;file-with-full-path&gt; </code>to unstage<br>for example:</p>
+<p><code> git restore --staged dir1/file1.txt</code></p>
 
                 
             </div>
@@ -468,7 +445,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/05/03/overview-of-hyperprameter-optimization-2/">https://datasciencebyexample.github.io/2023/05/03/overview-of-hyperprameter-optimization-2/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/07/13/how-to-discard-change-or-unstage-changes-using-git/">https://datasciencebyexample.github.io/2023/07/13/how-to-discard-change-or-unstage-changes-using-git/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -506,16 +483,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hyperparameter-optimization/">
-                                    <span class="chip bg-color">hyperparameter optimization</span>
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
                                 </a>
                             
-                                <a href="/tags/grid-search/">
-                                    <span class="chip bg-color">grid search</span>
-                                </a>
-                            
-                                <a href="/tags/random-search/">
-                                    <span class="chip bg-color">random search</span>
+                                <a href="/tags/github/">
+                                    <span class="chip bg-color">github</span>
                                 </a>
                             
                         </div>
@@ -561,17 +534,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/05/05/large-language-model-revolution/">
+                <a href="/2023/07/13/how-to-discard-change-or-unstage-changes-using-git/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="The Large Language Model Revolution, Unleashing the Steam Engine of Intellectual Work">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="How to discard changes or unstage file when using git and github">
                         
-                        <span class="card-title">The Large Language Model Revolution, Unleashing the Steam Engine of Intellectual Work</span>
+                        <span class="card-title">How to discard changes or unstage file when using git and github</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -581,9 +555,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -596,11 +570,16 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/large-language-model/">
-                        <span class="chip bg-color">large language model</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
                     </a>
                     
                 </div>
@@ -614,13 +593,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/05/03/overview-of-hyperprameter-optimization-1/">
+                <a href="/2023/07/11/how-to-turn-on-code-interpreter-in-chatgpt-ui/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="How to turn on  chatGPT&#39;s code interpreter in the UI">
                         
-                        <span class="card-title">Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</span>
+                        <span class="card-title">How to turn on  chatGPT&#39;s code interpreter in the UI</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -631,7 +610,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-11
                             </span>
                         <span class="publish-author">
                             
@@ -648,8 +627,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hyperparameter-optimization/">
-                        <span class="chip bg-color">hyperparameter optimization</span>
+                    <a href="/tags/chatGPT/">
+                        <span class="chip bg-color">chatGPT</span>
+                    </a>
+                    
+                    <a href="/tags/code-interpreter/">
+                        <span class="chip bg-color">code-interpreter</span>
                     </a>
                     
                 </div>
