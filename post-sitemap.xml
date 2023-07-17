@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/07/17/understand-and-resolve-github-merge-conflicts/</loc>
+        <lastmod>2023-07-17T21:35:44.211Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/07/15/integrate-chatgpt-with-github-repo-using-github-action/</loc>
         <lastmod>2023-07-16T03:49:06.359Z</lastmod>
         <changefreq>weekly</changefreq>
