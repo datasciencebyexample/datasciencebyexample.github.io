@@ -419,6 +419,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">from langchain.embeddings.openai import OpenAIEmbeddings</span><br><span class="line">from langchain.text_splitter import CharacterTextSplitter</span><br><span class="line">from langchain.vectorstores import Pinecone</span><br><span class="line">from langchain.document_loaders import TextLoader</span><br></pre></td></tr></table></figure>
 
 <p>Set the <code>PINECONE_API_KEY</code> and <code>PINECONE_ENV</code> variables to your Pinecone API key and environment. Additionally, set the <code>OPENAI_API_KEY</code> environment variable to your OpenAI API key.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">os.environ[&quot;OPENAI_API_KEY&quot;] = &#x27;your openai api key&#x27;</span><br></pre></td></tr></table></figure>
 <h2 id="Step-3-Preparing-the-Data-and-Embedding-Layer"><a href="#Step-3-Preparing-the-Data-and-Embedding-Layer" class="headerlink" title="Step 3: Preparing the Data and Embedding Layer"></a>Step 3: Preparing the Data and Embedding Layer</h2><p>Now, load the text data (here we use an example) and prepare the embedding layer using the OpenAI service. Use the <code>TextLoader</code> class from Langchain to load the text data:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">loader = TextLoader(&quot;state_of_the_union.txt&quot;)</span><br><span class="line">documents = loader.load()</span><br></pre></td></tr></table></figure>
 
