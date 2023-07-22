@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/software-engineer/</loc>
+        <lastmod>2023-07-22T19:46:18.912Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/llm/</loc>
+        <lastmod>2023-07-22T19:46:18.912Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/large-language-model/</loc>
+        <lastmod>2023-07-22T19:46:18.912Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/slack/</loc>
         <lastmod>2023-07-22T18:43:19.489Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -151,13 +172,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/vector-embedding/</loc>
-        <lastmod>2023-07-05T22:58:13.878Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/large-language-model/</loc>
         <lastmod>2023-07-05T22:58:13.878Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1193,13 +1207,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/time-series/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1208,6 +1215,13 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
