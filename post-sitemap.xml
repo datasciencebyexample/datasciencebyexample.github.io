@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/07/24/parallel-processing-using-cocurrent-futures-threadpool-in-python/</loc>
+        <lastmod>2023-07-25T22:01:23.456Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2023/07/24/pyton-class-init-method-indendation-error-fix/</loc>
+        <lastmod>2023-07-25T21:58:26.684Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/07/22/will-large-language-model-replace-software-engineeer/</loc>
         <lastmod>2023-07-22T19:46:18.912Z</lastmod>
         <changefreq>weekly</changefreq>
