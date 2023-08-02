@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/credit-card/</loc>
+        <lastmod>2023-08-02T01:51:33.495Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/HELOC/</loc>
         <lastmod>2023-07-30T22:19:06.891Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -10,14 +17,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/prompt-engineering/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/ai-engineer/</loc>
         <lastmod>2023-07-29T19:31:43.727Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/ai-engineer/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/prompt-engineering/</loc>
         <lastmod>2023-07-29T19:31:43.727Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -528,6 +535,13 @@
     </url>
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
+        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/hyperopt/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -536,13 +550,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/optuna/</loc>
-        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1032,14 +1039,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1048,13 +1055,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/lambda-function/</loc>
         <lastmod>2022-09-05T02:15:19.274Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/credit-card/</loc>
-        <lastmod>2022-08-22T00:39:44.293Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
