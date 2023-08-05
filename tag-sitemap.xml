@@ -4,7 +4,7 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/credit-score/</loc>
-        <lastmod>2023-08-05T01:16:40.216Z</lastmod>
+        <lastmod>2023-08-05T01:49:03.552Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -542,6 +542,13 @@
     </url>
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
+        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/hyperopt/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -550,13 +557,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/optuna/</loc>
-        <lastmod>2023-05-04T00:27:40.539Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/hyperparameter-optimization/</loc>
         <lastmod>2023-05-04T00:27:40.539Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
