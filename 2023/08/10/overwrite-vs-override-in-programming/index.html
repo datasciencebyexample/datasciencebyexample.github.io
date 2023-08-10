@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How to access multiple github accounts from one computer, DataScienceTribe">
+    <meta name="keywords" content="Difference between overwrite and override in programming, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>How to access multiple github accounts from one computer | DataScienceTribe</title>
+    <title>Difference between overwrite and override in programming | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How to access multiple github accounts from one computer</h1>
+                    <h1 class="description center-align post-title">Difference between overwrite and override in programming</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/github/">
-                                <span class="chip bg-color">github</span>
-                            </a>
-                        
-                            <a href="/tags/ssh-keygen/">
-                                <span class="chip bg-color">ssh-keygen</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -381,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-07-03
+                    2023-08-10
                 </div>
                 
 
@@ -402,26 +398,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p>
-<p>So to access multiple git accounts in one computer, you will need to this.</p>
-<p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p>
-<ol>
-<li><p>Generate a new SSH key for each Git account using the command</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure>
-<p>Replace “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#111;&#x6d;">&#x79;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p>
-</li>
-<li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li>
-<li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li>
-<li><p>Inside this file, you will define each host with its respective SSH key. For example:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">	   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li>
-<li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li>
-<li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p>
-</li>
-</ol>
-<p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>
+                <p>In programming, “overwrite” and “override” have distinct meanings:</p>
+<h2 id="Overwrite"><a href="#Overwrite" class="headerlink" title="Overwrite:"></a>Overwrite:</h2><ul>
+<li>Literally means to replace existing data or code with new data or code.</li>
+<li>If you have a file or a block of code and you replace it with something else, you are overwriting it.</li>
+<li>Example: If you have a backup of a file and you save a new version of the file on top of the old one, you overwrite the old file.</li>
+</ul>
+<h2 id="Override"><a href="#Override" class="headerlink" title="Override:"></a>Override:</h2><ul>
+<li>Commonly used in the context of object-oriented programming (OOP) to indicate that a subclass provides a specific implementation of a method that is already provided by one of its superclasses. The subclass’s version of the method “overrides” the superclass’s version.</li>
+<li>It means to change or extend the default behavior of a method or function.</li>
+<li>Example: In Java, the @Override annotation is used to indicate that the subsequent method overrides a method from its superclass.</li>
+</ul>
+<p>If you updated some code, the term you use depends on the nature of the update:</p>
+<p>If you replaced the existing code with a completely new version, then you “overwrote” the old code.</p>
+<p>If you made modifications to an existing code base to change or extend some of its behavior, you might say you “modified” or “updated” the code. If your changes are specifically related to object-oriented method behavior in subclasses, then you “overrode” certain methods.</p>
+<p>In general conversation or documentation, if you’re talking about replacing code entirely, you’d typically use “overwrite.” If you’re talking about making modifications to existing methods or functions in an OOP context, “override” might be more apt. However, in many contexts, especially outside of OOP, “modify” or “update” would be most commonly used to describe general code changes.</p>
 
                 
             </div>
@@ -448,7 +439,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/">https://datasciencebyexample.github.io/2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/08/10/overwrite-vs-override-in-programming/">https://datasciencebyexample.github.io/2023/08/10/overwrite-vs-override-in-programming/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -486,12 +477,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/github/">
-                                    <span class="chip bg-color">github</span>
-                                </a>
-                            
-                                <a href="/tags/ssh-keygen/">
-                                    <span class="chip bg-color">ssh-keygen</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
                         </div>
@@ -537,17 +524,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/07/04/ai-is-thirsty-one-conversation-with-chatgpt-equals-one-bottle-of-water/">
+                <a href="/2023/08/10/overwrite-vs-override-in-programming/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="the Water Thirst of AI, The Environmental Cost of Large Language Models">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Difference between overwrite and override in programming">
                         
-                        <span class="card-title">the Water Thirst of AI, The Environmental Cost of Large Language Models</span>
+                        <span class="card-title">Difference between overwrite and override in programming</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -557,30 +545,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/chatgpt/">
-                        <span class="chip bg-color">chatgpt</span>
-                    </a>
-                    
-                    <a href="/tags/large-language-model/">
-                        <span class="chip bg-color">large language model</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -594,13 +579,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/02/beginner-guide-how-to-set-hyper-prameters-for-popular-machine-learning-algorithms/">
+                <a href="/2023/08/09/price-and-volume-in-stock-trading/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="A Beginner&#39;s Guide to Tuning Hyperparameters of Popular Machine Learning Algorithms">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Price and Volume, The Dual Pillars of Intraday Stock Trading">
                         
-                        <span class="card-title">A Beginner&#39;s Guide to Tuning Hyperparameters of Popular Machine Learning Algorithms</span>
+                        <span class="card-title">Price and Volume, The Dual Pillars of Intraday Stock Trading</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -611,14 +596,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/fintech/" class="post-category">
+                                    fintech
                                 </a>
                             
                             
@@ -628,8 +613,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hyperparameter/">
-                        <span class="chip bg-color">hyperparameter</span>
+                    <a href="/tags/stock/">
+                        <span class="chip bg-color">stock</span>
                     </a>
                     
                 </div>
