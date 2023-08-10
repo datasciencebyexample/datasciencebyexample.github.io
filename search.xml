@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Price and Volume, The Dual Pillars of Intraday Stock Trading</title>
+      <link href="2023/08/09/price-and-volume-in-stock-trading/"/>
+      <url>2023/08/09/price-and-volume-in-stock-trading/</url>
+      
+        <content type="html"><![CDATA[<p>In stock trading, especially intraday trading, considering both price and volume is crucial. Price tells you the direction and magnitude of the move, while volume provides information about the strength and validity of that move. Here are some strategies and points to consider when analyzing both:</p><h2 id="1-Volume-amp-Breakouts"><a href="#1-Volume-amp-Breakouts" class="headerlink" title="1. Volume &amp; Breakouts:"></a>1. Volume &amp; Breakouts:</h2><p>When a stock breaks out from a resistance or consolidation pattern on higher-than-average volume, it often signals strength in the move.<br>A breakout on low volume may not be as reliable because it indicates a lack of conviction from buyers.</p><h2 id="2-Volume-amp-Pullbacks"><a href="#2-Volume-amp-Pullbacks" class="headerlink" title="2. Volume &amp; Pullbacks:"></a>2. Volume &amp; Pullbacks:</h2><p>A healthy pullback in an uptrend typically has lower volume than the preceding upward move. This indicates that there’s no significant selling pressure.<br>If a pullback occurs on high volume, it may signal that the trend could be reversing.</p><h2 id="3-Volume-Climax"><a href="#3-Volume-Climax" class="headerlink" title="3. Volume Climax:"></a>3. Volume Climax:</h2><p>Sometimes, after an extended move, you might notice a day with exceptionally high volume that ends up being the top or bottom of a move. This is often a sign of a climax or exhaustion from buyers/sellers.<br>This can be a sign of a potential trend reversal.</p><h2 id="4-Price-Action-Confirmation"><a href="#4-Price-Action-Confirmation" class="headerlink" title="4. Price Action Confirmation:"></a>4. Price Action Confirmation:</h2><p>Look for price action patterns like doji, hammers, engulfing patterns, etc., to confirm your read on volume. For instance, a hammer candlestick on high volume at a key support level may indicate a strong buying interest.</p><h2 id="5-Volume-Averages"><a href="#5-Volume-Averages" class="headerlink" title="5. Volume Averages:"></a>5. Volume Averages:</h2><p>Using a volume moving average (like a 50-day or 20-day moving average) can help smooth out daily volume and make it easier to spot anomalies or significant increases in trading activity.</p><h2 id="6-On-Balance-Volume-OBV"><a href="#6-On-Balance-Volume-OBV" class="headerlink" title="6. On Balance Volume (OBV):"></a>6. On Balance Volume (OBV):</h2><p>OBV is a technical indicator that takes into account both price and volume. It accumulates a total volume figure to show the flow of volume in and out of a stock. If OBV is rising, it suggests that volume on up days is outpacing volume on down days.</p><h2 id="7-Volume-by-Price"><a href="#7-Volume-by-Price" class="headerlink" title="7. Volume by Price:"></a>7. Volume by Price:</h2><p>This is a histogram shown on the y-axis (price axis) that displays the amount of volume at different price levels. It can help traders identify levels where the stock has found a lot of support or resistance in the past.</p><h2 id="8-Look-for-Divergences"><a href="#8-Look-for-Divergences" class="headerlink" title="8. Look for Divergences:"></a>8. Look for Divergences:</h2><p>If you see the stock making new highs, but volume is declining, it may indicate a lack of conviction in the new highs, suggesting a potential reversal.<br>Conversely, if a stock is making new lows but on decreasing volume, it might indicate a potential end to the downward trend.</p><h2 id="9-Use-Volume-with-Other-Indicators"><a href="#9-Use-Volume-with-Other-Indicators" class="headerlink" title="9. Use Volume with Other Indicators:"></a>9. Use Volume with Other Indicators:</h2><p>Volume can be combined with other technical indicators, like MACD, RSI, or Stochastic Oscillators, to find confirmations or divergences that reinforce a trading decision.</p><h2 id="Final-Thoughts"><a href="#Final-Thoughts" class="headerlink" title="Final Thoughts:"></a>Final Thoughts:</h2><p>Volume and price are two of the most fundamental data points in stock trading. However, no single tool or combination guarantees success. It’s essential to backtest any strategy and practice in a demo or paper trading environment. Risk management and a good understanding of market psychology are also crucial components of successful intraday trading.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> fintech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> stock </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Jupyter AI, Integrating AI with Flexibility, but need to set up model api keys first</title>
       <link href="2023/08/08/set-up-llm-model-api-keys-before-using-jupyter-ai/"/>
       <url>2023/08/08/set-up-llm-model-api-keys-before-using-jupyter-ai/</url>
@@ -806,7 +831,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#117;&#x72;&#45;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;">&#121;&#111;&#117;&#x72;&#45;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#99;&#111;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#117;&#x72;&#45;&#101;&#109;&#x61;&#x69;&#108;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#111;&#x6d;">&#121;&#x6f;&#117;&#x72;&#45;&#101;&#109;&#x61;&#x69;&#108;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -2643,9 +2668,9 @@
             
             <tag> GPT </tag>
             
-            <tag> chunk text </tag>
-            
             <tag> openai </tag>
+            
+            <tag> chunk text </tag>
             
         </tags>
       
@@ -2672,9 +2697,9 @@
             
             <tag> chatGPT </tag>
             
-            <tag> openai </tag>
-            
             <tag> token limit </tag>
+            
+            <tag> openai </tag>
             
         </tags>
       
@@ -3634,9 +3659,9 @@
       
         <tags>
             
-            <tag> chatgpt </tag>
-            
             <tag> alphago </tag>
+            
+            <tag> chatgpt </tag>
             
         </tags>
       
@@ -4696,11 +4721,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       

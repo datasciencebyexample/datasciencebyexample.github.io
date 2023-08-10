@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/08/09/price-and-volume-in-stock-trading/</loc>
+        <lastmod>2023-08-10T03:02:48.654Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/08/08/set-up-llm-model-api-keys-before-using-jupyter-ai/</loc>
         <lastmod>2023-08-09T03:43:48.485Z</lastmod>
         <changefreq>weekly</changefreq>
