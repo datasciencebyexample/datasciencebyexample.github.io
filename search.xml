@@ -29,6 +29,31 @@
     
     
     <entry>
+      <title>Understanding the Error in Percentage Measurements</title>
+      <link href="2023/08/10/understand-error-in-percentage-measurement/"/>
+      <url>2023/08/10/understand-error-in-percentage-measurement/</url>
+      
+        <content type="html"><![CDATA[<p>When we deal with percentages derived from sample data, understanding the potential error or variability is essential. A common method to gauge this variability is by calculating the standard deviation of the sampling distribution of a proportion.</p><h2 id="Formula"><a href="#Formula" class="headerlink" title="Formula:"></a>Formula:</h2><p>Standard Deviation (SD) of proportion, p:</p><p><code>SD = Square Root [(p * (1 - p)) / n]</code></p><p>Where:</p><p><code>SD</code>: Standard deviation of the proportion’s sampling distribution.<br><code>p</code>: Sample proportion (expressed as a decimal, so 70% would be 0.7).<br><code>n</code>: Sample size.</p><h2 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h2><p>Consider a political survey in a town regarding support for a particular candidate. From a random sample of 400 residents, 280 express their support. The sample proportion, p, is 280/400 = 0.7 (70%).</p><p>Using our formula:<br><code>SD = Square Root [(0.7 * (1 - 0.7)) / 400]</code><br><code>SD</code> ≈ 0.023 or 2.3%</p><p>This suggests that in our sample, the standard deviation of the residents’ support proportion for the candidate is about 2.3%.</p><h2 id="Deep-Dive"><a href="#Deep-Dive" class="headerlink" title="Deep Dive:"></a>Deep Dive:</h2><p>Our formula assumes the proportion’s sampling distribution is roughly normal. This is generally true when both n * p and n * (1 - p) are greater than 5.</p><p>To compute a confidence interval for this proportion, the standard deviation isn’t enough. We also need the z-value, from the z-distribution, for our desired confidence level. The margin of error is:<br>Margin of Error = z * SD<br>For a 95% confidence level, we often use a z-value of 1.96.</p><p>If comparing proportions from two independent samples, the formula gets more involved. In such cases, the two-proportion z-test is used to see if there’s a significant difference.</p><p>In conclusion, this formula gives insight into the variability in proportion measurements. It’s crucial to apply it correctly, keeping in mind its assumptions and limitations.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> statistics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Price and Volume, The Dual Pillars of Intraday Stock Trading</title>
       <link href="2023/08/09/price-and-volume-in-stock-trading/"/>
       <url>2023/08/09/price-and-volume-in-stock-trading/</url>
@@ -856,7 +881,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#111;&#x6d;">&#x79;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#46;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#111;&#x75;&#x72;&#x2d;&#x65;&#x6d;&#97;&#x69;&#108;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#x6d;">&#x79;&#111;&#x75;&#x72;&#x2d;&#x65;&#x6d;&#97;&#x69;&#108;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -2116,31 +2141,6 @@
     
     
     <entry>
-      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
-      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
-      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
-      
-        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data science </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hyperparameter optimization </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</title>
       <link href="2023/05/03/overview-of-hyperprameter-optimization-2/"/>
       <url>2023/05/03/overview-of-hyperprameter-optimization-2/</url>
@@ -2162,6 +2162,31 @@
             <tag> grid search </tag>
             
             <tag> random search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
+      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
+      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
+      
+        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hyperparameter optimization </tag>
             
         </tags>
       
@@ -2693,9 +2718,9 @@
             
             <tag> GPT </tag>
             
-            <tag> openai </tag>
-            
             <tag> chunk text </tag>
+            
+            <tag> openai </tag>
             
         </tags>
       
@@ -2722,9 +2747,9 @@
             
             <tag> chatGPT </tag>
             
-            <tag> token limit </tag>
-            
             <tag> openai </tag>
+            
+            <tag> token limit </tag>
             
         </tags>
       
