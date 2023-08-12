@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Why Modifying a Dictionary During Iteration Causes an Error</title>
+      <link href="2023/08/12/why-modify-dictionary-in-iteration-cause-error-in-python/"/>
+      <url>2023/08/12/why-modify-dictionary-in-iteration-cause-error-in-python/</url>
+      
+        <content type="html"><![CDATA[<p>In Python, dictionaries are a type of mutable container. That means, in principle, you can change them – add new key-value pairs, update values, or even remove keys. However, a common error when working with dictionaries is trying to modify them (e.g., using pop()) while looping through them. Let’s delve into why this is problematic and how to address it.</p><h2 id="The-Issue"><a href="#The-Issue" class="headerlink" title="The Issue"></a>The Issue</h2><p>Consider a simple loop through a dictionary:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">data = &#123;&#x27;good&#x27;: 1, &#x27;bad&#x27;: 2, &#x27;ugly&#x27;: 3&#125;</span><br><span class="line">for key in data:</span><br><span class="line">    if key == &#x27;bad&#x27;:</span><br><span class="line">        data.pop(key)</span><br></pre></td></tr></table></figure><p>When you try to run this code, Python will raise a RuntimeError with the message: <code>dictionary changed size during iteration</code>.</p><p>The reason is intuitive. When you’re looping through a dictionary (or any iterable, for that matter), Python creates an iterator that expects the items to be in a specific order. If you change the dictionary’s size while iterating, the iterator loses track of which items have been seen and which haven’t, which can cause unpredictable results.</p><h2 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h2><h3 id="1-Create-a-Copy-for-Iteration"><a href="#1-Create-a-Copy-for-Iteration" class="headerlink" title="1. Create a Copy for Iteration"></a>1. Create a Copy for Iteration</h3><p>The simplest solution is to loop over a copy of the dictionary’s keys. This way, the original dictionary can be modified while iterating over the copy:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for key in list(data.keys()):</span><br><span class="line">    if key == &#x27;bad&#x27;:</span><br><span class="line">        data.pop(key)</span><br></pre></td></tr></table></figure><h3 id="2-Dictionary-Comprehension"><a href="#2-Dictionary-Comprehension" class="headerlink" title="2. Dictionary Comprehension"></a>2. Dictionary Comprehension</h3><p>Python’s dictionary comprehensions provide a concise and efficient way to filter or transform dictionary data:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">data = &#123;&#x27;good&#x27;: 1, &#x27;bad&#x27;: 2, &#x27;ugly&#x27;: 3&#125;</span><br><span class="line">new_dict = &#123;k: v for k, v in data.items() if k != &#x27;bad&#x27;&#125;</span><br></pre></td></tr></table></figure><p>In the above code, new_dict will have the value {‘good’: 1, ‘ugly’: 3} after execution.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>While Python allows mutable operations on dictionaries, caution is needed when combining iteration with mutations. Always remember that modifying a collection while iterating through it can lead to unexpected behavior or errors. Using a list copy or dictionary comprehensions are two effective methods to avoid these pitfalls.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Using `*args` and `**kwargs` to Design Flexible Constructors in Python class Inheritance</title>
       <link href="2023/08/10/flexible-way-to-extend-and-inherit-python-class/"/>
       <url>2023/08/10/flexible-way-to-extend-and-inherit-python-class/</url>
@@ -908,7 +933,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#x6f;&#x75;&#x72;&#x2d;&#x65;&#109;&#x61;&#105;&#108;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x79;&#x6f;&#x75;&#x72;&#x2d;&#x65;&#109;&#x61;&#105;&#108;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#x75;&#114;&#45;&#101;&#109;&#97;&#105;&#108;&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#121;&#x6f;&#x75;&#114;&#45;&#101;&#109;&#97;&#105;&#108;&#x40;&#101;&#x78;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#x63;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -3736,9 +3761,9 @@
       
         <tags>
             
-            <tag> chatgpt </tag>
-            
             <tag> alphago </tag>
+            
+            <tag> chatgpt </tag>
             
         </tags>
       
@@ -4798,11 +4823,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
