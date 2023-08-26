@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How does two tower system work in the recommender system, DataScienceTribe">
+    <meta name="keywords" content="Handling Long-Running Tasks in FastAPI, Best Practices and Strategies, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>How does two tower system work in the recommender system | DataScienceTribe</title>
+    <title>Handling Long-Running Tasks in FastAPI, Best Practices and Strategies | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How does two tower system work in the recommender system</h1>
+                    <h1 class="description center-align post-title">Handling Long-Running Tasks in FastAPI, Best Practices and Strategies</h1>
                 </div>
             </div>
         </div>
@@ -352,12 +352,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/two-tower-system/">
-                                <span class="chip bg-color">two tower system</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/recommender-system/">
-                                <span class="chip bg-color">recommender system</span>
+                            <a href="/tags/fastapi/">
+                                <span class="chip bg-color">fastapi</span>
                             </a>
                         
                     </div>
@@ -368,8 +368,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-02-26
+                    2023-08-26
                 </div>
                 
 
@@ -402,21 +402,43 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>The two-tower recommendation system is a type of collaborative filtering algorithm used in recommendation systems. It is called a “two-tower” system because it consists of two neural networks or “towers” that work together to generate personalized recommendations for users.</p>
-<h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work"></a>How does it work</h2><p>The first tower is called the “user tower.” It takes as input a user’s historical interactions with items, such as the products they have purchased or the movies they have watched, and converts this information into a fixed-length embedding vector that represents the user’s preferences. This embedding vector is then passed to the second tower.</p>
-<p>The second tower is called the “item tower.” It takes as input the metadata of all items in the catalog, such as the title, description, genre, and other features. The item tower also converts this information into a fixed-length embedding vector that represents each item.</p>
-<p>The two embedding vectors from the user and item towers are then compared using a similarity function, such as cosine similarity. The similarity score indicates how similar the user’s preferences are to each item in the catalog. The items with the highest similarity scores are recommended to the user.</p>
-<p>The two-tower recommendation system is a popular approach to personalized recommendation because it can handle large-scale and sparse data sets, and can capture complex user-item interactions. It has been used in a variety of applications, such as e-commerce, streaming services, and social media platforms.</p>
-<h2 id="How-training-is-done-using-deep-learning"><a href="#How-training-is-done-using-deep-learning" class="headerlink" title="How training is done using deep learning"></a>How training is done using deep learning</h2><p> In the two-tower recommendation system, the neural networks that generate the user and item embeddings need to be optimized in such a way that the dot product of user embeddings and item embeddings are higher for user purchased items and lower for not purchased items. This is typically achieved through a process called training, where the model is presented with a set of user-item interactions and learns to predict the likelihood of each user interacting with each item in the future.</p>
-<p>During training, the model is optimized to minimize a loss function, which measures the difference between the predicted and actual user-item interactions. The most commonly used loss function in recommendation systems is the binary cross-entropy loss, which penalizes the model for making incorrect predictions.</p>
-<p>To optimize the neural networks, backpropagation is used to compute the gradients of the loss with respect to the model parameters. The gradients are then used to update the model parameters using an optimization algorithm such as stochastic gradient descent (SGD) or Adam. The process of updating the model parameters is repeated for multiple epochs until the model converges to a set of optimal parameters.</p>
-<p>By optimizing the neural networks in this way, the model learns to generate user and item embeddings that capture the underlying patterns and relationships in the data, and can make accurate predictions of user-item interactions. This allows the two-tower recommendation system to provide personalized recommendations that are tailored to the preferences of each individual user.</p>
-<h2 id="Efficient-search-during-inference-time"><a href="#Efficient-search-during-inference-time" class="headerlink" title="Efficient search during inference time"></a>Efficient search during inference time</h2><p>When calculating the dot product of a user embedding with all the item embeddings in the item tower, there are several techniques that can be used to make the computation more efficient and faster. Here are a few approaches:</p>
-<p>Use matrix multiplication: Rather than calculating the dot product between the user embedding and each item embedding one-by-one, it is more efficient to perform a matrix multiplication between the user embedding and the entire item embedding matrix. This can be done using the numpy or PyTorch library, which are optimized for matrix computations.</p>
-<p>Use approximate nearest neighbor (ANN) search: When the number of items is very large, it can be computationally expensive to calculate the dot product between the user embedding and all the item embeddings. One approach to speed up the search is to use an approximate nearest neighbor search algorithm, such as locality-sensitive hashing (LSH) or k-d trees. These algorithms allow us to quickly identify a smaller set of candidate items that are most similar to the user’s preferences.</p>
-<p>Use a cache: Since the user embedding is fixed during inference, we can cache the dot products between the user embedding and all item embeddings. This can be done ahead of time during training or on-the-fly during inference. By caching the dot products, we can avoid having to compute them every time a user requests recommendations, which can significantly speed up the recommendation process.</p>
-<p>Use parallelization: If the hardware allows for it, we can parallelize the computation of the dot products between the user embedding and all item embeddings. This can be done using multi-threading or GPUs to perform the computation in parallel, which can further speed up the recommendation process.</p>
-<p>By using these techniques, we can make the computation of the dot product between the user embedding and all item embeddings more efficient and faster, which can help to improve the performance of the recommendation system.</p>
+                <p>Building fast and efficient APIs is an essential aspect of modern software development. However, it’s not uncommon to encounter API endpoints that take a long time to execute due to reasons such as data processing, calls to third-party services, or complex computations. When such scenarios arise, it’s crucial to ensure that these long-running tasks don’t degrade user experience or system performance. This blog post aims to guide you through the best practices and strategies for managing long-running tasks in FastAPI.</p>
+<h2 id="The-Challenges-of-Long-Running-API-Endpoints"><a href="#The-Challenges-of-Long-Running-API-Endpoints" class="headerlink" title="The Challenges of Long-Running API Endpoints"></a>The Challenges of Long-Running API Endpoints</h2><ol>
+<li>User Experience: A prolonged wait time for a response can result in a poor user experience.</li>
+<li>Resource Utilization: Long-running tasks can consume significant system resources, potentially affecting the performance of other tasks.</li>
+<li>Error Handling: Tasks that take a long time to complete are more susceptible to errors, requiring robust error-handling mechanisms.</li>
+</ol>
+<h2 id="Best-Practices-for-Managing-Long-Running-Tasks"><a href="#Best-Practices-for-Managing-Long-Running-Tasks" class="headerlink" title="Best Practices for Managing Long-Running Tasks"></a>Best Practices for Managing Long-Running Tasks</h2><h3 id="1-Asynchronous-Endpoints"><a href="#1-Asynchronous-Endpoints" class="headerlink" title="1. Asynchronous Endpoints"></a>1. Asynchronous Endpoints</h3><p>You can use Python’s async def syntax to define asynchronous endpoints in FastAPI, which can help in I/O-bound operations.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">@app.get(&quot;/&quot;)</span><br><span class="line">async def read_root():</span><br><span class="line">    # Perform a long-running task</span><br><span class="line">    return &#123;&quot;message&quot;: &quot;done&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Background-Tasks"><a href="#2-Background-Tasks" class="headerlink" title="2. Background Tasks"></a>2. Background Tasks</h3><p>FastAPI allows you to run background tasks that can continue processing after the response has been sent.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import BackgroundTasks, FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">def long_running_task():</span><br><span class="line">    # Perform a long-running task</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">@app.get(&quot;/&quot;)</span><br><span class="line">async def read_root(background_tasks: BackgroundTasks):</span><br><span class="line">    background_tasks.add_task(long_running_task)</span><br><span class="line">    return &#123;&quot;message&quot;: &quot;Task is running in the background&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-Using-Celery-for-Distributed-Task-Queues"><a href="#3-Using-Celery-for-Distributed-Task-Queues" class="headerlink" title="3. Using Celery for Distributed Task Queues"></a>3. Using Celery for Distributed Task Queues</h3><p>For particularly long-running tasks, you can offload them to a task queue like Celery.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import FastAPI</span><br><span class="line">from celery import Celery</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line">celery_app = Celery(&#x27;tasks&#x27;, broker=&#x27;pyamqp://guest@localhost//&#x27;)</span><br><span class="line"></span><br><span class="line">@celery_app.task</span><br><span class="line">def long_running_task():</span><br><span class="line">    # Perform a long-running task</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">@app.get(&quot;/&quot;)</span><br><span class="line">def read_root():</span><br><span class="line">    long_running_task.apply_async()</span><br><span class="line">    return &#123;&quot;message&quot;: &quot;Task is running in the background&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Strategies-to-Notify-Users"><a href="#Strategies-to-Notify-Users" class="headerlink" title="Strategies to Notify Users"></a>Strategies to Notify Users</h2><p>Once a task is offloaded or made asynchronous, it’s essential to inform the user of its completion. Below are some strategies to achieve this:</p>
+<h3 id="1-Polling"><a href="#1-Polling" class="headerlink" title="1. Polling"></a>1. Polling</h3><p>In this approach, the client initially receives a task ID and then repeatedly polls an endpoint to check the task’s status.</p>
+<p>Server-side:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import FastAPI</span><br><span class="line">from some_task_queue import some_task_queue</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">@app.post(&quot;/start_task/&quot;)</span><br><span class="line">def start_task():</span><br><span class="line">    task_id = some_task_queue.enqueue(&quot;long_running_task&quot;)</span><br><span class="line">    return &#123;&quot;task_id&quot;: task_id&#125;</span><br><span class="line"></span><br><span class="line">@app.get(&quot;/get_result/&#123;task_id&#125;&quot;)</span><br><span class="line">def get_result(task_id: str):</span><br><span class="line">    result = some_task_queue.get_result(task_id)</span><br><span class="line">    return &#123;&quot;result&quot;: result&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Client-side:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">async function startAndPollTask() &#123;</span><br><span class="line">  const response = await fetch(&#x27;/start_task/&#x27;);</span><br><span class="line">  const task = await response.json();</span><br><span class="line">  </span><br><span class="line">  let result;</span><br><span class="line">  do &#123;</span><br><span class="line">    const resultResponse = await fetch(`/get_result/$&#123;task.task_id&#125;`);</span><br><span class="line">    result = await resultResponse.json();</span><br><span class="line">    if (result.is_done) &#123;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">    await new Promise(resolve =&gt; setTimeout(resolve, 2000));</span><br><span class="line">  &#125; while(true);</span><br><span class="line">  </span><br><span class="line">  console.log(&quot;Final result:&quot;, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-Webhooks"><a href="#2-Webhooks" class="headerlink" title="2. Webhooks"></a>2. Webhooks</h3><p>Here, the client provides a callback URL that the server can POST the result to once the task is complete.</p>
+<p>Server-side:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import FastAPI, BackgroundTasks</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">def long_running_task(callback_url):</span><br><span class="line">    # Your long-running task here</span><br><span class="line">    result = &quot;some_result&quot;</span><br><span class="line">    requests.post(callback_url, json=&#123;&quot;result&quot;: result&#125;)</span><br><span class="line"></span><br><span class="line">@app.post(&quot;/start_task/&quot;)</span><br><span class="line">async def start_task(background_tasks: BackgroundTasks, callback_url: str):</span><br><span class="line">    background_tasks.add_task(long_running_task, callback_url)</span><br><span class="line">    return &#123;&quot;status&quot;: &quot;Task started&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-WebSockets"><a href="#3-WebSockets" class="headerlink" title="3. WebSockets"></a>3. WebSockets</h3><p>You can establish a WebSocket connection between the client and server to send the result when the task is complete.</p>
+<p>Server-side:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import FastAPI, WebSocket</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">@app.websocket(&quot;/ws/&quot;)</span><br><span class="line">async def websocket_endpoint(websocket: WebSocket):</span><br><span class="line">    await websocket.accept()</span><br><span class="line">    # Long-running task here</span><br><span class="line">    result = &quot;some_result&quot;</span><br><span class="line">    await websocket.send_json(&#123;&quot;result&quot;: result&#125;)</span><br></pre></td></tr></table></figure>
+<p>Client-side:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const socket = new WebSocket(&#x27;ws://localhost:8000/ws/&#x27;);</span><br><span class="line"></span><br><span class="line">socket.addEventListener(&#x27;message&#x27;, function(event) &#123;</span><br><span class="line">    const result = JSON.parse(event.data);</span><br><span class="line">    console.log(&quot;Received result:&quot;, result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="4-Server-Sent-Events-SSE"><a href="#4-Server-Sent-Events-SSE" class="headerlink" title="4. Server-Sent Events (SSE)"></a>4. Server-Sent Events (SSE)</h3><p>SSE allows the server to send updates and final results over a single HTTP connection.</p>
+<p>Server-side:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from fastapi import FastAPI</span><br><span class="line">from fastapi.responses import StreamingResponse</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">@app.get(&quot;/task_status/&quot;)</span><br><span class="line">def get_status():</span><br><span class="line">    def event_stream():</span><br><span class="line">        # Long-running task</span><br><span class="line">        result = &quot;some_result&quot;</span><br><span class="line">        yield f&quot;data: &#123;result&#125;\n\n&quot;</span><br><span class="line">    return StreamingResponse(event_stream(), media_type=&quot;text/event-stream&quot;)</span><br></pre></td></tr></table></figure>
+<p>Client-side:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const eventSource = new EventSource(&#x27;/task_status/&#x27;);</span><br><span class="line"></span><br><span class="line">eventSource.onmessage = function(event) &#123;</span><br><span class="line">    const result = event.data;</span><br><span class="line">    console.log(&quot;Received result:&quot;, result);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Long-running tasks can pose challenges in API design, but FastAPI provides a variety of features and techniques to handle them efficiently. Whether it’s asynchronous programming, background tasks, or advanced strategies like Celery, Webhooks, and WebSockets, you can choose the right approach based on your API’s requirements. By adhering to these best practices and strategies, you can ensure that long-running tasks are managed effectively without compromising user experience or system performance.</p>
 
                 
             </div>
@@ -443,7 +465,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/02/26/two-tower-system-in-recommender-system/">https://datasciencebyexample.github.io/2023/02/26/two-tower-system-in-recommender-system/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/08/26/handling-long-running-tasks-in-fastapi-python/">https://datasciencebyexample.github.io/2023/08/26/handling-long-running-tasks-in-fastapi-python/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -481,12 +503,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/two-tower-system/">
-                                    <span class="chip bg-color">two tower system</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/recommender-system/">
-                                    <span class="chip bg-color">recommender system</span>
+                                <a href="/tags/fastapi/">
+                                    <span class="chip bg-color">fastapi</span>
                                 </a>
                             
                         </div>
@@ -532,17 +554,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/03/01/one-line-of-python-code-to-remove-duplicates-in-list-and-maintain-order/">
+                <a href="/2023/08/26/handling-long-running-tasks-in-fastapi-python/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="One-line Code to Remove Duplicates in a List While Maintaining the Original Order of Elements">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Handling Long-Running Tasks in FastAPI, Best Practices and Strategies">
                         
-                        <span class="card-title">One-line Code to Remove Duplicates in a List While Maintaining the Original Order of Elements</span>
+                        <span class="card-title">Handling Long-Running Tasks in FastAPI, Best Practices and Strategies</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -552,26 +575,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/python/">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/fastapi/">
+                        <span class="chip bg-color">fastapi</span>
                     </a>
                     
                 </div>
@@ -585,13 +613,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/15/alphago-and-chatgpt/">
+                <a href="/2023/08/23/python-development-using-visual-studio-code/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="AlphaGo and ChatGPT, The Similarities Between Two AI Titans">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Why and How You Should Use VS Code as Your Python IDE">
                         
-                        <span class="card-title">AlphaGo and ChatGPT, The Similarities Between Two AI Titans</span>
+                        <span class="card-title">Why and How You Should Use VS Code as Your Python IDE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -602,14 +630,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -619,12 +647,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/alphago/">
-                        <span class="chip bg-color">alphago</span>
-                    </a>
-                    
-                    <a href="/tags/chatgpt/">
-                        <span class="chip bg-color">chatgpt</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>

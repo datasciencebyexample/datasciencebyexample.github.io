@@ -3,8 +3,15 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/fastapi/</loc>
+        <lastmod>2023-08-26T04:06:57.907Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/python/</loc>
-        <lastmod>2023-08-23T23:20:21.138Z</lastmod>
+        <lastmod>2023-08-26T04:06:57.907Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -495,13 +502,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/frontend/</loc>
         <lastmod>2023-05-23T19:59:55.626Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/fastapi/</loc>
-        <lastmod>2023-05-22T21:15:41.811Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -1088,14 +1088,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
