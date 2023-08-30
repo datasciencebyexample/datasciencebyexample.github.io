@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/08/29/guide-to-activation-function-in-deep-learning/</loc>
+        <lastmod>2023-08-30T02:16:41.671Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/08/28/how-and-why-to-use-asyncio-in-python/</loc>
         <lastmod>2023-08-28T19:58:25.996Z</lastmod>
         <changefreq>weekly</changefreq>
