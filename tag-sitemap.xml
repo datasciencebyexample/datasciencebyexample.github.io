@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/function-calling/</loc>
+        <lastmod>2023-09-04T20:02:28.885Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
+        <lastmod>2023-09-04T20:02:28.885Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/chatGPT/</loc>
+        <lastmod>2023-09-04T20:02:28.885Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/math/</loc>
         <lastmod>2023-09-04T01:20:52.680Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -234,13 +255,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
-        <lastmod>2023-07-19T02:27:58.809Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/github-action/</loc>
         <lastmod>2023-07-16T03:49:06.359Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -256,13 +270,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/code-interpreter/</loc>
-        <lastmod>2023-07-11T17:44:25.050Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/chatGPT/</loc>
         <lastmod>2023-07-11T17:44:25.050Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
