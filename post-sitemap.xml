@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/09/05/CORS-error-when-accessing-S3-bucket/</loc>
+        <lastmod>2023-09-06T02:16:05.208Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/09/04/fully-understand-function-calling-in-openai-gpt/</loc>
         <lastmod>2023-09-04T20:02:28.885Z</lastmod>
         <changefreq>weekly</changefreq>
