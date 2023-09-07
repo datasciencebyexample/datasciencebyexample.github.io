@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/github/</loc>
+        <lastmod>2023-09-07T00:32:13.028Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/git/</loc>
+        <lastmod>2023-09-07T00:32:13.028Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/jwt-token/</loc>
         <lastmod>2023-09-06T16:42:57.337Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -103,13 +117,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/fastapi/</loc>
         <lastmod>2023-08-26T04:06:57.907Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/github/</loc>
-        <lastmod>2023-08-18T03:05:43.945Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -278,13 +285,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/github-action/</loc>
         <lastmod>2023-07-16T03:49:06.359Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/git/</loc>
-        <lastmod>2023-07-13T17:23:31.489Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
