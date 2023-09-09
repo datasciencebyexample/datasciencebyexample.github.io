@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/databricks/</loc>
+        <lastmod>2023-09-09T03:03:16.528Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/github/</loc>
         <lastmod>2023-09-07T00:32:13.028Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -467,13 +474,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/classification/</loc>
         <lastmod>2023-06-10T03:33:20.351Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/databricks/</loc>
-        <lastmod>2023-06-08T20:12:49.244Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
