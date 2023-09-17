@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
+        <lastmod>2023-09-17T22:00:28.007Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/feature-scaling/</loc>
         <lastmod>2023-09-17T21:41:49.621Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -529,13 +536,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/melt/</loc>
-        <lastmod>2023-06-03T21:40:27.494Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
         <lastmod>2023-06-03T21:40:27.494Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

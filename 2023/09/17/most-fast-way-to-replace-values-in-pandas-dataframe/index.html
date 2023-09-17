@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hyperparameter Optimization 3 - Automated Hyperparameter Tuning with Python Libraries, Optuna, Hyperopt, and Scikit-Optimize, DataScienceTribe">
+    <meta name="keywords" content="Efficiently Replacing DataFrame Values with `df.loc` in Pandas, DataScienceTribe">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
      crossorigin="anonymous"></script>
 
 	
-    <title>Hyperparameter Optimization 3 - Automated Hyperparameter Tuning with Python Libraries, Optuna, Hyperopt, and Scikit-Optimize | DataScienceTribe</title>
+    <title>Efficiently Replacing DataFrame Values with `df.loc` in Pandas | DataScienceTribe</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -231,12 +231,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hyperparameter Optimization 3 - Automated Hyperparameter Tuning with Python Libraries, Optuna, Hyperopt, and Scikit-Optimize</h1>
+                    <h1 class="description center-align post-title">Efficiently Replacing DataFrame Values with `df.loc` in Pandas</h1>
                 </div>
             </div>
         </div>
@@ -352,16 +352,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hyperparameter-optimization/">
-                                <span class="chip bg-color">hyperparameter optimization</span>
-                            </a>
-                        
-                            <a href="/tags/optuna/">
-                                <span class="chip bg-color">optuna</span>
-                            </a>
-                        
-                            <a href="/tags/hyperopt/">
-                                <span class="chip bg-color">hyperopt</span>
+                            <a href="/tags/pandas/">
+                                <span class="chip bg-color">pandas</span>
                             </a>
                         
                     </div>
@@ -372,8 +364,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/data-science/" class="post-category">
-                                data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
                             </a>
                         
                     </div>
@@ -385,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-05-03
+                    2023-09-17
                 </div>
                 
 
@@ -406,57 +398,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>In the previous blog posts, we introduced the <a href="/2023/05/03/overview-of-hyperprameter-optimization-1/">concept of hyperparameter optimization</a> and <a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">explored basic techniques</a> like Grid Search and Random Search. In this post, we will dive into more advanced and automated techniques for hyperparameter tuning using popular Python libraries: Optuna, Hyperopt, and Scikit-Optimize. These libraries implement advanced optimization algorithms that can efficiently search for the best hyperparameters in large search spaces.</p>
-<h2 id="Optuna"><a href="#Optuna" class="headerlink" title="Optuna"></a>Optuna</h2><p>Optuna is a powerful Python library for hyperparameter optimization that uses a combination of Tree-structured Parzen Estimator (TPE) and pruning strategies to efficiently search for the best hyperparameters. Optuna is designed to be easy to use and highly customizable, making it suitable for a wide range of optimization problems.</p>
-<h2 id="Hyperopt"><a href="#Hyperopt" class="headerlink" title="Hyperopt"></a>Hyperopt</h2><p>Hyperopt is another popular Python library for hyperparameter optimization. It uses the TPE algorithm to efficiently search for the best hyperparameters. Hyperopt is designed to be highly flexible and can be used for a wide range of optimization problems, including deep learning and reinforcement learning.</p>
-<h2 id="Scikit-Optimize"><a href="#Scikit-Optimize" class="headerlink" title="Scikit-Optimize"></a>Scikit-Optimize</h2><p>Scikit-Optimize is a library for sequential model-based optimization (SMBO) in Python. It provides several optimization algorithms, including Bayesian optimization, which is a powerful technique for finding the global optimum of a function with minimal evaluations. Scikit-Optimize is designed to be easy to use and integrates well with Scikit-learn, making it a popular choice for hyperparameter tuning in machine learning.</p>
-<h2 id="Example-Hyperparameter-Tuning-with-Optuna-Hyperopt-and-Scikit-Optimize"><a href="#Example-Hyperparameter-Tuning-with-Optuna-Hyperopt-and-Scikit-Optimize" class="headerlink" title="Example: Hyperparameter Tuning with Optuna, Hyperopt, and Scikit-Optimize"></a>Example: Hyperparameter Tuning with Optuna, Hyperopt, and Scikit-Optimize</h2><p>In this example, we will demonstrate hyperparameter tuning using Optuna, Hyperopt, and Scikit-Optimize on the famous Iris dataset with the Support Vector Machine (SVM) algorithm.</p>
-<ol>
-<li>Import necessary libraries and load the dataset:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"><span class="keyword">import</span> optuna</span><br><span class="line"><span class="keyword">from</span> hyperopt <span class="keyword">import</span> fmin, tpe, hp, STATUS_OK, Trials</span><br><span class="line"><span class="keyword">from</span> skopt <span class="keyword">import</span> BayesSearchCV</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
+                <p>Pandas is an indispensable library in the Python ecosystem, enabling users to manipulate large datasets with ease. One common operation in data processing is conditionally replacing values in columns based on some criteria. In this blog post, we’ll explore the power and efficiency of using <code>df.loc</code> for this purpose.</p>
+<h2 id="What-is-df-loc"><a href="#What-is-df-loc" class="headerlink" title="What is df.loc?"></a>What is <code>df.loc</code>?</h2><p>The <code>.loc</code> method in pandas provides label-based indexing for both rows and columns. It’s optimized for performance, making it a go-to choice when you need to select, replace, or modify data based on conditions.</p>
+<h2 id="Simple-Replacements"><a href="#Simple-Replacements" class="headerlink" title="Simple Replacements"></a>Simple Replacements</h2><p>Let’s say we have a DataFrame <code>df</code> with columns <code>A</code>, <code>B</code>, and <code>C</code>. If we wish to modify values in column <code>A</code> based on the values in column <code>B</code>, it’s straightforward:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Sample data</span></span><br><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="number">6</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">7</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Using .loc to replace values based on a condition</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;B&#x27;</span>] &gt; <span class="number">5</span>, <span class="string">&#x27;A&#x27;</span>] = -<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>Split the dataset into training and testing sets:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+<p>the output should be</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   A  B   C</span><br><span class="line">0 -1  6  10</span><br><span class="line">1  2  3  11</span><br><span class="line">2 -1  8  12</span><br><span class="line">3  4  4  13</span><br><span class="line">4 -1  7  14</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>Define the objective function for Optuna:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">optuna_objective</span>(<span class="params">trial</span>):</span></span><br><span class="line">    C = trial.suggest_loguniform(<span class="string">&#x27;C&#x27;</span>, <span class="number">1e-2</span>, <span class="number">1e2</span>)</span><br><span class="line">    kernel = trial.suggest_categorical(<span class="string">&#x27;kernel&#x27;</span>, [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>])</span><br><span class="line">    gamma = trial.suggest_loguniform(<span class="string">&#x27;gamma&#x27;</span>, <span class="number">1e-4</span>, <span class="number">1e1</span>)</span><br><span class="line"></span><br><span class="line">    svm = SVC(C=C, kernel=kernel, gamma=gamma)</span><br><span class="line">    score = np.mean(cross_val_score(svm, X_train, y_train, cv=<span class="number">5</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span> - score</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>Perform hyperparameter optimization using Optuna:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">optuna_study = optuna.create_study()</span><br><span class="line">optuna_study.optimize(optuna_objective, n_trials=<span class="number">50</span>)</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>Define the search space for Hyperopt:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hyperopt_space = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: hp.loguniform(<span class="string">&#x27;C&#x27;</span>, np.log(<span class="number">1e-2</span>), np.log(<span class="number">1e2</span>)),</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: hp.choice(<span class="string">&#x27;kernel&#x27;</span>, [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>]),</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: hp.loguniform(<span class="string">&#x27;gamma&#x27;</span>, np.log(<span class="number">1e-4</span>), np.log(<span class="number">1e1</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>Define the objective function for Hyperopt:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hyperopt_objective</span>(<span class="params">params</span>):</span></span><br><span class="line">    svm = SVC(**params)</span><br><span class="line">    score = np.mean(cross_val_score(svm, X_train, y_train, cv=<span class="number">5</span>))</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&#x27;loss&#x27;</span>: <span class="number">1.0</span> - score, <span class="string">&#x27;status&#x27;</span>: STATUS_OK&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>Perform hyperparameter optimization using Hyperopt:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">trials = Trials()</span><br><span class="line">best_hyperopt = fmin(hyperopt_objective, hyperopt_space, algo=tpe.suggest, max_evals=<span class="number">50</span>, trials=trials)</span><br></pre></td></tr></table></figure>
-
-<ol start="8">
-<li>Perform hyperparameter optimization using Scikit-Optimize:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: (<span class="number">1e-2</span>, <span class="number">1e2</span>, <span class="string">&#x27;log-uniform&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: (<span class="number">1e-4</span>, <span class="number">1e1</span>, <span class="string">&#x27;log-uniform&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bayes_search = BayesSearchCV(SVC(), param_grid, n_iter=<span class="number">50</span>, cv=<span class="number">5</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line">bayes_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
-
-<ol start="9">
-<li>Compare the results of Optuna, Hyperopt, and Scikit-Optimize:</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_optuna_model = SVC(**optuna_study.best_params)</span><br><span class="line">best_hyperopt_model = SVC(**best_hyperopt)</span><br><span class="line">best_skopt_model = bayes_search.best_estimator_</span><br><span class="line"></span><br><span class="line">best_optuna_model.fit(X_train, y_train)</span><br><span class="line">best_hyperopt_model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">y_pred_optuna = best_optuna_model.predict(X_test)</span><br><span class="line">y_pred_hyperopt = best_hyperopt_model.predict(X_test)</span><br><span class="line">y_pred_skopt = best_skopt_model.predict(X_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Optuna Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_optuna))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hyperopt Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_hyperopt))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Scikit-Optimize Results:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred_skopt))</span><br></pre></td></tr></table></figure>
-
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we explored advanced and automated techniques for hyperparameter tuning using popular Python libraries: Optuna, Hyperopt, and Scikit-Optimize. We demonstrated their usage with a practical example on the Iris dataset and the SVM algorithm. These libraries provide powerful optimization algorithms that can efficiently search for the best hyperparameters in large search spaces, making them a valuable tool for machine learning practitioners. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as genetic algorithms and population-based training.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-4/">Leveraging Genetic Algorithms for Hyperparameter Tuning in Python</a></p>
+<h2 id="Advanced-Replacements-with-Multiple-Conditions"><a href="#Advanced-Replacements-with-Multiple-Conditions" class="headerlink" title="Advanced Replacements with Multiple Conditions"></a>Advanced Replacements with Multiple Conditions</h2><p>With <code>df.loc</code>, it’s easy to string together multiple conditions. The key operators are <code>&amp;</code> (and), <code>|</code> (or), and <code>~ </code>(not). For instance, if we wish to modify values in column A based on conditions from both columns B and C:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">df.loc[(df[&#x27;B&#x27;] &gt; 5) &amp; (df[&#x27;C&#x27;] &lt; 13), &#x27;A&#x27;] = -1</span><br></pre></td></tr></table></figure>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>While <code>df.loc</code> is incredibly powerful and efficient for many tasks, it’s essential to remember that the best approach always depends on the operation and dataset size. Sometimes, numpy vectorized functions might offer faster performance, or methods like <code>df.where</code> or <code>df.mask</code> could be more intuitive.</p>
+<p>However, when it comes to conditional replacements in DataFrames, <code>df.loc</code> stands out as both versatile and efficient</p>
 
                 
             </div>
@@ -483,7 +436,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://datasciencebyexample.github.io/2023/05/03/overview-of-hyperprameter-optimization-3/">https://datasciencebyexample.github.io/2023/05/03/overview-of-hyperprameter-optimization-3/</a>
+                    <a href="https://datasciencebyexample.github.io/2023/09/17/most-fast-way-to-replace-values-in-pandas-dataframe/">https://datasciencebyexample.github.io/2023/09/17/most-fast-way-to-replace-values-in-pandas-dataframe/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -521,16 +474,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hyperparameter-optimization/">
-                                    <span class="chip bg-color">hyperparameter optimization</span>
-                                </a>
-                            
-                                <a href="/tags/optuna/">
-                                    <span class="chip bg-color">optuna</span>
-                                </a>
-                            
-                                <a href="/tags/hyperopt/">
-                                    <span class="chip bg-color">hyperopt</span>
+                                <a href="/tags/pandas/">
+                                    <span class="chip bg-color">pandas</span>
                                 </a>
                             
                         </div>
@@ -580,13 +525,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/05/03/overview-of-hyperprameter-optimization-4/">
+                <a href="/2023/09/17/how-to-choose-feature-scaling-in-machine-learning-and-deep-learning/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Hyperparameter Optimization 4 - Leveraging Genetic Algorithms for Hyperparameter Tuning in Python">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Feature Scaling in Machine Learning and Deep Learning">
                         
-                        <span class="card-title">Hyperparameter Optimization 4 - Leveraging Genetic Algorithms for Hyperparameter Tuning in Python</span>
+                        <span class="card-title">Feature Scaling in Machine Learning and Deep Learning</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -597,7 +542,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-17
                         </span>
                         <span class="publish-author">
                             
@@ -614,12 +559,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hyperparameter-optimization/">
-                        <span class="chip bg-color">hyperparameter optimization</span>
-                    </a>
-                    
-                    <a href="/tags/genetic-algorithm/">
-                        <span class="chip bg-color">genetic algorithm</span>
+                    <a href="/tags/feature-scaling/">
+                        <span class="chip bg-color">feature scaling</span>
                     </a>
                     
                 </div>
@@ -633,13 +574,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/05/03/overview-of-hyperprameter-optimization-5/">
+                <a href="/2023/09/14/how-to-design-prompt-for-large-language-model/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Hyperparameter Optimization 5 - Advanced Techniques, Hyperband and Population-Based Training for Hyperparameter Optimization">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Decoding the Art of Prompt Design for Large Language Models">
                         
-                        <span class="card-title">Hyperparameter Optimization 5 - Advanced Techniques, Hyperband and Population-Based Training for Hyperparameter Optimization</span>
+                        <span class="card-title">Decoding the Art of Prompt Design for Large Language Models</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -650,14 +591,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/data-science/" class="post-category">
-                                    data science
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
                                 </a>
                             
                             
@@ -667,16 +608,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hyperparameter-optimization/">
-                        <span class="chip bg-color">hyperparameter optimization</span>
+                    <a href="/tags/large-language-model/">
+                        <span class="chip bg-color">large language model</span>
                     </a>
                     
-                    <a href="/tags/hyperband/">
-                        <span class="chip bg-color">hyperband</span>
-                    </a>
-                    
-                    <a href="/tags/Population-Based-Training/">
-                        <span class="chip bg-color">Population-Based Training</span>
+                    <a href="/tags/prompt-engineering/">
+                        <span class="chip bg-color">prompt engineering</span>
                     </a>
                     
                 </div>
