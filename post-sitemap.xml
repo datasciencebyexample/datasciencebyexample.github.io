@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/09/19/raise-error-and-log-error-in-python/</loc>
+        <lastmod>2023-09-20T01:16:57.642Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/09/17/most-fast-way-to-replace-values-in-pandas-dataframe/</loc>
         <lastmod>2023-09-17T22:00:28.007Z</lastmod>
         <changefreq>weekly</changefreq>
