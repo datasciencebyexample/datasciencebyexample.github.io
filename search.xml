@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How Magical Phrases Improve Responses from Large Language Models</title>
+      <link href="2023/09/22/can-large-language-model-take-a-deep-breath-and-think-step-by-step/"/>
+      <url>2023/09/22/can-large-language-model-take-a-deep-breath-and-think-step-by-step/</url>
+      
+        <content type="html"><![CDATA[<p><code>&quot;Take a deep breath&quot;</code> and <code>&quot;think step by step&quot;</code> are phrases you might use to help someone focus on solving a problem. Surprisingly, these phrases also seem to improve the responses from large language models (LLMs) when they are used in prompts, especially in math-related queries. Does this mean that the AI is actually getting smarter? What’s the reason behind this seemingly magical effect? Let’s explore.</p><h2 id="The-Magic-Words-Phenomenon"><a href="#The-Magic-Words-Phenomenon" class="headerlink" title="The Magic Words Phenomenon"></a>The Magic Words Phenomenon</h2><p>Studies show that when prompts include phrases like “take a deep breath” or “think step by step,” the generated responses appear to be more accurate or well-reasoned, especially in the context of solving math problems or other complex issues. Does this mean the AI has suddenly developed the ability to breathe or engage in human-like cognitive processing? Not quite.</p><h2 id="Why-Does-This-Happen"><a href="#Why-Does-This-Happen" class="headerlink" title="Why Does This Happen?"></a>Why Does This Happen?</h2><p>The answer lies in the training data that large language models use to learn. These models are trained on vast datasets compiled from books, websites, forums, and other sources where human-written text exists. Often, people use phrases like “let’s take a deep breath” or “think step by step” before providing detailed answers to questions or explaining complex topics. The model’s improved performance is essentially an emulation of human behavior.</p><h3 id="It’s-All-About-the-Data"><a href="#It’s-All-About-the-Data" class="headerlink" title="It’s All About the Data"></a>It’s All About the Data</h3><p>LLMs can’t actually take a deep breath or think step-by-step because they don’t possess lungs, bodies, or human cognitive abilities. The “reasoning” that these models display is borrowed from the massive datasets they are trained on. When we include phrases like “take a deep breath” or “think step by step” in prompts, we’re essentially nudging the model to tap into segments of its training data that likely contain more reasoned, carefully structured responses.</p><h2 id="Controversy-Around-“Reasoning”"><a href="#Controversy-Around-“Reasoning”" class="headerlink" title="Controversy Around “Reasoning”"></a>Controversy Around “Reasoning”</h2><p>It’s worth noting that the term “reasoning” is a subject of debate among experts in the field of artificial intelligence. While it’s commonly used to describe the operations of complex algorithms, some argue that it inaccurately anthropomorphizes machine processes that are fundamentally different from human cognition. </p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In essence, using phrases like “take a deep breath” or “think step by step” in prompts doesn’t make the AI smarter or more capable of human-like thought. Rather, it aligns the query with the kind of detailed, carefully considered responses that exist in the model’s training data, which can improve the quality of its output. So the next time you’re looking for a more thoughtful answer from a large language model, you might just find that a little “prompt magic” goes a long way.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> large language model </tag>
+            
+            <tag> openai </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Switching Organizations in OpenAI API Calls</title>
       <link href="2023/09/20/switch-orgnizations-in-openai-api-call/"/>
       <url>2023/09/20/switch-orgnizations-in-openai-api-call/</url>
@@ -1578,7 +1605,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#x79;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#x6f;&#x75;&#x72;&#45;&#101;&#109;&#x61;&#105;&#108;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;">&#x79;&#x6f;&#x75;&#x72;&#45;&#101;&#109;&#x61;&#105;&#108;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -2838,31 +2865,6 @@
     
     
     <entry>
-      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
-      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
-      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
-      
-        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data science </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hyperparameter optimization </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</title>
       <link href="2023/05/03/overview-of-hyperprameter-optimization-2/"/>
       <url>2023/05/03/overview-of-hyperprameter-optimization-2/</url>
@@ -2884,6 +2886,31 @@
             <tag> grid search </tag>
             
             <tag> random search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
+      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
+      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
+      
+        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hyperparameter optimization </tag>
             
         </tags>
       
@@ -3413,11 +3440,11 @@
       
         <tags>
             
+            <tag> openai </tag>
+            
             <tag> GPT </tag>
             
             <tag> chunk text </tag>
-            
-            <tag> openai </tag>
             
         </tags>
       
@@ -4406,9 +4433,9 @@
       
         <tags>
             
-            <tag> chatgpt </tag>
-            
             <tag> alphago </tag>
+            
+            <tag> chatgpt </tag>
             
         </tags>
       
@@ -6563,11 +6590,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
