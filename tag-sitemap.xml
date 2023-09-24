@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/vectpr-store/</loc>
+        <lastmod>2023-09-24T02:54:59.291Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/pinecone/</loc>
+        <lastmod>2023-09-24T02:54:59.291Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2023-09-23T03:20:23.532Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -298,13 +312,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/vectorstore/</loc>
-        <lastmod>2023-07-19T02:27:58.809Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/pinecone/</loc>
         <lastmod>2023-07-19T02:27:58.809Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
