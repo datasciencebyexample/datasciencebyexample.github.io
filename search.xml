@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Fine-Tuning Sports Classification with OpenAI Ada Model</title>
+      <link href="2023/09/28/finetune-with-openai-model-for-classification/"/>
+      <url>2023/09/28/finetune-with-openai-model-for-classification/</url>
+      
+        <content type="html"><![CDATA[<p>In this blog post, we will walk you through the fine-tuning process of an Ada model for classifying text data into two sports categories: Baseball and Hockey. We’ll utilize a dataset from fetch_20newsgroups and fine-tune an Ada model to improve its performance in distinguishing between these two sports.</p><h2 id="Data-Exploration"><a href="#Data-Exploration" class="headerlink" title="Data Exploration"></a>Data Exploration</h2><p>The dataset can be easily loaded using sklearn and is essentially a collection of newsgroup documents. The sample data mainly consists of emails to sports mailing lists, with 1197 examples evenly distributed between Baseball and Hockey.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories = [&#x27;rec.sport.baseball&#x27;, &#x27;rec.sport.hockey&#x27;]</span><br><span class="line">sports_dataset = fetch_20newsgroups(subset=&#x27;train&#x27;, shuffle=True, random_state=42, categories=categories)</span><br></pre></td></tr></table></figure><h2 id="Data-Preparation"><a href="#Data-Preparation" class="headerlink" title="Data Preparation"></a>Data Preparation</h2><p>Data is transformed into a pandas dataframe with prompt (the email text) and completion (the sport category) columns. For demonstration purposes, we will only use 300 examples; however, in real use cases, more data would likely improve performance.</p><p>A crucial step in the data preparation is to add a specific suffix separator (\n\n###\n\n) between the prompt and completion. This separator helps the model identify where the input ends and the prediction begins. The data is then split into training and validation sets to measure performance and expected accuracy on unseen data.</p><h2 id="Fine-Tuning-the-Model"><a href="#Fine-Tuning-the-Model" class="headerlink" title="Fine-Tuning the Model"></a>Fine-Tuning the Model</h2><p>With the prepared dataset, the Ada model is fine-tuned to improve its classification accuracy between Baseball and Hockey. Ada is chosen for its cost-effectiveness and comparative performance on classification tasks.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!openai api fine_tunes.create -t &quot;sport2_prepared_train.jsonl&quot; -v &quot;sport2_prepared_valid.jsonl&quot; --compute_classification_metrics --classification_positive_class &quot; baseball&quot; -m ada</span><br></pre></td></tr></table></figure><p>The model trains successfully, reaching a high accuracy of 99.6% on the validation set. The accuracy on the validation set is a good indicator of the model’s performance and generalization capability on new, unseen data.</p><h2 id="Using-the-Fine-Tuned-Model"><a href="#Using-the-Fine-Tuned-Model" class="headerlink" title="Using the Fine-Tuned Model"></a>Using the Fine-Tuned Model</h2><p>With the trained model, predictions can be generated easily. For each input prompt (an email or other text data), the model predicts whether the text is more likely related to Baseball or Hockey.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ft_model = &#x27;ada:ft-openai-2021-07-30-12-26-20&#x27;</span><br><span class="line">res = openai.Completion.create(model=ft_model, prompt=test[&#x27;prompt&#x27;][0] + &#x27;\n\n###\n\n&#x27;, max_tokens=1, temperature=0)</span><br></pre></td></tr></table></figure><h2 id="Model-Generalization"><a href="#Model-Generalization" class="headerlink" title="Model Generalization"></a>Model Generalization</h2><p>Interestingly, the model is not limited to the type of data it was trained on. Despite being trained on emails, it can also successfully classify tweets into the correct sports categories. This versatility shows the model’s ability to generalize and apply its learned knowledge to different text formats and contexts.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Through this example, we’ve seen how to fine-tune an Ada model for a classification task involving sports categories. The model not only achieves high accuracy but also demonstrates impressive generalization capabilities across various text formats. This step-by-step process can be adapted and used for fine-tuning models for different classification tasks, providing a powerful tool for various applications in text classification and analysis.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> chatGPT </tag>
+            
+            <tag> openai </tag>
+            
+            <tag> finetuning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Using ChatGPT to Generate SQL Queries</title>
       <link href="2023/09/25/how-to-use-chatgpt-function-calling-to-general-sql-query/"/>
       <url>2023/09/25/how-to-use-chatgpt-function-calling-to-general-sql-query/</url>
@@ -1690,7 +1719,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;">&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#109;&#97;&#x69;&#x6c;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#109;">&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -2016,9 +2045,9 @@
       
         <tags>
             
-            <tag> RLHF </tag>
-            
             <tag> finetuning </tag>
+            
+            <tag> RLHF </tag>
             
         </tags>
       
@@ -2950,31 +2979,6 @@
     
     
     <entry>
-      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
-      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
-      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
-      
-        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data science </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hyperparameter optimization </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hyperparameter Optimization 2 - Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</title>
       <link href="2023/05/03/overview-of-hyperprameter-optimization-2/"/>
       <url>2023/05/03/overview-of-hyperprameter-optimization-2/</url>
@@ -2996,6 +3000,31 @@
             <tag> grid search </tag>
             
             <tag> random search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hyperparameter Optimization 1 - Introduction to Hyperparameter Optimization in Machine Learning with Python</title>
+      <link href="2023/05/03/overview-of-hyperprameter-optimization-1/"/>
+      <url>2023/05/03/overview-of-hyperprameter-optimization-1/</url>
+      
+        <content type="html"><![CDATA[<p>Machine learning models have become an essential tool for solving complex problems and making predictions. However, the performance of these models depends on the choice of hyperparameters, which are the settings that control the learning process. In this blog post, we will introduce the concept of hyperparameter optimization, discuss its importance in machine learning, and provide a practical example using Python.</p><h2 id="What-are-Hyperparameters"><a href="#What-are-Hyperparameters" class="headerlink" title="What are Hyperparameters?"></a>What are Hyperparameters?</h2><p>Hyperparameters are the parameters of a machine learning model that are not learned from the data but are set before the training process begins. They control various aspects of the learning process, such as the learning rate, the number of hidden layers in a neural network, or the regularization strength in a linear regression model. Choosing the right hyperparameters can significantly improve the performance of a model.</p><h2 id="Why-is-Hyperparameter-Optimization-Important"><a href="#Why-is-Hyperparameter-Optimization-Important" class="headerlink" title="Why is Hyperparameter Optimization Important?"></a>Why is Hyperparameter Optimization Important?</h2><p>The performance of a machine learning model depends on the choice of hyperparameters. A poor choice of hyperparameters can lead to underfitting or overfitting, resulting in poor generalization to new data. Hyperparameter optimization is the process of finding the best set of hyperparameters for a given model and dataset, which can lead to improved model performance and better predictions.</p><h2 id="Example-Hyperparameter-Optimization-in-Python"><a href="#Example-Hyperparameter-Optimization-in-Python" class="headerlink" title="Example: Hyperparameter Optimization in Python"></a>Example: Hyperparameter Optimization in Python</h2><p>In this example, we will demonstrate hyperparameter optimization using the popular Python library, Scikit-learn. We will use the Support Vector Machine (SVM) algorithm to classify the famous Iris dataset.</p><ol><li>Import necessary libraries and load the dataset:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure><ol start="2"><li>Split the dataset into training and testing sets:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure><ol start="3"><li>Define the hyperparameter search space:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>],</span><br><span class="line">    <span class="string">&#x27;kernel&#x27;</span>: [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;rbf&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: [<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>, <span class="number">0.001</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>Perform hyperparameter optimization using GridSearchCV:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">grid_search = GridSearchCV(SVC(), param_grid, cv=<span class="number">5</span>, verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train, y_train)</span><br></pre></td></tr></table></figure><ol start="5"><li>Evaluate the best model:</li></ol><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_model = grid_search.best_estimator_</span><br><span class="line">y_pred = best_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this blog post, we introduced the concept of hyperparameter optimization and its importance in machine learning. We also provided a practical example using Python and Scikit-learn to optimize the hyperparameters of an SVM model. In the next blog post, we will explore more advanced techniques for hyperparameter optimization, such as Bayesian optimization and genetic algorithms.<br>Continue your learning by reading:<br><a href="/2023/05/03/overview-of-hyperprameter-optimization-2/">Exploring Grid Search and Random Search for Hyperparameter Tuning in Python</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data science </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hyperparameter optimization </tag>
             
         </tags>
       
@@ -3141,31 +3170,6 @@
     
     
     <entry>
-      <title>How to not indexing fields in elasticsearch</title>
-      <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
-      <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>
-      
-        <content type="html"><![CDATA[<p>To specify that a field should not be indexed in an Elasticsearch index mapping, you can use the index property with a value of false. For example, suppose you have a mapping for an index called my_index, and you want to include a field called my_field that should not be indexed. You can define the mapping like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;properties&quot;: &#123;</span><br><span class="line">      &quot;my_field&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">        &quot;index&quot;: false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>In this mapping, the my_field field is defined as a text field with the index property set to false. This tells Elasticsearch not to index the field, which means that it will not be searchable.</p><p>Note that if you set a field’s index property to false, you will not be able to search for that field’s values using Elasticsearch’s search API. However, you can still retrieve the field’s values from Elasticsearch using the get API.</p><p>If you are using python do do the indxing, notice that, in Python, the value for index should be False (with a capital “F”), not false. Here is the corrected example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line"></span><br><span class="line">es = Elasticsearch()</span><br><span class="line"></span><br><span class="line">mapping = &#123;</span><br><span class="line">    &quot;mappings&quot;: &#123;</span><br><span class="line">        &quot;properties&quot;: &#123;</span><br><span class="line">            &quot;my_field&quot;: &#123;</span><br><span class="line">                &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">                &quot;index&quot;: False</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">es.indices.create(index=&quot;my_index&quot;, body=mapping)</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> elasticsearch </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>How to delete file and folder from git repo</title>
       <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
       <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
@@ -3183,6 +3187,31 @@
         <tags>
             
             <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to not indexing fields in elasticsearch</title>
+      <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
+      <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>
+      
+        <content type="html"><![CDATA[<p>To specify that a field should not be indexed in an Elasticsearch index mapping, you can use the index property with a value of false. For example, suppose you have a mapping for an index called my_index, and you want to include a field called my_field that should not be indexed. You can define the mapping like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;properties&quot;: &#123;</span><br><span class="line">      &quot;my_field&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">        &quot;index&quot;: false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>In this mapping, the my_field field is defined as a text field with the index property set to false. This tells Elasticsearch not to index the field, which means that it will not be searchable.</p><p>Note that if you set a field’s index property to false, you will not be able to search for that field’s values using Elasticsearch’s search API. However, you can still retrieve the field’s values from Elasticsearch using the get API.</p><p>If you are using python do do the indxing, notice that, in Python, the value for index should be False (with a capital “F”), not false. Here is the corrected example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line"></span><br><span class="line">es = Elasticsearch()</span><br><span class="line"></span><br><span class="line">mapping = &#123;</span><br><span class="line">    &quot;mappings&quot;: &#123;</span><br><span class="line">        &quot;properties&quot;: &#123;</span><br><span class="line">            &quot;my_field&quot;: &#123;</span><br><span class="line">                &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">                &quot;index&quot;: False</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">es.indices.create(index=&quot;my_index&quot;, body=mapping)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> elasticsearch </tag>
             
         </tags>
       
@@ -5580,11 +5609,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
