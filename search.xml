@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Comparing Go and Python, Which One Should You Learn?</title>
+      <link href="2023/09/29/go-and-python-which-one-should-i-learn/"/>
+      <url>2023/09/29/go-and-python-which-one-should-i-learn/</url>
+      
+        <content type="html"><![CDATA[<p>The choice between learning Go and Python largely depends on your personal goals, the projects you intend to work on, and your previous programming experience. Here’s a comparison of the two based on various factors:</p><h2 id="1-Ease-of-Learning"><a href="#1-Ease-of-Learning" class="headerlink" title="1. Ease of Learning:"></a>1. Ease of Learning:</h2><ul><li><strong>Python:</strong> Known for its readability and simplicity, which makes it a great choice for beginners.</li><li><strong>Go (or Golang):</strong> Also designed to be simple and efficient, with a clean syntax, but might not be as beginner-friendly as Python.</li></ul><h2 id="2-Performance"><a href="#2-Performance" class="headerlink" title="2. Performance:"></a>2. Performance:</h2><ul><li><strong>Python:</strong> Generally slower in execution because it’s an interpreted language.</li><li><strong>Go:</strong> A compiled language, which means it generally offers better performance than Python.</li></ul><h2 id="3-Concurrency"><a href="#3-Concurrency" class="headerlink" title="3. Concurrency:"></a>3. Concurrency:</h2><ul><li><strong>Python:</strong> Concurrency is not Python’s strongest suit.</li><li><strong>Go:</strong> Built with concurrency in mind, allowing multiple processes to run simultaneously, which is beneficial for system and web servers, or any scenario where performance and scalability are important.</li></ul><h2 id="4-Libraries-and-Frameworks"><a href="#4-Libraries-and-Frameworks" class="headerlink" title="4. Libraries and Frameworks:"></a>4. Libraries and Frameworks:</h2><ul><li><strong>Python:</strong> Has a rich set of libraries and frameworks for a wide range of applications including web development, data analysis, machine learning, and more.</li><li><strong>Go:</strong> Although it has fewer libraries and frameworks compared to Python, it has strong support for systems-level programming.</li></ul><h2 id="5-Community-and-Support"><a href="#5-Community-and-Support" class="headerlink" title="5. Community and Support:"></a>5. Community and Support:</h2><ul><li><strong>Python:</strong> Has a larger community and more third-party libraries available due to its longer existence.</li><li><strong>Go:</strong> Has a smaller but growing community.</li></ul><h2 id="6-Job-Opportunities"><a href="#6-Job-Opportunities" class="headerlink" title="6. Job Opportunities:"></a>6. Job Opportunities:</h2><ul><li><strong>Python:</strong> High demand in job markets, especially in data science, machine learning, web development, and scripting.</li><li><strong>Go:</strong> Demand is growing especially in fields that require high performance and scalability like cloud services and infrastructure projects.</li></ul><h2 id="7-Use-Cases"><a href="#7-Use-Cases" class="headerlink" title="7. Use Cases:"></a>7. Use Cases:</h2><ul><li><strong>Python:</strong> Web development, scientific computing, data analysis, artificial intelligence, machine learning, automation.</li><li><strong>Go:</strong> Systems-level programming, cloud services, network programming, containers and microservices.</li></ul><p>Your decision might come down to what you find more enjoyable or the particular demands of the projects you want to work on. If you’re interested in web development, data science, or machine learning, Python might be the better choice. On the other hand, if you’re interested in systems programming, cloud services, or high-performance applications, Go might be the better choice.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Fine-Tuning Sports Classification with OpenAI Ada Model</title>
       <link href="2023/09/28/finetune-with-openai-model-for-classification/"/>
       <url>2023/09/28/finetune-with-openai-model-for-classification/</url>
@@ -1719,7 +1746,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#109;">&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#108;&#x40;&#101;&#x78;&#x61;&#109;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#x6f;&#117;&#x72;&#45;&#101;&#109;&#97;&#105;&#x6c;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#x79;&#x6f;&#117;&#x72;&#45;&#101;&#109;&#97;&#105;&#x6c;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -3170,31 +3197,6 @@
     
     
     <entry>
-      <title>How to delete file and folder from git repo</title>
-      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
-      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
-      
-        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>How to not indexing fields in elasticsearch</title>
       <link href="2023/04/28/how-to-not-index-field-in-elasticsearch/"/>
       <url>2023/04/28/how-to-not-index-field-in-elasticsearch/</url>
@@ -3212,6 +3214,31 @@
         <tags>
             
             <tag> elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to delete file and folder from git repo</title>
+      <link href="2023/04/28/how-to-remove-file-and-directory-from-git-repo/"/>
+      <url>2023/04/28/how-to-remove-file-and-directory-from-git-repo/</url>
+      
+        <content type="html"><![CDATA[<p>To delete files and folders from a Git repository, follow these steps:</p><ol><li><p>Open a terminal or command prompt.</p></li><li><p>Navigate to the local Git repository on your computer using the <code>cd</code> command. For example:</p></li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /path/to/your/repo</span><br></pre></td></tr></table></figure><ol start="3"><li>To delete a file, use the <code>git rm</code> command followed by the file name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm file-to-delete.txt</span><br></pre></td></tr></table></figure><ol start="4"><li>To delete a folder, use the <code>git rm</code> command with the <code>-r</code> flag followed by the folder name. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r folder-to-delete</span><br></pre></td></tr></table></figure><ol start="5"><li>After deleting the files or folders, commit the changes with a commit message. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;Removed unwanted files and folders&quot;</span><br></pre></td></tr></table></figure><ol start="6"><li>Finally, push the changes to the remote repository. For example:</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure><p>Replace <code>main</code> with the name of the branch you are working on if it’s different.</p><p>Note: This process will only delete the files and folders from the Git repository, not from your local file system. If you want to delete them from your local file system as well, you’ll need to do that manually.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
             
         </tags>
       
@@ -5609,11 +5636,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -6704,11 +6731,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       

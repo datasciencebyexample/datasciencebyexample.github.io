@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/09/29/go-and-python-which-one-should-i-learn/</loc>
+        <lastmod>2023-09-30T02:10:28.415Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/09/28/finetune-with-openai-model-for-classification/</loc>
         <lastmod>2023-09-29T02:28:08.595Z</lastmod>
         <changefreq>weekly</changefreq>
