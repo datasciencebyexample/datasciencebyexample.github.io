@@ -409,7 +409,7 @@
                 <p>In the realm of artificial intelligence, OpenAI’s GPT-3.5 Turbo has been a game-changer, providing developers a powerful tool to tackle a plethora of tasks. One such task is processing JSON objects, a common requirement in today’s data-centric world. JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate.</p>
 <p>OpenAI provides an API that developers can interact with to leverage the capabilities of GPT-3.5 Turbo. In this blog post, we’ll explore how to structure a request to process a list of JSON objects using a custom function through the OpenAI API.</p>
 <p>Below is the Python code snippet that demonstrates how to make a POST request to the OpenAI API, invoking a custom function to process a list of JSON objects. We’ve defined a function called process_json_objects which is structured to accept an array of JSON objects, each containing at least two string properties key1 and key2.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"># Define the data</span><br><span class="line">data = &#123;</span><br><span class="line">    &quot;model&quot;: &quot;gpt-3.5-turbo-0613&quot;,</span><br><span class="line">    &quot;messages&quot;: [&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Process these JSON objects.&quot;&#125;],</span><br><span class="line">    &quot;functions&quot;: [&#123;</span><br><span class="line">        &quot;name&quot;: &quot;process_json_objects&quot;,</span><br><span class="line">        &quot;description&quot;: &quot;Processes a list of JSON objects.&quot;,</span><br><span class="line">        &quot;parameters&quot;: &#123;</span><br><span class="line">            &quot;type&quot;: &quot;object&quot;,</span><br><span class="line">            &quot;properties&quot;: &#123;</span><br><span class="line">                &quot;json_objects&quot;: &#123;</span><br><span class="line">                    &quot;type&quot;: &quot;array&quot;,</span><br><span class="line">                    &quot;description&quot;: &quot;A list of JSON objects.&quot;,</span><br><span class="line">                    &quot;items&quot;: &#123;</span><br><span class="line">                        &quot;type&quot;: &quot;object&quot;,</span><br><span class="line">                        &quot;properties&quot;: &#123;</span><br><span class="line">                            &quot;key1&quot;: &#123;&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Description of key1.&quot;&#125;,</span><br><span class="line">                            &quot;key2&quot;: &#123;&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Description of key2.&quot;&#125;</span><br><span class="line">                            // ...other keys</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &quot;required&quot;: [&quot;key1&quot;, &quot;key2&quot;]  # specify required keys here</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;required&quot;: [&quot;json_objects&quot;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Define the URL and headers</span><br><span class="line">url = &quot;https://api.openai.com/v1/chat/completions&quot;  # Updated endpoint URL</span><br><span class="line">headers = &#123;</span><br><span class="line">    &quot;Authorization&quot;: &quot;Bearer YOUR_API_KEY&quot;,</span><br><span class="line">    &quot;Content-Type&quot;: &quot;application/json&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Make the POST request</span><br><span class="line">response = requests.post(url, headers=headers, data=json.dumps(data))</span><br><span class="line"></span><br><span class="line"># Print the response</span><br><span class="line">print(response.json())</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"># Define the data</span><br><span class="line">data = &#123;</span><br><span class="line">    &quot;model&quot;: &quot;gpt-3.5-turbo-0613&quot;,</span><br><span class="line">    &quot;messages&quot;: [&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Process these JSON objects.&quot;&#125;],</span><br><span class="line">    &quot;functions&quot;: [&#123;</span><br><span class="line">        &quot;name&quot;: &quot;process_json_objects&quot;,</span><br><span class="line">        &quot;description&quot;: &quot;Processes a list of JSON objects.&quot;,</span><br><span class="line">        &quot;parameters&quot;: &#123;</span><br><span class="line">            &quot;type&quot;: &quot;object&quot;,</span><br><span class="line">            &quot;properties&quot;: &#123;</span><br><span class="line">                &quot;json_objects&quot;: &#123;</span><br><span class="line">                    &quot;type&quot;: &quot;array&quot;,</span><br><span class="line">                    &quot;description&quot;: &quot;A list of JSON objects.&quot;,</span><br><span class="line">                    &quot;items&quot;: &#123;</span><br><span class="line">                        &quot;type&quot;: &quot;object&quot;,</span><br><span class="line">                        &quot;properties&quot;: &#123;</span><br><span class="line">                            &quot;key1&quot;: &#123;&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Description of key1.&quot;&#125;,</span><br><span class="line">                            &quot;key2&quot;: &#123;&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;Description of key2.&quot;&#125;</span><br><span class="line">                            // ...other keys</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &quot;required&quot;: [&quot;key1&quot;, &quot;key2&quot;]  # specify required keys here</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;required&quot;: [&quot;json_objects&quot;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">   &quot;function_call&quot;:&#123;&quot;name&quot;: &quot;process_json_objects&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Define the URL and headers</span><br><span class="line">url = &quot;https://api.openai.com/v1/chat/completions&quot;  # Updated endpoint URL</span><br><span class="line">headers = &#123;</span><br><span class="line">    &quot;Authorization&quot;: &quot;Bearer YOUR_API_KEY&quot;,</span><br><span class="line">    &quot;Content-Type&quot;: &quot;application/json&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Make the POST request</span><br><span class="line">response = requests.post(url, headers=headers, data=json.dumps(data))</span><br><span class="line"></span><br><span class="line"># Print the response</span><br><span class="line">print(response.json())</span><br></pre></td></tr></table></figure>
 
 <p>In this code snippet:</p>
 <ol>
@@ -540,18 +540,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/10/02/how-to-structure-a-list-of-json-objects-using-openai-function-calling/">
+                <a href="/2023/10/04/pandas-no-attribute-int64index-error-fix/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Harnessing OpenAI&#39;s function calling for Processing JSON Objects">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="How to fix module pandas has no attribute int64Index error with pandas 2.0">
                         
-                        <span class="card-title">Harnessing OpenAI&#39;s function calling for Processing JSON Objects</span>
+                        <span class="card-title">How to fix module pandas has no attribute int64Index error with pandas 2.0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -561,9 +560,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -576,20 +575,19 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/chatGPT/">
-                        <span class="chip bg-color">chatGPT</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/openai/">
-                        <span class="chip bg-color">openai</span>
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
                     </a>
                     
-                    <a href="/tags/function-calling/">
-                        <span class="chip bg-color">function calling</span>
+                    <a href="/tags/lightgbm/">
+                        <span class="chip bg-color">lightgbm</span>
                     </a>
                     
                 </div>

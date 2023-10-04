@@ -9,8 +9,16 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/10/04/pandas-no-attribute-int64index-error-fix/</loc>
+        <lastmod>2023-10-04T14:26:13.135Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/10/02/how-to-structure-a-list-of-json-objects-using-openai-function-calling/</loc>
-        <lastmod>2023-10-02T19:48:35.032Z</lastmod>
+        <lastmod>2023-10-04T14:20:13.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

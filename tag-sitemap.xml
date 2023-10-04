@@ -3,22 +3,43 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/lightgbm/</loc>
+        <lastmod>2023-10-04T14:26:13.135Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
+        <lastmod>2023-10-04T14:26:13.135Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
+        <lastmod>2023-10-04T14:26:13.135Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/function-calling/</loc>
-        <lastmod>2023-10-02T19:48:35.032Z</lastmod>
+        <lastmod>2023-10-04T14:20:13.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
-        <lastmod>2023-10-02T19:48:35.032Z</lastmod>
+        <lastmod>2023-10-04T14:20:13.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/chatGPT/</loc>
-        <lastmod>2023-10-02T19:48:35.032Z</lastmod>
+        <lastmod>2023-10-04T14:20:13.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -52,13 +73,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
-        <lastmod>2023-09-30T02:10:28.415Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/finetuning/</loc>
         <lastmod>2023-09-29T02:28:08.595Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -82,13 +96,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/large-language-model/</loc>
         <lastmod>2023-09-23T03:20:23.532Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/pandas/</loc>
-        <lastmod>2023-09-17T22:00:28.007Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -544,13 +551,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/Apple/</loc>
         <lastmod>2023-06-07T20:36:11.003Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/lightgbm/</loc>
-        <lastmod>2023-06-05T00:52:07.537Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -1368,13 +1368,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/time-series/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1383,6 +1376,13 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
