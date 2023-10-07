@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/whisper/</loc>
+        <lastmod>2023-10-07T01:30:35.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
+        <lastmod>2023-10-07T01:30:35.513Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/lightgbm/</loc>
         <lastmod>2023-10-04T14:26:13.135Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,13 +39,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/function-calling/</loc>
-        <lastmod>2023-10-04T14:20:13.620Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2023-10-04T14:20:13.620Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -110,13 +117,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/prompt-engineering/</loc>
         <lastmod>2023-09-15T01:29:57.257Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/whisper/</loc>
-        <lastmod>2023-09-10T16:56:45.061Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -1368,6 +1368,13 @@
     </url>
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
+        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/time-series/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1376,13 +1383,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/tsfresh/</loc>
-        <lastmod>2021-06-12T05:05:11.116Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/feature-engineering/</loc>
         <lastmod>2021-06-12T05:05:11.116Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
