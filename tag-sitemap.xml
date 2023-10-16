@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
+        <lastmod>2023-10-16T23:45:12.946Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/pytorch/</loc>
+        <lastmod>2023-10-16T23:45:12.946Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/satellite-imagery/</loc>
         <lastmod>2023-10-16T22:05:22.359Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -451,13 +465,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/pytorch/</loc>
-        <lastmod>2023-06-28T03:01:22.962Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/convolution/</loc>
         <lastmod>2023-06-27T01:47:07.092Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -487,13 +494,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/batch-size/</loc>
-        <lastmod>2023-06-21T02:58:39.902Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/transformer/</loc>
         <lastmod>2023-06-21T02:58:39.902Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
