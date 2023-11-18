@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
+        <lastmod>2023-11-18T03:38:26.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
+        <lastmod>2023-11-18T03:38:26.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/hyphens/</loc>
         <lastmod>2023-11-15T01:36:01.985Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,13 +40,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/AI-agent/</loc>
         <lastmod>2023-11-12T05:24:05.479Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
-        <lastmod>2023-11-05T04:56:53.820Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -102,13 +109,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/finetuning/</loc>
-        <lastmod>2023-10-11T01:22:58.151Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2023-10-11T01:22:58.151Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
