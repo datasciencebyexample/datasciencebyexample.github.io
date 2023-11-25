@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2023/11/24/nvidia-product-lines-and-architecture/</loc>
+        <lastmod>2023-11-25T03:26:47.953Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2023/11/21/how-to-calculate-output-size-after-convlution-in-cnn/</loc>
         <lastmod>2023-11-21T22:56:24.046Z</lastmod>
         <changefreq>weekly</changefreq>
