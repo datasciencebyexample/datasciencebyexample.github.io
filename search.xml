@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to figure out the exact expiration date for Expire with Statment of promotional balance transfer</title>
+      <link href="2023/11/26/what-does-expire-with-statment-mean-for-pomotional-balance-transfer/"/>
+      <url>2023/11/26/what-does-expire-with-statment-mean-for-pomotional-balance-transfer/</url>
+      
+        <content type="html"><![CDATA[<p>Credit card promotions, especially those offering low or zero percent Annual Percentage Rates (APR) on balance transfers, are attractive financial tools. However, understanding the exact terms, particularly when these offers expire, is crucial to managing your finances effectively. This blog post aims to clarify the often confusing language surrounding the expiry of promotional APRs.</p><h2 id="Understanding-‘Expires-with-Statement’-Terms"><a href="#Understanding-‘Expires-with-Statement’-Terms" class="headerlink" title="Understanding ‘Expires with Statement’ Terms"></a>Understanding ‘Expires with Statement’ Terms</h2><p>Credit card offers often use phrases like “expires with the statement of [Month/Year].” This means the promotional APR is valid until the end of the billing cycle for that specified month. For instance, if your offer states it “expires with the statement of June 2023,” the low APR applies until the day your June 2023 statement is generated.</p><h2 id="Key-Points-to-Remember"><a href="#Key-Points-to-Remember" class="headerlink" title="Key Points to Remember"></a>Key Points to Remember</h2><ol><li><strong>Check the Statement Date:</strong> The exact date when your statement is generated each month is critical. This is when your promotional rate will switch to the standard rate.</li><li><strong>Promotion Applies to Specific Balances:</strong> Typically, the promotional APR applies to balance transfers only. New purchases might incur the standard APR from the start.</li><li><strong>Plan Your Payments:</strong> Aim to pay off the balance transfer before the promotional period ends to avoid higher interest charges.</li><li><strong>Read the Fine Print:</strong> Always understand the terms of your credit card agreement. If the promotional expiry is not specified by an exact date, clarify with your credit card issuer.</li></ol><h2 id="Why-Exact-Dates-Matter"><a href="#Why-Exact-Dates-Matter" class="headerlink" title="Why Exact Dates Matter"></a>Why Exact Dates Matter</h2><p>In some cases, credit card promotions will specify an exact date when the low APR ends. This is straightforward and allows for precise financial planning. However, when a promotion states it expires with a statement, it can cause confusion. The key is to remember that the rate changes when the statement for the said month is generated, not at the end of the month.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> fintech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> credit card </tag>
+            
+            <tag> balance transfer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>NVIDIA Unveiled, Exploring Product Lines and GPU Architectures</title>
       <link href="2023/11/24/nvidia-product-lines-and-architecture/"/>
       <url>2023/11/24/nvidia-product-lines-and-architecture/</url>
@@ -2382,7 +2409,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#111;&#x75;&#x72;&#45;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#109;">&#x79;&#111;&#x75;&#x72;&#45;&#x65;&#x6d;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#117;&#x72;&#45;&#x65;&#109;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#x6d;">&#121;&#x6f;&#117;&#x72;&#45;&#x65;&#109;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -6272,11 +6299,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -7367,11 +7394,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
