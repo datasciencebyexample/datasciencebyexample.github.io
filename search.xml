@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>How to compress and decompress data using gzip in Python</title>
+      <link href="2023/11/28/compress-data-using-gzip-in-python/"/>
+      <url>2023/11/28/compress-data-using-gzip-in-python/</url>
+      
+        <content type="html"><![CDATA[<p>Python offers a straightforward approach to compress and decompress text data using the gzip module. In this blog, we’ll explore how to do just that.</p><h2 id="Compressing-Text-with-gzip"><a href="#Compressing-Text-with-gzip" class="headerlink" title="Compressing Text with gzip"></a>Compressing Text with gzip</h2><p>Compression is particularly useful when dealing with large amounts of text data. Python’s gzip module makes this process remarkably simple. Here’s how you can compress a string of text:</p><h3 id="Step-1-Import-gzip"><a href="#Step-1-Import-gzip" class="headerlink" title="Step 1: Import gzip"></a>Step 1: Import gzip</h3><p>First, you need to import the gzip module:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import gzip</span><br></pre></td></tr></table></figure><h3 id="Step-2-Convert-Text-to-Bytes"><a href="#Step-2-Convert-Text-to-Bytes" class="headerlink" title="Step 2: Convert Text to Bytes"></a>Step 2: Convert Text to Bytes</h3><p>Since gzip works with bytes, you’ll need to convert your text into a byte format:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">text = &quot;This is the text that you want to compress.&quot;</span><br><span class="line">text_bytes = text.encode(&#x27;utf-8&#x27;)</span><br></pre></td></tr></table></figure><h3 id="Step-3-Compress-the-Byte-Data"><a href="#Step-3-Compress-the-Byte-Data" class="headerlink" title="Step 3: Compress the Byte Data"></a>Step 3: Compress the Byte Data</h3><p>Now, use gzip.compress() to compress your byte data:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">compressed_data = gzip.compress(text_bytes)</span><br></pre></td></tr></table></figure><p>You can also save this compressed data to a file if needed:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">with open(&#x27;compressed_file.gz&#x27;, &#x27;wb&#x27;) as file:</span><br><span class="line">    file.write(compressed_data)</span><br></pre></td></tr></table></figure><h2 id="Decompressing-Data-with-gzip"><a href="#Decompressing-Data-with-gzip" class="headerlink" title="Decompressing Data with gzip"></a>Decompressing Data with gzip</h2><p>Receiving or reading compressed data is only half the journey. You’ll often need to decompress this data to utilize it:</p><h3 id="Step-1-Read-or-Receive-Compressed-Data"><a href="#Step-1-Read-or-Receive-Compressed-Data" class="headerlink" title="Step 1: Read or Receive Compressed Data"></a>Step 1: Read or Receive Compressed Data</h3><p>Assume compressed_data is the gzip-compressed data you’ve received or read from a file.</p><h3 id="Step-2-Decompress-the-Data"><a href="#Step-2-Decompress-the-Data" class="headerlink" title="Step 2: Decompress the Data"></a>Step 2: Decompress the Data</h3><p>Use gzip.decompress() for decompression:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">decompressed_data = gzip.decompress(compressed_data)</span><br></pre></td></tr></table></figure><h3 id="Step-3-Convert-Back-to-a-String"><a href="#Step-3-Convert-Back-to-a-String" class="headerlink" title="Step 3: Convert Back to a String"></a>Step 3: Convert Back to a String</h3><p>If the original data was a string, convert the decompressed byte data back to a string:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">original_text = decompressed_data.decode(&#x27;utf-8&#x27;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> gzip </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to figure out the exact expiration date for Expire with Statment of promotional balance transfer</title>
       <link href="2023/11/26/what-does-expire-with-statment-mean-for-pomotional-balance-transfer/"/>
       <url>2023/11/26/what-does-expire-with-statment-mean-for-pomotional-balance-transfer/</url>
@@ -2409,7 +2436,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#117;&#x72;&#45;&#x65;&#109;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#x6d;">&#121;&#x6f;&#117;&#x72;&#45;&#x65;&#109;&#97;&#x69;&#x6c;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#x6f;&#x75;&#114;&#45;&#101;&#109;&#97;&#x69;&#108;&#x40;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;">&#x79;&#x6f;&#x75;&#114;&#45;&#101;&#109;&#97;&#x69;&#108;&#x40;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -6299,11 +6326,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -7477,9 +7504,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> elasticsearch </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
