@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/langchain/</loc>
+        <lastmod>2023-12-03T04:33:18.924Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/chatgpt/</loc>
+        <lastmod>2023-12-03T04:33:18.924Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/gzip/</loc>
         <lastmod>2023-11-29T02:37:54.892Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,13 +80,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/chatgpt/</loc>
-        <lastmod>2023-11-20T23:21:12.940Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2023-11-18T04:40:09.038Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -103,13 +110,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/autogen/</loc>
         <lastmod>2023-10-25T00:51:40.355Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/langchain/</loc>
-        <lastmod>2023-10-20T16:53:11.380Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
