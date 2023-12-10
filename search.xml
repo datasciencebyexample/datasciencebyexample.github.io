@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>What is asterisk in python class o function argument list</title>
+      <link href="2023/12/09/what-is-asterisk-in-python-function-or-class-argument-list/"/>
+      <url>2023/12/09/what-is-asterisk-in-python-function-or-class-argument-list/</url>
+      
+        <content type="html"><![CDATA[<p>We see asterisk in some python class or function argumentlist, what does it mean?</p><h2 id="What-are-Keyword-Only-Arguments"><a href="#What-are-Keyword-Only-Arguments" class="headerlink" title="What are Keyword-Only Arguments?"></a>What are Keyword-Only Arguments?</h2><p>Introduced in Python 3, keyword-only arguments are function or method arguments that must be specified by their name. They prevent the confusion that can arise from having multiple parameters, enhancing code readability and reducing the likelihood of errors.</p><h3 id="Syntax-and-Usage"><a href="#Syntax-and-Usage" class="headerlink" title="Syntax and Usage"></a>Syntax and Usage</h3><p>The syntax for keyword-only arguments involves placing an asterisk * in the function’s or method’s parameter list. Parameters after the asterisk are treated as keyword-only. Let’s see this in the context of a Python class method:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class DocumentRetriever:</span><br><span class="line">    def _get_relevant_documents(self, query: str, *, run_manager):</span><br><span class="line">        # Implementation</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure><p>In the above example, the _get_relevant_documents method of the DocumentRetriever class has two parameters: query and run_manager. The asterisk * before run_manager indicates that it is a keyword-only argument.</p><h2 id="Why-Use-Keyword-Only-Arguments"><a href="#Why-Use-Keyword-Only-Arguments" class="headerlink" title="Why Use Keyword-Only Arguments?"></a>Why Use Keyword-Only Arguments?</h2><ul><li><p>Clarity: Keyword-only arguments require the caller to explicitly specify the name of the parameter, making the code more readable and clear. This is especially beneficial in methods with multiple parameters.</p></li><li><p>Avoiding Errors: They help prevent bugs that might occur when a caller mixes up the order of arguments.</p></li><li><p>Flexibility in API Design: They allow method signatures to be changed more easily, such as adding new parameters without worrying about their position.</p></li></ul><h2 id="Calling-Methods-with-Keyword-Only-Arguments"><a href="#Calling-Methods-with-Keyword-Only-Arguments" class="headerlink" title="Calling Methods with Keyword-Only Arguments"></a>Calling Methods with Keyword-Only Arguments</h2><p>To call a method with keyword-only arguments, you simply need to specify the keyword:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">retriever = DocumentRetriever()</span><br><span class="line">retriever._get_relevant_documents(&quot;some query&quot;, run_manager=some_manager)</span><br></pre></td></tr></table></figure><p>In this call, run_manager must be explicitly named. This is particularly useful when the function or method has multiple parameters, reducing the risk of passing arguments in the wrong order.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to call openai chat model using langchain</title>
       <link href="2023/12/06/calling-openai-chatmodel-using-langchain/"/>
       <url>2023/12/06/calling-openai-chatmodel-using-langchain/</url>
@@ -1817,6 +1842,31 @@
     
     
     <entry>
+      <title>An Introduction to Code Profiling in Python with `time`, `timeit`</title>
+      <link href="2023/08/02/how-to-time-the-code-in-python/"/>
+      <url>2023/08/02/how-to-time-the-code-in-python/</url>
+      
+        <content type="html"><![CDATA[<p>Determining where your code is spending its time is an important step in making your program more efficient. In Python, you can do this using the built-in <code>time</code> and <code>timeit</code> modules. So let’s have a look at how you can use these packages to pinpoint the bottlenecks in your code.</p><h2 id="The-time-module"><a href="#The-time-module" class="headerlink" title="The time module"></a>The <code>time</code> module</h2><p>The <code>time</code> module in Python is base on the Unix timestamp, which represents the number of seconds since the start of January 1, 1970 (also known as the epoch). An example of its usage:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">your_function</span>():</span></span><br><span class="line">    start = time.time()</span><br><span class="line">     <span class="comment"># Steps in your function</span></span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Time spent:&#x27;</span>, end - start)</span><br></pre></td></tr></table></figure><p>In this example, <code>time.time()</code> returns the current system time, and then the difference between the end and start times gives the total time spent for executing the function.</p><h2 id="The-timeit-module"><a href="#The-timeit-module" class="headerlink" title="The timeit module"></a>The <code>timeit</code> module</h2><p>The <code>timeit</code> module provides a simple interface for timing small bits of Python code. It has both a command-line interface and a callable one. It avoids a number of common traps for measuring execution times. Here’s how you can use it</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line">start = timeit.default_timer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your code here</span></span><br><span class="line"></span><br><span class="line">end = timeit.default_timer()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Time taken:&#x27;</span>, end - start)</span><br></pre></td></tr></table></figure><p>In this snippet, <code>timeit.default_timer()</code> is used which is a higher precision clock and gives better measure of time intervals in the code.</p><p>You can also use <code>timeit</code> function to run a particular function multiple times.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span>():</span></span><br><span class="line">    <span class="comment"># Your code here</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(timeit.timeit(function, number=<span class="number">1000</span>))</span><br></pre></td></tr></table></figure><p>In this style, <code>timeit()</code> runs the <code>function</code> 1000 times and then gives the total time taken for those 1000 executions.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><code>time</code> and <code>timeit</code> are powerful tools for basic timing and profiling in Python. But it’s always important to remember that many factors can influence timing results, including other processes running on your system, disk I/O, and more. For more robust profiling, you might want to consider using more advanced tools like <code>profile</code> or <code>cProfile</code>, which can give detailed reports about time spent in each function call, or other third-party libraries like <code>line_profiler</code> for line-by-line analyses</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Understanding Task Ordering with Python&#39;s Concurrent.Futures</title>
       <link href="2023/08/02/how-to-order-results-from-multi-threading/"/>
       <url>2023/08/02/how-to-order-results-from-multi-threading/</url>
@@ -1838,31 +1888,6 @@
             <tag> concurrent </tag>
             
             <tag> threadpool </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>An Introduction to Code Profiling in Python with `time`, `timeit`</title>
-      <link href="2023/08/02/how-to-time-the-code-in-python/"/>
-      <url>2023/08/02/how-to-time-the-code-in-python/</url>
-      
-        <content type="html"><![CDATA[<p>Determining where your code is spending its time is an important step in making your program more efficient. In Python, you can do this using the built-in <code>time</code> and <code>timeit</code> modules. So let’s have a look at how you can use these packages to pinpoint the bottlenecks in your code.</p><h2 id="The-time-module"><a href="#The-time-module" class="headerlink" title="The time module"></a>The <code>time</code> module</h2><p>The <code>time</code> module in Python is base on the Unix timestamp, which represents the number of seconds since the start of January 1, 1970 (also known as the epoch). An example of its usage:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">your_function</span>():</span></span><br><span class="line">    start = time.time()</span><br><span class="line">     <span class="comment"># Steps in your function</span></span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Time spent:&#x27;</span>, end - start)</span><br></pre></td></tr></table></figure><p>In this example, <code>time.time()</code> returns the current system time, and then the difference between the end and start times gives the total time spent for executing the function.</p><h2 id="The-timeit-module"><a href="#The-timeit-module" class="headerlink" title="The timeit module"></a>The <code>timeit</code> module</h2><p>The <code>timeit</code> module provides a simple interface for timing small bits of Python code. It has both a command-line interface and a callable one. It avoids a number of common traps for measuring execution times. Here’s how you can use it</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line">start = timeit.default_timer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your code here</span></span><br><span class="line"></span><br><span class="line">end = timeit.default_timer()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Time taken:&#x27;</span>, end - start)</span><br></pre></td></tr></table></figure><p>In this snippet, <code>timeit.default_timer()</code> is used which is a higher precision clock and gives better measure of time intervals in the code.</p><p>You can also use <code>timeit</code> function to run a particular function multiple times.</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span>():</span></span><br><span class="line">    <span class="comment"># Your code here</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(timeit.timeit(function, number=<span class="number">1000</span>))</span><br></pre></td></tr></table></figure><p>In this style, <code>timeit()</code> runs the <code>function</code> 1000 times and then gives the total time taken for those 1000 executions.</p><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><code>time</code> and <code>timeit</code> are powerful tools for basic timing and profiling in Python. But it’s always important to remember that many factors can influence timing results, including other processes running on your system, disk I/O, and more. For more robust profiling, you might want to consider using more advanced tools like <code>profile</code> or <code>cProfile</code>, which can give detailed reports about time spent in each function call, or other third-party libraries like <code>line_profiler</code> for line-by-line analyses</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> data engineering </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> python </tag>
             
         </tags>
       
@@ -2517,7 +2542,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#117;&#114;&#45;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#109;">&#121;&#111;&#117;&#114;&#45;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#117;&#114;&#x2d;&#101;&#x6d;&#97;&#105;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#121;&#111;&#117;&#114;&#x2d;&#101;&#x6d;&#97;&#105;&#x6c;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
