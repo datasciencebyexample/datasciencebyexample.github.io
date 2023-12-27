@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>How to use secrets in streamlit app safely</title>
+      <link href="2023/12/27/enable-secrets-in-using-streamlit-app/"/>
+      <url>2023/12/27/enable-secrets-in-using-streamlit-app/</url>
+      
+        <content type="html"><![CDATA[<p>When using streamlit app, how to manage secrets?  It is quite easy to use <code>st.secrets</code> function.</p><p>when running your Streamlit app locally, you can store secrets in a .streamlit/secrets.toml file. Streamlit uses TOML (Tom’s Obvious, Minimal Language) format for the secrets file, not YAML. Here’s how you can set it up:</p><h2 id="Step-1-Create-the-Secrets-File"><a href="#Step-1-Create-the-Secrets-File" class="headerlink" title="Step 1: Create the Secrets File"></a>Step 1: Create the Secrets File</h2><p>Create a file named secrets.toml inside a .streamlit folder at the root of your project directory. Your project structure should look something like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">your_project/</span><br><span class="line">├─ .streamlit/</span><br><span class="line">│  ├─ secrets.toml</span><br><span class="line">├─ your_script.py</span><br><span class="line">├─ other_files</span><br></pre></td></tr></table></figure><h2 id="Step-2-Add-Your-Secrets-to-the-File"><a href="#Step-2-Add-Your-Secrets-to-the-File" class="headerlink" title="Step 2: Add Your Secrets to the File"></a>Step 2: Add Your Secrets to the File</h2><p>In secrets.toml, you can add your secrets like this:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># .streamlit/secrets.toml</span><br><span class="line">my_api_key = &quot;your-secret-api-key&quot;</span><br></pre></td></tr></table></figure><h2 id="Step-3-Access-the-Secrets-in-Your-Streamlit-App"><a href="#Step-3-Access-the-Secrets-in-Your-Streamlit-App" class="headerlink" title="Step 3: Access the Secrets in Your Streamlit App"></a>Step 3: Access the Secrets in Your Streamlit App</h2><p>In your Streamlit script (your_script.py), you can access these secrets using st.secrets. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import streamlit as st</span><br><span class="line"></span><br><span class="line"># Access the secret</span><br><span class="line">api_key = st.secrets[&quot;my_api_key&quot;]</span><br><span class="line"></span><br><span class="line"># Rest of your Streamlit code</span><br></pre></td></tr></table></figure><p>for example, if we have a html code to render, we can use the secrets this way:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import streamlit as st</span><br><span class="line"></span><br><span class="line"># Access the secret</span><br><span class="line">api_key = st.secrets[&quot;my_api_key&quot;]</span><br><span class="line"></span><br><span class="line">html_content = f&quot;&quot;&quot;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var apiKey = &#x27;&#123;api_key&#125;&#x27;;</span><br><span class="line">    console.log(&#x27;API Key:&#x27;, apiKey); // This line will log the API key to the browser&#x27;s console</span><br><span class="line">    // Your JavaScript code</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- Your HTML content --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">print(html_content)  # Debug: Check if the API key is correctly injected</span><br><span class="line">st.components.v1.html(html_content, height=600)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> streamlit </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Rendering html file using streamlit app</title>
       <link href="2023/12/27/how-to-render-html-file-using-streamlit-app/"/>
       <url>2023/12/27/how-to-render-html-file-using-streamlit-app/</url>
@@ -2338,9 +2363,9 @@
       
         <tags>
             
-            <tag> langchain </tag>
-            
             <tag> openai </tag>
+            
+            <tag> langchain </tag>
             
             <tag> pinecone </tag>
             
@@ -2675,7 +2700,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#x61;&#105;&#x6c;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#109;">&#121;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#x61;&#105;&#x6c;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#x75;&#x72;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#121;&#x6f;&#x75;&#x72;&#x2d;&#x65;&#x6d;&#x61;&#x69;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -6565,11 +6590,11 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -7660,11 +7685,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
