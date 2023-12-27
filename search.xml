@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Rendering html file using streamlit app</title>
+      <link href="2023/12/27/how-to-render-html-file-using-streamlit-app/"/>
+      <url>2023/12/27/how-to-render-html-file-using-streamlit-app/</url>
+      
+        <content type="html"><![CDATA[<p>If we have some static html, probably with some javascript as well, we can deploy the html and use streamlit app to render the html file.</p><p>Recomend to have a virtual python environment first, then install the streamlit as:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install streamlit</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Here’s an example of how your Python script might look:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import streamlit as st</span><br><span class="line">import streamlit.components.v1 as components</span><br><span class="line"></span><br><span class="line"># Read the HTML file</span><br><span class="line">with open(&#x27;your_html_file.html&#x27;, &#x27;r&#x27;) as file:</span><br><span class="line">    html_content = file.read()</span><br><span class="line"></span><br><span class="line"># Render the HTML</span><br><span class="line">components.html(html_content, height=600)</span><br></pre></td></tr></table></figure><p>Finally, to test the above python file locally:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">streamlit run your_app.py</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> streamlit </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Understanding POST vs PUT in Web Development</title>
       <link href="2023/12/22/http-post-vs-put-difference-clearly-explained/"/>
       <url>2023/12/22/http-post-vs-put-difference-clearly-explained/</url>
@@ -2650,7 +2675,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#111;&#x75;&#114;&#45;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#46;&#x63;&#111;&#x6d;">&#x79;&#111;&#x75;&#114;&#45;&#x65;&#x6d;&#x61;&#x69;&#x6c;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#46;&#x63;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#x61;&#105;&#x6c;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#109;">&#121;&#x6f;&#x75;&#114;&#x2d;&#101;&#109;&#x61;&#105;&#x6c;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#111;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -6540,11 +6565,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -7488,9 +7513,9 @@
             
             <tag> preprocessing </tag>
             
-            <tag> machine learning </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> machine learning </tag>
             
         </tags>
       
@@ -7517,9 +7542,9 @@
             
             <tag> preprocessing </tag>
             
-            <tag> machine learning </tag>
-            
             <tag> pandas tip </tag>
+            
+            <tag> machine learning </tag>
             
         </tags>
       
@@ -7635,11 +7660,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
