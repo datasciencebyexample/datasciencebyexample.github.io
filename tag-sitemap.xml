@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
+        <lastmod>2023-12-29T20:44:55.050Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/streamlit/</loc>
         <lastmod>2023-12-27T23:43:50.011Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -61,13 +68,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/docker/</loc>
         <lastmod>2023-12-16T05:17:23.807Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
-        <lastmod>2023-12-10T00:13:47.395Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
