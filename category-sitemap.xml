@@ -9,6 +9,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/categories/physics/</loc>
+        <lastmod>2024-01-16T00:19:25.266Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/categories/data-engineering/</loc>
         <lastmod>2024-01-09T03:00:06.213Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,13 +74,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/categories/image-processing/</loc>
         <lastmod>2022-10-09T15:54:59.402Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/categories/physics/</loc>
-        <lastmod>2022-09-29T01:51:29.480Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
