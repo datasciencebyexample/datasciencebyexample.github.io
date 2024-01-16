@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
+        <lastmod>2024-01-16T22:55:14.098Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/decibels/</loc>
         <lastmod>2024-01-16T00:19:25.266Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,13 +26,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/spark/</loc>
         <lastmod>2024-01-09T03:00:06.213Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/python/</loc>
-        <lastmod>2024-01-06T02:31:25.674Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -1333,14 +1333,14 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/OpenCV/</loc>
+        <loc>https://datasciencebyexample.github.io/tags/image-editing/</loc>
         <lastmod>2022-09-20T02:27:20.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
