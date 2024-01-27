@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Two Ways of Enforcing and Validating Python class input using Pydantic</title>
+      <link href="2024/01/27/two-ways-of-enforce-and-validate-python-class-inputs-using-pydantic/"/>
+      <url>2024/01/27/two-ways-of-enforce-and-validate-python-class-inputs-using-pydantic/</url>
+      
+        <content type="html"><![CDATA[<p>Pydantic is a Python library used for data parsing and validation through Python type annotations. It’s particularly useful for enforcing that input data matches a specific format, type, or set of constraints.</p><h2 id="Example-1-Defining-a-Class-Directly-with-Pydantic-BaseModel"><a href="#Example-1-Defining-a-Class-Directly-with-Pydantic-BaseModel" class="headerlink" title="Example 1: Defining a Class Directly with Pydantic BaseModel"></a>Example 1: Defining a Class Directly with Pydantic BaseModel</h2><p>In this approach, you define a class that directly inherits from Pydantic’s BaseModel. The class properties are declared as class variables with type annotations. Pydantic will automatically handle validation based on these annotations.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pydantic import BaseModel, validator</span><br><span class="line"></span><br><span class="line">class User(BaseModel):</span><br><span class="line">    name: str</span><br><span class="line">    age: int</span><br><span class="line">    email: str</span><br><span class="line"></span><br><span class="line">    @validator(&#x27;age&#x27;)</span><br><span class="line">    def validate_age(cls, v):</span><br><span class="line">        if v &lt; 18:</span><br><span class="line">            raise ValueError(&#x27;Age must be at least 18&#x27;)</span><br><span class="line">        return v</span><br><span class="line"></span><br><span class="line"># Example usage</span><br><span class="line">try:</span><br><span class="line">    user = User(name=&quot;John Doe&quot;, age=17, email=&quot;john@example.com&quot;)</span><br><span class="line">except ValueError as e:</span><br><span class="line">    print(e)</span><br></pre></td></tr></table></figure><p>In this example, User inherits from BaseModel, and each field (name, age, email) is automatically validated. The custom validator for the age field ensures that the age is at least 18.</p><h2 id="Example-2-Using-a-Pydantic-Model-for-Validation-in-a-Custom-Class"><a href="#Example-2-Using-a-Pydantic-Model-for-Validation-in-a-Custom-Class" class="headerlink" title="Example 2: Using a Pydantic Model for Validation in a Custom Class"></a>Example 2: Using a Pydantic Model for Validation in a Custom Class</h2><p>In this approach, you define a separate Pydantic model for data validation, and then use this model within the <strong>init</strong> method of your custom class to validate the inputs.</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from pydantic import BaseModel, ValidationError</span><br><span class="line"></span><br><span class="line">class UserInput(BaseModel):</span><br><span class="line">    name: str</span><br><span class="line">    age: int</span><br><span class="line">    email: str</span><br><span class="line"></span><br><span class="line">class User:</span><br><span class="line">    def __init__(self, name: str, age: int, email: str):</span><br><span class="line">        try:</span><br><span class="line">            validated_data = UserInput(name=name, age=age, email=email)</span><br><span class="line">            self.name = validated_data.name</span><br><span class="line">            self.age = validated_data.age</span><br><span class="line">            self.email = validated_data.email</span><br><span class="line">        except ValidationError as e:</span><br><span class="line">            print(&quot;Invalid input:&quot;, e.json())</span><br><span class="line"></span><br><span class="line"># Example usage</span><br><span class="line">user = User(name=&quot;Jane Doe&quot;, age=25, email=&quot;jane@example.com&quot;)</span><br></pre></td></tr></table></figure><p>In this example, UserInput is a Pydantic model used for validation, while User is a regular Python class. The<code>__init__</code> method of User creates an instance of UserInput for validation, and if the data is valid, it proceeds to initialize the User instance.</p><p>Both methods are effective for ensuring that the input data adheres to the specified format and constraints. The choice between them depends on your specific use case and design preferences.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> pydantic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Add relative path to system path in Python</title>
       <link href="2024/01/16/add-relative-path-to-system-in-python/"/>
       <url>2024/01/16/add-relative-path-to-system-in-python/</url>
@@ -2881,7 +2908,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#x75;&#x72;&#x2d;&#x65;&#109;&#97;&#105;&#x6c;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;">&#121;&#x6f;&#x75;&#x72;&#x2d;&#x65;&#109;&#97;&#105;&#x6c;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;">&#121;&#111;&#x75;&#114;&#x2d;&#x65;&#x6d;&#97;&#105;&#108;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -6771,11 +6798,11 @@
       
         <tags>
             
+            <tag> OpenCV </tag>
+            
             <tag> PIL </tag>
             
             <tag> image editing </tag>
-            
-            <tag> OpenCV </tag>
             
         </tags>
       
@@ -7866,11 +7893,11 @@
             
             <tag> pipeline </tag>
             
+            <tag> feature engineering </tag>
+            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
-            
-            <tag> feature engineering </tag>
             
         </tags>
       
