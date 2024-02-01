@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/01/31/how-to-write-a-check-with-dollar-and-cents/</loc>
+        <lastmod>2024-02-01T02:41:45.124Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/01/27/two-ways-of-enforce-and-validate-python-class-inputs-using-pydantic/</loc>
         <lastmod>2024-01-27T21:20:21.405Z</lastmod>
         <changefreq>weekly</changefreq>
