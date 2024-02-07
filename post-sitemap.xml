@@ -9,8 +9,16 @@
 
 
     <url>
-        <loc>https://datasciencebyexample.github.io/2024/03/03/fpga-and-application-of-machine-learning/</loc>
-        <lastmod>2024-02-03T02:41:09.639Z</lastmod>
+        <loc>https://datasciencebyexample.github.io/2024/02/02/fpga-and-application-of-machine-learning/</loc>
+        <lastmod>2024-02-07T02:33:04.673Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/2024/02/06/how-does-vpc-works-in-aws-to-connect-public-and-private-subnets/</loc>
+        <lastmod>2024-02-07T02:32:53.531Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

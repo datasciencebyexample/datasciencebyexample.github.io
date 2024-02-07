@@ -4,7 +4,21 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/FPGA/</loc>
-        <lastmod>2024-02-03T02:41:09.639Z</lastmod>
+        <lastmod>2024-02-07T02:33:04.673Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/vpc/</loc>
+        <lastmod>2024-02-07T02:32:53.531Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/aws/</loc>
+        <lastmod>2024-02-07T02:32:53.531Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -977,13 +991,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/lambda/</loc>
-        <lastmod>2023-04-19T15:52:57.191Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/aws/</loc>
         <lastmod>2023-04-19T15:52:57.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
