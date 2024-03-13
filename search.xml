@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Understanding Python Naming Conventions, Underscores vs. Dashes</title>
+      <link href="2024/03/12/python-naming-conventions-underscore-vs-upperscore/"/>
+      <url>2024/03/12/python-naming-conventions-underscore-vs-upperscore/</url>
+      
+        <content type="html"><![CDATA[<p>When diving into the world of Python programming, one of the first things you’ll notice is the importance of naming conventions. As in every language, there’s a standard way to name your variables, functions, and classes that helps keep your code consistent and understandable. In Python, the choice between using underscores and dashes isn’t just a matter of preference—it’s a syntax rule you need to follow.</p><h2 id="Variables-and-Functions-The-Snake-on-the-Ground"><a href="#Variables-and-Functions-The-Snake-on-the-Ground" class="headerlink" title="Variables and Functions: The Snake on the Ground"></a>Variables and Functions: The Snake on the Ground</h2><p>In Python, variables and function names follow a convention known as snake_case. Each word in the identifier is in lowercase, and words are separated by underscores <code>_</code>. This convention keeps variable names readable and avoids confusion with Python’s syntax. For instance:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_variable = <span class="number">10</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_function</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure><p>Trying to use a dash (<code>-</code>) in these names would lead to a syntax error because Python interprets the dash as a minus sign, disrupting the flow and meaning of your code. Hence, a “no-go” in Python land.</p><h2 id="Classes-The-Humps-of-the-Camel"><a href="#Classes-The-Humps-of-the-Camel" class="headerlink" title="Classes: The Humps of the Camel"></a>Classes: The Humps of the Camel</h2><p>When it comes to naming classes, Python developers use CamelCase (also known as CapWords). This means the first letter of each word is capitalized, and there are no underscores between words. This style makes class names stand out and signals to the reader that they are looking at a class definition. Here’s an example:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClassName</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserProfile</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, username</span>):</span></span><br><span class="line">        self.username = username</span><br></pre></td></tr></table></figure><p>The clear distinction in naming conventions for classes, compared to variables and functions, makes Python code more readable and easy to understand.</p><h2 id="Consistency-is-Key"><a href="#Consistency-is-Key" class="headerlink" title="Consistency is Key"></a>Consistency is Key</h2><p>The Python Enhancement Proposal (PEP) 8 serves as the style guide for Python code and outlines these naming conventions. Staying consistent with PEP 8 not only improves readability but also aligns your code with the expectations of other Python developers, simplifying code sharing and collaboration.</p><p>In summary, when programming in Python:</p><ul><li>Use snake_case for variables and functions: <code>my_variable</code>, <code>calculate_age</code>.</li><li>Use CamelCase for classes: <code>DatabaseConnection</code>, <code>JsonResponse</code>.</li></ul><p>Remember, dashes have no place in Python identifiers and are reserved for arithmetic operations. By following the Python norms, you ensure your code is accessible, maintainable, and ready to blend seamlessly into the vast world of Python modules and projects.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> data engineering </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>How to install pyaudio on mac when there is some error</title>
       <link href="2024/03/09/how-to-fix-pyaudio-installation-on-mac/"/>
       <url>2024/03/09/how-to-fix-pyaudio-installation-on-mac/</url>
@@ -3116,7 +3141,7 @@
       <link href="2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/"/>
       <url>2023/07/03/how-to-access-multiple-git-accounts-in-one-computer/</url>
       
-        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#x79;&#x6f;&#x75;&#x72;&#45;&#x65;&#109;&#97;&#x69;&#x6c;&#64;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x79;&#x6f;&#x75;&#x72;&#45;&#x65;&#109;&#97;&#x69;&#x6c;&#64;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
+        <content type="html"><![CDATA[<p>If you simply copy your ssh key from one github account to another github account, you will find it’s not working. And After you click add the ssh key, it won’t appear under the ssh key list.</p><p>So to access multiple git accounts in one computer, you will need to this.</p><p>SSH allows you to create multiple SSH keys and specify which SSH key to use for which server or host. This can be achieved by setting the following steps:</p><ol><li><p>Generate a new SSH key for each Git account using the command</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure><p>Replace “<a href="mailto:&#121;&#x6f;&#117;&#114;&#45;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#121;&#x6f;&#117;&#114;&#45;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#x65;&#x78;&#x61;&#109;&#112;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p></li><li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li><li><p>Then you will create or modify the config file inside the .ssh directory (Create it if it doesn’t exist)</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure></li><li><p>Inside this file, you will define each host with its respective SSH key. For example:</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Account 1</span><br><span class="line">Host github.com-account1</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account1</span><br><span class="line"></span><br><span class="line"># Account 2</span><br><span class="line">Host github.com-account2</span><br><span class="line">   HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_account2</span><br></pre></td></tr></table></figure></li><li><p>Afterward, we have to do the cloning in a different way to use specific ssh key via git. for example:</p> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com-account1:username1/repo.git</span><br><span class="line">git clone git@github.com-account2:username2/repo.git</span><br></pre></td></tr></table></figure></li><li><p>Lastly, go to your Git account settings. Find “SSH and GPG keys” and click “New SSH key”. Copy the content of your public ssh key (e.g., id_rsa_new.pub) and paste it here.</p></li></ol><p>By doing this, you can work with multiple Git accounts on the same machine. Remember to replace “account1” and “account2”, “username1” and “username2” with your actual account usernames.</p>]]></content>
       
       
       <categories>
@@ -5944,9 +5969,9 @@
       
         <tags>
             
-            <tag> chatgpt </tag>
-            
             <tag> alphago </tag>
+            
+            <tag> chatgpt </tag>
             
         </tags>
       
@@ -8101,11 +8126,11 @@
             
             <tag> pipeline </tag>
             
-            <tag> feature engineering </tag>
-            
             <tag> tsfresh </tag>
             
             <tag> time series </tag>
+            
+            <tag> feature engineering </tag>
             
         </tags>
       
