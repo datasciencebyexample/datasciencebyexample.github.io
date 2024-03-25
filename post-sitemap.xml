@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/03/25/dockerfile-for-fastapi-app-example/</loc>
+        <lastmod>2024-03-25T17:54:19.187Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/03/16/move-subtitle-soft-vs-hard-and-how-to-detect/</loc>
         <lastmod>2024-03-16T18:29:00.220Z</lastmod>
         <changefreq>weekly</changefreq>
