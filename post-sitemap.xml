@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/04/01/why-threading-in-python-depends-more-on-memory/</loc>
+        <lastmod>2024-04-02T03:32:04.640Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/03/25/dockerfile-for-fastapi-app-example/</loc>
         <lastmod>2024-03-25T17:54:19.187Z</lastmod>
         <changefreq>weekly</changefreq>
