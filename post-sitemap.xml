@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/05/24/running-parrallel-tasks-in-fastapi-and-return-some-task-earlier/</loc>
+        <lastmod>2024-05-24T17:30:48.740Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/05/14/a-simple-way-to-check-public-ip-address-using-python/</loc>
         <lastmod>2024-05-15T03:13:30.043Z</lastmod>
         <changefreq>weekly</changefreq>
