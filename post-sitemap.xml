@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/06/09/how-to-handle-blocking-tasks-in-async-functions/</loc>
+        <lastmod>2024-06-09T17:46:09.721Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/05/24/running-parrallel-tasks-in-fastapi-and-return-some-task-earlier/</loc>
         <lastmod>2024-05-24T17:30:48.740Z</lastmod>
         <changefreq>weekly</changefreq>
