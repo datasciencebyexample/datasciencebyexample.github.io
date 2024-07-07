@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/07/07/measure-average-latency-with-faiss-vector-store/</loc>
+        <lastmod>2024-07-07T23:11:02.396Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/06/09/how-to-handle-blocking-tasks-in-async-functions/</loc>
         <lastmod>2024-06-09T17:46:09.721Z</lastmod>
         <changefreq>weekly</changefreq>
