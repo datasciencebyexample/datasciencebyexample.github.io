@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/10/15/evaluate_json_string_column_in_databricks_sql/</loc>
+        <lastmod>2024-10-16T02:11:35.889Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/09/23/ensure_proper_dependency_installation_for_python_package/</loc>
         <lastmod>2024-09-24T00:49:10.659Z</lastmod>
         <changefreq>weekly</changefreq>
