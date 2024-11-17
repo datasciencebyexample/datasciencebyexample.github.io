@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2024/11/16/think-call-center-routing-as-recommendation-problem/</loc>
+        <lastmod>2024-11-17T01:09:05.895Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/10/15/evaluate_json_string_column_in_databricks_sql/</loc>
         <lastmod>2024-10-16T02:11:35.889Z</lastmod>
         <changefreq>weekly</changefreq>
