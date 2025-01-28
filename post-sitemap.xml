@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2025/01/28/convert-mulaw-audio-to-pcm-with-different-sampling/</loc>
+        <lastmod>2025-01-28T22:26:14.143Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2024/11/16/think-call-center-routing-as-recommendation-problem/</loc>
         <lastmod>2024-11-17T10:44:04.287Z</lastmod>
         <changefreq>weekly</changefreq>
