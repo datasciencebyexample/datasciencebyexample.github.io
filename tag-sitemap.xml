@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/llm/</loc>
+        <lastmod>2025-02-20T04:02:16.420Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/finetuning/</loc>
+        <lastmod>2025-02-20T04:02:16.420Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/web-development/</loc>
         <lastmod>2025-02-18T02:18:23.425Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -479,13 +493,6 @@
     </url>
 
     <url>
-        <loc>https://datasciencebyexample.github.io/tags/finetuning/</loc>
-        <lastmod>2023-10-11T01:22:58.151Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://datasciencebyexample.github.io/tags/whisper/</loc>
         <lastmod>2023-10-07T01:51:08.398Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -697,13 +704,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/software-engineer/</loc>
-        <lastmod>2023-07-22T19:46:18.912Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/llm/</loc>
         <lastmod>2023-07-22T19:46:18.912Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
