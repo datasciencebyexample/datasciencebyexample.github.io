@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/2025/03/22/openai_agent_sdk_and_triage_expert_example/</loc>
+        <lastmod>2025-03-23T03:15:01.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/2025/03/15/fix_unstaged_error_when_doing_git_pull/</loc>
         <lastmod>2025-03-15T23:39:48.856Z</lastmod>
         <changefreq>weekly</changefreq>
