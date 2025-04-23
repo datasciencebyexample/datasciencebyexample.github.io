@@ -1,0 +1,1236 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="LangGraph vs. OpenAI Agent SDK – Which Agent‑Building Framework Should You Reach For?, DataScienceTribe">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Global site - Google Ads -->
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5472621737702667"
+     crossorigin="anonymous"></script>
+
+	
+    <title>LangGraph vs. OpenAI Agent SDK – Which Agent‑Building Framework Should You Reach For? | DataScienceTribe</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">DataScienceTribe</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tools" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Tools</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">DataScienceTribe</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tools" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Tools
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">LangGraph vs. OpenAI Agent SDK – Which Agent‑Building Framework Should You Reach For?</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/openai/">
+                                <span class="chip bg-color">openai</span>
+                            </a>
+                        
+                            <a href="/tags/agents/">
+                                <span class="chip bg-color">agents</span>
+                            </a>
+                        
+                            <a href="/tags/langraph/">
+                                <span class="chip bg-color">langraph</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/data-engineering/" class="post-category">
+                                data engineering
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2025-04-22
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-Why-This-Matters"><a href="#1-Why-This-Matters" class="headerlink" title="1. Why This Matters"></a>1. Why This Matters</h2><p>2023–24 has been the year of “agents”: autonomous (or semi‑autonomous) programs that chain LLM calls with tools, memory, and conditional logic to get real work done.<br>Two of the loudest entrants:</p>
+<ul>
+<li><strong>LangGraph</strong> – an open‑source graph‑based orchestration library from LangChain.  </li>
+<li><strong>OpenAI Agent SDK</strong> – a managed, cloud‑hosted system built around the OpenAI Assistants API.</li>
+</ul>
+<p>Both let you give an LLM a goal and a tool belt, then let it decide what to do next. Yet their philosophies, runtimes, and pricing models diverge enough that picking the wrong one can cost you time, money, and flexibility.</p>
+<hr>
+<h2 id="2-Quick‑Glance-Scorecard"><a href="#2-Quick‑Glance-Scorecard" class="headerlink" title="2. Quick‑Glance Scorecard"></a>2. Quick‑Glance Scorecard</h2><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>LangGraph</th>
+<th>OpenAI Agent SDK</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>License / Hosting</strong></td>
+<td>MIT. Runs anywhere Python runs (laptop, server, on‑prem).</td>
+<td>Closed‑source SaaS. Your agent lives on OpenAI’s servers.</td>
+</tr>
+<tr>
+<td><strong>Execution Model</strong></td>
+<td>Finite‑state graph. Nodes = functions/LCEL chains, edges = routing logic.</td>
+<td>Event loop hidden. Backend picks tools, executes, feeds results until done.</td>
+</tr>
+<tr>
+<td><strong>LLM Choice</strong></td>
+<td>Any model LangChain supports (OpenAI, Anthropic, local GGUF, Azure, etc.).</td>
+<td>OpenAI models only (GPT‑4o, GPT‑4, GPT‑3.5, etc.).</td>
+</tr>
+<tr>
+<td><strong>Tooling Interface</strong></td>
+<td>Python callables; arbitrary I/O; can stream tokens between nodes.</td>
+<td>JSON‑schema “tools”. Up to 128 tools per agent; automatic function calling.</td>
+</tr>
+<tr>
+<td><strong>State / Memory</strong></td>
+<td>You design it (Redis, Postgres, in‑process, etc.).</td>
+<td>Automatic persistent “thread”. 1M tokens free, evicts oldest afterwards.</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>Python logging/tracing, LangSmith integration.</td>
+<td>OpenAI dashboard (runs, deltas, token usage). Limited node‑level introspect.</td>
+</tr>
+<tr>
+<td><strong>Data Privacy</strong></td>
+<td>Stays wherever you deploy.</td>
+<td>Data in US‑hosted OpenAI servers; opt‑out training by default.</td>
+</tr>
+<tr>
+<td><strong>Pricing</strong></td>
+<td>Free aside from model/tool costs and your infra.</td>
+<td>Pay‑per‑token + per‑tool compute. No server bills, but locked to OAI rates.</td>
+</tr>
+<tr>
+<td><strong>Maturity</strong></td>
+<td>Released Q3 2023. Active OSS community, rapid iterations.</td>
+<td>Early‑access beta (as of mid‑2024). Docs improving, still feature‑gating.</td>
+</tr>
+<tr>
+<td><strong>Best For</strong></td>
+<td>Complex routing, on‑prem, non‑OpenAI models, heavy customization.</td>
+<td>Rapid GPT‑4o prototypes, zero DevOps, managed memory &amp; compliance.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-Deep-Dive-Strengths-amp-Weaknesses"><a href="#3-Deep-Dive-Strengths-amp-Weaknesses" class="headerlink" title="3. Deep Dive: Strengths &amp; Weaknesses"></a>3. Deep Dive: Strengths &amp; Weaknesses</h2><h3 id="A-Architecture-amp-Flexibility"><a href="#A-Architecture-amp-Flexibility" class="headerlink" title="A. Architecture &amp; Flexibility"></a>A. Architecture &amp; Flexibility</h3><ul>
+<li><strong>LangGraph:</strong>  <ul>
+<li>Explicit graph topology: you wire nodes, edges, loops, termination conditions.  </li>
+<li>Great for research, debugging, compliance audits—every step is visible and deterministic.</li>
+</ul>
+</li>
+<li><strong>OpenAI Agent SDK:</strong>  <ul>
+<li>Hidden event loop: define tools and retrieval, the backend orchestrates turns.  </li>
+<li>Simpler onboarding, but you can’t interpose custom routing logic.</li>
+</ul>
+</li>
+</ul>
+<h3 id="B-Model-amp-Tool-Ecosystem"><a href="#B-Model-amp-Tool-Ecosystem" class="headerlink" title="B. Model &amp; Tool Ecosystem"></a>B. Model &amp; Tool Ecosystem</h3><ul>
+<li><strong>LangGraph:</strong>  <ul>
+<li>Any LangChain‑supported LLM/embedding (OpenAI, Anthropic, local, Azure, etc.).  </li>
+<li>Avoid vendor lock‑in; run offline or air‑gapped.</li>
+</ul>
+</li>
+<li><strong>OpenAI Agent SDK:</strong>  <ul>
+<li>GPT‑4o, GPT‑4, GPT‑3.5, function calling, code interpreter, retrieval.  </li>
+<li>Deepest integration with OpenAI’s proprietary features.</li>
+</ul>
+</li>
+</ul>
+<h3 id="C-Hosting-amp-DevOps"><a href="#C-Hosting-amp-DevOps" class="headerlink" title="C. Hosting &amp; DevOps"></a>C. Hosting &amp; DevOps</h3><ul>
+<li><strong>LangGraph:</strong>  <ul>
+<li>Bring‑your‑own runtime (laptop, cloud, on‑prem).  </li>
+<li>You manage autoscaling, retries, security, tracing.</li>
+</ul>
+</li>
+<li><strong>OpenAI Agent SDK:</strong>  <ul>
+<li>Fully managed by OpenAI.  </li>
+<li>No infra overhead; ideal for quick demos and small teams.</li>
+</ul>
+</li>
+</ul>
+<h3 id="D-Cost-Model"><a href="#D-Cost-Model" class="headerlink" title="D. Cost Model"></a>D. Cost Model</h3><ul>
+<li><strong>LangGraph:</strong>  <ul>
+<li>You pay for the LLM (token costs) and your infra.  </li>
+<li>Local models can reduce marginal cost near zero.</li>
+</ul>
+</li>
+<li><strong>OpenAI Agent SDK:</strong>  <ul>
+<li>Token + compute cost.  </li>
+<li>Hidden loop iterations can make billing less predictable.</li>
+</ul>
+</li>
+</ul>
+<h3 id="E-Observability-amp-Debugging"><a href="#E-Observability-amp-Debugging" class="headerlink" title="E. Observability &amp; Debugging"></a>E. Observability &amp; Debugging</h3><ul>
+<li><strong>LangGraph:</strong>  <ul>
+<li>LangSmith tracing: every node, prompt, token path is recorded.  </li>
+<li>Replayable, exportable, fine‑tunable on missteps.</li>
+</ul>
+</li>
+<li><strong>OpenAI Agent SDK:</strong>  <ul>
+<li>OpenAI “runs” UI: chronological view of messages, tool calls, completions.  </li>
+<li>Lacks deep exportable traces at the node level.</li>
+</ul>
+</li>
+</ul>
+<h3 id="F-Governance"><a href="#F-Governance" class="headerlink" title="F. Governance"></a>F. Governance</h3><ul>
+<li><strong>LangGraph:</strong>  <ul>
+<li>Full on‑prem control for GDPR / PII compliance.  </li>
+</ul>
+</li>
+<li><strong>OpenAI Agent SDK:</strong>  <ul>
+<li>SOC2/ISO scope covered by OpenAI, but data lives in OpenAI’s boundary.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-Pros-amp-Cons-Lists"><a href="#4-Pros-amp-Cons-Lists" class="headerlink" title="4. Pros &amp; Cons Lists"></a>4. Pros &amp; Cons Lists</h2><h3 id="LangGraph"><a href="#LangGraph" class="headerlink" title="LangGraph"></a>LangGraph</h3><p><strong>Pros:</strong>  </p>
+<ol>
+<li>Vendor‑agnostic LLM &amp; vector store support.  </li>
+<li>Explicit graph → deterministic &amp; inspectable flows.  </li>
+<li>Event‑driven / streaming across nodes.  </li>
+<li>Open‑source, extendable, can fork.  </li>
+<li>Works offline or air‑gapped.</li>
+</ol>
+<p><strong>Cons:</strong>  </p>
+<ol>
+<li>You manage infra, scaling, retries.  </li>
+<li>Steeper learning curve around LCEL syntax.  </li>
+<li>No built‑in retrieval or code‑interpreter—you assemble components.  </li>
+<li>Fast‑moving API &amp; fragmented examples.</li>
+</ol>
+<h3 id="OpenAI-Agent-SDK"><a href="#OpenAI-Agent-SDK" class="headerlink" title="OpenAI Agent SDK"></a>OpenAI Agent SDK</h3><p><strong>Pros:</strong>  </p>
+<ol>
+<li>Zero‑server setup; minutes to first agent.  </li>
+<li>Tight GPT‑4o integration (function calling, code interpreter).  </li>
+<li>Automatic persistent memory with citations.  </li>
+<li>Usage analytics &amp; QoS from OpenAI.  </li>
+<li>Compliance certifications handled for you.</li>
+</ol>
+<p><strong>Cons:</strong>  </p>
+<ol>
+<li>OpenAI‑only models (vendor lock‑in).  </li>
+<li>Closed‑source; no self‑hosting.  </li>
+<li>Limited custom routing / multi‑agent orchestration.  </li>
+<li>Beta API; potential breaking changes.  </li>
+<li>Harder to debug deeply; data residency tied to OpenAI.</li>
+</ol>
+<hr>
+<h2 id="5-Which-One-Should-You-Pick"><a href="#5-Which-One-Should-You-Pick" class="headerlink" title="5. Which One Should You Pick?"></a>5. Which One Should You Pick?</h2><h3 id="Choose-LangGraph-when"><a href="#Choose-LangGraph-when" class="headerlink" title="Choose LangGraph when:"></a>Choose LangGraph when:</h3><ul>
+<li>You need multiple LLMs or local models for cost/privacy.  </li>
+<li>Your workflow demands branching, looping, or critique loops.  </li>
+<li>Step‑level traceability and audits are critical.  </li>
+<li>You must deploy inside your cloud/VPC or offline.</li>
+</ul>
+<h3 id="Choose-OpenAI-Agent-SDK-when"><a href="#Choose-OpenAI-Agent-SDK-when" class="headerlink" title="Choose OpenAI Agent SDK when:"></a>Choose OpenAI Agent SDK when:</h3><ul>
+<li>Time‑to‑market trumps fine‑grained control.  </li>
+<li>User data can reside in OpenAI’s US‑hosted servers.  </li>
+<li>You want frictionless access to GPT‑4o’s code interpreter &amp; retrieval.  </li>
+<li>You have no dedicated DevOps team.  </li>
+<li>You’re building a conversational assistant, not a complex workflow engine.</li>
+</ul>
+<h3 id="Hybrid-Pattern-common-in-production"><a href="#Hybrid-Pattern-common-in-production" class="headerlink" title="Hybrid Pattern (common in production)"></a>Hybrid Pattern (common in production)</h3><p>Use the Agent SDK as your user‑facing “assistant” but register a tool that delegates to an internal LangGraph service for heavyweight multi‑step planning. This combines OpenAI’s managed convo memory with your custom orchestration.</p>
+<hr>
+<h2 id="6-What-the-Future-Might-Change"><a href="#6-What-the-Future-Might-Change" class="headerlink" title="6. What the Future Might Change"></a>6. What the Future Might Change</h2><ul>
+<li><strong>OpenAI</strong> may allow third‑party model endpoints in the SDK, weakening vendor lock‑in.  </li>
+<li><strong>LangChain</strong> is working on managed LangGraph hosting, closing the DevOps gap.  </li>
+<li>Both ecosystems are standardizing on JSON‑schema tool specs—expect better cross‑compatibility soon.</li>
+</ul>
+<hr>
+<h2 id="7-Bottom-Line"><a href="#7-Bottom-Line" class="headerlink" title="7. Bottom Line"></a>7. Bottom Line</h2><p>There is no universal “better”—only “better for this project today.”  </p>
+<ul>
+<li>If you’re an enterprise with strict data rules, multi‑model needs, or bespoke routing logic, LangGraph’s open architecture is worth the setup overhead.  </li>
+<li>If you’re a startup that needs a GPT‑4‑powered assistant with file uploads and code execution tomorrow morning, the OpenAI Agent SDK’s managed simplicity is hard to beat.</li>
+</ul>
+<p>Evaluate along three axes—Control, Compliance, Convenience—and the decision usually makes itself.</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">robot learner</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://datasciencebyexample.github.io/2025/04/22/openai-agent-sdk-vs-langraph/">https://datasciencebyexample.github.io/2025/04/22/openai-agent-sdk-vs-langraph/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">robot learner</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/openai/">
+                                    <span class="chip bg-color">openai</span>
+                                </a>
+                            
+                                <a href="/tags/agents/">
+                                    <span class="chip bg-color">agents</span>
+                                </a>
+                            
+                                <a href="/tags/langraph/">
+                                    <span class="chip bg-color">langraph</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2025/04/22/openai-agent-sdk-vs-langraph/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="LangGraph vs. OpenAI Agent SDK – Which Agent‑Building Framework Should You Reach For?">
+                        
+                        <span class="card-title">LangGraph vs. OpenAI Agent SDK – Which Agent‑Building Framework Should You Reach For?</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/openai/">
+                        <span class="chip bg-color">openai</span>
+                    </a>
+                    
+                    <a href="/tags/agents/">
+                        <span class="chip bg-color">agents</span>
+                    </a>
+                    
+                    <a href="/tags/langraph/">
+                        <span class="chip bg-color">langraph</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/03/22/openai_agent_sdk_and_triage_expert_example/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Introducing a Triage Subject Matter Expert (SME) System Using OpenAI’s Agent SDK">
+                        
+                        <span class="card-title">Introducing a Triage Subject Matter Expert (SME) System Using OpenAI’s Agent SDK</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-engineering/" class="post-category">
+                                    data engineering
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/openai/">
+                        <span class="chip bg-color">openai</span>
+                    </a>
+                    
+                    <a href="/tags/agents/">
+                        <span class="chip bg-color">agents</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2025</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">robot learner</a>
+            <br>
+            
+            
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
