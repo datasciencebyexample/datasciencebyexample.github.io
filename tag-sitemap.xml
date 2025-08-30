@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://datasciencebyexample.github.io/tags/llm/</loc>
+        <lastmod>2025-08-30T01:43:04.676Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/ai/</loc>
+        <lastmod>2025-08-30T01:43:04.676Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://datasciencebyexample.github.io/tags/chatgpt/</loc>
+        <lastmod>2025-08-30T01:43:04.676Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://datasciencebyexample.github.io/tags/openai/</loc>
         <lastmod>2025-08-10T18:49:35.913Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -40,13 +61,6 @@
     <url>
         <loc>https://datasciencebyexample.github.io/tags/git/</loc>
         <lastmod>2025-03-15T23:39:48.856Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/llm/</loc>
-        <lastmod>2025-02-20T04:02:16.420Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -235,13 +249,6 @@
 
     <url>
         <loc>https://datasciencebyexample.github.io/tags/agi/</loc>
-        <lastmod>2024-02-20T23:42:27.816Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://datasciencebyexample.github.io/tags/chatgpt/</loc>
         <lastmod>2024-02-20T23:42:27.816Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
