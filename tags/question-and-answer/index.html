@@ -227,6 +227,97 @@
 
 </header>
 
+    
+<div id="language-learning-banner" class="language-learning-banner">
+    <div class="banner-content">
+        <div class="banner-text">
+            <strong>Language Learning App</strong>
+        </div>
+        <div class="banner-link">
+            <a href="https://www.golingoapp.com" target="_blank" onclick="trackBannerClick()">
+                www.golingoapp.com
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.language-learning-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 999;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.banner-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.banner-link a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.banner-link a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .banner-content {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .banner-text {
+        font-size: 14px;
+    }
+    
+    .banner-link a {
+        font-size: 12px;
+    }
+}
+</style>
+
+<script>
+function trackBannerClick() {
+    // Track banner click by sending to API
+    fetch('https://4y0g6hn7t7.execute-api.us-east-1.amazonaws.com/prod/banner-track', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            event: 'banner_click',
+            banner_type: 'language_learning_app',
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            referrer: document.referrer,
+            user_agent: navigator.userAgent
+        })
+    }).catch(function(error) {
+        // Silent fail - don't interrupt user experience
+        console.log('Banner tracking failed:', error);
+    });
+    
+    // Optional: Log to console for testing
+    console.log('Language Learning App banner clicked at', new Date().toISOString());
+}
+</script>
     <div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
@@ -288,29 +379,20 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/pandas/" title="pandas: 14">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="pandas" style="background-color: #F9EBEA;">pandas
-                        <span class="tag-length">14</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/dataframe/" title="dataframe: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="dataframe" style="background-color: #F5EEF8;">dataframe
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/python/" title="python: 68">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="python" style="background-color: #D5F5E3;">python
+                            data-tagname="python" style="background-color: #F9EBEA;">python
                         <span class="tag-length">68</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pandas/" title="pandas: 14">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pandas" style="background-color: #F5EEF8;">pandas
+                        <span class="tag-length">14</span>
                     </span>
                 </a>
                 
@@ -318,8 +400,26 @@
                 <a href="/tags/preprocessing/" title="preprocessing: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="preprocessing" style="background-color: #E8F8F5;">preprocessing
+                            data-tagname="preprocessing" style="background-color: #D5F5E3;">preprocessing
                         <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/dataframe/" title="dataframe: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="dataframe" style="background-color: #E8F8F5;">dataframe
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/elasticsearch/" title="elasticsearch: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="elasticsearch" style="background-color: #FEF9E7;">elasticsearch
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -327,7 +427,7 @@
                 <a href="/tags/tokenization/" title="tokenization: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="tokenization" style="background-color: #FEF9E7;">tokenization
+                            data-tagname="tokenization" style="background-color: #F8F9F9;">tokenization
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -336,26 +436,8 @@
                 <a href="/tags/NLTK/" title="NLTK: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="NLTK" style="background-color: #F8F9F9;">NLTK
+                            data-tagname="NLTK" style="background-color: #82E0AA;">NLTK
                         <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/elasticsearch/" title="elasticsearch: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="elasticsearch" style="background-color: #82E0AA;">elasticsearch
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/pandas-tip/" title="pandas tip: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="pandas tip" style="background-color: #D7BDE2;">pandas tip
-                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -363,7 +445,7 @@
                 <a href="/tags/pipeline/" title="pipeline: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="pipeline" style="background-color: #A3E4D7;">pipeline
+                            data-tagname="pipeline" style="background-color: #D7BDE2;">pipeline
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -372,7 +454,7 @@
                 <a href="/tags/tsfresh/" title="tsfresh: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="tsfresh" style="background-color: #85C1E9;">tsfresh
+                            data-tagname="tsfresh" style="background-color: #A3E4D7;">tsfresh
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -381,7 +463,7 @@
                 <a href="/tags/time-series/" title="time series: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="time series" style="background-color: #F8C471;">time series
+                            data-tagname="time series" style="background-color: #85C1E9;">time series
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -390,8 +472,17 @@
                 <a href="/tags/feature-engineering/" title="feature engineering: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="feature engineering" style="background-color: #F9E79F;">feature engineering
+                            data-tagname="feature engineering" style="background-color: #F8C471;">feature engineering
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pandas-tip/" title="pandas tip: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pandas tip" style="background-color: #F9E79F;">pandas tip
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -446,15 +537,6 @@
                              chip-default "
                             data-tagname="flask app" style="background-color: #F5EEF8;">flask app
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/API/" title="API: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="API" style="background-color: #F8F9F9;">API
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -540,6 +622,42 @@
                 </a>
                 
                 
+                <a href="/tags/regex/" title="regex: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="regex" style="background-color: #F5EEF8;">regex
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/seaborn/" title="seaborn: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="seaborn" style="background-color: #FFF;">seaborn
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/API/" title="API: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="API" style="background-color: #F8F9F9;">API
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/scripts/" title="scripts: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="scripts" style="background-color: #F9E79F;">scripts
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/transformer/" title="transformer: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -558,15 +676,6 @@
                 </a>
                 
                 
-                <a href="/tags/regex/" title="regex: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="regex" style="background-color: #F5EEF8;">regex
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/Web3/" title="Web3: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -576,29 +685,11 @@
                 </a>
                 
                 
-                <a href="/tags/seaborn/" title="seaborn: 1">
+                <a href="/tags/aws/" title="aws: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="seaborn" style="background-color: #FFF;">seaborn
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/scripts/" title="scripts: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="scripts" style="background-color: #F9E79F;">scripts
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/databricks/" title="databricks: 10">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="databricks" style="background-color: #F9EBEA;">databricks
-                        <span class="tag-length">10</span>
+                            data-tagname="aws" style="background-color: #D5F5E3;">aws
+                        <span class="tag-length">8</span>
                     </span>
                 </a>
                 
@@ -630,20 +721,11 @@
                 </a>
                 
                 
-                <a href="/tags/aws/" title="aws: 8">
+                <a href="/tags/databricks/" title="databricks: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="aws" style="background-color: #D5F5E3;">aws
-                        <span class="tag-length">8</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/credit-card/" title="credit card: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="credit card" style="background-color: #FEF9E7;">credit card
-                        <span class="tag-length">3</span>
+                            data-tagname="databricks" style="background-color: #F9EBEA;">databricks
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -657,10 +739,10 @@
                 </a>
                 
                 
-                <a href="/tags/CORS/" title="CORS: 3">
+                <a href="/tags/credit-card/" title="credit card: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="CORS" style="background-color: #F5EEF8;">CORS
+                            data-tagname="credit card" style="background-color: #FEF9E7;">credit card
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -684,6 +766,15 @@
                 </a>
                 
                 
+                <a href="/tags/OpenCV/" title="OpenCV: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="OpenCV" style="background-color: #A3E4D7;">OpenCV
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/DART/" title="DART: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -702,20 +793,20 @@
                 </a>
                 
                 
-                <a href="/tags/OpenCV/" title="OpenCV: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="OpenCV" style="background-color: #A3E4D7;">OpenCV
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/s3/" title="s3: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="s3" style="background-color: #D5F5E3;">s3
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/CORS/" title="CORS: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="CORS" style="background-color: #F5EEF8;">CORS
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -747,24 +838,6 @@
                 </a>
                 
                 
-                <a href="/tags/lambda/" title="lambda: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="lambda" style="background-color: #E8F8F5;">lambda
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/cloudwatch/" title="cloudwatch: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="cloudwatch" style="background-color: #A3E4D7;">cloudwatch
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/chatGPT/" title="chatGPT: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -783,11 +856,20 @@
                 </a>
                 
                 
-                <a href="/tags/news/" title="news: 5">
+                <a href="/tags/lambda/" title="lambda: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="news" style="background-color: #D7BDE2;">news
-                        <span class="tag-length">5</span>
+                            data-tagname="lambda" style="background-color: #E8F8F5;">lambda
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/cloudwatch/" title="cloudwatch: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="cloudwatch" style="background-color: #A3E4D7;">cloudwatch
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -810,6 +892,15 @@
                 </a>
                 
                 
+                <a href="/tags/news/" title="news: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="news" style="background-color: #D7BDE2;">news
+                        <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/ai/" title="ai: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -824,6 +915,60 @@
                              chip-default "
                             data-tagname="llm" style="background-color: #A3E4D7;">llm
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/deep-learning/" title="deep learning: 7">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="deep learning" style="background-color: #D5F5E3;">deep learning
+                        <span class="tag-length">7</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/autoencoder/" title="autoencoder: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="autoencoder" style="background-color: #F9EBEA;">autoencoder
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/AWS/" title="AWS: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="AWS" style="background-color: #F9E79F;">AWS
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/opensearch/" title="opensearch: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="opensearch" style="background-color: #F5EEF8;">opensearch
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/speech2text/" title="speech2text: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="speech2text" style="background-color: #85C1E9;">speech2text
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/azure/" title="azure: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="azure" style="background-color: #D5F5E3;">azure
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -855,19 +1000,19 @@
                 </a>
                 
                 
-                <a href="/tags/deep-learning/" title="deep learning: 7">
+                <a href="/tags/multi-class-classification/" title="multi-class classification: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="deep learning" style="background-color: #D5F5E3;">deep learning
-                        <span class="tag-length">7</span>
+                            data-tagname="multi-class classification" style="background-color: #85C1E9;">multi-class classification
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/autoencoder/" title="autoencoder: 1">
+                <a href="/tags/multi-label-classification/" title="multi-label classification: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="autoencoder" style="background-color: #F9EBEA;">autoencoder
+                            data-tagname="multi-label classification" style="background-color: #FFF;">multi-label classification
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -882,38 +1027,20 @@
                 </a>
                 
                 
-                <a href="/tags/speech2text/" title="speech2text: 1">
+                <a href="/tags/pynecone/" title="pynecone: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="speech2text" style="background-color: #85C1E9;">speech2text
+                            data-tagname="pynecone" style="background-color: #F8C471;">pynecone
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/azure/" title="azure: 1">
+                <a href="/tags/langchain/" title="langchain: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="azure" style="background-color: #D5F5E3;">azure
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/opensearch/" title="opensearch: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="opensearch" style="background-color: #F5EEF8;">opensearch
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/AWS/" title="AWS: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="AWS" style="background-color: #F9E79F;">AWS
-                        <span class="tag-length">1</span>
+                            data-tagname="langchain" style="background-color: #F8F9F9;">langchain
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -927,19 +1054,64 @@
                 </a>
                 
                 
-                <a href="/tags/multi-class-classification/" title="multi-class classification: 1">
+                <a href="/tags/openai/" title="openai: 25">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="multi-class classification" style="background-color: #85C1E9;">multi-class classification
+                            data-tagname="openai" style="background-color: #FEF9E7;">openai
+                        <span class="tag-length">25</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/generative-AI/" title="generative AI: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="generative AI" style="background-color: #85C1E9;">generative AI
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/multi-label-classification/" title="multi-label classification: 1">
+                <a href="/tags/GPT/" title="GPT: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="multi-label classification" style="background-color: #FFF;">multi-label classification
+                            data-tagname="GPT" style="background-color: #F8C471;">GPT
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/code-interpreter/" title="code-interpreter: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="code-interpreter" style="background-color: #F8C471;">code-interpreter
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/ROC/" title="ROC: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="ROC" style="background-color: #E8F8F5;">ROC
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/KS-score/" title="KS score: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="KS score" style="background-color: #F9E79F;">KS score
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/notebook/" title="notebook: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="notebook" style="background-color: #E8F8F5;">notebook
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -972,29 +1144,11 @@
                 </a>
                 
                 
-                <a href="/tags/pynecone/" title="pynecone: 1">
+                <a href="/tags/gzip/" title="gzip: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="pynecone" style="background-color: #F8C471;">pynecone
+                            data-tagname="gzip" style="background-color: #F9EBEA;">gzip
                         <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/langchain/" title="langchain: 6">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="langchain" style="background-color: #F8F9F9;">langchain
-                        <span class="tag-length">6</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/openai/" title="openai: 25">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="openai" style="background-color: #FEF9E7;">openai
-                        <span class="tag-length">25</span>
                     </span>
                 </a>
                 
@@ -1003,105 +1157,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="carriage return" style="background-color: #F9EBEA;">carriage return
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/generative-AI/" title="generative AI: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="generative AI" style="background-color: #85C1E9;">generative AI
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/GPT/" title="GPT: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="GPT" style="background-color: #F8C471;">GPT
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/code-interpreter/" title="code-interpreter: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="code-interpreter" style="background-color: #F8C471;">code-interpreter
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/notebook/" title="notebook: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="notebook" style="background-color: #E8F8F5;">notebook
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/ROC/" title="ROC: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="ROC" style="background-color: #E8F8F5;">ROC
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/KS-score/" title="KS score: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="KS score" style="background-color: #F9E79F;">KS score
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/chunk-text/" title="chunk text: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="chunk text" style="background-color: #F8C471;">chunk text
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/spark/" title="spark: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="spark" style="background-color: #F8F9F9;">spark
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/pyspark/" title="pyspark: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="pyspark" style="background-color: #FEF9E7;">pyspark
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/loss-function/" title="loss function: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="loss function" style="background-color: #F5EEF8;">loss function
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/backpropagation/" title="backpropagation: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="backpropagation" style="background-color: #F5EEF8;">backpropagation
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1125,6 +1180,51 @@
                 </a>
                 
                 
+                <a href="/tags/chunk-text/" title="chunk text: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="chunk text" style="background-color: #F8C471;">chunk text
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/loss-function/" title="loss function: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="loss function" style="background-color: #F5EEF8;">loss function
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/backpropagation/" title="backpropagation: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="backpropagation" style="background-color: #F5EEF8;">backpropagation
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/spark/" title="spark: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="spark" style="background-color: #F8F9F9;">spark
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pyspark/" title="pyspark: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pyspark" style="background-color: #FEF9E7;">pyspark
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/pydantic/" title="pydantic: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1134,46 +1234,10 @@
                 </a>
                 
                 
-                <a href="/tags/gzip/" title="gzip: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="gzip" style="background-color: #F9EBEA;">gzip
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/lightgbm/" title="lightgbm: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="lightgbm" style="background-color: #E8F8F5;">lightgbm
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/token-limit/" title="token limit: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="token limit" style="background-color: #F9E79F;">token limit
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/pinecone/" title="pinecone: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="pinecone" style="background-color: #FFF;">pinecone
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/vectorstore/" title="vectorstore: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="vectorstore" style="background-color: #85C1E9;">vectorstore
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1192,6 +1256,24 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="autogpt" style="background-color: #85C1E9;">autogpt
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pinecone/" title="pinecone: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pinecone" style="background-color: #FFF;">pinecone
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/vectorstore/" title="vectorstore: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="vectorstore" style="background-color: #85C1E9;">vectorstore
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1224,20 +1306,11 @@
                 </a>
                 
                 
-                <a href="/tags/iphone/" title="iphone: 1">
+                <a href="/tags/lightgbm/" title="lightgbm: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="iphone" style="background-color: #D5F5E3;">iphone
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/web-development/" title="web development: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="web development" style="background-color: #F8F9F9;">web development
-                        <span class="tag-length">2</span>
+                            data-tagname="lightgbm" style="background-color: #E8F8F5;">lightgbm
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -1265,15 +1338,6 @@
                              chip-default "
                             data-tagname="docker" style="background-color: #F8F9F9;">docker
                         <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/orbstack/" title="orbstack: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="orbstack" style="background-color: #82E0AA;">orbstack
-                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -1323,15 +1387,6 @@
                 </a>
                 
                 
-                <a href="/tags/question-and-answer/" title="question and answer: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="question and answer" style="background-color: #E8F8F5;">question and answer
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/streamlit/" title="streamlit: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1341,11 +1396,47 @@
                 </a>
                 
                 
+                <a href="/tags/iphone/" title="iphone: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="iphone" style="background-color: #D5F5E3;">iphone
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/web-development/" title="web development: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="web development" style="background-color: #F8F9F9;">web development
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/sentence-transformers/" title="sentence-transformers: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="sentence-transformers" style="background-color: #FEF9E7;">sentence-transformers
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/question-and-answer/" title="question and answer: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="question and answer" style="background-color: #E8F8F5;">question and answer
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/orbstack/" title="orbstack: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="orbstack" style="background-color: #82E0AA;">orbstack
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -1377,10 +1468,19 @@
                 </a>
                 
                 
-                <a href="/tags/FPGA/" title="FPGA: 1">
+                <a href="/tags/agi/" title="agi: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="FPGA" style="background-color: #E8F8F5;">FPGA
+                            data-tagname="agi" style="background-color: #E8F8F5;">agi
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/class-inheritance/" title="class inheritance: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="class inheritance" style="background-color: #F9EBEA;">class inheritance
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1395,10 +1495,10 @@
                 </a>
                 
                 
-                <a href="/tags/class-inheritance/" title="class inheritance: 1">
+                <a href="/tags/FPGA/" title="FPGA: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="class inheritance" style="background-color: #F9EBEA;">class inheritance
+                            data-tagname="FPGA" style="background-color: #E8F8F5;">FPGA
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1413,28 +1513,10 @@
                 </a>
                 
                 
-                <a href="/tags/agi/" title="agi: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="agi" style="background-color: #E8F8F5;">agi
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/go/" title="go: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="go" style="background-color: #D5F5E3;">go
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/google-cloud/" title="google cloud: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="google cloud" style="background-color: #D7BDE2;">google cloud
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1449,19 +1531,19 @@
                 </a>
                 
                 
-                <a href="/tags/advertising/" title="advertising: 1">
+                <a href="/tags/google-cloud/" title="google cloud: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="advertising" style="background-color: #F9EBEA;">advertising
+                            data-tagname="google cloud" style="background-color: #D7BDE2;">google cloud
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/auth0/" title="auth0: 1">
+                <a href="/tags/advertising/" title="advertising: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="auth0" style="background-color: #E8F8F5;">auth0
+                            data-tagname="advertising" style="background-color: #F9EBEA;">advertising
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1485,15 +1567,6 @@
                 </a>
                 
                 
-                <a href="/tags/RLHF/" title="RLHF: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="RLHF" style="background-color: #85C1E9;">RLHF
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/autogen/" title="autogen: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1512,20 +1585,29 @@
                 </a>
                 
                 
-                <a href="/tags/tenacity/" title="tenacity: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="tenacity" style="background-color: #82E0AA;">tenacity
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/openAI/" title="openAI: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="openAI" style="background-color: #F5EEF8;">openAI
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/RLHF/" title="RLHF: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="RLHF" style="background-color: #85C1E9;">RLHF
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/tenacity/" title="tenacity: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="tenacity" style="background-color: #82E0AA;">tenacity
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -1557,15 +1639,6 @@
                 </a>
                 
                 
-                <a href="/tags/cnn/" title="cnn: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="cnn" style="background-color: #D5F5E3;">cnn
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/batch-size/" title="batch size: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1575,10 +1648,10 @@
                 </a>
                 
                 
-                <a href="/tags/feature-scaling/" title="feature scaling: 1">
+                <a href="/tags/cnn/" title="cnn: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="feature scaling" style="background-color: #F5EEF8;">feature scaling
+                            data-tagname="cnn" style="background-color: #D5F5E3;">cnn
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1602,19 +1675,10 @@
                 </a>
                 
                 
-                <a href="/tags/pyaudio/" title="pyaudio: 1">
+                <a href="/tags/feature-scaling/" title="feature scaling: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="pyaudio" style="background-color: #F9EBEA;">pyaudio
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/tts/" title="tts: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="tts" style="background-color: #D7BDE2;">tts
+                            data-tagname="feature scaling" style="background-color: #F5EEF8;">feature scaling
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1624,6 +1688,33 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="gradient" style="background-color: #D5F5E3;">gradient
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pythonl/" title="pythonl: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pythonl" style="background-color: #85C1E9;">pythonl
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pyaudio/" title="pyaudio: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pyaudio" style="background-color: #F9EBEA;">pyaudio
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/auth0/" title="auth0: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="auth0" style="background-color: #E8F8F5;">auth0
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1647,24 +1738,6 @@
                 </a>
                 
                 
-                <a href="/tags/pythonl/" title="pythonl: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="pythonl" style="background-color: #85C1E9;">pythonl
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/venv/" title="venv: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="venv" style="background-color: #E8F8F5;">venv
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/concurrent/" title="concurrent: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1683,6 +1756,15 @@
                 </a>
                 
                 
+                <a href="/tags/venv/" title="venv: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="venv" style="background-color: #E8F8F5;">venv
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/json-data-visualization/" title="json data visualization: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1696,6 +1778,15 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="timeout" style="background-color: #FFF;">timeout
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/tts/" title="tts: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="tts" style="background-color: #D7BDE2;">tts
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1719,15 +1810,6 @@
                 </a>
                 
                 
-                <a href="/tags/checks/" title="checks: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="checks" style="background-color: #F5EEF8;">checks
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/dalle3/" title="dalle3: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1737,19 +1819,10 @@
                 </a>
                 
                 
-                <a href="/tags/http/" title="http: 1">
+                <a href="/tags/checks/" title="checks: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="http" style="background-color: #FEF9E7;">http
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/resume/" title="resume: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="resume" style="background-color: #A3E4D7;">resume
+                            data-tagname="checks" style="background-color: #F5EEF8;">checks
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1764,10 +1837,10 @@
                 </a>
                 
                 
-                <a href="/tags/format-strings/" title="format strings: 1">
+                <a href="/tags/http/" title="http: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="format strings" style="background-color: #E8F8F5;">format strings
+                            data-tagname="http" style="background-color: #FEF9E7;">http
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1786,6 +1859,15 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="satellite imagery" style="background-color: #F8C471;">satellite imagery
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/format-strings/" title="format strings: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="format strings" style="background-color: #E8F8F5;">format strings
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1836,15 +1918,6 @@
                 </a>
                 
                 
-                <a href="/tags/matrix-muliplication-operator/" title="matrix muliplication operator: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="matrix muliplication operator" style="background-color: #F5EEF8;">matrix muliplication operator
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/namespace/" title="namespace: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1863,6 +1936,15 @@
                 </a>
                 
                 
+                <a href="/tags/matrix-muliplication-operator/" title="matrix muliplication operator: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="matrix muliplication operator" style="background-color: #F5EEF8;">matrix muliplication operator
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/model-explainability/" title="model explainability: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1872,19 +1954,10 @@
                 </a>
                 
                 
-                <a href="/tags/pytroch/" title="pytroch: 1">
+                <a href="/tags/resume/" title="resume: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="pytroch" style="background-color: #F5EEF8;">pytroch
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/mosaic-streaming/" title="mosaic streaming: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="mosaic streaming" style="background-color: #A3E4D7;">mosaic streaming
+                            data-tagname="resume" style="background-color: #A3E4D7;">resume
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1917,6 +1990,24 @@
                 </a>
                 
                 
+                <a href="/tags/pytroch/" title="pytroch: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pytroch" style="background-color: #F5EEF8;">pytroch
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/mosaic-streaming/" title="mosaic streaming: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="mosaic streaming" style="background-color: #A3E4D7;">mosaic streaming
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/gpt4/" title="gpt4: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1926,10 +2017,10 @@
                 </a>
                 
                 
-                <a href="/tags/descion-tree/" title="descion tree: 1">
+                <a href="/tags/jwt-token/" title="jwt token: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="descion tree" style="background-color: #FEF9E7;">descion tree
+                            data-tagname="jwt token" style="background-color: #D5F5E3;">jwt token
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1953,15 +2044,6 @@
                 </a>
                 
                 
-                <a href="/tags/jwt-token/" title="jwt token: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="jwt token" style="background-color: #D5F5E3;">jwt token
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/zero-shot/" title="zero shot: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1980,20 +2062,20 @@
                 </a>
                 
                 
+                <a href="/tags/descion-tree/" title="descion tree: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="descion tree" style="background-color: #FEF9E7;">descion tree
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/agents/" title="agents: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="agents" style="background-color: #FEF9E7;">agents
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/langraph/" title="langraph: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="langraph" style="background-color: #A3E4D7;">langraph
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -2007,19 +2089,10 @@
                 </a>
                 
                 
-                <a href="/tags/optuna/" title="optuna: 1">
+                <a href="/tags/langraph/" title="langraph: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="optuna" style="background-color: #E8F8F5;">optuna
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/hyperopt/" title="hyperopt: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="hyperopt" style="background-color: #FFF;">hyperopt
+                            data-tagname="langraph" style="background-color: #A3E4D7;">langraph
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2043,15 +2116,6 @@
                 </a>
                 
                 
-                <a href="/tags/genetic-algorithm/" title="genetic algorithm: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="genetic algorithm" style="background-color: #85C1E9;">genetic algorithm
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/hyperband/" title="hyperband: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -2070,10 +2134,28 @@
                 </a>
                 
                 
-                <a href="/tags/partilce-swarm-optimization/" title="partilce swarm optimization: 1">
+                <a href="/tags/optuna/" title="optuna: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="partilce swarm optimization" style="background-color: #82E0AA;">partilce swarm optimization
+                            data-tagname="optuna" style="background-color: #E8F8F5;">optuna
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/hyperopt/" title="hyperopt: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="hyperopt" style="background-color: #FFF;">hyperopt
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/genetic-algorithm/" title="genetic algorithm: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="genetic algorithm" style="background-color: #85C1E9;">genetic algorithm
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2106,19 +2188,19 @@
                 </a>
                 
                 
-                <a href="/tags/stock/" title="stock: 1">
+                <a href="/tags/partilce-swarm-optimization/" title="partilce swarm optimization: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="stock" style="background-color: #F9EBEA;">stock
+                            data-tagname="partilce swarm optimization" style="background-color: #82E0AA;">partilce swarm optimization
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/ai-engineer/" title="ai engineer: 1">
+                <a href="/tags/stock/" title="stock: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="ai engineer" style="background-color: #F5EEF8;">ai engineer
+                            data-tagname="stock" style="background-color: #F9EBEA;">stock
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2133,37 +2215,19 @@
                 </a>
                 
                 
+                <a href="/tags/ai-engineer/" title="ai engineer: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="ai engineer" style="background-color: #F5EEF8;">ai engineer
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/nohup/" title="nohup: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="nohup" style="background-color: #F8F9F9;">nohup
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JWT/" title="JWT: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="JWT" style="background-color: #E8F8F5;">JWT
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/oAuth2-0/" title="oAuth2.0: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="oAuth2.0" style="background-color: #F9E79F;">oAuth2.0
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/jupyter-notebook/" title="jupyter notebook: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="jupyter notebook" style="background-color: #F9E79F;">jupyter notebook
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2187,6 +2251,33 @@
                 </a>
                 
                 
+                <a href="/tags/jupyter-notebook/" title="jupyter notebook: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="jupyter notebook" style="background-color: #F9E79F;">jupyter notebook
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/JWT/" title="JWT: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="JWT" style="background-color: #E8F8F5;">JWT
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/oAuth2-0/" title="oAuth2.0: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="oAuth2.0" style="background-color: #F9E79F;">oAuth2.0
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/proxy-server/" title="proxy server: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -2200,33 +2291,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="product ranking" style="background-color: #D5F5E3;">product ranking
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/stream/" title="stream: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="stream" style="background-color: #82E0AA;">stream
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/squeeze/" title="squeeze: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="squeeze" style="background-color: #A3E4D7;">squeeze
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/unsqueeze/" title="unsqueeze: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="unsqueeze" style="background-color: #F8F9F9;">unsqueeze
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2250,10 +2314,10 @@
                 </a>
                 
                 
-                <a href="/tags/gp4/" title="gp4: 1">
+                <a href="/tags/stream/" title="stream: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="gp4" style="background-color: #D5F5E3;">gp4
+                            data-tagname="stream" style="background-color: #82E0AA;">stream
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2277,10 +2341,10 @@
                 </a>
                 
                 
-                <a href="/tags/two-tower-system/" title="two tower system: 1">
+                <a href="/tags/gp4/" title="gp4: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="two tower system" style="background-color: #F9E79F;">two tower system
+                            data-tagname="gp4" style="background-color: #D5F5E3;">gp4
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2295,15 +2359,6 @@
                 </a>
                 
                 
-                <a href="/tags/convolution/" title="convolution: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="convolution" style="background-color: #F9E79F;">convolution
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/math/" title="math: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -2313,10 +2368,28 @@
                 </a>
                 
                 
-                <a href="/tags/node-js/" title="node.js: 1">
+                <a href="/tags/squeeze/" title="squeeze: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="node.js" style="background-color: #E8F8F5;">node.js
+                            data-tagname="squeeze" style="background-color: #A3E4D7;">squeeze
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/unsqueeze/" title="unsqueeze: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="unsqueeze" style="background-color: #F8F9F9;">unsqueeze
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/two-tower-system/" title="two tower system: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="two tower system" style="background-color: #F9E79F;">two tower system
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2331,28 +2404,19 @@
                 </a>
                 
                 
+                <a href="/tags/convolution/" title="convolution: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="convolution" style="background-color: #F9E79F;">convolution
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/pandasai/" title="pandasai: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="pandasai" style="background-color: #F8C471;">pandasai
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/vector-embedding/" title="vector embedding: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="vector embedding" style="background-color: #F9E79F;">vector embedding
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/terraform/" title="terraform: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="terraform" style="background-color: #82E0AA;">terraform
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2367,19 +2431,19 @@
                 </a>
                 
                 
-                <a href="/tags/adranking/" title="adranking: 1">
+                <a href="/tags/vector-embedding/" title="vector embedding: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="adranking" style="background-color: #A3E4D7;">adranking
+                            data-tagname="vector embedding" style="background-color: #F9E79F;">vector embedding
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/balance-transfer/" title="balance transfer: 1">
+                <a href="/tags/adranking/" title="adranking: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="balance transfer" style="background-color: #E8F8F5;">balance transfer
+                            data-tagname="adranking" style="background-color: #A3E4D7;">adranking
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2412,6 +2476,24 @@
                 </a>
                 
                 
+                <a href="/tags/balance-transfer/" title="balance transfer: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="balance transfer" style="background-color: #E8F8F5;">balance transfer
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/terraform/" title="terraform: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="terraform" style="background-color: #82E0AA;">terraform
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/pooling/" title="pooling: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -2430,10 +2512,10 @@
                 </a>
                 
                 
-                <a href="/tags/json-string-decoding/" title="json string decoding: 1">
+                <a href="/tags/node-js/" title="node.js: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="json string decoding" style="background-color: #F9EBEA;">json string decoding
+                            data-tagname="node.js" style="background-color: #E8F8F5;">node.js
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2452,6 +2534,15 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="theading" style="background-color: #F8C471;">theading
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/json-string-decoding/" title="json string decoding: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="json string decoding" style="background-color: #F9EBEA;">json string decoding
                         <span class="tag-length">1</span>
                     </span>
                 </a>

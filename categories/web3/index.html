@@ -227,6 +227,97 @@
 
 </header>
 
+    
+<div id="language-learning-banner" class="language-learning-banner">
+    <div class="banner-content">
+        <div class="banner-text">
+            <strong>Language Learning App</strong>
+        </div>
+        <div class="banner-link">
+            <a href="https://www.golingoapp.com" target="_blank" onclick="trackBannerClick()">
+                www.golingoapp.com
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.language-learning-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 999;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.banner-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.banner-link a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.banner-link a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .banner-content {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .banner-text {
+        font-size: 14px;
+    }
+    
+    .banner-link a {
+        font-size: 12px;
+    }
+}
+</style>
+
+<script>
+function trackBannerClick() {
+    // Track banner click by sending to API
+    fetch('https://4y0g6hn7t7.execute-api.us-east-1.amazonaws.com/prod/banner-track', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            event: 'banner_click',
+            banner_type: 'language_learning_app',
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            referrer: document.referrer,
+            user_agent: navigator.userAgent
+        })
+    }).catch(function(error) {
+        // Silent fail - don't interrupt user experience
+        console.log('Banner tracking failed:', error);
+    });
+    
+    // Optional: Log to console for testing
+    console.log('Language Learning App banner clicked at', new Date().toISOString());
+}
+</script>
     <div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
@@ -343,20 +434,20 @@
                 </a>
                 
                 
-                <a href="/categories/physics/" title="physics: 3">
+                <a href="/categories/stack-overflow/" title="stack overflow: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">physics
-                        <span class="tag-length">3</span>
+                            style="background-color: #82E0AA;">stack overflow
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/stack-overflow/" title="stack overflow: 1">
+                <a href="/categories/physics/" title="physics: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">stack overflow
-                        <span class="tag-length">1</span>
+                            style="background-color: #D7BDE2;">physics
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 

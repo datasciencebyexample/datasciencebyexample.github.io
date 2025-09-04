@@ -228,6 +228,97 @@
 </header>
 
     
+<div id="language-learning-banner" class="language-learning-banner">
+    <div class="banner-content">
+        <div class="banner-text">
+            <strong>Language Learning App</strong>
+        </div>
+        <div class="banner-link">
+            <a href="https://www.golingoapp.com" target="_blank" onclick="trackBannerClick()">
+                www.golingoapp.com
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.language-learning-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 999;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.banner-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.banner-link a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.banner-link a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .banner-content {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .banner-text {
+        font-size: 14px;
+    }
+    
+    .banner-link a {
+        font-size: 12px;
+    }
+}
+</style>
+
+<script>
+function trackBannerClick() {
+    // Track banner click by sending to API
+    fetch('https://4y0g6hn7t7.execute-api.us-east-1.amazonaws.com/prod/banner-track', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            event: 'banner_click',
+            banner_type: 'language_learning_app',
+            timestamp: new Date().toISOString(),
+            url: window.location.href,
+            referrer: document.referrer,
+            user_agent: navigator.userAgent
+        })
+    }).catch(function(error) {
+        // Silent fail - don't interrupt user experience
+        console.log('Banner tracking failed:', error);
+    });
+    
+    // Optional: Log to console for testing
+    console.log('Language Learning App banner clicked at', new Date().toISOString());
+}
+</script>
+    
 
 
 
@@ -408,7 +499,7 @@
 <ol>
 <li><p>Generate a new SSH key for each Git account using the command</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your-email@example.com&quot; </span><br></pre></td></tr></table></figure>
-<p>Replace “<a href="mailto:&#121;&#111;&#117;&#114;&#x2d;&#x65;&#109;&#x61;&#105;&#108;&#64;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#99;&#111;&#x6d;">&#121;&#111;&#117;&#114;&#x2d;&#x65;&#109;&#x61;&#105;&#108;&#64;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#46;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p>
+<p>Replace “<a href="mailto:&#121;&#x6f;&#117;&#x72;&#45;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;">&#121;&#x6f;&#117;&#x72;&#45;&#x65;&#x6d;&#x61;&#105;&#108;&#64;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;</a>“ with the email you used for your Git account. When asked for a file to save the key, choose a location that does not already contain an SSH key (for example: <code>~/.ssh/id_rsa_new</code>).</p>
 </li>
 <li><p>After creating the keys, you need to add them to <code>ssh-agent</code>. This is done using the ssh-add command, for example:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure></li>
