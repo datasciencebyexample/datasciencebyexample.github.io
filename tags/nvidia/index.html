@@ -227,97 +227,6 @@
 
 </header>
 
-    
-<div id="language-learning-banner" class="language-learning-banner">
-    <div class="banner-content">
-        <div class="banner-text">
-            <strong>GoLingo</strong>
-        </div>
-        <div class="banner-link">
-            <a href="https://www.golingoapp.com" target="_blank" onclick="trackBannerClick()">
-                Master languages through fun flight simulation games, autoplay in your sleep to boost your learning, & customize every lesson with AI to fit you!
-            </a>
-        </div>
-    </div>
-</div>
-
-<style>
-.language-learning-banner {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 12px 0;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 999;
-}
-
-.banner-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.banner-text {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.banner-link a {
-    color: #fff;
-    text-decoration: underline;
-    font-size: 14px;
-    transition: opacity 0.3s ease;
-}
-
-.banner-link a:hover {
-    opacity: 0.8;
-    text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-    .banner-content {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .banner-text {
-        font-size: 14px;
-    }
-    
-    .banner-link a {
-        font-size: 12px;
-    }
-}
-</style>
-
-<script>
-function trackBannerClick() {
-    // Track banner click by sending to API
-    fetch('https://4y0g6hn7t7.execute-api.us-east-1.amazonaws.com/prod/banner-track', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            event: 'banner_click',
-            banner_type: 'language_learning_app',
-            timestamp: new Date().toISOString(),
-            url: window.location.href,
-            referrer: document.referrer,
-            user_agent: navigator.userAgent
-        })
-    }).catch(function(error) {
-        // Silent fail - don't interrupt user experience
-        console.log('Banner tracking failed:', error);
-    });
-    
-    // Optional: Log to console for testing
-    console.log('Language Learning App banner clicked at', new Date().toISOString());
-}
-</script>
     <div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
@@ -415,19 +324,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/dataframe/" title="dataframe: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="dataframe" style="background-color: #FEF9E7;">dataframe
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/tokenization/" title="tokenization: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="tokenization" style="background-color: #F8F9F9;">tokenization
+                            data-tagname="tokenization" style="background-color: #FEF9E7;">tokenization
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -436,8 +336,17 @@ function trackBannerClick() {
                 <a href="/tags/NLTK/" title="NLTK: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="NLTK" style="background-color: #82E0AA;">NLTK
+                            data-tagname="NLTK" style="background-color: #F8F9F9;">NLTK
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/dataframe/" title="dataframe: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="dataframe" style="background-color: #82E0AA;">dataframe
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -460,19 +369,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/pandas-tip/" title="pandas tip: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="pandas tip" style="background-color: #85C1E9;">pandas tip
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/tsfresh/" title="tsfresh: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="tsfresh" style="background-color: #F8C471;">tsfresh
+                            data-tagname="tsfresh" style="background-color: #85C1E9;">tsfresh
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -481,8 +381,17 @@ function trackBannerClick() {
                 <a href="/tags/time-series/" title="time series: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="time series" style="background-color: #F9E79F;">time series
+                            data-tagname="time series" style="background-color: #F8C471;">time series
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pandas-tip/" title="pandas tip: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pandas tip" style="background-color: #F9E79F;">pandas tip
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -532,33 +441,6 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/flask-app/" title="flask app: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="flask app" style="background-color: #F5EEF8;">flask app
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/API/" title="API: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="API" style="background-color: #F8F9F9;">API
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/nginx/" title="nginx: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="nginx" style="background-color: #FEF9E7;">nginx
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/crontab/" title="crontab: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -591,6 +473,33 @@ function trackBannerClick() {
                              chip-default "
                             data-tagname="pytorch" style="background-color: #D5F5E3;">pytorch
                         <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/flask-app/" title="flask app: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="flask app" style="background-color: #F5EEF8;">flask app
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/API/" title="API: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="API" style="background-color: #F8F9F9;">API
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/nginx/" title="nginx: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="nginx" style="background-color: #FEF9E7;">nginx
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -667,10 +576,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/seaborn/" title="seaborn: 1">
+                <a href="/tags/hyperparameter-tuning/" title="hyperparameter tuning: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="seaborn" style="background-color: #FFF;">seaborn
+                            data-tagname="hyperparameter tuning" style="background-color: #F8C471;">hyperparameter tuning
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -685,10 +594,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/hyperparameter-tuning/" title="hyperparameter tuning: 1">
+                <a href="/tags/seaborn/" title="seaborn: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="hyperparameter tuning" style="background-color: #F8C471;">hyperparameter tuning
+                            data-tagname="seaborn" style="background-color: #FFF;">seaborn
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -784,15 +693,6 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/s3/" title="s3: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="s3" style="background-color: #D5F5E3;">s3
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/DART/" title="DART: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -806,6 +706,15 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="Asteroid" style="background-color: #F5EEF8;">Asteroid
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/s3/" title="s3: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="s3" style="background-color: #D5F5E3;">s3
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -874,6 +783,15 @@ function trackBannerClick() {
                 </a>
                 
                 
+                <a href="/tags/news/" title="news: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="news" style="background-color: #D7BDE2;">news
+                        <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/chatgpt/" title="chatgpt: 16">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -888,15 +806,6 @@ function trackBannerClick() {
                              chip-default "
                             data-tagname="large language model" style="background-color: #85C1E9;">large language model
                         <span class="tag-length">16</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/news/" title="news: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="news" style="background-color: #D7BDE2;">news
-                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -946,20 +855,29 @@ function trackBannerClick() {
                 </a>
                 
                 
+                <a href="/tags/Apple/" title="Apple: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Apple" style="background-color: #A3E4D7;">Apple
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/VR/" title="VR: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="VR" style="background-color: #F8F9F9;">VR
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/retry/" title="retry: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="retry" style="background-color: #D5F5E3;">retry
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/AWS/" title="AWS: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="AWS" style="background-color: #F9E79F;">AWS
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -982,19 +900,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/Apple/" title="Apple: 1">
+                <a href="/tags/AWS/" title="AWS: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Apple" style="background-color: #A3E4D7;">Apple
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/VR/" title="VR: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="VR" style="background-color: #F8F9F9;">VR
+                            data-tagname="AWS" style="background-color: #F9E79F;">AWS
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1081,20 +990,20 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/openai/" title="openai: 25">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="openai" style="background-color: #FEF9E7;">openai
-                        <span class="tag-length">25</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/carriage-return/" title="carriage return: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="carriage return" style="background-color: #F9EBEA;">carriage return
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/openai/" title="openai: 25">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="openai" style="background-color: #FEF9E7;">openai
+                        <span class="tag-length">25</span>
                     </span>
                 </a>
                 
@@ -1121,15 +1030,6 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="chatgpt apps" style="background-color: #FEF9E7;">chatgpt apps
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/notebook/" title="notebook: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="notebook" style="background-color: #E8F8F5;">notebook
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1162,10 +1062,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/chunk-text/" title="chunk text: 1">
+                <a href="/tags/notebook/" title="notebook: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="chunk text" style="background-color: #F8C471;">chunk text
+                            data-tagname="notebook" style="background-color: #E8F8F5;">notebook
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1185,6 +1085,15 @@ function trackBannerClick() {
                              chip-default "
                             data-tagname="pyspark" style="background-color: #FEF9E7;">pyspark
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/chunk-text/" title="chunk text: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="chunk text" style="background-color: #F8C471;">chunk text
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -1243,20 +1152,20 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/lightgbm/" title="lightgbm: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="lightgbm" style="background-color: #E8F8F5;">lightgbm
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/token-limit/" title="token limit: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="token limit" style="background-color: #F9E79F;">token limit
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/lightgbm/" title="lightgbm: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="lightgbm" style="background-color: #E8F8F5;">lightgbm
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -1292,6 +1201,15 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="autogpt" style="background-color: #85C1E9;">autogpt
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/HELOC/" title="HELOC: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="HELOC" style="background-color: #85C1E9;">HELOC
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1333,10 +1251,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/HELOC/" title="HELOC: 1">
+                <a href="/tags/api-gateway/" title="api gateway: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="HELOC" style="background-color: #85C1E9;">HELOC
+                            data-tagname="api gateway" style="background-color: #85C1E9;">api gateway
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1351,29 +1269,11 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/api-gateway/" title="api gateway: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="api gateway" style="background-color: #85C1E9;">api gateway
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/docker/" title="docker: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="docker" style="background-color: #F8F9F9;">docker
                         <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/fastapi/" title="fastapi: 7">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="fastapi" style="background-color: #F9E79F;">fastapi
-                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
@@ -1387,11 +1287,29 @@ function trackBannerClick() {
                 </a>
                 
                 
+                <a href="/tags/fastapi/" title="fastapi: 7">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="fastapi" style="background-color: #F9E79F;">fastapi
+                        <span class="tag-length">7</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/statistics/" title="statistics: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="statistics" style="background-color: #F9EBEA;">statistics
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/streamlit/" title="streamlit: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="streamlit" style="background-color: #F8F9F9;">streamlit
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -1418,15 +1336,6 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="FAISS" style="background-color: #F5EEF8;">FAISS
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/streamlit/" title="streamlit: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="streamlit" style="background-color: #F8F9F9;">streamlit
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -1477,28 +1386,19 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/class-inheritance/" title="class inheritance: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="class inheritance" style="background-color: #F9EBEA;">class inheritance
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/agi/" title="agi: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="agi" style="background-color: #E8F8F5;">agi
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/FPGA/" title="FPGA: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="FPGA" style="background-color: #E8F8F5;">FPGA
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/class-inheritance/" title="class inheritance: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="class inheritance" style="background-color: #F9EBEA;">class inheritance
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1509,6 +1409,15 @@ function trackBannerClick() {
                              chip-default "
                             data-tagname="function calling" style="background-color: #F8F9F9;">function calling
                         <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/agi/" title="agi: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="agi" style="background-color: #E8F8F5;">agi
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -1603,15 +1512,6 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/vpc/" title="vpc: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="vpc" style="background-color: #A3E4D7;">vpc
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/openAI/" title="openAI: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1621,10 +1521,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/ssh-keygen/" title="ssh-keygen: 1">
+                <a href="/tags/vpc/" title="vpc: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="ssh-keygen" style="background-color: #85C1E9;">ssh-keygen
+                            data-tagname="vpc" style="background-color: #A3E4D7;">vpc
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1639,10 +1539,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/prompt-engeering/" title="prompt engeering: 1">
+                <a href="/tags/ssh-keygen/" title="ssh-keygen: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="prompt engeering" style="background-color: #85C1E9;">prompt engeering
+                            data-tagname="ssh-keygen" style="background-color: #85C1E9;">ssh-keygen
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1657,6 +1557,15 @@ function trackBannerClick() {
                 </a>
                 
                 
+                <a href="/tags/prompt-engeering/" title="prompt engeering: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="prompt engeering" style="background-color: #85C1E9;">prompt engeering
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/whisper/" title="whisper: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1666,19 +1575,19 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/batch-size/" title="batch size: 1">
+                <a href="/tags/feature-scaling/" title="feature scaling: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="batch size" style="background-color: #D7BDE2;">batch size
+                            data-tagname="feature scaling" style="background-color: #F5EEF8;">feature scaling
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/feature-scaling/" title="feature scaling: 1">
+                <a href="/tags/batch-size/" title="batch size: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="feature scaling" style="background-color: #F5EEF8;">feature scaling
+                            data-tagname="batch size" style="background-color: #D7BDE2;">batch size
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1720,15 +1629,6 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/gradient/" title="gradient: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="gradient" style="background-color: #D5F5E3;">gradient
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/concurrency/" title="concurrency: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1747,10 +1647,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/pythonl/" title="pythonl: 1">
+                <a href="/tags/gradient/" title="gradient: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="pythonl" style="background-color: #85C1E9;">pythonl
+                            data-tagname="gradient" style="background-color: #D5F5E3;">gradient
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1760,6 +1660,15 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="venv" style="background-color: #E8F8F5;">venv
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/pythonl/" title="pythonl: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="pythonl" style="background-color: #85C1E9;">pythonl
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1837,6 +1746,15 @@ function trackBannerClick() {
                 </a>
                 
                 
+                <a href="/tags/http/" title="http: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="http" style="background-color: #FEF9E7;">http
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/resume/" title="resume: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1850,15 +1768,6 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="httpx" style="background-color: #F8C471;">httpx
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/http/" title="http: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="http" style="background-color: #FEF9E7;">http
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1918,6 +1827,24 @@ function trackBannerClick() {
                 </a>
                 
                 
+                <a href="/tags/namespace/" title="namespace: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="namespace" style="background-color: #D5F5E3;">namespace
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/module/" title="module: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="module" style="background-color: #F8F9F9;">module
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/linux/" title="linux: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1945,24 +1872,6 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/namespace/" title="namespace: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="namespace" style="background-color: #D5F5E3;">namespace
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/module/" title="module: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="module" style="background-color: #F8F9F9;">module
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/model-explainability/" title="model explainability: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -1985,6 +1894,24 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="mosaic streaming" style="background-color: #A3E4D7;">mosaic streaming
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/movie/" title="movie: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="movie" style="background-color: #F8C471;">movie
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/ocr/" title="ocr: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="ocr" style="background-color: #FEF9E7;">ocr
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2021,24 +1948,6 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="jwt token" style="background-color: #D5F5E3;">jwt token
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/movie/" title="movie: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="movie" style="background-color: #F8C471;">movie
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/ocr/" title="ocr: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="ocr" style="background-color: #FEF9E7;">ocr
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2107,24 +2016,6 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/optuna/" title="optuna: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="optuna" style="background-color: #E8F8F5;">optuna
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/hyperopt/" title="hyperopt: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="hyperopt" style="background-color: #FFF;">hyperopt
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/grid-search/" title="grid search: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -2138,6 +2029,24 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="random search" style="background-color: #E8F8F5;">random search
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/optuna/" title="optuna: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="optuna" style="background-color: #E8F8F5;">optuna
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/hyperopt/" title="hyperopt: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="hyperopt" style="background-color: #FFF;">hyperopt
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2233,6 +2142,15 @@ function trackBannerClick() {
                 </a>
                 
                 
+                <a href="/tags/nohup/" title="nohup: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="nohup" style="background-color: #F8F9F9;">nohup
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/JWT/" title="JWT: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -2264,15 +2182,6 @@ function trackBannerClick() {
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="slack" style="background-color: #D5F5E3;">slack
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/nohup/" title="nohup: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="nohup" style="background-color: #F8F9F9;">nohup
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2386,19 +2295,19 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/explainability/" title="explainability: 1">
+                <a href="/tags/convolution/" title="convolution: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="explainability" style="background-color: #E8F8F5;">explainability
+                            data-tagname="convolution" style="background-color: #F9E79F;">convolution
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/convolution/" title="convolution: 1">
+                <a href="/tags/explainability/" title="explainability: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="convolution" style="background-color: #F9E79F;">convolution
+                            data-tagname="explainability" style="background-color: #E8F8F5;">explainability
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2431,10 +2340,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/terraform/" title="terraform: 1">
+                <a href="/tags/pandasai/" title="pandasai: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="terraform" style="background-color: #82E0AA;">terraform
+                            data-tagname="pandasai" style="background-color: #F8C471;">pandasai
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2449,10 +2358,10 @@ function trackBannerClick() {
                 </a>
                 
                 
-                <a href="/tags/pandasai/" title="pandasai: 1">
+                <a href="/tags/terraform/" title="terraform: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="pandasai" style="background-color: #F8C471;">pandasai
+                            data-tagname="terraform" style="background-color: #82E0AA;">terraform
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -2762,7 +2671,7 @@ function trackBannerClick() {
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2025</span>
+                <span id="year">2019-2026</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">robot learner</a>
