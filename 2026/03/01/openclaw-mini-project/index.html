@@ -1,0 +1,1217 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="OpenClaw-Mini, A python first project around codex and discord, DataScienceTribe">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Global site - Google Ads -->
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5472621737702667"
+     crossorigin="anonymous"></script>
+
+	
+    <title>OpenClaw-Mini, A python first project around codex and discord | DataScienceTribe</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">DataScienceTribe</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tools" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Tools</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">DataScienceTribe</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tools" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Tools
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">OpenClaw-Mini, A python first project around codex and discord</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/openclaw/">
+                                <span class="chip bg-color">openclaw</span>
+                            </a>
+                        
+                            <a href="/tags/agent/">
+                                <span class="chip bg-color">agent</span>
+                            </a>
+                        
+                            <a href="/tags/openclaw-mini/">
+                                <span class="chip bg-color">openclaw-mini</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/data-science/" class="post-category">
+                                data science
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2026-03-01
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>If you’ve looked into the OpenClaw project before, you might feel that while it’s feature-complete, the architecture is relatively complex—and it’s not implemented in Python.</p>
+<p>For many developers who just want to quickly build a <strong>locally running Discord AI assistant</strong>, what they’re really looking for is something:</p>
+<ul>
+<li>With a simpler architecture  </li>
+<li>Fully implemented in Python  </li>
+<li>No need to manually wrap the OpenAI API  </li>
+<li>Ready to run locally  </li>
+</ul>
+<p>In that case, I highly recommend checking out this project:</p>
+<p>👉 <strong>openclaw-mini</strong><br>Repo: <a target="_blank" rel="noopener" href="https://github.com/robotlearner001/openclaw-mini">https://github.com/robotlearner001/openclaw-mini</a></p>
+<p>It’s a minimalist, OpenClaw-style implementation focused on one clean path:</p>
+<p><strong>Discord + Local Codex CLI + Markdown-driven behavior definitions</strong></p>
+<hr>
+<h1 id="What-is-openclaw-mini"><a href="#What-is-openclaw-mini" class="headerlink" title="What is openclaw-mini?"></a>What is openclaw-mini?</h1><p>openclaw-mini is a minimal viable OpenClaw-style agent that focuses on just three things:</p>
+<ul>
+<li>✅ Using Discord as the input/output channel  </li>
+<li>✅ Using the local Codex CLI for model inference  </li>
+<li>✅ Using <code>SOUL.md</code> + <code>skills/*.md</code> to define behavior  </li>
+</ul>
+<p>No complex multi-agent management.<br>No heavy abstraction layers.</p>
+<p>Its core goal is simple:</p>
+<blockquote>
+<p>Build an AI agent architecture you can fully understand in one afternoon.</p>
+</blockquote>
+<hr>
+<h1 id="How-It-Works-A-Clean-Linear-Control-Flow"><a href="#How-It-Works-A-Clean-Linear-Control-Flow" class="headerlink" title="How It Works: A Clean, Linear Control Flow"></a>How It Works: A Clean, Linear Control Flow</h1><p>After reading the code, you’ll notice the control flow is extremely clear.</p>
+<h2 id="1️⃣-Entry-Point-main-py"><a href="#1️⃣-Entry-Point-main-py" class="headerlink" title="1️⃣ Entry Point: main.py"></a>1️⃣ Entry Point: <code>main.py</code></h2><ul>
+<li>Load environment variables  </li>
+<li>Start the Discord client  </li>
+</ul>
+<p>No extra frameworks.<br>No complicated lifecycle management.</p>
+<hr>
+<h2 id="2️⃣-bot-py-Message-Handling"><a href="#2️⃣-bot-py-Message-Handling" class="headerlink" title="2️⃣ bot.py: Message Handling"></a>2️⃣ <code>bot.py</code>: Message Handling</h2><p>When a Discord message is received:</p>
+<ul>
+<li>Filter out the bot’s own messages  </li>
+<li>Handle built-in commands:<ul>
+<li><code>/help</code></li>
+<li><code>/skills</code></li>
+<li><code>/soul</code></li>
+</ul>
+</li>
+</ul>
+<p>If it’s not a command, the message goes into the model processing pipeline.</p>
+<hr>
+<h2 id="3️⃣-Prompt-Construction"><a href="#3️⃣-Prompt-Construction" class="headerlink" title="3️⃣ Prompt Construction"></a>3️⃣ Prompt Construction</h2><p>Regular messages are wrapped into a full instruction containing:</p>
+<ul>
+<li>The contents of <code>SOUL.md</code> (the agent’s personality and behavioral principles)  </li>
+<li>All skill card content from <code>skills/*.md</code>  </li>
+<li>The user’s original message  </li>
+</ul>
+<p>The philosophy is:</p>
+<blockquote>
+<p>Drive behavior with Markdown, not with complex logic in code.</p>
+</blockquote>
+<p>This is a very clean <strong>prompt-engineering-driven architecture</strong>.</p>
+<hr>
+<h2 id="4️⃣-llm-py-Calling-the-Local-Codex-CLI"><a href="#4️⃣-llm-py-Calling-the-Local-Codex-CLI" class="headerlink" title="4️⃣ llm.py: Calling the Local Codex CLI"></a>4️⃣ <code>llm.py</code>: Calling the Local Codex CLI</h2><p>This is the most interesting design choice.</p>
+<p>Instead of calling the OpenAI API directly in Python, it executes:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">codex <span class="built_in">exec</span> --json --output-last-message</span><br></pre></td></tr></table></figure>
+
+<p>Then it reads the model’s final output.</p>
+<p>In other words:</p>
+<ul>
+<li>Python handles I/O and orchestration  </li>
+<li>Codex CLI manages the model session  </li>
+<li>Conversation state is maintained by Codex CLI threads  </li>
+</ul>
+<hr>
+<h1 id="Local-Codex-Session-Design-Very-Smart"><a href="#Local-Codex-Session-Design-Very-Smart" class="headerlink" title="Local Codex Session Design: Very Smart"></a>Local Codex Session Design: Very Smart</h1><p>Each Discord conversation maps to a:</p>
+<p>✅ Persistent Codex thread ID  </p>
+<p>Thread information is stored in:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.codex-discord-sessions.json</span><br></pre></td></tr></table></figure>
+
+<p>And supports:</p>
+<ul>
+<li>TTL expiration control (<code>CODEX_SESSION_TTL_SEC</code>)  </li>
+<li>Automatic thread rebuilding on timeout  </li>
+<li>Persistent conversational context  </li>
+</ul>
+<p>The benefits:</p>
+<p>✅ No need to manually stitch together conversation history<br>✅ No need to manage token limits<br>✅ No need to handle complex API session logic  </p>
+<p>Everything is delegated to Codex CLI.</p>
+<hr>
+<h1 id="Why-Is-This-Design-Practical"><a href="#Why-Is-This-Design-Practical" class="headerlink" title="Why Is This Design Practical?"></a>Why Is This Design Practical?</h1><p>For individual developers or small teams, this architecture has clear advantages:</p>
+<h2 id="✅-1-Extremely-High-Readability"><a href="#✅-1-Extremely-High-Readability" class="headerlink" title="✅ 1. Extremely High Readability"></a>✅ 1. Extremely High Readability</h2><p>The codebase is small and linear.</p>
+<p>You can understand in one evening:</p>
+<ul>
+<li>How messages enter the system  </li>
+<li>How prompts are constructed  </li>
+<li>How the model is called  </li>
+<li>How sessions are persisted  </li>
+</ul>
+<hr>
+<h2 id="✅-2-Fast-Local-Iteration"><a href="#✅-2-Fast-Local-Iteration" class="headerlink" title="✅ 2. Fast Local Iteration"></a>✅ 2. Fast Local Iteration</h2><p>You only need to:</p>
+<ol>
+<li>Install the OpenAI Codex CLI  </li>
+<li>Configure your Discord token  </li>
+<li>Modify Markdown files  </li>
+</ol>
+<p>After editing <code>SOUL.md</code> or any skill file, just restart the app.</p>
+<hr>
+<h2 id="✅-3-Lightweight-Operations"><a href="#✅-3-Lightweight-Operations" class="headerlink" title="✅ 3. Lightweight Operations"></a>✅ 3. Lightweight Operations</h2><p>The project already includes:</p>
+<ul>
+<li>systemd templates  </li>
+<li>launchd templates  </li>
+<li>Environment variable configuration:<ul>
+<li><code>CODEX_SANDBOX</code>  </li>
+<li>Approval policy  </li>
+<li>Timeout settings  </li>
+<li>Model selection  </li>
+</ul>
+</li>
+</ul>
+<p>This means:</p>
+<blockquote>
+<p>It’s structured for minimal production deployment.</p>
+</blockquote>
+<hr>
+<h1 id="Who-Is-It-For"><a href="#Who-Is-It-For" class="headerlink" title="Who Is It For?"></a>Who Is It For?</h1><p>If you want to build:</p>
+<ul>
+<li>🎯 A Discord-specific AI assistant  </li>
+<li>🧠 A locally controlled agent  </li>
+<li>🛠 A system whose internal mechanism you fully understand  </li>
+<li>🐍 A pure Python stack project  </li>
+</ul>
+<p>Then openclaw-mini is an excellent starting point.</p>
+<hr>
+<h1 id="How-It-Differs-from-Full-OpenClaw"><a href="#How-It-Differs-from-Full-OpenClaw" class="headerlink" title="How It Differs from Full OpenClaw"></a>How It Differs from Full OpenClaw</h1><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>OpenClaw</th>
+<th>openclaw-mini</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Architecture Complexity</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Not Python</td>
+<td>✅ Python</td>
+</tr>
+<tr>
+<td>Multi-Agent Support</td>
+<td>Strong</td>
+<td>Simplified</td>
+</tr>
+<tr>
+<td>Learning Curve</td>
+<td>Steep</td>
+<td>✅ Very Friendly</td>
+</tr>
+<tr>
+<td>Target Audience</td>
+<td>Advanced builders</td>
+<td>✅ Rapid prototypers</td>
+</tr>
+</tbody></table>
+<p>If OpenClaw feels too heavy, too abstract, or too engineered,<br>openclaw-mini is a great lightweight entry point.</p>
+<hr>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>openclaw-mini does something very smart:</p>
+<blockquote>
+<p>It leaves complexity to Codex CLI and keeps the structure minimal.</p>
+</blockquote>
+<p>Discord handles I/O.<br>Markdown defines behavior.<br>Codex handles reasoning.<br>Python connects everything.</p>
+<p>This follows a very “Unix philosophy” design:</p>
+<p>Each component does one thing well.</p>
+<p>If you’re considering building a local AI Discord agent,<br>I suggest starting here instead of jumping straight into a complex framework.</p>
+<hr>
+<h1 id="Repo"><a href="#Repo" class="headerlink" title="Repo"></a>Repo</h1><p>🔗 <a target="_blank" rel="noopener" href="https://github.com/robotlearner001/openclaw-mini">https://github.com/robotlearner001/openclaw-mini</a></p>
+<hr>
+<p>If you’re already using OpenClaw or building your own agent framework, feel free to exchange ideas.</p>
+<p>Minimalist architecture is sometimes the strongest starting point.</p>
+<hr>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a target="_blank" rel="noopener" href="https://www.openclawagent.ai/blog/?post=openclaw-mini-local-codex-discord">OpenClawAgent</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">robot learner</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://datasciencebyexample.github.io/2026/03/01/openclaw-mini-project/">https://datasciencebyexample.github.io/2026/03/01/openclaw-mini-project/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">robot learner</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/openclaw/">
+                                    <span class="chip bg-color">openclaw</span>
+                                </a>
+                            
+                                <a href="/tags/agent/">
+                                    <span class="chip bg-color">agent</span>
+                                </a>
+                            
+                                <a href="/tags/openclaw-mini/">
+                                    <span class="chip bg-color">openclaw-mini</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2026/03/01/openclaw-mini-project/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="OpenClaw-Mini, A python first project around codex and discord">
+                        
+                        <span class="card-title">OpenClaw-Mini, A python first project around codex and discord</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/openclaw/">
+                        <span class="chip bg-color">openclaw</span>
+                    </a>
+                    
+                    <a href="/tags/agent/">
+                        <span class="chip bg-color">agent</span>
+                    </a>
+                    
+                    <a href="/tags/openclaw-mini/">
+                        <span class="chip bg-color">openclaw-mini</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/02/06/why-openclaw-suddenly-everywhere/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="OpenClaw, Why This Open Agent Is Suddenly Everywhere">
+                        
+                        <span class="card-title">OpenClaw, Why This Open Agent Is Suddenly Everywhere</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/data-science/" class="post-category">
+                                    data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/llm/">
+                        <span class="chip bg-color">llm</span>
+                    </a>
+                    
+                    <a href="/tags/openclaw/">
+                        <span class="chip bg-color">openclaw</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2026</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">robot learner</a>
+            <br>
+            
+            
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
